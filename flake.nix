@@ -8,7 +8,7 @@
   };
 
   outputs =
-    { self, nixpkgs }:
+    { self, nixpkgs, ... }:
     {
       nixosConfigurations.MohamedLaptopNixOS = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
