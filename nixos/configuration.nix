@@ -188,6 +188,7 @@
       init = {
         defaultBranch = "main";
       };
+      pull.rebase = false;
     };
   };
   #   programs.file-roller.enable = true;
