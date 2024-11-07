@@ -7,6 +7,10 @@
       url = "github:snowfallorg/nix-software-center";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-conf-editor = {
+      url = "github:snowfallorg/nixos-conf-editor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
