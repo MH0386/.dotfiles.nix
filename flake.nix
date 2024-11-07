@@ -3,8 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nix-software-center.url = "github:snowfallorg/nix-software-center";
-    nix-software-center.inputs.nixpkgs.follows = "nixpkgs";
+    nix-software-center = {
+      url = "github:snowfallorg/nix-software-center";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
