@@ -135,7 +135,6 @@
     ];
     packages = with pkgs; [
       kdePackages.kate
-      thunderbird
     ];
   };
 
@@ -166,18 +165,18 @@
     };
   };
   programs.virt-manager.enable = true;
-  #   programs.thunderbird.enable = true;
-  #   programs.obs-studio = {
-  #     enable = true;
-  #     enableVirtualCamera = true;
-  #     plugins = with pkgs; [
-  #       obs-studio-plugins.obs-pipewire-audio-capture
-  #       obs-studio-plugins.obs-backgroundremoval
-  #
-  #     ];
-  #   };
+  programs.thunderbird.enable = true;
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+    plugins = with pkgs; [
+      obs-studio-plugins.obs-pipewire-audio-capture
+      obs-studio-plugins.obs-backgroundremoval
+
+    ];
+  };
   services.fwupd.enable = true;
-  #   programs.localsend.enable = true;
+  programs.localsend.enable = true;
   programs.git = {
     enable = true;
     config = {
@@ -196,17 +195,17 @@
   #   programs.coolercontrol.enable = true;
   #   programs.calls.enable = true;
   programs.appimage.enable = true;
-  #   programs.adb.enable = true;
+  programs.adb.enable = true;
   programs.gamemode.enable = true; # for performance mode
   programs.steam = {
     enable = true; # install steam
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
-  #   services.ollama = {
-  #     enable = true;
-  #     acceleration = "cuda";
-  #   };
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+  };
 
   fonts.packages = with pkgs; [ monaspace ];
   console.packages = with pkgs; [ monaspace ];
