@@ -18,5 +18,3 @@ jobs:
           pr-labels: |                  # Labels to be set on the PR
             dependencies
             automated
-          pr-assignees: MH0386
-          pr-reviewers: MH0386
