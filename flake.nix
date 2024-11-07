@@ -8,11 +8,18 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }:
+    { nixpkgs, ... }@inputs:
+    let
+      system = "x86_64-linux";
+    in
     {
       nixosConfigurations.MohamedLaptopNixOS = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = system;
         modules = [ ./nixos/configuration.nix ];
+        specialArgs = {
+          inherit inputs;
+          inherit system;
+        };
       };
     };
 }

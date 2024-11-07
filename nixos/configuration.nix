@@ -5,7 +5,8 @@
 {
   config,
   pkgs,
-  lib,
+  inputs,
+  system,
   ...
 }:
 # with lib;
@@ -211,43 +212,32 @@
   console.packages = with pkgs; [ monaspace ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    google-chrome
-    vscode
-    topgrade
-    wget
+    pkgs.google-chrome
+    pkgs.vscode
+    pkgs.topgrade
+    pkgs.wget
     #     gnome-tweaks
     #     gnome-themes-extra
-    nodejs_22
-    nixfmt-rfc-style
-    nixpkgs-fmt
-    nixd
-    uv
-    pixi
+    pkgs.nodejs_22
+    pkgs.nixfmt-rfc-style
+    pkgs.nixpkgs-fmt
+    pkgs.nixd
+    pkgs.uv
+    pkgs.pixi
     #     flutter
-    distrobox
-    #     simple-scan
+    pkgs.distrobox
     #     vlc
-    sdkmanager
-    kompose
-    fastfetch
-    libgcc
-    gcc
-    gnumake
-    libtool
-    dbus
-    packagekit
-    #     xsane
-    #     ghostscript
-    #     cups
-    #     libjpeg
-    #     libusb1
-    #     gutenprint
-    #     hplip
-    #     hplipWithPlugin
-    #     impression
-
+    pkgs.sdkmanager
+    pkgs.kompose
+    pkgs.fastfetch
+    pkgs.libgcc
+    pkgs.gcc
+    pkgs.gnumake
+    pkgs.libtool
+    pkgs.dbus
+    pkgs.packagekit
     # nixos-conf-editor
     inputs.nix-software-center.packages.${system}.nix-software-center
     # cudaPackages.cudatoolkit
@@ -276,7 +266,7 @@
   };
   # hardware.nvidia-container-toolkit.enable = true;
   # Enable OpenGL
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
