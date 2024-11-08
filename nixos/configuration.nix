@@ -42,75 +42,71 @@
       efi.canTouchEfiVariables = true;
     };
   };
-  networking.hostName = "MohamedLaptopNixOS"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  networking = {
+    # Define your hostname.
+    hostName = "MohamedLaptopNixOS";
+    # Enable networking
+    networkmanager.enable = true;
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-
   # Set your time zone.
   time.timeZone = "Africa/Cairo";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+  i18n = {
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
+    # Select internationalisation properties.
+    defaultLocale = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # services.displayManager.sddm.autoNumlock = false;
 
-  # Hyperland
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
+  services = {
+    flatpak.enable = true;
+    fwupd.enable = true;
+    ollama = {
+      enable = true;
+      acceleration = "cuda";
+    };
+    # Enable the KDE Plasma Desktop Environment.
+    displayManager = {
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+      };
+    };
+    desktopManager.plasma6.enable = true;
+    xserver = {
+      # Enable the X11 windowing system.
+      enable = true;
+      # Configure keymap in X11
+      xkb.layout = "us";
+      # Load nvidia driver for Xorg and Wayland
+      videoDrivers = [ "nvidia" ];
+    };
+    # Enable CUPS to print documents.
+    printing.enable = true;
   };
-
-  #   services.displayManager.sddm.autoNumlock = false;
-  # # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  programs.kdeconnect.enable = true;
 
   # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
 
-  # Configure keymap in X11
-  services.xserver.xkb.layout = "us";
-  #   hardware.sane.enable = true; # Enable SANE scanning support.
-  #   hardware.sane.extraBackends = [
-  #     pkgs.hplip
-  #     pkgs.hplipWithPlugin
-  #   ];
-  #   # Enable CUPS to print documents.
-  services.printing.enable = true;
-  #   services.printing.drivers = [
-  #     pkgs.gutenprint
-  #     pkgs.hplip
-  #     pkgs.hplipWithPlugin
-  #   ];
-  #   services.printing = {
-  #     listenAddresses = [ "*:631" ];
-  #     allowFrom = [ "all" ];
-  #     browsing = true;
-  #     defaultShared = true;
-  #     openFirewall = true;
-  #   };
   hardware.enableAllFirmware = true;
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -141,86 +137,78 @@
       "video"
       "render"
     ];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
   };
 
   #   # Enable automatic login for the user.
   #   services.displayManager.autoLogin.enable = true;
   #   services.xserver.displayManager.autoLogin.user = "mohamed";
 
-  # Install firefox.
-  # programs.firefox.enable = true;
-  services.flatpak.enable = true;
-  # Allow unfree packages
   nixpkgs.config = {
+    # Allow unfree packages
     allowUnfree = true;
   };
   #   environment.variables = {
   #     NIXPKGS_ALLOW_UNFREE = 1;
   #     CONDA_PREFIX = "~/.pixi/envs/default";
   #   };
-  programs.java = {
-    enable = true;
-    package = pkgs.jdk17;
-  };
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-      format = "[$username@$hostname $path]($symbol)";
+  programs = {
+    # Hyperland
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
     };
-  };
-  programs.virt-manager.enable = true;
-  programs.thunderbird.enable = true;
-  programs.obs-studio = {
-    enable = true;
-    enableVirtualCamera = true;
-    plugins = with pkgs; [
-      obs-studio-plugins.obs-pipewire-audio-capture
-      obs-studio-plugins.obs-backgroundremoval
-
-    ];
-  };
-  services.fwupd.enable = true;
-  programs.localsend.enable = true;
-  programs.git = {
-    enable = true;
-    config = {
-      user = {
-        name = "Mohamed Hisham Abdelzaher";
-        email = "mohamed.hisham.abdelzaher@gmail.com";
-      };
-      init = {
-        defaultBranch = "main";
-      };
-      pull.rebase = false;
+    kdeconnect.enable = true;
+    java = {
+      enable = true;
+      package = pkgs.jdk17;
     };
+    starship = {
+      enable = true;
+      settings = {
+        add_newline = false;
+        format = "[$username@$hostname $path]($symbol)";
+      };
+    };
+    virt-manager.enable = true;
+    thunderbird.enable = true;
+    obs-studio = {
+      enable = true;
+      enableVirtualCamera = true;
+      plugins = with pkgs; [
+        obs-studio-plugins.obs-pipewire-audio-capture
+        obs-studio-plugins.obs-backgroundremoval
+      ];
+    };
+    localsend.enable = true;
+    git = {
+      enable = true;
+      config = {
+        user = {
+          name = "Mohamed Hisham Abdelzaher";
+          email = "mohamed.hisham.abdelzaher@gmail.com";
+        };
+        init = {
+          defaultBranch = "main";
+        };
+        pull.rebase = false;
+      };
+    };
+    appimage.enable = true;
+    adb.enable = true;
+    # for performance mode
+    gamemode.enable = true;
+    steam = {
+      enable = true; # install steam
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    };
+    # coolercontrol.enable = true;
   };
-  #   programs.file-roller.enable = true;
-  #   programs.evince.enable = true;
-  #   programs.coolercontrol.enable = true;
-  #   programs.calls.enable = true;
-  programs.appimage.enable = true;
-  programs.adb.enable = true;
-  programs.gamemode.enable = true; # for performance mode
-  programs.steam = {
-    enable = true; # install steam
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-  # services.ollama = {
-  #   enable = true;
-  #   acceleration = "cuda";
-  # };
 
   fonts.packages = with pkgs; [ monaspace ];
   console.packages = with pkgs; [ monaspace ];
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+
   environment.systemPackages = [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     pkgs.google-chrome
     pkgs.vscode
     pkgs.topgrade
@@ -231,6 +219,7 @@
     pkgs.nixpkgs-fmt
     pkgs.nixd
     pkgs.uv
+    pkgs.flutter
     pkgs.pixi
     pkgs.distrobox
     pkgs.sdkmanager
@@ -246,6 +235,7 @@
     pkgs.lshw
     pkgs.brave
     pkgs.spacedrive
+    pkgs.betterbird
     pkgs.nvtopPackages.nvidia
     inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
     inputs.nix-software-center.packages.${system}.nix-software-center
@@ -274,57 +264,57 @@
       ];
     };
   };
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings = {
-      General = {
-        Experimental = true;
+
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      settings = {
+        General = {
+          Experimental = true;
+        };
       };
     };
-  };
-  # hardware.nvidia-container-toolkit.enable = true;
-  # Enable OpenGL , Nouveau
-  hardware.opengl = {
-    enable = true;
-    # driSupport = true;
-    driSupport32Bit = true;
-  };
-  # hardware.nvidia.modesetting.enable = true;
-  # # Load nvidia driver for Xorg and Wayland
-  hardware.nvidia.prime = {
-    offload = {
+    nvidia-container-toolkit.enable = true;
+    # Enable OpenGL , Nouveau
+    opengl = {
       enable = true;
-      enableOffloadCmd = true;
+      # driSupport = true;
+      driSupport32Bit = true;
     };
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
-  };
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia = {
-    # Modesetting is required.
-    modesetting.enable = true;
-    powerManagement = {
+    nvidia = {
+      # Use the NVidia open source kernel module (not to be confused with the independent third-party "nouveau" open source driver).
+      # Support is limited to the Turing and later architectures. Full list of supported GPUs is at:
+      # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
+      # Only available from driver 515.43.04+
+      # Currently alpha-quality/buggy, so false is currently the recommended setting.
+      open = true;
+      # Enable the Nvidia settings menu,
+      # accessible via `nvidia-settings`.
+      nvidiaSettings = true;
+      # Optionally, you may need to select the appropriate driver version for your specific GPU.
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
       # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-      # Enable this if you have graphical corruption issues or application crashes after waking
-      # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
-      # of just the bare essentials.
-      enable = false;
-      # Fine-grained power management. Turns off GPU when not in use.
-      # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-      finegrained = false;
+      powerManagement = {
+        # Enable this if you have graphical corruption issues or application crashes after waking
+        # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
+        # of just the bare essentials.
+        enable = false;
+        # Fine-grained power management. Turns off GPU when not in use.
+        # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+        finegrained = false;
+      };
+      # Modesetting is required.
+      modesetting.enable = true;
+      prime = {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
     };
-    # Use the NVidia open source kernel module (not to be confused with the independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of supported GPUs is at:
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = true;
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
