@@ -74,7 +74,11 @@
   services.xserver.enable = true;
 
   # Hyperland
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
   #   services.displayManager.sddm.autoNumlock = false;
   # # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
