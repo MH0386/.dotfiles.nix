@@ -27,6 +27,15 @@
 
   # Bootloader
   boot = {
+    # intel and nouveau are blacklisted
+    blacklistedKernelModules = [
+      "nouveau"
+      "nvidia_drm"
+      "nvidia_modeset"
+      "nvidia"
+
+    ];
+    # extraModulePackages = [ pkgs.linuxPackages.nvidia_x11 ];
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       systemd-boot.enable = true;
@@ -64,10 +73,18 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  # Hyperland
+  programs.hyprland.enable = true;
   #   services.displayManager.sddm.autoNumlock = false;
-  # Enable the KDE Plasma Desktop Environment.
+  # # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
+  programs.kdeconnect.enable = true;
+
+  # Enable the GNOME Desktop Environment.
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -90,7 +107,7 @@
   #     defaultShared = true;
   #     openFirewall = true;
   #   };
-
+  hardware.enableAllFirmware = true;
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -108,7 +125,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mohamed = {
@@ -117,6 +134,8 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "video"
+      "render"
     ];
     packages = with pkgs; [
       kdePackages.kate
@@ -219,8 +238,14 @@
     pkgs.libtool
     pkgs.dbus
     pkgs.packagekit
+    pkgs.lshw-gui
+    pkgs.lshw
+    pkgs.brave
+    pkgs.spacedrive
+    pkgs.nvtopPackages.nvidia
     inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
     inputs.nix-software-center.packages.${system}.nix-software-center
+    pkgs.linuxPackages.nvidia_x11
     # cudaPackages.cudatoolkit
     # cudaPackages.nccl
     # cudaPackages.cudnn
@@ -245,10 +270,32 @@
       ];
     };
   };
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+      };
+    };
+  };
   # hardware.nvidia-container-toolkit.enable = true;
-  # Enable OpenGL
-  hardware.graphics.enable = true;
-  # Load nvidia driver for Xorg and Wayland
+  # Enable OpenGL , Nouveau
+  hardware.opengl = {
+    enable = true;
+    # driSupport = true;
+    driSupport32Bit = true;
+  };
+  # hardware.nvidia.modesetting.enable = true;
+  # # Load nvidia driver for Xorg and Wayland
+  hardware.nvidia.prime = {
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
+  };
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     # Modesetting is required.
@@ -268,7 +315,7 @@
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
+    open = true;
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
