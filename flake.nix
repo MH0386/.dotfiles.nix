@@ -2,6 +2,7 @@
   description = "My NixOS Flake";
 
   inputs = {
+    nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*.tar.gz";
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nix-software-center = {
       url = "github:snowfallorg/nix-software-center";
@@ -18,14 +19,22 @@
   };
 
   outputs =
-    { nixpkgs, fh, ... }@inputs:
+    {
+      nixpkgs,
+      fh,
+      nix-flatpak,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
     in
     {
       nixosConfigurations.MohamedLaptopNixOS = nixpkgs.lib.nixosSystem {
         system = system;
-        modules = [ ./nixos/configuration.nix ];
+        modules = [
+          nix-flatpak.nixosModules.nix-flatpak
+          ./nixos/configuration.nix
+        ];
         specialArgs = {
           inherit inputs;
           inherit system;

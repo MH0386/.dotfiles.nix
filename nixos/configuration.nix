@@ -74,7 +74,75 @@
   # services.displayManager.sddm.autoNumlock = false;
 
   services = {
-    flatpak.enable = true;
+    flatpak = {
+      enable = true;
+      update.onActivation = true;
+      packages = [
+        "io.github._0xzer0x.qurancompanion"
+        "io.github.giantpinkrobots.flatsweep"
+        "io.github.lo2dev.Echo"
+        "io.github.flattool.Warehouse"
+        "app.fotema.Fotema"
+        "io.github.giantpinkrobots.varia"
+        "io.podman_desktop.PodmanDesktop"
+        "com.github.marhkb.Pods"
+        "io.github.sigmasd.stimulator"
+        "im.fluffychat.Fluffychat"
+        "com.jeffser.Alpaca"
+        "dev.skynomads.Seabird"
+        "net.sapples.LiveCaptions"
+        "org.nickvision.tubeconverter"
+        "re.sonny.OhMySVG"
+        "com.usebottles.bottles"
+        "com.github.gijsgoudzwaard.image-optimizer"
+        "fr.handbrake.ghb"
+        "io.github.seadve.Kooha"
+        "net.nokyan.Resources"
+        "org.onlyoffice.desktopeditors"
+        "com.github.unrud.djpdf"
+        "com.github.unrud.RemoteTouchpad"
+        "eu.betterbird.Betterbird"
+        "io.github.arunsivaramanneo.GPUViewer"
+        "io.gitlab.news_flash.NewsFlash"
+        "app.drey.Dialect"
+        "com.warlordsoftwares.tube2go"
+        "com.warlordsoftwares.formatlab"
+        "io.github.zaedus.spider"
+        "eu.nokun.MirrorHall"
+        "es.danirod.Cartero"
+        "pl.youkai.nscan"
+        "com.mardojai.ForgeSparks"
+        "com.gitbutler.gitbutler"
+        "io.github.dvlv.boxbuddyrs"
+        "app.devsuite.Ptyxis"
+        "com.github.tchx84.Flatseal"
+        "com.quexten.Goldwarden"
+        "com.belmoussaoui.snowglobe"
+        "com.jetpackduba.Gitnuro"
+        "de.philippun1.turtle"
+        "de.philippun1.Snoop"
+        "com.github.qarmin.szyszka"
+        "com.github.qarmin.czkawka"
+        "io.gitlab.theevilskeleton.Upscaler"
+        "io.gitlab.adhami3310.Converter"
+        "io.gitlab.adhami3310.Footage"
+        "com.github.ADBeveridge.Raider"
+        "com.github.tenderowl.frog"
+        "io.github.vikdevelop.SaveDesktop"
+        "org.angryip.ipscan"
+        "org.gabmus.whatip"
+        "org.nmap.Zenmap"
+        "io.github.bytezz.IPLookup"
+        "dev.geopjr.Archives"
+        "io.bassi.Amberol"
+        "io.github.getnf.embellish"
+        "com.github.cassidyjames.dippi"
+        "it.mijorus.whisper"
+        "io.github.zen_browser.zen"
+        "com.github.joseexposito.touche"
+        "com.ranfdev.Geopard"
+      ];
+    };
     fwupd.enable = true;
     ollama = {
       enable = true;
@@ -235,6 +303,12 @@
     pkgs.brave
     pkgs.spacedrive
     pkgs.zed-editor
+    pkgs.gearlever
+    pkgs.gh
+    pkgs.discord
+    pkgs.httpie
+    pkgs.httpie-desktop
+    pkgs.podman-compose
     # pkgs.gitbutler
     pkgs.nvtopPackages.nvidia
     fh.packages.${system}.default
@@ -257,11 +331,8 @@
       # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
       extraPackages = with pkgs; [
-        podman-compose
-        podman-tui
-        podman
-        podman-desktop
-        pods
+        gvisor
+        gvproxy
       ];
     };
   };
