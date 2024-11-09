@@ -11,10 +11,14 @@
       url = "github:snowfallorg/nixos-conf-editor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    fh = {
+      url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, ... }@inputs:
+    { nixpkgs, fh, ... }@inputs:
     let
       system = "x86_64-linux";
     in
@@ -25,6 +29,7 @@
         specialArgs = {
           inherit inputs;
           inherit system;
+          inherit fh;
         };
       };
     };

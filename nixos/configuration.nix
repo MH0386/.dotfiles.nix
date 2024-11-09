@@ -3,6 +3,7 @@
   pkgs,
   inputs,
   system,
+  fh,
   ...
 }:
 {
@@ -236,6 +237,7 @@
     pkgs.zed-editor
     # pkgs.gitbutler
     pkgs.nvtopPackages.nvidia
+    fh.packages.${system}.default
     inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
     inputs.nix-software-center.packages.${system}.nix-software-center
     pkgs.linuxPackages.nvidia_x11
