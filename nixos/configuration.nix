@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   config,
   pkgs,
@@ -166,7 +162,9 @@
       enable = true;
       settings = {
         add_newline = false;
-        format = "[$username@$hostname $path]($symbol)";
+        format = "$line_break
+[┌───────────────────<](bold green) @ $all
+[└─](bold green)$character";
       };
     };
     virt-manager.enable = true;
@@ -235,7 +233,8 @@
     pkgs.lshw
     pkgs.brave
     pkgs.spacedrive
-    pkgs.betterbird
+    pkgs.zed-editor
+    # pkgs.gitbutler
     pkgs.nvtopPackages.nvidia
     inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
     inputs.nix-software-center.packages.${system}.nix-software-center
