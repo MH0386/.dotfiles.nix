@@ -30,7 +30,6 @@
       "nvidia_drm"
       "nvidia_modeset"
       "nvidia"
-
     ];
     # extraModulePackages = [ pkgs.linuxPackages.nvidia_x11 ];
     kernelPackages = pkgs.linuxPackages_latest;
@@ -88,7 +87,7 @@
         "com.github.marhkb.Pods"
         "io.github.sigmasd.stimulator"
         "im.fluffychat.Fluffychat"
-        "com.jeffser.Alpaca"
+        # "com.jeffser.Alpaca"
         "dev.skynomads.Seabird"
         "net.sapples.LiveCaptions"
         "org.nickvision.tubeconverter"
@@ -209,10 +208,9 @@
   #   services.displayManager.autoLogin.enable = true;
   #   services.xserver.displayManager.autoLogin.user = "mohamed";
 
-  nixpkgs.config = {
-    # Allow unfree packages
-    allowUnfree = true;
-  };
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   #   environment.variables = {
   #     NIXPKGS_ALLOW_UNFREE = 1;
   #     CONDA_PREFIX = "~/.pixi/envs/default";
@@ -238,7 +236,7 @@
       };
     };
     virt-manager.enable = true;
-    thunderbird.enable = true;
+    # thunderbird.enable = true;
     obs-studio = {
       enable = true;
       enableVirtualCamera = true;
