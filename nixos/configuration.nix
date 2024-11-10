@@ -281,6 +281,7 @@
     systemPackages = [
       pkgs.google-chrome
       pkgs.microsoft-edge
+      pkgs.vivaldi
       pkgs.vscode
       pkgs.topgrade
       pkgs.wget
