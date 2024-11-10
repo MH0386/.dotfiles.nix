@@ -141,6 +141,7 @@
         "io.github.zen_browser.zen"
         "com.github.joseexposito.touche"
         "com.ranfdev.Geopard"
+        "eu.betterbird.Betterbird"
       ];
     };
     fwupd.enable = true;
