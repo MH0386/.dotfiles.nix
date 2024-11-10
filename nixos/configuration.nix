@@ -153,8 +153,8 @@
       enable = true;
       acceleration = "cuda";
     };
+    # Enable the KDE Plasma Desktop Environment.
     displayManager = {
-      # Enable the KDE Plasma Desktop Environment.
       sddm = {
         enable = true;
         wayland.enable = true;
