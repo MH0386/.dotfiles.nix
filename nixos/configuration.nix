@@ -276,10 +276,11 @@
 
   environment = {
     sessionVariables = {
-      FLAKE = "~/.dotfiles";
+      FLAKE = "/home/mohamed/.dotfiles";
     };
     systemPackages = [
       pkgs.google-chrome
+      pkgs.microsoft-edge
       pkgs.vscode
       pkgs.topgrade
       pkgs.wget
