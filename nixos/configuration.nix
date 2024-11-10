@@ -153,8 +153,8 @@
       enable = true;
       acceleration = "cuda";
     };
-    # Enable the KDE Plasma Desktop Environment.
     displayManager = {
+      # Enable the KDE Plasma Desktop Environment.
       sddm = {
         enable = true;
         wayland.enable = true;
@@ -168,14 +168,15 @@
       xkb.layout = "us";
       # Load nvidia driver for Xorg and Wayland
       videoDrivers = [ "nvidia" ];
+      # Enable the GNOME Desktop Environment.
+      # desktopManager.gnome.enable = true;
+      # displayManager.gdm.enable = true;
     };
     # Enable CUPS to print documents.
     printing.enable = true;
   };
 
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
+  qt.enable = true;
 
   hardware.enableAllFirmware = true;
   # Enable sound with pipewire.
@@ -320,6 +321,7 @@
       pkgs.httpie-desktop
       pkgs.podman-compose
       pkgs.nh
+      pkgs.xorg.libxcb
       # pkgs.gitbutler
       pkgs.nvtopPackages.nvidia
       fh.packages.${system}.default
