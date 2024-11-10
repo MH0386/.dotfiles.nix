@@ -274,51 +274,57 @@
   fonts.packages = with pkgs; [ monaspace ];
   console.packages = with pkgs; [ monaspace ];
 
-  environment.systemPackages = [
-    pkgs.google-chrome
-    pkgs.vscode
-    pkgs.topgrade
-    pkgs.wget
-    pkgs.clapper
-    pkgs.nodejs_22
-    pkgs.nixfmt-rfc-style
-    pkgs.nixpkgs-fmt
-    pkgs.nixd
-    pkgs.uv
-    pkgs.flutter
-    pkgs.pixi
-    pkgs.distrobox
-    pkgs.sdkmanager
-    pkgs.kompose
-    pkgs.fastfetch
-    pkgs.libgcc
-    pkgs.gcc
-    pkgs.gnumake
-    pkgs.libtool
-    pkgs.dbus
-    pkgs.packagekit
-    pkgs.lshw-gui
-    pkgs.lshw
-    pkgs.brave
-    pkgs.spacedrive
-    pkgs.zed-editor
-    pkgs.gearlever
-    pkgs.gh
-    pkgs.discord
-    pkgs.httpie
-    pkgs.httpie-desktop
-    pkgs.podman-compose
-    # pkgs.gitbutler
-    pkgs.nvtopPackages.nvidia
-    fh.packages.${system}.default
-    inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
-    inputs.nix-software-center.packages.${system}.nix-software-center
-    pkgs.linuxPackages.nvidia_x11
-    # cudaPackages.cudatoolkit
-    # cudaPackages.nccl
-    # cudaPackages.cudnn
-    # cudaPackages.cuda_nvcc
-  ];
+  environment = {
+    sessionVariables = {
+      FLAKE = "~/.dotfiles";
+    };
+    systemPackages = [
+      pkgs.google-chrome
+      pkgs.vscode
+      pkgs.topgrade
+      pkgs.wget
+      pkgs.clapper
+      pkgs.nodejs_22
+      pkgs.nixfmt-rfc-style
+      pkgs.nixpkgs-fmt
+      pkgs.nixd
+      pkgs.uv
+      pkgs.flutter
+      pkgs.pixi
+      pkgs.distrobox
+      pkgs.sdkmanager
+      pkgs.kompose
+      pkgs.fastfetch
+      pkgs.libgcc
+      pkgs.gcc
+      pkgs.gnumake
+      pkgs.libtool
+      pkgs.dbus
+      pkgs.packagekit
+      pkgs.lshw-gui
+      pkgs.lshw
+      pkgs.brave
+      pkgs.spacedrive
+      pkgs.zed-editor
+      pkgs.gearlever
+      pkgs.gh
+      pkgs.discord
+      pkgs.httpie
+      pkgs.httpie-desktop
+      pkgs.podman-compose
+      pkgs.nh
+      # pkgs.gitbutler
+      pkgs.nvtopPackages.nvidia
+      fh.packages.${system}.default
+      inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
+      inputs.nix-software-center.packages.${system}.nix-software-center
+      pkgs.linuxPackages.nvidia_x11
+      # cudaPackages.cudatoolkit
+      # cudaPackages.nccl
+      # cudaPackages.cudnn
+      # cudaPackages.cuda_nvcc
+    ];
+  };
 
   # Enable common container config files in /etc/containers
   virtualisation = {
