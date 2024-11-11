@@ -321,7 +321,7 @@
       pkgs.httpie-desktop
       pkgs.podman-compose
       pkgs.nh
-      pkgs.xorg.libxcb
+      pkgs.libsForQt5.full
       # pkgs.gitbutler
       pkgs.nvtopPackages.nvidia
       fh.packages.${system}.default
