@@ -2,8 +2,8 @@
   description = "My NixOS Flake";
 
   inputs = {
-    nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*.tar.gz";
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=24.05";
     nix-software-center = {
       url = "github:snowfallorg/nix-software-center";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,11 +20,13 @@
       url = "github:tadfisher/android-nixpkgs/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*.tar.gz";
   };
 
   outputs =
     {
       nixpkgs,
+      nixpkgs-stable,
       fh,
       nix-flatpak,
       android-nixpkgs,
@@ -32,10 +34,20 @@
     }@inputs:
     let
       system = "x86_64-linux";
+      # pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+      # overlay-stable = final: prev:  {
+      #   stable = import nixpkgs-stable {
+      #     config.allowUnfree = true;
+      #   };
+      # };
+      pkgsStable = import nixpkgs-stable {
+        system = system;
+        config.allowUnfree = true;
+      };
     in
     {
       nixosConfigurations.MohamedLaptopNixOS = nixpkgs.lib.nixosSystem {
-        system = system;
+        inherit system;
         modules = [
           nix-flatpak.nixosModules.nix-flatpak
           ./nixos/configuration.nix
@@ -44,6 +56,7 @@
           inherit inputs;
           inherit system;
           inherit fh;
+          inherit pkgsStable;
         };
       };
     };

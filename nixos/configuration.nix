@@ -4,6 +4,7 @@
   inputs,
   system,
   fh,
+  pkgsStable,
   ...
 }:
 {
@@ -208,7 +209,10 @@
       "video"
       "render"
     ];
+    shell = pkgs.fish;
   };
+
+  programs.fish.enable = true;
 
   #   # Enable automatic login for the user.
   #   services.displayManager.autoLogin.enable = true;
@@ -216,7 +220,8 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
+  nixpkgs.overlays = [ (self: super: { stablePackages = pkgsStable; }) ];
+  
   #   environment.variables = {
   #     NIXPKGS_ALLOW_UNFREE = 1;
   #     CONDA_PREFIX = "~/.pixi/envs/default";
@@ -287,7 +292,7 @@
     systemPackages = [
       pkgs.google-chrome
       pkgs.microsoft-edge
-      pkgs.vivaldi
+      pkgs.stablePackages.microsoft-edge-beta
       pkgs.vscode
       pkgs.topgrade
       pkgs.wget
@@ -322,6 +327,8 @@
       pkgs.podman-compose
       pkgs.nh
       pkgs.libsForQt5.full
+      pkgs.termius
+      pkgs.remmina
       # pkgs.gitbutler
       pkgs.nvtopPackages.nvidia
       fh.packages.${system}.default
@@ -414,10 +421,10 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
