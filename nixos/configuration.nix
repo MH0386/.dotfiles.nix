@@ -89,7 +89,7 @@
         "io.github.flattool.Warehouse"
         "app.fotema.Fotema"
         "io.github.giantpinkrobots.varia"
-        "io.podman_desktop.PodmanDesktop"
+        # "io.podman_desktop.PodmanDesktop"
         "com.github.marhkb.Pods"
         "io.github.sigmasd.stimulator"
         "im.fluffychat.Fluffychat"
@@ -221,7 +221,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [ (self: super: { stablePackages = pkgsStable; }) ];
-  
+
   #   environment.variables = {
   #     NIXPKGS_ALLOW_UNFREE = 1;
   #     CONDA_PREFIX = "~/.pixi/envs/default";
@@ -293,6 +293,7 @@
       pkgs.google-chrome
       pkgs.microsoft-edge
       pkgs.stablePackages.microsoft-edge-beta
+      pkgs.audacity
       pkgs.vscode
       pkgs.topgrade
       pkgs.wget
@@ -325,10 +326,13 @@
       pkgs.httpie
       pkgs.httpie-desktop
       pkgs.podman-compose
+      pkgs.podman-desktop
       pkgs.nh
       pkgs.libsForQt5.full
       pkgs.termius
       pkgs.remmina
+      pkgs.kubectl
+      pkgs.kubernetes
       # pkgs.gitbutler
       pkgs.nvtopPackages.nvidia
       fh.packages.${system}.default
