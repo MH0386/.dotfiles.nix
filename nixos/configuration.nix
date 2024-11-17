@@ -89,7 +89,7 @@
         "io.github.flattool.Warehouse"
         "app.fotema.Fotema"
         "io.github.giantpinkrobots.varia"
-        # "io.podman_desktop.PodmanDesktop"
+        "io.podman_desktop.PodmanDesktop"
         "com.github.marhkb.Pods"
         "io.github.sigmasd.stimulator"
         "im.fluffychat.Fluffychat"
@@ -147,6 +147,7 @@
         "com.github.joseexposito.touche"
         "com.ranfdev.Geopard"
         "eu.betterbird.Betterbird"
+        "it.mijorus.gearlever"
       ];
     };
     fwupd.enable = true;
@@ -326,13 +327,18 @@
       pkgs.httpie
       pkgs.httpie-desktop
       pkgs.podman-compose
-      pkgs.podman-desktop
+      # pkgs.podman-desktop
       pkgs.nh
       pkgs.libsForQt5.full
       pkgs.termius
       pkgs.remmina
       pkgs.kubectl
       pkgs.kubernetes
+      pkgs.warp-terminal
+      pkgs.kdePackages.kget
+      pkgs.btop
+      pkgs.nextcloud-client
+      pkgs.celeste
       # pkgs.gitbutler
       pkgs.nvtopPackages.nvidia
       fh.packages.${system}.default
