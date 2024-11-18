@@ -148,6 +148,7 @@
         "com.ranfdev.Geopard"
         "eu.betterbird.Betterbird"
         "it.mijorus.gearlever"
+        "io.github.vikdevelop.SaveDesktop"
       ];
     };
     fwupd.enable = true;
