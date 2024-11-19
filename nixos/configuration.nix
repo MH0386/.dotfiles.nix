@@ -210,11 +210,14 @@
       "wheel"
       "video"
       "render"
+      "adbusers"
     ];
     shell = pkgs.fish;
   };
 
   programs.fish.enable = true;
+
+  programs.nix-ld.enable = true;
 
   #   # Enable automatic login for the user.
   #   services.displayManager.autoLogin.enable = true;
@@ -225,7 +228,6 @@
   nixpkgs.overlays = [ (self: super: { stablePackages = pkgsStable; }) ];
 
   #   environment.variables = {
-  #     NIXPKGS_ALLOW_UNFREE = 1;
   #     CONDA_PREFIX = "~/.pixi/envs/default";
   #   };
   programs = {
@@ -290,6 +292,7 @@
   environment = {
     sessionVariables = {
       FLAKE = "/home/mohamed/.dotfiles";
+      ANDROID_HOME = "/home/mohamed/Android/Sdk";
     };
     systemPackages = [
       pkgs.google-chrome
@@ -297,6 +300,7 @@
       pkgs.stablePackages.microsoft-edge-beta
       pkgs.audacity
       pkgs.vscode
+      pkgs.code-cursor
       pkgs.topgrade
       pkgs.wget
       pkgs.clapper

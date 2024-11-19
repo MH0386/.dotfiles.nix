@@ -16,10 +16,10 @@
       url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    android-nixpkgs = {
-      url = "github:tadfisher/android-nixpkgs/stable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # android-nixpkgs = {
+    #   url = "github:tadfisher/android-nixpkgs/stable";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*.tar.gz";
   };
 
@@ -29,17 +29,10 @@
       nixpkgs-stable,
       fh,
       nix-flatpak,
-      android-nixpkgs,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
-      # pkgs-stable = nixpkgs-stable.legacyPackages.${system};
-      # overlay-stable = final: prev:  {
-      #   stable = import nixpkgs-stable {
-      #     config.allowUnfree = true;
-      #   };
-      # };
       pkgsStable = import nixpkgs-stable {
         system = system;
         config.allowUnfree = true;
