@@ -293,6 +293,7 @@
     sessionVariables = {
       FLAKE = "/home/mohamed/.dotfiles";
       ANDROID_HOME = "/home/mohamed/Android/Sdk";
+      GSK_RENDERER = "ngl";
     };
     systemPackages = [
       pkgs.google-chrome
@@ -344,6 +345,12 @@
       pkgs.btop
       pkgs.nextcloud-client
       pkgs.celeste
+      pkgs.gst_all_1.gstreamer
+      pkgs.gst_all_1.gst-plugins-base
+      pkgs.gst_all_1.gst-plugins-good
+      pkgs.gst_all_1.gst-plugins-bad
+      pkgs.gst_all_1.gst-plugins-ugly
+      pkgs.gst_all_1.gst-libav
       # pkgs.gitbutler
       pkgs.nvtopPackages.nvidia
       fh.packages.${system}.default
