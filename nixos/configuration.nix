@@ -215,22 +215,20 @@
     shell = pkgs.fish;
   };
 
-  programs.fish.enable = true;
-
-  programs.nix-ld.enable = true;
-
   #   # Enable automatic login for the user.
   #   services.displayManager.autoLogin.enable = true;
   #   services.xserver.displayManager.autoLogin.user = "mohamed";
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ (self: super: { stablePackages = pkgsStable; }) ];
+  nixpkgs = {
+    # Allow unfree packages
+    config.allowUnfree = true;
+    overlays = [ (self: super: { stablePackages = pkgsStable; }) ];
+  };
 
-  #   environment.variables = {
-  #     CONDA_PREFIX = "~/.pixi/envs/default";
-  #   };
   programs = {
+    firefox.enable = true;
+    nix-ld.enable = true;
+    fish.enable = true;
     # Hyperland
     hyprland = {
       enable = true;
@@ -290,10 +288,13 @@
   console.packages = with pkgs; [ monaspace ];
 
   environment = {
+    localBinInPath = true;
+    homeBinInPath = true;
     sessionVariables = {
       FLAKE = "/home/mohamed/.dotfiles";
       ANDROID_HOME = "/home/mohamed/Android/Sdk";
       GSK_RENDERER = "ngl";
+      # PATH = 
     };
     systemPackages = [
       pkgs.google-chrome
@@ -466,4 +467,6 @@
       channel = "https://channels.nixos.org/nixos-24.05";
     };
   };
+  powerManagement.powertop.enable = true;
+  zramSwap.enable = true;
 }
