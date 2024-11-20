@@ -282,6 +282,14 @@
       dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     };
     # coolercontrol.enable = true;
+    nh = {
+      enable = true;
+      flake = /home/mohamed/.dotfiles;
+      clean = {
+        enable = true;
+        extraArgs = "--keep 5";
+      };
+    };
   };
 
   fonts.packages = with pkgs; [ monaspace ];
@@ -291,10 +299,8 @@
     localBinInPath = true;
     homeBinInPath = true;
     sessionVariables = {
-      FLAKE = "/home/mohamed/.dotfiles";
       ANDROID_HOME = "/home/mohamed/Android/Sdk";
       GSK_RENDERER = "ngl";
-      # PATH = 
     };
     systemPackages = [
       pkgs.google-chrome
@@ -335,7 +341,6 @@
       pkgs.httpie-desktop
       pkgs.podman-compose
       # pkgs.podman-desktop
-      pkgs.nh
       pkgs.libsForQt5.full
       pkgs.termius
       pkgs.remmina
@@ -344,14 +349,14 @@
       pkgs.warp-terminal
       pkgs.kdePackages.kget
       pkgs.btop
-      pkgs.nextcloud-client
+      pkgs.stablePackages.nextcloud-client
       pkgs.celeste
-      pkgs.gst_all_1.gstreamer
-      pkgs.gst_all_1.gst-plugins-base
-      pkgs.gst_all_1.gst-plugins-good
-      pkgs.gst_all_1.gst-plugins-bad
-      pkgs.gst_all_1.gst-plugins-ugly
-      pkgs.gst_all_1.gst-libav
+      pkgs.stablePackages.gst_all_1.gstreamer
+      pkgs.stablePackages.gst_all_1.gst-plugins-base
+      pkgs.stablePackages.gst_all_1.gst-plugins-good
+      pkgs.stablePackages.gst_all_1.gst-plugins-bad
+      pkgs.stablePackages.gst_all_1.gst-plugins-ugly
+      pkgs.stablePackages.gst_all_1.gst-libav
       # pkgs.gitbutler
       pkgs.nvtopPackages.nvidia
       fh.packages.${system}.default
