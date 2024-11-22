@@ -112,11 +112,12 @@
       code-cursor
       clapper
       nodejs_22
-      uv
+      pixi
       vlc
       celeste
       distrobox
       jre
+      autoflake
     ];
     sessionPath = [ ];
     sessionVariables = {
