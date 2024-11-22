@@ -45,8 +45,9 @@
     useUserPackages = true;
     users.mohamed = import ./home.nix;
     # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+    backupFileExtension = "backup";
   };
-  
+
   networking = {
     # Define your hostname.
     hostName = "MohamedLaptopNixOS";
@@ -219,7 +220,6 @@
       "render"
       "adbusers"
     ];
-    shell = pkgs.fish;
   };
 
   #   # Enable automatic login for the user.
@@ -233,29 +233,14 @@
   };
 
   programs = {
-    firefox.enable = true;
+    # firefox.enable = true;
     nix-ld.enable = true;
-    fish.enable = true;
     # Hyperland
-    hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
-    kdeconnect.enable = true;
-    java = {
-      enable = true;
-      package = pkgs.jdk17;
-    };
-    starship = {
-      enable = true;
-      settings = {
-        add_newline = false;
-        format = "$line_break
-[┌───────────────────<](bold green) @ $all
-[└─](bold green)$character";
-      };
-    };
-    virt-manager.enable = true;
+    # hyprland = {
+    #   enable = true;
+    #   xwayland.enable = true;
+    # };
+      virt-manager.enable = true;
     # thunderbird.enable = true;
     obs-studio = {
       enable = true;
@@ -266,21 +251,7 @@
       ];
     };
     localsend.enable = true;
-    git = {
-      enable = true;
-      config = {
-        user = {
-          name = "Mohamed Hisham Abdelzaher";
-          email = "mohamed.hisham.abdelzaher@gmail.com";
-        };
-        init = {
-          defaultBranch = "main";
-        };
-        pull.rebase = false;
-      };
-    };
     appimage.enable = true;
-    adb.enable = true;
     # for performance mode
     gamemode.enable = true;
     steam = {
@@ -305,31 +276,19 @@
   environment = {
     localBinInPath = true;
     homeBinInPath = true;
-    sessionVariables = {
-      ANDROID_HOME = "/home/mohamed/Android/Sdk";
-      GSK_RENDERER = "ngl";
-    };
     systemPackages = [
-      pkgs.google-chrome
-      pkgs.microsoft-edge
-      pkgs.stablePackages.microsoft-edge-beta
-      pkgs.audacity
-      pkgs.vscode
-      pkgs.code-cursor
-      pkgs.topgrade
+      # pkgs.google-chrome
+      # pkgs.microsoft-edge
+      # pkgs.stablePackages.microsoft-edge-beta
+      # pkgs.audacity
       pkgs.wget
-      pkgs.clapper
-      pkgs.nodejs_22
       pkgs.nixfmt-rfc-style
       pkgs.nixpkgs-fmt
       pkgs.nixd
-      pkgs.uv
-      pkgs.flutter
-      pkgs.pixi
-      pkgs.distrobox
+      # pkgs.flutter
+      # pkgs.pixi
       pkgs.sdkmanager
       pkgs.kompose
-      pkgs.fastfetch
       pkgs.libgcc
       pkgs.gcc
       pkgs.gnumake
@@ -338,11 +297,10 @@
       pkgs.packagekit
       pkgs.lshw-gui
       pkgs.lshw
-      pkgs.brave
+      # pkgs.brave
       pkgs.spacedrive
       pkgs.zed-editor
       pkgs.gearlever
-      pkgs.gh
       pkgs.discord
       pkgs.httpie
       pkgs.httpie-desktop
@@ -355,10 +313,7 @@
       pkgs.kubernetes
       pkgs.warp-terminal
       pkgs.kdePackages.kget
-      pkgs.btop
       pkgs.stablePackages.nextcloud-client
-      pkgs.celeste
-      pkgs.vlc
       pkgs.stablePackages.gst_all_1.gstreamer
       pkgs.stablePackages.gst_all_1.gst-plugins-base
       pkgs.stablePackages.gst_all_1.gst-plugins-good
