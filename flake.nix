@@ -21,6 +21,10 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*.tar.gz";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -29,6 +33,7 @@
       nixpkgs-stable,
       fh,
       nix-flatpak,
+      home-manager,
       ...
     }@inputs:
     let
@@ -44,6 +49,7 @@
         modules = [
           nix-flatpak.nixosModules.nix-flatpak
           ./nixos/configuration.nix
+          home-manager.nixosModules.home-manager
         ];
         specialArgs = {
           inherit inputs;

@@ -33,13 +33,20 @@
       "nvidia"
     ];
     # extraModulePackages = [ pkgs.linuxPackages.nvidia_x11 ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
   };
 
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.mohamed = import ./home.nix;
+    # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+  };
+  
   networking = {
     # Define your hostname.
     hostName = "MohamedLaptopNixOS";
@@ -284,7 +291,7 @@
     # coolercontrol.enable = true;
     nh = {
       enable = true;
-      flake = /home/mohamed/.dotfiles;
+      flake = "/home/mohamed/.dotfiles";
       clean = {
         enable = true;
         extraArgs = "--keep 5";
@@ -351,6 +358,7 @@
       pkgs.btop
       pkgs.stablePackages.nextcloud-client
       pkgs.celeste
+      pkgs.vlc
       pkgs.stablePackages.gst_all_1.gstreamer
       pkgs.stablePackages.gst_all_1.gst-plugins-base
       pkgs.stablePackages.gst_all_1.gst-plugins-good
@@ -362,7 +370,7 @@
       fh.packages.${system}.default
       inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
       inputs.nix-software-center.packages.${system}.nix-software-center
-      pkgs.linuxPackages.nvidia_x11
+      # pkgs.linuxPackages.nvidia_x11
       # cudaPackages.cudatoolkit
       # cudaPackages.nccl
       # cudaPackages.cudnn
@@ -398,10 +406,18 @@
     };
     nvidia-container-toolkit.enable = true;
     # Enable OpenGL , Nouveau
-    opengl = {
+    graphics = {
       enable = true;
-      # driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        intel-ocl
+        intel-vaapi-driver
+      ];
+      extraPackages32 = with pkgs.pkgsi686Linux; [
+        intel-media-driver
+        intel-vaapi-driver
+      ];
     };
     nvidia = {
       # Use the NVidia open source kernel module (not to be confused with the independent third-party "nouveau" open source driver).
@@ -472,6 +488,6 @@
       channel = "https://channels.nixos.org/nixos-24.05";
     };
   };
-  powerManagement.powertop.enable = true;
+  # powerManagement.powertop.enable = true;
   zramSwap.enable = true;
 }
