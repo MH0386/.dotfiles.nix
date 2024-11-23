@@ -116,8 +116,8 @@
       vlc
       celeste
       distrobox
-      jre
       autoflake
+      fastlane
     ];
     sessionPath = [ ];
     sessionVariables = {
