@@ -117,7 +117,8 @@
       celeste
       distrobox
       autoflake
-      fastlane
+      fastlane zsh
+
     ];
     sessionPath = [ ];
     sessionVariables = {
