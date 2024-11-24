@@ -16,10 +16,10 @@
       url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # android-nixpkgs = {
-    #   url = "github:tadfisher/android-nixpkgs/stable";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    android-nixpkgs = {
+      url = "github:tadfisher/android-nixpkgs/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*.tar.gz";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -34,6 +34,7 @@
       fh,
       nix-flatpak,
       home-manager,
+      android-nixpkgs,
       ...
     }@inputs:
     let
@@ -48,14 +49,15 @@
         inherit system;
         modules = [
           nix-flatpak.nixosModules.nix-flatpak
-          ./nixos/configuration.nix
           home-manager.nixosModules.home-manager
+          ./nixos/configuration.nix
         ];
         specialArgs = {
           inherit inputs;
           inherit system;
           inherit fh;
           inherit pkgsStable;
+          inherit android-nixpkgs;
         };
       };
     };

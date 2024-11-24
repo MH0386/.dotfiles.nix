@@ -5,6 +5,7 @@
   system,
   fh,
   pkgsStable,
+  android-nixpkgs,
   ...
 }:
 {
@@ -48,7 +49,9 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users.mohamed = import ./home.nix;
-    # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+    extraSpecialArgs = {
+      inherit android-nixpkgs;
+    };
     backupFileExtension = "backup";
   };
 
@@ -228,7 +231,7 @@
   };
 
   programs.zsh.enable = true;
-  
+
   #   # Enable automatic login for the user.
   #   services.displayManager.autoLogin.enable = true;
   #   services.xserver.displayManager.autoLogin.user = "mohamed";

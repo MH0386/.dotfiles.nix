@@ -2,12 +2,29 @@
   config,
   pkgs,
   lib,
+  android-nixpkgs,
   ...
 }:
 
 {
+  imports = [
+    android-nixpkgs.hmModule
+  ];
+
+  android-nixpkgs.android-sdk = {
+    enable = true;
+    path = "${config.home.homeDirectory}/Android/sdk";
+    packages =
+      sdk: with sdk; [
+        build-tools-34-0-0
+        cmdline-tools-latest
+        emulator
+        platforms-android-34
+        sources-android-34
+      ];
+  };
+
   programs = {
-    # Let Home Manager install and manage itself.
     home-manager.enable = true;
     git = {
       enable = true;
@@ -77,8 +94,8 @@
         misc = {
           assume_yes = true;
           disable = [
-            "flutter"
-            "node"
+            "pixi"
+            "uv"
           ];
           set_title = false;
           cleanup = true;
@@ -117,13 +134,22 @@
       celeste
       distrobox
       autoflake
-      fastlane zsh
-
+      fastlane
+      act
     ];
-    sessionPath = [ ];
+    sessionPath = [ "$HOME/.pixi/envs/default/bin" ];
     sessionVariables = {
-      ANDROID_HOME = "/home/mohamed/Android/Sdk";
+      ANDROID_HOME = "$HOME/Android/Sdk";
       GSK_RENDERER = "ngl";
+      CONDA_PREFIX = "$HOME/.pixi/envs/default";
+      PIXI_IN_SHELL = "1";
+      PIXI_PROJECT_NAME = "default";
+      PIXI_PROJECT_ROOT = "$HOME";
+      PIXI_PROJECT_MANIFEST = "$HOME/pixi.toml";
+      CONDA_DEFAULT_ENV = "default";
+      PIXI_ENVIRONMENT_NAME = "default";
+      PIXI_ENVIRONMENT_PLATFORMS = "linux-64";
+      PIXI_PROMPT = "(default) ";
     };
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
