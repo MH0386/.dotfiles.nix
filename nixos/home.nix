@@ -2,26 +2,24 @@
   config,
   pkgs,
   lib,
-  android-nixpkgs,
   ...
 }:
 
 {
   imports = [
-    android-nixpkgs.hmModule
+  
   ];
-
-  android-nixpkgs.android-sdk = {
+  xdg = {
     enable = true;
-    path = "${config.home.homeDirectory}/Android/sdk";
-    packages =
-      sdk: with sdk; [
-        build-tools-34-0-0
-        cmdline-tools-latest
-        emulator
-        platforms-android-34
-        sources-android-34
+    dataHome = "${config.home.homeDirectory}/.local/share";
+    mime.enable = true;
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-kde
       ];
+    };
   };
 
   programs = {
@@ -136,10 +134,12 @@
       autoflake
       fastlane
       act
+      flutterPackages.stable
+      jetbrains.idea-community
     ];
     sessionPath = [ "$HOME/.pixi/envs/default/bin" ];
     sessionVariables = {
-      ANDROID_HOME = "$HOME/Android/Sdk";
+      # ANDROID_HOME = "$HOME/Android/Sdk";
       GSK_RENDERER = "ngl";
       CONDA_PREFIX = "$HOME/.pixi/envs/default";
       PIXI_IN_SHELL = "1";

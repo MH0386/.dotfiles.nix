@@ -5,7 +5,6 @@
   system,
   fh,
   pkgsStable,
-  android-nixpkgs,
   ...
 }:
 {
@@ -50,7 +49,6 @@
     useUserPackages = true;
     users.mohamed = import ./home.nix;
     extraSpecialArgs = {
-      inherit android-nixpkgs;
     };
     backupFileExtension = "backup";
   };
@@ -161,7 +159,6 @@
         "io.github.zen_browser.zen"
         "com.github.joseexposito.touche"
         "com.ranfdev.Geopard"
-        "eu.betterbird.Betterbird"
         "it.mijorus.gearlever"
         "io.github.vikdevelop.SaveDesktop"
       ];
@@ -284,6 +281,10 @@
   console.packages = with pkgs; [ monaspace ];
 
   environment = {
+    pathsToLink = [
+      "/share/xdg-desktop-portal"
+      "/share/applications"
+    ];
     localBinInPath = true;
     homeBinInPath = true;
     systemPackages = [
