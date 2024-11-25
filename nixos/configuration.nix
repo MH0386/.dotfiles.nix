@@ -128,7 +128,6 @@
         "org.onlyoffice.desktopeditors"
         "com.github.unrud.djpdf"
         "com.github.unrud.RemoteTouchpad"
-        "eu.betterbird.Betterbird"
         "io.github.arunsivaramanneo.GPUViewer"
         "io.gitlab.news_flash.NewsFlash"
         "app.drey.Dialect"
