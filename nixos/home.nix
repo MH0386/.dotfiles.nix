@@ -7,7 +7,7 @@
 
 {
   imports = [
-  
+
   ];
   xdg = {
     enable = true;
@@ -135,9 +135,30 @@
       fastlane
       act
       flutterPackages.stable
-      jetbrains.idea-community
+      jetbrains.idea-ultimate
+      audacity
+      spacedrive
+      zed-editor
+      gearlever
+      discord
+      httpie
+      httpie-desktop
+      podman-compose
+      podman-desktop
+      termius
+      remmina
+      kubectl
+      kubernetes
+      kompose
+      warp-terminal
+      kdePackages.kget
+      stablePackages.nextcloud-client
+      # gitbutler
     ];
-    sessionPath = [ "$HOME/.pixi/envs/default/bin" ];
+    sessionPath = [
+      "${config.home.homeDirectory}/.pixi/envs/default/bin"
+      "${config.home.homeDirectory}/Android/Sdk/cmdline-tools/latest/bin"
+    ];
     sessionVariables = {
       # ANDROID_HOME = "$HOME/Android/Sdk";
       GSK_RENDERER = "ngl";

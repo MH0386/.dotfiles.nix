@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   system,
@@ -48,8 +49,9 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users.mohamed = import ./home.nix;
-    extraSpecialArgs = {
-    };
+    extraSpecialArgs =
+      {
+      };
     backupFileExtension = "backup";
   };
 
@@ -94,6 +96,13 @@
   services = {
     flatpak = {
       enable = true;
+      remotes = lib.mkOptionDefault [
+        {
+          name = "flathub";
+          location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+        }
+      ];
+      uninstallUnmanaged = true;
       update.onActivation = true;
       packages = [
         "io.github._0xzer0x.qurancompanion"
@@ -287,61 +296,41 @@
     ];
     localBinInPath = true;
     homeBinInPath = true;
-    systemPackages = [
-      # pkgs.google-chrome
-      # pkgs.microsoft-edge
-      # pkgs.stablePackages.microsoft-edge-beta
-      # pkgs.audacity
-      pkgs.wget
-      pkgs.nixfmt-rfc-style
-      pkgs.nixpkgs-fmt
-      pkgs.nixd
-      # pkgs.flutter
-      # pkgs.pixi
-      pkgs.sdkmanager
-      pkgs.kompose
-      pkgs.libgcc
-      pkgs.gcc
-      pkgs.gnumake
-      pkgs.libtool
-      pkgs.dbus
-      pkgs.packagekit
-      pkgs.lshw-gui
-      pkgs.lshw
-      # pkgs.brave
-      pkgs.spacedrive
-      pkgs.zed-editor
-      pkgs.gearlever
-      pkgs.discord
-      pkgs.httpie
-      pkgs.httpie-desktop
-      pkgs.podman-compose
-      # pkgs.podman-desktop
-      pkgs.libsForQt5.full
-      pkgs.termius
-      pkgs.remmina
-      pkgs.kubectl
-      pkgs.kubernetes
-      pkgs.warp-terminal
-      pkgs.kdePackages.kget
-      pkgs.stablePackages.nextcloud-client
-      pkgs.stablePackages.gst_all_1.gstreamer
-      pkgs.stablePackages.gst_all_1.gst-plugins-base
-      pkgs.stablePackages.gst_all_1.gst-plugins-good
-      pkgs.stablePackages.gst_all_1.gst-plugins-bad
-      pkgs.stablePackages.gst_all_1.gst-plugins-ugly
-      pkgs.stablePackages.gst_all_1.gst-libav
-      # pkgs.gitbutler
-      pkgs.nvtopPackages.nvidia
-      fh.packages.${system}.default
-      inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
-      inputs.nix-software-center.packages.${system}.nix-software-center
-      # pkgs.linuxPackages.nvidia_x11
-      # cudaPackages.cudatoolkit
-      # cudaPackages.nccl
-      # cudaPackages.cudnn
-      # cudaPackages.cuda_nvcc
-    ];
+    systemPackages =
+      (with pkgs; [
+        wget
+        nixfmt-rfc-style
+        nixpkgs-fmt
+        nixd
+        gcc
+        libgcc
+        gnumake
+        libtool
+        dbus
+        packagekit
+        lshw-gui
+        lshw
+        libsForQt5.full
+        nvtopPackages.nvidia
+      ])
+      ++ (with pkgs.stablePackages.gst_all_1; [
+        gstreamer
+        gst-plugins-base
+        gst-plugins-good
+        gst-plugins-bad
+        gst-plugins-ugly
+        gst-libav
+      ])
+      ++ [
+        fh.packages.${system}.default
+        inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
+        inputs.nix-software-center.packages.${system}.nix-software-center
+        # pkgs.linuxPackages.nvidia_x11
+        # cudaPackages.cudatoolkit
+        # cudaPackages.nccl
+        # cudaPackages.cudnn
+        # cudaPackages.cuda_nvcc
+      ];
   };
 
   # Enable common container config files in /etc/containers
