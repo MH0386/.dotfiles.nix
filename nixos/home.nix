@@ -6,9 +6,8 @@
 }:
 
 {
-  imports = [
+  imports = [ ];
 
-  ];
   xdg = {
     enable = true;
     dataHome = "${config.home.homeDirectory}/.local/share";
@@ -110,6 +109,9 @@
       enable = true;
     };
     vscode = {
+      enable = true;
+    };
+    ssh = {
       enable = true;
     };
   };
