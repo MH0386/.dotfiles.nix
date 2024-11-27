@@ -169,6 +169,7 @@
         "com.ranfdev.Geopard"
         "it.mijorus.gearlever"
         "io.github.vikdevelop.SaveDesktop"
+        "org.fedoraproject.MediaWriter"
       ];
     };
     fwupd.enable = true;
