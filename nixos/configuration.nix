@@ -311,6 +311,8 @@
         lshw
         libsForQt5.full
         nvtopPackages.nvidia
+        kdePackages.kpmcore
+        kdePackages.partitionmanager
       ])
       ++ (with pkgs.stablePackages.gst_all_1; [
         gstreamer

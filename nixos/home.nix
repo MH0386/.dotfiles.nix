@@ -125,6 +125,7 @@
 
   home = {
     packages = with pkgs; [
+      google-chrome
       ffmpeg
       code-cursor
       clapper
