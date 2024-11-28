@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   system,
@@ -48,7 +49,9 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users.mohamed = import ./home.nix;
-    # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+    extraSpecialArgs =
+      {
+      };
     backupFileExtension = "backup";
   };
 
@@ -93,6 +96,13 @@
   services = {
     flatpak = {
       enable = true;
+      remotes = lib.mkOptionDefault [
+        {
+          name = "flathub";
+          location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+        }
+      ];
+      uninstallUnmanaged = true;
       update.onActivation = true;
       packages = [
         "io.github._0xzer0x.qurancompanion"
@@ -118,7 +128,6 @@
         "org.onlyoffice.desktopeditors"
         "com.github.unrud.djpdf"
         "com.github.unrud.RemoteTouchpad"
-        "eu.betterbird.Betterbird"
         "io.github.arunsivaramanneo.GPUViewer"
         "io.gitlab.news_flash.NewsFlash"
         "app.drey.Dialect"
@@ -158,9 +167,9 @@
         "io.github.zen_browser.zen"
         "com.github.joseexposito.touche"
         "com.ranfdev.Geopard"
-        "eu.betterbird.Betterbird"
         "it.mijorus.gearlever"
         "io.github.vikdevelop.SaveDesktop"
+        "org.fedoraproject.MediaWriter"
       ];
     };
     fwupd.enable = true;
@@ -224,11 +233,12 @@
       "video"
       "render"
       "adbusers"
+      "libvirtd"
     ];
   };
 
   programs.zsh.enable = true;
-  
+
   #   # Enable automatic login for the user.
   #   services.displayManager.autoLogin.enable = true;
   #   services.xserver.displayManager.autoLogin.user = "mohamed";
@@ -281,67 +291,62 @@
   console.packages = with pkgs; [ monaspace ];
 
   environment = {
+    pathsToLink = [
+      "/share/xdg-desktop-portal"
+      "/share/applications"
+    ];
     localBinInPath = true;
     homeBinInPath = true;
-    systemPackages = [
-      # pkgs.google-chrome
-      # pkgs.microsoft-edge
-      # pkgs.stablePackages.microsoft-edge-beta
-      # pkgs.audacity
-      pkgs.wget
-      pkgs.nixfmt-rfc-style
-      pkgs.nixpkgs-fmt
-      pkgs.nixd
-      # pkgs.flutter
-      # pkgs.pixi
-      pkgs.sdkmanager
-      pkgs.kompose
-      pkgs.libgcc
-      pkgs.gcc
-      pkgs.gnumake
-      pkgs.libtool
-      pkgs.dbus
-      pkgs.packagekit
-      pkgs.lshw-gui
-      pkgs.lshw
-      # pkgs.brave
-      pkgs.spacedrive
-      pkgs.zed-editor
-      pkgs.gearlever
-      pkgs.discord
-      pkgs.httpie
-      pkgs.httpie-desktop
-      pkgs.podman-compose
-      # pkgs.podman-desktop
-      pkgs.libsForQt5.full
-      pkgs.termius
-      pkgs.remmina
-      pkgs.kubectl
-      pkgs.kubernetes
-      pkgs.warp-terminal
-      pkgs.kdePackages.kget
-      pkgs.stablePackages.nextcloud-client
-      pkgs.stablePackages.gst_all_1.gstreamer
-      pkgs.stablePackages.gst_all_1.gst-plugins-base
-      pkgs.stablePackages.gst_all_1.gst-plugins-good
-      pkgs.stablePackages.gst_all_1.gst-plugins-bad
-      pkgs.stablePackages.gst_all_1.gst-plugins-ugly
-      pkgs.stablePackages.gst_all_1.gst-libav
-      # pkgs.gitbutler
-      pkgs.nvtopPackages.nvidia
-      fh.packages.${system}.default
-      inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
-      inputs.nix-software-center.packages.${system}.nix-software-center
-      # pkgs.linuxPackages.nvidia_x11
-      # cudaPackages.cudatoolkit
-      # cudaPackages.nccl
-      # cudaPackages.cudnn
-      # cudaPackages.cuda_nvcc
-    ];
+    systemPackages =
+      (with pkgs; [
+        wget
+        nixfmt-rfc-style
+        nixpkgs-fmt
+        nixd
+        gcc
+        libgcc
+        gnumake
+        libtool
+        dbus
+        packagekit
+        lshw-gui
+        lshw
+        libsForQt5.full
+        nvtopPackages.nvidia
+        kdePackages.kpmcore
+        kdePackages.partitionmanager
+        kdePackages.plasma-disks
+        kdePackages.kidentitymanagement
+        ntfs3g
+        qemu_kvm
+        qemu_full
+      ])
+      ++ (with pkgs.stablePackages.gst_all_1; [
+        gstreamer
+        gst-plugins-base
+        gst-plugins-good
+        gst-plugins-bad
+        gst-plugins-ugly
+        gst-libav
+      ])
+      ++ [
+        fh.packages.${system}.default
+        # inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
+        # inputs.nix-software-center.packages.${system}.nix-software-center
+        # pkgs.linuxPackages.nvidia_x11
+        # cudaPackages.cudatoolkit
+        # cudaPackages.nccl
+        # cudaPackages.cudnn
+        # cudaPackages.cuda_nvcc
+      ];
   };
 
   # Enable common container config files in /etc/containers
   virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu.package = pkgs.qemu_kvm;
+    };
     containers.enable = true;
     podman = {
       enable = true;

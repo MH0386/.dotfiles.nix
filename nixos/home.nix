@@ -6,8 +6,22 @@
 }:
 
 {
+  imports = [ ];
+
+  xdg = {
+    enable = true;
+    dataHome = "${config.home.homeDirectory}/.local/share";
+    mime.enable = true;
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-kde
+      ];
+    };
+  };
+
   programs = {
-    # Let Home Manager install and manage itself.
     home-manager.enable = true;
     git = {
       enable = true;
@@ -77,8 +91,8 @@
         misc = {
           assume_yes = true;
           disable = [
-            "flutter"
-            "node"
+            "pixi"
+            "uv"
           ];
           set_title = false;
           cleanup = true;
@@ -97,6 +111,9 @@
     vscode = {
       enable = true;
     };
+    ssh = {
+      enable = true;
+    };
   };
 
   services = {
@@ -108,6 +125,7 @@
 
   home = {
     packages = with pkgs; [
+      google-chrome
       ffmpeg
       code-cursor
       clapper
@@ -117,13 +135,48 @@
       celeste
       distrobox
       autoflake
-      fastlane zsh
+      fastlane
+      act
+      flutterPackages.stable
+      jetbrains.idea-ultimate
+      jetbrains.pycharm-professional
+      audacity
+      spacedrive
+      zed-editor
+      gearlever
+      discord
+      httpie
+      httpie-desktop
+      podman-compose
+      podman-desktop
+      termius
+      remmina
+      kubectl
+      kubernetes
+      kompose
+      warp-terminal
+      kdePackages.kget
+      nextcloud-client
+      gnome-boxes
 
+      # gitbutler
     ];
-    sessionPath = [ ];
+    sessionPath = [
+      "${config.home.homeDirectory}/.pixi/envs/default/bin"
+      "${config.home.homeDirectory}/Android/Sdk/cmdline-tools/latest/bin"
+    ];
     sessionVariables = {
-      ANDROID_HOME = "/home/mohamed/Android/Sdk";
+      # ANDROID_HOME = "${config.home.homeDirectory}/Android/Sdk";
       GSK_RENDERER = "ngl";
+      CONDA_PREFIX = "${config.home.homeDirectory}/.pixi/envs/default";
+      PIXI_IN_SHELL = "1";
+      PIXI_PROJECT_NAME = "default";
+      PIXI_PROJECT_ROOT = "${config.home.homeDirectory}";
+      PIXI_PROJECT_MANIFEST = "${config.home.homeDirectory}/pixi.toml";
+      CONDA_DEFAULT_ENV = "default";
+      PIXI_ENVIRONMENT_NAME = "default";
+      PIXI_ENVIRONMENT_PLATFORMS = "linux-64";
+      PIXI_PROMPT = "(default) ";
     };
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
