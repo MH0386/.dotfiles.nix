@@ -139,6 +139,7 @@
       act
       flutterPackages.stable
       jetbrains.idea-ultimate
+      jetbrains.pycharm-professional
       audacity
       spacedrive
       zed-editor
@@ -155,7 +156,7 @@
       kompose
       warp-terminal
       kdePackages.kget
-      stablePackages.nextcloud-client
+      nextcloud-client
       # gitbutler
     ];
     sessionPath = [
@@ -163,13 +164,13 @@
       "${config.home.homeDirectory}/Android/Sdk/cmdline-tools/latest/bin"
     ];
     sessionVariables = {
-      # ANDROID_HOME = "$HOME/Android/Sdk";
+      # ANDROID_HOME = "${config.home.homeDirectory}/Android/Sdk";
       GSK_RENDERER = "ngl";
-      CONDA_PREFIX = "$HOME/.pixi/envs/default";
+      CONDA_PREFIX = "${config.home.homeDirectory}/.pixi/envs/default";
       PIXI_IN_SHELL = "1";
       PIXI_PROJECT_NAME = "default";
-      PIXI_PROJECT_ROOT = "$HOME";
-      PIXI_PROJECT_MANIFEST = "$HOME/pixi.toml";
+      PIXI_PROJECT_ROOT = "${config.home.homeDirectory}";
+      PIXI_PROJECT_MANIFEST = "${config.home.homeDirectory}/pixi.toml";
       CONDA_DEFAULT_ENV = "default";
       PIXI_ENVIRONMENT_NAME = "default";
       PIXI_ENVIRONMENT_PLATFORMS = "linux-64";

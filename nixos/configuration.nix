@@ -314,6 +314,9 @@
         nvtopPackages.nvidia
         kdePackages.kpmcore
         kdePackages.partitionmanager
+        kdePackages.plasma-disks
+        kdePackages.kidentitymanagement
+        ntfs3g
       ])
       ++ (with pkgs.stablePackages.gst_all_1; [
         gstreamer
@@ -325,8 +328,8 @@
       ])
       ++ [
         fh.packages.${system}.default
-        inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
-        inputs.nix-software-center.packages.${system}.nix-software-center
+        # inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
+        # inputs.nix-software-center.packages.${system}.nix-software-center
         # pkgs.linuxPackages.nvidia_x11
         # cudaPackages.cudatoolkit
         # cudaPackages.nccl
