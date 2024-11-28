@@ -233,6 +233,7 @@
       "video"
       "render"
       "adbusers"
+      "libvirtd"
     ];
   };
 
@@ -317,6 +318,8 @@
         kdePackages.plasma-disks
         kdePackages.kidentitymanagement
         ntfs3g
+        qemu_kvm
+        qemu_full
       ])
       ++ (with pkgs.stablePackages.gst_all_1; [
         gstreamer
@@ -340,6 +343,10 @@
 
   # Enable common container config files in /etc/containers
   virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu.package = pkgs.qemu_kvm;
+    };
     containers.enable = true;
     podman = {
       enable = true;

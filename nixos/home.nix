@@ -157,6 +157,8 @@
       warp-terminal
       kdePackages.kget
       nextcloud-client
+      gnome-boxes
+
       # gitbutler
     ];
     sessionPath = [
