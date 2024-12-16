@@ -13,10 +13,16 @@
     substituters = [
       "https://cuda-maintainers.cachix.org"
       "https://nix-community.cachix.org"
+      "https://devenv.cachix.org"
     ];
     trusted-public-keys = [
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+    ];
+    trusted-users = [
+      "root"
+      "mohamed"
     ];
     experimental-features = [
       "flakes"
@@ -24,7 +30,6 @@
     ];
   };
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -37,8 +42,13 @@
       "nvidia_modeset"
       "nvidia"
     ];
+    kernelParams = [
+      "apparmor=1"
+      "security=apparmor"
+    ];
+    kernelModules = [ "apparmor" ];
     # extraModulePackages = [ pkgs.linuxPackages.nvidia_x11 ];
-    # kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_11;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -50,7 +60,9 @@
     useUserPackages = true;
     users.mohamed = import ./home.nix;
     extraSpecialArgs = { };
-    backupFileExtension = "backup";
+    backupFileExtension =
+      "backup-"
+      + pkgs.lib.readFile "${pkgs.runCommand "timestamp" { } "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
   };
 
   networking = {
@@ -89,81 +101,93 @@
     defaultLocale = "en_US.UTF-8";
   };
 
-  # services.displayManager.sddm.autoNumlock = false;
-
+  security.apparmor = {
+    enable = true;
+    policies.dummy.profile = ''
+      /dummy {
+      }
+    '';
+  };
   services = {
-     flatpak = {
-       enable = true;
-       # uninstallUnmanaged = true;
-       # update.onActivation = true;
-    # packages = [
-    #   "io.github._0xzer0x.qurancompanion"
-    #   "io.github.giantpinkrobots.flatsweep"
-    #   "io.github.lo2dev.Echo"
-    #   "io.github.flattool.Warehouse"
-    #   "app.fotema.Fotema"
-    #   "io.github.giantpinkrobots.varia"
-    #   "io.podman_desktop.PodmanDesktop"
-    #   "com.github.marhkb.Pods"
-    #   "io.github.sigmasd.stimulator"
-    #   "im.fluffychat.Fluffychat"
-    #   # "com.jeffser.Alpaca"
-    #   "dev.skynomads.Seabird"
-    #   "net.sapples.LiveCaptions"
-    #   "org.nickvision.tubeconverter"
-    #   "re.sonny.OhMySVG"
-    #   "com.usebottles.bottles"
-    #   "com.github.gijsgoudzwaard.image-optimizer"
-    #   "fr.handbrake.ghb"
-    #   "io.github.seadve.Kooha"
-    #   "net.nokyan.Resources"
-    #   "org.onlyoffice.desktopeditors"
-    #   "com.github.unrud.djpdf"
-    #   "com.github.unrud.RemoteTouchpad"
-     #   "io.github.arunsivaramanneo.GPUViewer"
-     #   "io.gitlab.news_flash.NewsFlash"
-     #   "app.drey.Dialect"
-     #   "com.warlordsoftwares.tube2go"
-     #   "com.warlordsoftwares.formatlab"
-     #   "io.github.zaedus.spider"
-     #   "eu.nokun.MirrorHall"
-     #   "es.danirod.Cartero"
-     #   "pl.youkai.nscan"
-     #   "com.mardojai.ForgeSparks"
-     #   "com.gitbutler.gitbutler"
-     #   "io.github.dvlv.boxbuddyrs"
-     #   "app.devsuite.Ptyxis"
-     #   "com.github.tchx84.Flatseal"
-     #   "com.quexten.Goldwarden"
-     #   "com.belmoussaoui.snowglobe"
-     #   "com.jetpackduba.Gitnuro"
-     #   "de.philippun1.turtle"
-     #   "de.philippun1.Snoop"
-     #   "com.github.qarmin.szyszka"
-     #   "com.github.qarmin.czkawka"
-     #   "io.gitlab.theevilskeleton.Upscaler"
-     #   "io.gitlab.adhami3310.Converter"
-     #   "io.gitlab.adhami3310.Footage"
-     #   "com.github.ADBeveridge.Raider"
-     #   "com.github.tenderowl.frog"
-     #   "io.github.vikdevelop.SaveDesktop"
-     #   "org.angryip.ipscan"
-     #   "org.gabmus.whatip"
-     #   "org.nmap.Zenmap"
-     #   "io.github.bytezz.IPLookup"
-     #   "dev.geopjr.Archives"
-     #   "io.bassi.Amberol"
-     #   "io.github.getnf.embellish"
-     #   "com.github.cassidyjames.dippi"
-     #   "it.mijorus.whisper"
-     #   "io.github.zen_browser.zen"
-     #   "com.github.joseexposito.touche"
-     #   "com.ranfdev.Geopard"
-     #   "it.mijorus.gearlever"
-     #   "io.github.vikdevelop.SaveDesktop"
-     #   "org.fedoraproject.MediaWriter"
-     # ];
-   };
+    avahi = {
+      enable = true;
+      publish.enable = true;
+    };
+    # snap.enable = true;
+    flatpak = {
+      enable = true;
+      uninstallUnmanaged = true;
+      update.onActivation = true;
+      packages = [
+        "io.github._0xzer0x.qurancompanion"
+        "io.github.ladaapp.lada"
+        "io.github.giantpinkrobots.flatsweep"
+        "io.github.lo2dev.Echo"
+        "io.github.flattool.Warehouse"
+        "app.fotema.Fotema"
+        "io.github.giantpinkrobots.varia"
+        "io.podman_desktop.PodmanDesktop"
+        "com.github.marhkb.Pods"
+        "io.github.sigmasd.stimulator"
+        "im.fluffychat.Fluffychat"
+        # "com.jeffser.Alpaca"
+        "dev.skynomads.Seabird"
+        "net.sapples.LiveCaptions"
+        "org.nickvision.tubeconverter"
+        "re.sonny.OhMySVG"
+        "com.usebottles.bottles"
+        "com.github.gijsgoudzwaard.image-optimizer"
+        "fr.handbrake.ghb"
+        "io.github.seadve.Kooha"
+        "net.nokyan.Resources"
+        "org.onlyoffice.desktopeditors"
+        "com.github.unrud.djpdf"
+        "com.github.unrud.RemoteTouchpad"
+        "io.github.arunsivaramanneo.GPUViewer"
+        "io.gitlab.news_flash.NewsFlash"
+        "app.drey.Dialect"
+        "com.warlordsoftwares.tube2go"
+        "com.warlordsoftwares.formatlab"
+        "io.github.zaedus.spider"
+        "eu.nokun.MirrorHall"
+        "es.danirod.Cartero"
+        "pl.youkai.nscan"
+        "com.mardojai.ForgeSparks"
+        "com.gitbutler.gitbutler"
+        "io.github.dvlv.boxbuddyrs"
+        "com.github.tchx84.Flatseal"
+        "com.quexten.Goldwarden"
+        "com.belmoussaoui.snowglobe"
+        "com.jetpackduba.Gitnuro"
+        "de.philippun1.turtle"
+        "de.philippun1.Snoop"
+        "com.github.qarmin.szyszka"
+        "com.github.qarmin.czkawka"
+        "io.gitlab.theevilskeleton.Upscaler"
+        "io.gitlab.adhami3310.Converter"
+        "io.gitlab.adhami3310.Footage"
+        "com.github.ADBeveridge.Raider"
+        "com.github.tenderowl.frog"
+        "org.angryip.ipscan"
+        "org.gabmus.whatip"
+        "org.nmap.Zenmap"
+        "io.github.bytezz.IPLookup"
+        "dev.geopjr.Archives"
+        "io.bassi.Amberol"
+        "io.github.getnf.embellish"
+        "com.github.cassidyjames.dippi"
+        "it.mijorus.whisper"
+        "io.github.zen_browser.zen"
+        # "com.github.joseexposito.touche"
+        "com.ranfdev.Geopard"
+        # "it.mijorus.gearlever"
+        "io.github.vikdevelop.SaveDesktop"
+        "org.fedoraproject.MediaWriter"
+        "io.github.realmazharhussain.GdmSettings"
+        "com.mattjakeman.ExtensionManager"
+        "app.devsuite.Ptyxis"
+      ];
+    };
     fwupd.enable = true;
     ollama = {
       enable = true;
@@ -190,8 +214,8 @@
     };
     # Enable CUPS to print documents.
     printing.enable = true;
+    gnome.sushi.enable = true;
   };
-  qt.enable = true;
 
   hardware.enableAllFirmware = true;
   # Enable sound with pipewire.
@@ -217,7 +241,7 @@
   users.users.mohamed = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    description = "Mohamed";
+    description = "Mohamed Hisham";
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -225,22 +249,23 @@
       "render"
       "adbusers"
       "libvirtd"
+      "podman"
+      "flatpak"
     ];
   };
 
-  programs.zsh.enable = true;
-
-  #   # Enable automatic login for the user.
-  #   services.displayManager.autoLogin.enable = true;
-  #   services.xserver.displayManager.autoLogin.user = "mohamed";
-
   nixpkgs = {
     # Allow unfree packages
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+      android_sdk.accept_license = true;
+    };
     overlays = [ (self: super: { stablePackages = pkgsStable; }) ];
   };
 
   programs = {
+    zsh.enable = true;
+    # evolution.enable = true;
     # firefox.enable = true;
     nix-ld.enable = true;
     # Hyperland
@@ -276,15 +301,23 @@
         extraArgs = "--keep 5";
       };
     };
+    nautilus-open-any-terminal = {
+      enable = true;
+      terminal = "ptyxis";
+    };
   };
 
   fonts.packages = with pkgs; [ monaspace ];
   console.packages = with pkgs; [ monaspace ];
 
   environment = {
+    sessionVariables = {
+      NAUTILUS_4_EXTENSION_DIR = lib.mkDefault "${pkgs.stablePackages.nautilus-python}/lib/nautilus/extensions-4";
+    };
     pathsToLink = [
       "/share/xdg-desktop-portal"
       "/share/applications"
+      "/share/nautilus-python/extensions"
     ];
     localBinInPath = true;
     homeBinInPath = true;
@@ -298,19 +331,23 @@
         libgcc
         gnumake
         libtool
-        dbus
+        #dbus
         packagekit
         lshw-gui
         lshw
         libsForQt5.full
         nvtopPackages.nvidia
-        kdePackages.kpmcore
-        kdePackages.partitionmanager
-        kdePackages.plasma-disks
-        kdePackages.kidentitymanagement
+        gnome-extensions-cli
+        gnome-tweaks
         ntfs3g
         qemu_kvm
         qemu_full
+        devenv
+        nautilus
+        nautilus-python
+      ])
+      ++ (with pkgs.stablePackages; [
+        # gnome-extension-manager
       ])
       ++ (with pkgs.stablePackages.gst_all_1; [
         gstreamer
@@ -415,10 +452,10 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
 
@@ -426,7 +463,13 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedTCPPorts = [
+    22
+    80
+    443
+    8000
+    8001
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
