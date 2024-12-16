@@ -3,7 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-24.11";
+    nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*.tar.gz";
     nix-software-center = {
       url = "github:snowfallorg/nix-software-center";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,9 +17,12 @@
       url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*.tar.gz";
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zen-browser = {
+      url = "github:MarceColl/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

@@ -96,12 +96,12 @@
   services = {
     flatpak = {
       enable = true;
-      remotes = lib.mkOptionDefault [
-        {
-          name = "flathub";
-          location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-        }
-      ];
+      # remotes = lib.mkOptionDefault [
+      #   {
+      #     name = "flathub";
+      #     location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+      #   }
+      # ];
       uninstallUnmanaged = true;
       update.onActivation = true;
       packages = [
@@ -330,7 +330,7 @@
         gst-libav
       ])
       ++ [
-        fh.packages.${system}.default
+        # fh.packages.${system}.default
         # inputs.nixos-conf-editor.packages.${system}.nixos-conf-editor
         # inputs.nix-software-center.packages.${system}.nix-software-center
         # pkgs.linuxPackages.nvidia_x11
