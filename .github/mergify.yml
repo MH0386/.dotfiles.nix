@@ -11,7 +11,7 @@ pull_request_rules:
       queue:
   - name: Automatically merge GitHub Actions PRs
     conditions:
-      - github-actions[bot]
+      - author = github-actions[bot]
     actions:
       queue:
 queue_rules:
