@@ -144,7 +144,7 @@
       autoflake
       fastlane
       act
-      flutterPackages.stable
+      dart
       jetbrains.idea-ultimate
       jetbrains.pycharm-professional
       audacity
