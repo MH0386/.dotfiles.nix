@@ -31,6 +31,7 @@
   };
   imports = [
     ./hardware-configuration.nix
+    ./configuration/services.nix
   ];
 
   # Bootloader
@@ -108,6 +109,7 @@
       }
     '';
   };
+
   services = {
     avahi = {
       enable = true;
