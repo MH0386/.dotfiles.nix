@@ -4,20 +4,48 @@
   lib,
   ...
 }:
-
+# let
+#   fvm = import ./apps/fvm/fvm.nix { inherit pkgs lib builtins; };
+# in
 {
   imports = [ ];
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+  };
+
+  # Wayland, X, etc. support for session vars
+  # systemd.user.sessionVariables = config.home-manager.users.mohamed.home.sessionVariables;
 
   xdg = {
     enable = true;
     dataHome = "${config.home.homeDirectory}/.local/share";
     mime.enable = true;
+    mimeApps = {
+      enable = true;
+      # defaultApplications = {
+      #   "x-scheme-handler/terminal" = "org.gnome.Ptyxis.desktop";
+      # };
+    };
     portal = {
       enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-kde
-      ];
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+      config.common.default = "gtk";
     };
   };
 
@@ -27,6 +55,13 @@
       enable = true;
       userName = "Mohamed Hisham Abdelzaher";
       userEmail = "mohamed.hisham.abdelzaher@gmail.com";
+      extraConfig = {
+        pull.rebase = false;
+        init.defaultBranch = "main";
+        credential = {
+          helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
+        };
+      };
     };
     bat = {
       enable = true;
@@ -46,10 +81,8 @@
     zsh = {
       enable = true;
       autosuggestion.enable = true;
-      initExtra = ''
-        eval "$(direnv hook zsh)"
-      '';
     };
+    bash.enable = true;
     gh.enable = true;
     jq.enable = true;
     java = {
@@ -117,24 +150,28 @@
     ssh = {
       enable = true;
     };
+    fzf = {
+      enable = true;
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
   };
 
-  services = {
-    kdeconnect = {
-      enable = true;
-      indicator = true;
-    };
-  };
+  # services = {
+  #   kdeconnect = {
+  #     enable = true;
+  #     indicator = true;
+  #   };
+  # };
 
   home = {
     packages = with pkgs; [
-      google-chrome
+      microsoft-edge
+      # google-chrome
       ffmpeg
-      code-cursor
+      # code-cursor
       clapper
       nodejs_22
       pixi
@@ -147,6 +184,9 @@
       dart
       jetbrains.idea-ultimate
       jetbrains.pycharm-professional
+      # android-studio-full
+      # android-studio-tools
+      android-studio
       audacity
       spacedrive
       zed-editor
@@ -162,18 +202,40 @@
       kubernetes
       kompose
       warp-terminal
-      kdePackages.kget
       nextcloud-client
       gnome-boxes
+      shotwell
+      gnome-contacts
+      bitwarden-cli
+      bitwarden-desktop
+      gimp-with-plugins
+      firefoxpwa
+      beeper
+      ptyxis
+      yq-go
+      rustup
+      sqlite
+      sqlitestudio
+      apksigner
+      # fvm
+      # poetry
+      # poetryPlugins.poetry-plugin-up
+      # poetryPlugins.poetry-audit-plugin
+      # poetryPlugins.poetry-plugin-export
+      # poetryPlugins.poetry-plugin-poeblix
       # gitbutler
     ];
     sessionPath = [
       "${config.home.homeDirectory}/.pixi/envs/default/bin"
+      "${config.home.homeDirectory}/Android/Sdk/platform-tools"
+      "${config.home.homeDirectory}/Android/Sdk/tools/bin"
       "${config.home.homeDirectory}/Android/Sdk/cmdline-tools/latest/bin"
+      "${config.home.homeDirectory}/Android/Sdk/emulator"
+      "${config.home.homeDirectory}/Android/Sdk/emulator/bin64"
     ];
     sessionVariables = {
       ANDROID_HOME = "${config.home.homeDirectory}/Android/Sdk";
-      GSK_RENDERER = "ngl";
+      # GSK_RENDERER = "ngl";
       CONDA_PREFIX = "${config.home.homeDirectory}/.pixi/envs/default";
       PIXI_IN_SHELL = "1";
       PIXI_PROJECT_NAME = "default";
