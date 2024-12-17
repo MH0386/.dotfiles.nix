@@ -38,45 +38,43 @@
     }@inputs:
     let
       system = "x86_64-linux";
+      inherit (nixpkgs) lib;
       pkgsStable = import nixpkgs-stable {
         system = system;
         config.allowUnfree = true;
       };
+      hostNames = [
+        "MohamedDesktopNixOS"
+        "MohamedLaptopNixOS"
+      ];
+      commonModules = [
+        nix-flatpak.nixosModules.nix-flatpak
+        home-manager.nixosModules.home-manager
+        ./nixos/configuration.nix
+      ];
     in
     {
-      nixosConfigurations =
-        let
-          hostNames = [
-            "MohamedDesktop"
-            "MohamedLaptop"
-          ];
-          inherit (nixpkgs) lib;
-          commonModules = [
-            nix-flatpak.nixosModules.nix-flatpak
-            home-manager.nixosModules.home-manager
-            ./nixos/configuration.nix
-          ];
-        in
-        lib.pipe hostNames [
-          (map (
-            hostName:
-            lib.nameValuePair hostName (
-              lib.nixosSystem {
+      nixosConfigurations = lib.pipe hostNames [
+        (map (
+          hostName:
+          lib.nameValuePair hostName (
+            lib.nixosSystem {
+              inherit system;
+              modules =
+                commonModules
+                ++ [ { networking.hostName = hostName; } ] # Sets the hostname
+                ++ [ (./. + "/nixos/device/${hostName}/configuration.nix") ]; # Imports the per-host configuration.nix
+                # ++ [ ./device/${hostName}/configuration.nix ]; # Imports the per-host configuration.nix
+              specialArgs = {
+                inherit inputs;
                 inherit system;
-                modules =
-                  commonModules
-                  ++ [ { networking.hostName = hostName; } ] # Sets the hostname
-                  ++ [ (./. + "/devices/${hostName}/configuration.nix") ]; # Imports the per-host configuration.nix
-                specialArgs = {
-                  inherit inputs;
-                  inherit system;
-                  inherit fh;
-                  inherit pkgsStable;
-                };
-              }
-            )
-          ))
-          lib.listToAttrs
-        ];
+                inherit fh;
+                inherit pkgsStable;
+              };
+            }
+          )
+        ))
+        lib.listToAttrs
+      ];
     };
 }
