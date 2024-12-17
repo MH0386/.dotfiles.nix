@@ -53,9 +53,9 @@
         gst-libav
       ])
       ++ (with inputs; [
-        fh.packages.${system}.default
-        nixos-conf-editor.packages.${system}.nixos-conf-editor
-        nix-software-center.packages.${system}.nix-software-center
+        # fh.packages.${system}.default
+        # nixos-conf-editor.packages.${system}.nixos-conf-editor
+        # nix-software-center.packages.${system}.nix-software-center
         # inputs.zen-browser.packages.${system}.specific
         # cudaPackages.cudatoolkit
         # cudaPackages.nccl

@@ -71,7 +71,7 @@
         "io.github.zen_browser.zen"
         # "com.github.joseexposito.touche"
         "com.ranfdev.Geopard"
-        # "it.mijorus.gearlever"
+        "it.mijorus.gearlever"
         "io.github.vikdevelop.SaveDesktop"
         "org.fedoraproject.MediaWriter"
         "io.github.realmazharhussain.GdmSettings"
