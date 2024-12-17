@@ -1,9 +1,4 @@
-{ pkgs, lib, ... }:
-let
-  # myHostname = lib.trim pkgs.lib.readFile "${pkgs.runCommand "hostname" { } "echo -n `hostname` > $out"}";
-  hostname = pkgs.runCommand "hostname" { } "echo -n `hostname` > $out";
-  myHostname = lib.trim (lib.readFile hostname);
-in
+{ ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -19,6 +14,5 @@ in
     ./configuration/security.nix
     ./configuration/system.nix
     ./configuration/virtualisation.nix
-    ./device/${myHostname}/configuration.nix
   ];
 }
