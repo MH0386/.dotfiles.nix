@@ -1,6 +1,8 @@
 { pkgs, lib, ... }:
 let
-  myHostname =  pkgs.hostName;
+  # myHostname = lib.trim pkgs.lib.readFile "${pkgs.runCommand "hostname" { } "echo -n `hostname` > $out"}";
+  hostname = pkgs.runCommand "hostname" { } "echo -n `hostname` > $out";
+  myHostname = lib.trim (lib.readFile hostname);
 in
 {
   imports = [
