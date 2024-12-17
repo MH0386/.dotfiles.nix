@@ -1,13 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  inputs,
-  system,
-  fh,
-  pkgsStable,
-  ...
-}:
+{ pkgs, ... }:
 {
   boot = {
     blacklistedKernelModules = [
@@ -29,7 +20,7 @@
   };
   environment.systemPackages =
     (with pkgs; [
-      dart
+      # dart
     ])
     ++ (with pkgs.stablePackages; [
       # cups

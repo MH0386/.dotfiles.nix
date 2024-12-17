@@ -1,4 +1,7 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
+let
+  myHostname =  pkgs.hostName;
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -14,6 +17,6 @@
     ./configuration/security.nix
     ./configuration/system.nix
     ./configuration/virtualisation.nix
-    ./device/${lib.trim builtins.readFile /etc/hostname}/configuration.nix
+    ./device/${myHostname}/configuration.nix
   ];
 }
