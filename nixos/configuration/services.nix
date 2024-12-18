@@ -1,6 +1,7 @@
 { ... }:
 {
   services = {
+    vnstat.enable = true;
     avahi = {
       enable = true;
       publish.enable = true;
