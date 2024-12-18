@@ -76,7 +76,8 @@
         "org.fedoraproject.MediaWriter"
         "io.github.realmazharhussain.GdmSettings"
         "com.mattjakeman.ExtensionManager"
-        "app.devsuite.Ptyxis"
+        # "app.devsuite.Ptyxis"
+        "com.raggesilver.BlackBox"
       ];
     };
     fwupd.enable = true;

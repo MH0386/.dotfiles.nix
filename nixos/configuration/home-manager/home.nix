@@ -232,6 +232,7 @@
       "${config.home.homeDirectory}/Android/Sdk/cmdline-tools/latest/bin"
       "${config.home.homeDirectory}/Android/Sdk/emulator"
       "${config.home.homeDirectory}/Android/Sdk/emulator/bin64"
+      "${config.home.homeDirectory}/.pub-cache/bin"
     ];
     sessionVariables = {
       ANDROID_HOME = "${config.home.homeDirectory}/Android/Sdk";
