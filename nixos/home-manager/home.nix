@@ -168,7 +168,7 @@ in
 
   home = {
     packages = with pkgs; [
-      microsoft-edge
+      # microsoft-edge
       google-chrome
       ffmpeg
       # code-cursor
@@ -176,7 +176,7 @@ in
       nodejs_22
       pixi
       vlc
-      celeste
+      # celeste
       distrobox
       autoflake
       fastlane
@@ -190,12 +190,12 @@ in
       audacity
       spacedrive
       zed-editor
-      gearlever
+      # gearlever
       discord
       httpie
       httpie-desktop
       podman-compose
-      podman-desktop
+      # podman-desktop
       termius
       remmina
       kubectl
