@@ -1,15 +1,11 @@
-{
-  pkgs,
-  lib,
-  builtins,
-}:
+{ pkgs, builtins, ... }:
 let
   version =
     (builtins.fromJSON (
       builtins.readFile (
         builtins.fetchurl {
           url = "https://api.github.com/repos/leoafarias/fvm/releases/latest";
-          sha256 = "1ciiq86vhsqzxhj9944vfg7appplf7qrcl5lvn4bl29ww25p0gzn";
+          sha256 = "0rr7w19v3pf6a7a9dya2kl5ac1s0n3jp694mvbg9xgnw58jmz3pa";
         }
       )
     )).tag_name;

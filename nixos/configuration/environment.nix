@@ -5,9 +5,6 @@
   system,
   ...
 }:
-let
-  fvm = import ./apps/fvm/fvm.nix { inherit pkgs lib builtins; };
-in
 {
   environment = {
     sessionVariables = {
@@ -42,8 +39,7 @@ in
         qemu_full
         devenv
         nautilus
-        nautilus-python
-        fvm
+        nautilus-python        
       ])
       ++ (with pkgs.stablePackages; [
         # gnome-extension-manager
