@@ -181,7 +181,7 @@ in
       autoflake
       fastlane
       act
-      dart
+      # dart
       jetbrains.idea-ultimate
       jetbrains.pycharm-professional
       # android-studio-full
@@ -218,6 +218,7 @@ in
       sqlitestudio
       apksigner
       fvm
+      blackbox-terminal
       # poetry
       # poetryPlugins.poetry-plugin-up
       # poetryPlugins.poetry-audit-plugin
