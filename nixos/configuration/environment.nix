@@ -19,6 +19,8 @@
     homeBinInPath = true;
     systemPackages =
       (with pkgs; [
+        unzip
+        zip
         wget
         nixfmt-rfc-style
         nixpkgs-fmt
@@ -39,7 +41,7 @@
         qemu_full
         devenv
         nautilus
-        nautilus-python        
+        nautilus-python
       ])
       ++ (with pkgs.stablePackages; [
         # gnome-extension-manager
