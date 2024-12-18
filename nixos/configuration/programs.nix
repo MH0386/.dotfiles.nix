@@ -14,7 +14,10 @@
       ];
     };
     localsend.enable = true;
-    appimage.enable = true;
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
     gamemode.enable = true;
     steam = {
       enable = true;

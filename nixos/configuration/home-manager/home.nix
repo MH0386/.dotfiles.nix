@@ -165,7 +165,7 @@
   #     indicator = true;
   #   };
   # };
-
+  
   home = {
     packages = with pkgs; [
       microsoft-edge
