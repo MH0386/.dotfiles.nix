@@ -78,6 +78,7 @@
         "com.mattjakeman.ExtensionManager"
         # "app.devsuite.Ptyxis"
         "com.raggesilver.BlackBox"
+        "io.anytype.anytype"
       ];
     };
     fwupd.enable = true;
