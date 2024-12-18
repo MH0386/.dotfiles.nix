@@ -4,9 +4,9 @@
   lib,
   ...
 }:
-let 
-  fvm = import ./../apps/fvm/fvm.nix { inherit pkgs lib builtins; };
-in 
+let
+  fvm = import ./../../apps/fvm/fvm.nix { inherit pkgs lib builtins; };
+in
 {
   imports = [ ];
   dconf.settings = {
@@ -168,8 +168,8 @@ in
 
   home = {
     packages = with pkgs; [
-      microsoft-edge
-      # google-chrome
+      # microsoft-edge
+      google-chrome
       ffmpeg
       # code-cursor
       clapper
