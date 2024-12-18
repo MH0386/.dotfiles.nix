@@ -168,7 +168,7 @@ in
 
   home = {
     packages = with pkgs; [
-      # microsoft-edge
+      microsoft-edge
       google-chrome
       ffmpeg
       # code-cursor
