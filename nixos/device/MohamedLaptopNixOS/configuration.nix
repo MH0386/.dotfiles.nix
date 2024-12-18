@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./hardware-configuration.nix
+  ];
   boot = {
     blacklistedKernelModules = [
       "nouveau"

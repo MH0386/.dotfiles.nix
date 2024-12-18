@@ -1,7 +1,6 @@
 { ... }:
 {
   imports = [
-    ./hardware-configuration.nix
     ./configuration/boot.nix
     ./configuration/hardware.nix
     ./configuration/locale.nix
