@@ -5,7 +5,7 @@
   ...
 }:
 let
-  fvm = import ./../../apps/fvm/fvm.nix { inherit pkgs lib builtins; };
+  fvm = import ./../apps/fvm/fvm.nix { inherit pkgs lib builtins; };
 in
 {
   imports = [ ];
