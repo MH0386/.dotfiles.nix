@@ -9,7 +9,12 @@
   ...
 }:
 {
+  imports = [
+    ./hardware-configuration.nix
+  ];
   boot.blacklistedKernelModules = [ "nouveau" ];
+  # Define your hostname.
+  networking.hostName = "MohamedDesktopNixOS";
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;
@@ -19,7 +24,7 @@
     defaultShared = true;
     openFirewall = true;
     drivers = [ pkgs.stablePackages.hplipWithPlugin ];
-  }; 
+  };
   # Enable SANE scanning support.
   hardware.sane = {
     enable = true;

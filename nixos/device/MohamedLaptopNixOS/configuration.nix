@@ -11,6 +11,8 @@
       "nvidia"
     ];
   };
+  # Define your hostname.
+  networking.hostName = "MohamedLaptopNixOS";
   # Enable CUPS to print documents.
   services.printing.enable = true;
   hardware.nvidia.prime = {

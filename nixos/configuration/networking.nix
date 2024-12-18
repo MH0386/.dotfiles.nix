@@ -1,8 +1,6 @@
 { ... }:
 {
   networking = {
-    # Define your hostname.
-    hostName = "MohamedLaptopNixOS";
     # Enable networking
     networkmanager.enable = true;
     # Enables wireless support via wpa_supplicant.
