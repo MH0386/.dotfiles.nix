@@ -71,7 +71,6 @@
         "it.mijorus.whisper"
         "io.github.zen_browser.zen"
         # "com.github.joseexposito.touche"
-        "com.ranfdev.Geopard"
         "it.mijorus.gearlever"
         "io.github.vikdevelop.SaveDesktop"
         "org.fedoraproject.MediaWriter"
