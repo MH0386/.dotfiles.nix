@@ -168,8 +168,8 @@ in
 
   home = {
     packages = with pkgs; [
-      # microsoft-edge
-      google-chrome
+      microsoft-edge
+      # google-chrome
       ffmpeg
       # code-cursor
       clapper
