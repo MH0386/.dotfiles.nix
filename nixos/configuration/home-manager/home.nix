@@ -243,6 +243,7 @@
       PIXI_ENVIRONMENT_NAME = "default";
       PIXI_ENVIRONMENT_PLATFORMS = "linux-64";
       PIXI_PROMPT = "(default) ";
+      FVM_PRIVILEGED_ACCESS = "true";
     };
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
