@@ -50,18 +50,7 @@
       commonModules = [
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
-        ./nixos/configuration/boot.nix
-        ./nixos/configuration/hardware.nix
-        ./nixos/configuration/locale.nix
-        ./nixos/configuration/programs.nix
-        ./nixos/configuration/services.nix
-        ./nixos/configuration/users.nix
-        ./nixos/configuration/environment.nix
-        ./nixos/configuration/home-manager.nix
-        ./nixos/configuration/networking.nix
-        ./nixos/configuration/security.nix
-        ./nixos/configuration/system.nix
-        ./nixos/configuration/virtualisation.nix
+        ./nixos/configuration.nix
       ];
     in
     {
