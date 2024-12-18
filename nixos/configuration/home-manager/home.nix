@@ -4,6 +4,9 @@
   lib,
   ...
 }:
+let 
+  fvm = import ./../apps/fvm/fvm.nix { inherit pkgs lib builtins; };
+in 
 {
   imports = [ ];
   dconf.settings = {
@@ -214,7 +217,7 @@
       sqlite
       sqlitestudio
       apksigner
-      # fvm
+      fvm
       # poetry
       # poetryPlugins.poetry-plugin-up
       # poetryPlugins.poetry-audit-plugin
