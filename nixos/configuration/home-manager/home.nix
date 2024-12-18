@@ -4,9 +4,6 @@
   lib,
   ...
 }:
-# let
-#   fvm = import ./apps/fvm/fvm.nix { inherit pkgs lib builtins; };
-# in
 {
   imports = [ ];
   dconf.settings = {
@@ -165,7 +162,7 @@
   #     indicator = true;
   #   };
   # };
-  
+
   home = {
     packages = with pkgs; [
       microsoft-edge
