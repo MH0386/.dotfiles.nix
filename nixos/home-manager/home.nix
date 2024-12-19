@@ -218,6 +218,7 @@ in
       sqlitestudio
       apksigner
       fvm
+      flutter
       blackbox-terminal
       # poetry
       # poetryPlugins.poetry-plugin-up
