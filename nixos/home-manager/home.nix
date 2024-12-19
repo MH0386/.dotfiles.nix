@@ -234,6 +234,7 @@ in
       "${config.home.homeDirectory}/Android/Sdk/emulator"
       "${config.home.homeDirectory}/Android/Sdk/emulator/bin64"
       "${config.home.homeDirectory}/.pub-cache/bin"
+      "${config.home.homeDirectory}/fvm/default/bin"
     ];
     sessionVariables = {
       ANDROID_HOME = "${config.home.homeDirectory}/Android/Sdk";
