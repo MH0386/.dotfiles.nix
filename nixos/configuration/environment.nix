@@ -30,6 +30,7 @@
         gnumake
         libtool
         cmakeWithGui
+        ninja
         lshw-gui
         lshw
         libsForQt5.full
