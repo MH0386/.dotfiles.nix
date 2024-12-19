@@ -31,6 +31,8 @@
         libtool
         cmakeWithGui
         ninja
+        clang
+        pkg-config
         lshw-gui
         lshw
         libsForQt5.full
