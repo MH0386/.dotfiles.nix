@@ -1,13 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  inputs,
-  system,
-  fh,
-  pkgsStable,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -38,18 +29,8 @@
       ddcutil
     ])
     ++ (with pkgs.stablePackages; [
-      # cups
-      # xsane
-      # cups-filters
-      # ghostscript
-      # sane-backends
-      # sane-frontends
-      # python3Packages.notify2
-      # dbus
-      # python3Packages.reportlab
-      # libjpeg
-      # # libusb
-      # python311Packages.pygobject3
-      # python311Packages.pydbus
+      xsane
+      sane-backends
+      sane-frontends
     ]);
 }

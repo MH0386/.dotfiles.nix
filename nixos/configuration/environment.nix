@@ -29,7 +29,7 @@
         libgcc
         gnumake
         libtool
-        packagekit
+        cmakeWithGui
         lshw-gui
         lshw
         libsForQt5.full
