@@ -26,9 +26,7 @@
         nixpkgs-fmt
         nixd
         gcc
-        libgcc
         gnumake
-        libtool
         cmakeWithGui
         ninja
         clang
