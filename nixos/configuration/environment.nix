@@ -25,13 +25,6 @@
         nixfmt-rfc-style
         nixpkgs-fmt
         nixd
-        gcc
-        gnumake
-        cmakeWithGui
-        ninja
-        clang
-        pkg-config
-        gtk3
         lshw-gui
         lshw
         libsForQt5.full
@@ -44,6 +37,27 @@
         devenv
         nautilus
         nautilus-python
+        gcc
+        gnumake
+        at-spi2-core.dev
+        clang
+        cmake
+        dbus.dev
+        gtk3
+        gobject-introspection
+        libdatrie
+        libepoxy.dev
+        libselinux
+        libsepol
+        libthai
+        libxkbcommon
+        ninja
+        pcre
+        pkg-config
+        util-linux.dev
+        xorg.libXdmcp
+        xorg.libXtst
+        glib
       ])
       ++ (with pkgs.stablePackages; [
         # gnome-extension-manager

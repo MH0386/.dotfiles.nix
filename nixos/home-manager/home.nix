@@ -167,6 +167,23 @@ in
   # };
 
   home = {
+    shellAliases = {
+      ll = "ls -l";
+      la = "ls -la";
+      l = "ls";
+      c = "clear";
+      h = "history";
+      e = "exit";
+      g = "git";
+      t = "topgrade";
+      b = "bat";
+      d = "direnv";
+      z = "zsh";
+      r = "ruff";
+      s = "ssh";
+      f = "fvm flutter";
+      flutter = "fvm flutter";
+    };
     packages = with pkgs; [
       microsoft-edge
       # google-chrome
@@ -218,7 +235,9 @@ in
       sqlitestudio
       apksigner
       fvm
-      flutter
+      gtk3
+      glib
+      # flutterPackages-source.beta
       blackbox-terminal
       # poetry
       # poetryPlugins.poetry-plugin-up
@@ -235,7 +254,7 @@ in
       "${config.home.homeDirectory}/Android/Sdk/emulator"
       "${config.home.homeDirectory}/Android/Sdk/emulator/bin64"
       "${config.home.homeDirectory}/.pub-cache/bin"
-      "${config.home.homeDirectory}/fvm/default/bin"
+      # "${config.home.homeDirectory}/fvm/default/bin"
     ];
     sessionVariables = {
       ANDROID_HOME = "${config.home.homeDirectory}/Android/Sdk";
@@ -250,6 +269,13 @@ in
       PIXI_ENVIRONMENT_PLATFORMS = "linux-64";
       PIXI_PROMPT = "(default) ";
       FVM_PRIVILEGED_ACCESS = "true";
+      CHROME_EXECUTABLE = "${pkgs.microsoft-edge}/bin/microsoft-edge"; # /etc/profiles/per-user/mohamed/bin/microsoft-edge
+      LD_LIBRARY_PATH =
+        with pkgs;
+        lib.makeLibraryPath [
+          fontconfig.lib
+          sqlite.out
+        ];
     };
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
