@@ -5,7 +5,7 @@ let
       builtins.readFile (
         builtins.fetchurl {
           url = "https://api.github.com/repos/leoafarias/fvm/releases/latest";
-          sha256 = "188kw473b2bfhykfyy41hhn9dgfy6cggz10njk74gf6pnvsj4b67";
+          sha256 = "1dsa82an9rrk0ca3by1nlzq14kgdv3cldl202b3y2ak9fv3zbi15";
         }
       )
     )).tag_name;
