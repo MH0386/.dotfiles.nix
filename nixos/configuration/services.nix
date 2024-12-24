@@ -105,7 +105,6 @@
       desktopManager.gnome.enable = true;
       displayManager.gdm.enable = true;
     };
-    gnome.sushi.enable = true;
     # Enable the OpenSSH daemon.
     openssh.enable = true;
     pipewire = {
@@ -119,6 +118,20 @@
       # use the example session manager (no others are packaged yet so this is enabled by default,
       # no need to redefine it in your config for now)
       #media-session.enable = true;
+    };
+    gnome = {
+      sushi.enable = true;
+      gnome-user-share.enable = true;
+    };
+    samba = {
+      enable = true;
+      openFirewall = true;
+      settings = {
+        public = {
+          browseable = "yes";
+          comment = "Public samba share.";
+        };
+      };
     };
   };
 }
