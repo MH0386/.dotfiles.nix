@@ -130,6 +130,8 @@
         public = {
           browseable = "yes";
           comment = "Public samba share.";
+          writable = "yes";
+          "guest ok" = "yes";
         };
       };
     };
