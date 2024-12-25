@@ -59,7 +59,7 @@
         xorg.libXtst
         glib
       ])
-      ++ (with pkgs.nur.repos; [
+      ++ (with pkgs.NUR.repos; [
         MH0386.fvm
       ])
       ++ (with pkgs.stablePackages; [
