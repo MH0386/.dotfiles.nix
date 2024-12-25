@@ -25,6 +25,10 @@
       url = "github:MarceColl/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -33,7 +37,7 @@
       nixpkgs-stable,
       fh,
       nix-flatpak,
-      home-manager,
+      home-manager, nur,
       ...
     }@inputs:
     let
@@ -64,7 +68,6 @@
                 commonModules
                 ++ [ { networking.hostName = hostName; } ] # Sets the hostname
                 ++ [ (./. + "/nixos/device/${hostName}/configuration.nix") ]; # Imports the per-host configuration.nix
-              # ++ [ ./device/${hostName}/configuration.nix ]; # Imports the per-host configuration.nix
               specialArgs = {
                 inherit inputs;
                 inherit system;

@@ -59,6 +59,9 @@
         xorg.libXtst
         glib
       ])
+      ++ (with pkgs.nur.repos; [
+        MH0386.fvm
+      ])
       ++ (with pkgs.stablePackages; [
         # gnome-extension-manager
       ])

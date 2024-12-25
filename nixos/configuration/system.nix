@@ -1,4 +1,9 @@
-{ pkgs, pkgsStable, ... }:
+{
+  pkgs,
+  pkgsStable,
+  nur,
+  ...
+}:
 {
   nix.settings = {
     substituters = [
@@ -26,7 +31,12 @@
       allowUnfree = true;
       android_sdk.accept_license = true;
     };
-    overlays = [ (self: super: { stablePackages = pkgsStable; }) ];
+    overlays = [
+      (self: super: {
+        stablePackages = pkgsStable;
+        NUR = nur;
+      })
+    ];
   };
 
   # This value determines the NixOS release from which the default

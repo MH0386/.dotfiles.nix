@@ -4,9 +4,6 @@
   lib,
   ...
 }:
-let
-  fvm = import ./../apps/fvm/fvm.nix { inherit pkgs lib builtins; };
-in
 {
   imports = [ ];
   dconf.settings = {
@@ -234,7 +231,6 @@ in
       sqlite
       sqlitestudio
       apksigner
-      fvm
       gtk3
       glib
       # flutterPackages-source.beta
