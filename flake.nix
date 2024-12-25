@@ -37,7 +37,8 @@
       nixpkgs-stable,
       fh,
       nix-flatpak,
-      home-manager, nur,
+      home-manager,
+      nur,
       ...
     }@inputs:
     let
@@ -73,6 +74,7 @@
                 inherit system;
                 inherit fh;
                 inherit pkgsStable;
+                inherit nur;
               };
             }
           )
