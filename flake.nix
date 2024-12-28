@@ -45,7 +45,7 @@
       system = "x86_64-linux";
       inherit (nixpkgs) lib;
       pkgsStable = import nixpkgs-stable {
-        system = system;
+        inherit system;
         config.allowUnfree = true;
       };
       hostNames = [
@@ -55,6 +55,7 @@
       commonModules = [
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
+        nur.modules.nixos.default
         ./nixos/configuration.nix
       ];
     in

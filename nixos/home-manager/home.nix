@@ -6,6 +6,7 @@
 }:
 {
   imports = [ ];
+
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
@@ -241,6 +242,7 @@
       # poetryPlugins.poetry-plugin-export
       # poetryPlugins.poetry-plugin-poeblix
       # gitbutler
+      pkgs.nur.repos.MH0386.fvm
     ];
     sessionPath = [
       "${config.home.homeDirectory}/.pixi/envs/default/bin"
@@ -266,12 +268,6 @@
       PIXI_PROMPT = "(default) ";
       FVM_PRIVILEGED_ACCESS = "true";
       CHROME_EXECUTABLE = "${pkgs.microsoft-edge}/bin/microsoft-edge"; # /etc/profiles/per-user/mohamed/bin/microsoft-edge
-      LD_LIBRARY_PATH =
-        with pkgs;
-        lib.makeLibraryPath [
-          fontconfig.lib
-          sqlite.out
-        ];
     };
     # Home Manager needs a bit of information about you and the
     # paths it should manage.

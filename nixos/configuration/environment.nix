@@ -59,9 +59,9 @@
         xorg.libXtst
         glib
       ])
-      ++ (with pkgs.NUR.repos; [
-        MH0386.fvm
-      ])
+      # ++ (with pkgs.NUR.packages; [
+      #   MH0386.fvm
+      # ])
       ++ (with pkgs.stablePackages; [
         # gnome-extension-manager
       ])
@@ -74,6 +74,7 @@
         gst-libav
       ])
       ++ (with inputs; [
+        # flox.packages.${system}.default
         # fh.packages.${system}.default
         # nixos-conf-editor.packages.${system}.nixos-conf-editor
         # nix-software-center.packages.${system}.nix-software-center
