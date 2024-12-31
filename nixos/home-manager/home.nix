@@ -223,7 +223,7 @@
       gnome-contacts
       bitwarden-cli
       bitwarden-desktop
-      gimp-with-plugins
+      # gimp-with-plugins
       firefoxpwa
       beeper
       ptyxis
@@ -234,6 +234,8 @@
       apksigner
       gtk3
       glib
+      rustup
+      rustscan
       # flutterPackages-source.beta
       blackbox-terminal
       # poetry

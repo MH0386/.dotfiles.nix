@@ -32,8 +32,8 @@
         gnome-extensions-cli
         gnome-tweaks
         ntfs3g
-        qemu_kvm
-        qemu_full
+        # qemu_kvm
+        # qemu_full
         devenv
         nautilus
         nautilus-python
