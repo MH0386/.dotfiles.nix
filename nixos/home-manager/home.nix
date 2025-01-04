@@ -238,6 +238,7 @@
       rustscan
       # flutterPackages-source.beta
       blackbox-terminal
+      # dioxus-cli
       # poetry
       # poetryPlugins.poetry-plugin-up
       # poetryPlugins.poetry-audit-plugin
@@ -254,6 +255,7 @@
       "${config.home.homeDirectory}/Android/Sdk/emulator"
       "${config.home.homeDirectory}/Android/Sdk/emulator/bin64"
       "${config.home.homeDirectory}/.pub-cache/bin"
+      "${config.home.homeDirectory}/.cargo/bin"
       # "${config.home.homeDirectory}/fvm/default/bin"
     ];
     sessionVariables = {
