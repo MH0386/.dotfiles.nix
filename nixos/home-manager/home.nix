@@ -238,6 +238,7 @@
       rustscan
       # flutterPackages-source.beta
       blackbox-terminal
+      jan
       # dioxus-cli
       # poetry
       # poetryPlugins.poetry-plugin-up
