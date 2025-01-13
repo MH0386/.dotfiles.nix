@@ -79,6 +79,10 @@
     zsh = {
       enable = true;
       autosuggestion.enable = true;
+      initExtra = ''
+        eval "$(flox activate -d ~ -m run)"
+        eval "$(direnv hook zsh)"
+      '';
     };
     bash.enable = true;
     gh.enable = true;
@@ -216,7 +220,7 @@
       kubectl
       kubernetes
       kompose
-      warp-terminal
+      # warp-terminal
       nextcloud-client
       gnome-boxes
       shotwell
