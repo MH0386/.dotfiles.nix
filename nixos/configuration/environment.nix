@@ -27,7 +27,6 @@
         nixd
         lshw-gui
         lshw
-        libsForQt5.full
         nvtopPackages.nvidia
         gnome-extensions-cli
         gnome-tweaks
@@ -58,6 +57,7 @@
         xorg.libXdmcp
         xorg.libXtst
         glib
+        cudatoolkit
       ])
       # ++ (with pkgs.NUR.packages; [
       #   MH0386.fvm
