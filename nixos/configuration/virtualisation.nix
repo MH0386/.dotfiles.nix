@@ -7,7 +7,7 @@
       qemu.package = pkgs.qemu_kvm;
     };
     containers.enable = true;
-  podman = {
+    podman = {
       enable = true;
       # Create a `docker` alias for podman, to use it as a drop-in replacement
       dockerCompat = true;
