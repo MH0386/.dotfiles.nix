@@ -14,5 +14,5 @@
     "labels": ["Lockfile"]
   },
   "osvVulnerabilityAlerts": true,
-  "dependencyDashboardOSVVulnerabilitySummary": "all",
+  "dependencyDashboardOSVVulnerabilitySummary": "all"
 }
