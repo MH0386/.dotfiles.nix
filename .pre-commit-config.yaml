@@ -39,6 +39,9 @@ repos:
     rev: 1.19.1
     hooks:
       - id: yamlfix
+        args:
+          - -c
+          - .github/lint/.yamlfix.toml
   - repo: https://github.com/rhysd/actionlint
     rev: v1.7.10
     hooks:
