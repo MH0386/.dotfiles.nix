@@ -50,3 +50,7 @@ repos:
     rev: v3.92.4
     hooks:
       - id: trufflehog
+  - repo: https://github.com/NixOS/nixfmt
+    rev: v1.1.0
+    hooks:
+      - id: nixfmt
