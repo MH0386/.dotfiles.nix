@@ -172,7 +172,10 @@
       h = "history";
     };
     packages = with pkgs; [
-      microsoft-edge
+      prek
+      pre-commit
+      uv
+      # microsoft-edge
       # google-chrome
       ffmpeg
       # code-cursor
