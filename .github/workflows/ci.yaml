@@ -15,28 +15,30 @@ permissions:
   security-events: write
   actions: read
 jobs:
-  prek:
-    name: prek
+  pre-commit:
+    name: pre-commit
     runs-on: ubuntu-latest
-    environment: prek
+    environment: pre-commit
     if: github.event_name != 'schedule'
     steps:
       - name: Checkout repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-      - name: Restore prek cache
+      - name: Setup UV
+        uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
+      - name: Restore pre-commit cache
         uses: actions/cache/restore@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
         id: cache-restore
         with:
-          path: ~/.cache/prek
-          key: prek-${{ hashFiles('**/.pre-commit-config.yaml') }}
-          restore-keys: prek-
-      - name: Run prek hooks
-        uses: j178/prek-action@91fd7d7cf70ae1dee9f4f44e7dfa5d1073fe6623 # v1.0.11
-      - name: Save prek cache
+          path: ~/.cache/pre-commit
+          key: pre-commit-${{ hashFiles('**/.pre-commit-config.yaml') }}
+          restore-keys: pre-commit-
+      - name: Run pre-commit hooks
+        run: uvx pre-commit run --show-diff-on-failure --color=always --all-files
+      - name: Save pre-commit cache
         uses: actions/cache/save@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
         if: always() && steps.cache-restore.outputs.cache-hit != 'true'
         with:
-          path: ~/.cache/prek
+          path: ~/.cache/pre-commit
           key: ${{ steps.cache-restore.outputs.cache-primary-key }}
       - name: Run pre-commit-ci-lite
         uses: pre-commit-ci/lite-action@5d6cc0eb514c891a40562a58a8e71576c5c7fb43 # v1.1.0
