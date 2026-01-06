@@ -170,16 +170,6 @@
       l = "ls";
       c = "clear";
       h = "history";
-      e = "exit";
-      g = "git";
-      t = "topgrade";
-      b = "bat";
-      d = "direnv";
-      z = "zsh";
-      r = "ruff";
-      s = "ssh";
-      f = "fvm flutter";
-      flutter = "fvm flutter";
     };
     packages = with pkgs; [
       microsoft-edge
