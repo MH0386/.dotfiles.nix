@@ -49,5 +49,6 @@
       enable = true;
       enableSSHSupport = true;
     };
+    seahorse.enable = true;
   };
 }
