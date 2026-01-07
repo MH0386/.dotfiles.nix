@@ -17,6 +17,7 @@
         # nix-software-center.packages.${system}.nix-software-center
       ])
       ++ (with pkgs; [
+        nvitop
         gpu-viewer
         dialect
         gdm-settings
