@@ -6,9 +6,6 @@
 }:
 {
   environment = {
-    sessionVariables = {
-      NAUTILUS_4_EXTENSION_DIR = lib.mkDefault "${pkgs.stablePackages.nautilus-python}/lib/nautilus/extensions-4";
-    };
     pathsToLink = [
       "/share/xdg-desktop-portal"
       "/share/applications"
