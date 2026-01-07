@@ -230,6 +230,10 @@
       enable = true;
       nix-direnv.enable = true;
     };
+    vicinae = {
+      enable = true;
+      systemd.enable = true;
+    };
   };
 
   home = {
