@@ -5,6 +5,10 @@
     atuin.enable = true;
     vnstat.enable = true;
     pulseaudio.enable = false;
+    avahi = {
+      enable = true;
+      publish.enable = true;
+    };
     flatpak = {
       enable = true;
       uninstallUnmanaged = true;
