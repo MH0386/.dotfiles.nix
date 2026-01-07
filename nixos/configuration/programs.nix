@@ -3,6 +3,10 @@
   programs = {
     niri.enable = true;
     dms-shell.enable = true;
+    xonsh = {
+      enable = true;
+      config = "execx($(atuin init xonsh))";
+    };
     zsh.enable = true;
     # evolution.enable = true;
     nix-ld.enable = true;
