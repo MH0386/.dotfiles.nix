@@ -84,6 +84,14 @@
         eval "$(direnv hook zsh)"
       '';
     };
+    xonsh = { 
+      enable = true;
+      bashCompletion = {
+        enable = true;
+
+      };
+    };
+    zoxide.enableXonshIntegration = true;
     bash.enable = true;
     gh.enable = true;
     ruff = {
