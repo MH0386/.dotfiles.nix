@@ -33,12 +33,7 @@
       allowUnfree = true;
       android_sdk.accept_license = true;
     };
-    overlays = (
-      [
-        nur.overlay
-      ]
-      ++ [ (self: super: { stablePackages = pkgsStable; }) ]
-    );
+    overlays = ([ nur.overlays.default ] ++ [ (self: super: { stablePackages = pkgsStable; }) ]);
   };
 
   # This value determines the NixOS release from which the default
