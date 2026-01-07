@@ -2,7 +2,7 @@
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mohamed = {
-    shell = pkgs.zsh;
+    shell = pkgs.xonsh;
     isNormalUser = true;
     description = "Mohamed Hisham";
     extraGroups = [
