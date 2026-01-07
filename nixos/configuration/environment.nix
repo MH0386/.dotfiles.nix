@@ -17,6 +17,7 @@
         nix-software-center.packages.${system}.nix-software-center
       ])
       ++ (with pkgs; [
+        dconf-editor
         nvitop
         gpu-viewer
         dialect
