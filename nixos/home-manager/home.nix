@@ -178,39 +178,52 @@
       c = "clear";
       h = "history";
     };
-    packages = with pkgs; [
-      prek
-      pre-commit
-      uv
-      ffmpeg
-      clapper
-      vlc
-      # celeste
-      act
-      jetbrains.pycharm
-      spacedrive
-      zed-editor
-      httpie
-      httpie-desktop
-      podman-compose
-      # podman-desktop
-      warp-terminal
-      gnome-boxes
-      shotwell
-      gnome-contacts
-      bitwarden-cli
-      bitwarden-desktop
-      gimp-with-plugins
-      beeper
-      ghostty
-      yq-go
-      rustup
-      gtk3
-      glib
-      rustup
-      rustscan
-      gitbutler
-    ];
+    packages =
+      (with pkgs.gnomeExtensions; [
+        timer
+        wiggle
+        appindicator
+        caffeine
+        clipboard-indicator
+        dash-to-dock
+        gtk4-desktop-icons-ng-ding
+      ])
+      ++ (with pkgs; [
+        prek
+        pre-commit
+        uv
+        ffmpeg
+        clapper
+        vlc
+        act
+        jetbrains.pycharm
+        spacedrive
+        zed-editor
+        httpie
+        httpie-desktop
+        podman-desktop
+        termius
+        remmina
+        kubectl
+        kubernetes
+        kompose
+        warp-terminal
+        gnome-boxes
+        shotwell
+        gnome-contacts
+        bitwarden-cli
+        bitwarden-desktop
+        gimp-with-plugins
+        beeper
+        ghostty
+        yq-go
+        rustup
+        gtk3
+        glib
+        rustup
+        rustscan
+        gitbutler
+      ]);
     sessionPath = [
       "${config.home.homeDirectory}/.cargo/bin"
     ];
