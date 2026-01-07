@@ -125,6 +125,9 @@
     gnome = {
       sushi.enable = true;
       gnome-user-share.enable = true;
+      gnome-keyring.enable = true;
+      gnome-software.enable = true;
+      gnome-online-accounts.enable = true;
     };
     samba = {
       enable = true;
