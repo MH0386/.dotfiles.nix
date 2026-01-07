@@ -87,7 +87,7 @@
     fwupd.enable = true;
     ollama = {
       enable = true;
-      acceleration = "cuda";
+      package = pkgs.ollama-cuda;
     };
     # Enable the KDE Plasma Desktop Environment.
     # displayManager = {
