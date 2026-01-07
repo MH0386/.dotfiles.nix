@@ -170,6 +170,7 @@
   home = {
     file = {
       ".config/niri/config.kdl".source = ./dotfiles/tiling-window-manager/niri/config.kdl;
+      ".config/zed/settings.json".source = ./dotfiles/development/ide/zed/settings.json;
     };
     shellAliases = {
       ll = "ls -l";
