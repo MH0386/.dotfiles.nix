@@ -35,7 +35,6 @@
         nixd
         nil
         lshw-gui
-        lshw
         nvtopPackages.nvidia
         gnome-extensions-cli
         gnome-tweaks
@@ -43,28 +42,10 @@
         # qemu_kvm
         # qemu_full
         devenv
-        nautilus
         nautilus-python
         gcc
-        gnumake
-        at-spi2-core.dev
         clang
         cmake
-        dbus.dev
-        gtk3
-        gobject-introspection
-        libdatrie
-        libepoxy.dev
-        libselinux
-        libsepol
-        libthai
-        libxkbcommon
-        ninja
-        pcre
-        pkg-config
-        util-linux.dev
-        xorg.libXdmcp
-        xorg.libXtst
         glib
         gnome-extension-manager
         # cudatoolkit
