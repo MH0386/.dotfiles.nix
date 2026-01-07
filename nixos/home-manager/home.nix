@@ -177,97 +177,39 @@
       prek
       pre-commit
       uv
-      # microsoft-edge
-      # google-chrome
       ffmpeg
-      # code-cursor
       clapper
-      nodejs_22
-      pixi
       vlc
       # celeste
-      distrobox
-      autoflake
-      fastlane
       act
-      # dart
-      jetbrains.idea-ultimate
-      jetbrains.pycharm-professional
-      # android-studio-full
-      # android-studio-tools
-      android-studio
-      audacity
+      jetbrains.pycharm
       spacedrive
       zed-editor
-      # gearlever
-      discord
       httpie
       httpie-desktop
       podman-compose
       # podman-desktop
-      termius
-      remmina
-      kubectl
-      kubernetes
-      kompose
-      # warp-terminal
-      nextcloud-client
+      warp-terminal
       gnome-boxes
       shotwell
       gnome-contacts
       bitwarden-cli
       bitwarden-desktop
-      # gimp-with-plugins
-      firefoxpwa
+      gimp-with-plugins
       beeper
-      ptyxis
+      ghostty
       yq-go
       rustup
-      sqlite
-      sqlitestudio
-      apksigner
       gtk3
       glib
       rustup
       rustscan
-      # flutterPackages-source.beta
-      blackbox-terminal
-      jan
-      # dioxus-cli
-      # poetry
-      # poetryPlugins.poetry-plugin-up
-      # poetryPlugins.poetry-audit-plugin
-      # poetryPlugins.poetry-plugin-export
-      # poetryPlugins.poetry-plugin-poeblix
-      # gitbutler
-      pkgs.nur.repos.MH0386.fvm
+      gitbutler
     ];
     sessionPath = [
-      "${config.home.homeDirectory}/.pixi/envs/default/bin"
-      "${config.home.homeDirectory}/Android/Sdk/platform-tools"
-      "${config.home.homeDirectory}/Android/Sdk/tools/bin"
-      "${config.home.homeDirectory}/Android/Sdk/cmdline-tools/latest/bin"
-      "${config.home.homeDirectory}/Android/Sdk/emulator"
-      "${config.home.homeDirectory}/Android/Sdk/emulator/bin64"
-      "${config.home.homeDirectory}/.pub-cache/bin"
       "${config.home.homeDirectory}/.cargo/bin"
-      # "${config.home.homeDirectory}/fvm/default/bin"
     ];
-    sessionVariables = {
-      ANDROID_HOME = "${config.home.homeDirectory}/Android/Sdk";
-      # GSK_RENDERER = "ngl";
-      CONDA_PREFIX = "${config.home.homeDirectory}/.pixi/envs/default";
-      PIXI_IN_SHELL = "1";
-      PIXI_PROJECT_NAME = "default";
-      PIXI_PROJECT_ROOT = "${config.home.homeDirectory}";
-      PIXI_PROJECT_MANIFEST = "${config.home.homeDirectory}/pixi.toml";
-      CONDA_DEFAULT_ENV = "default";
-      PIXI_ENVIRONMENT_NAME = "default";
-      PIXI_ENVIRONMENT_PLATFORMS = "linux-64";
-      PIXI_PROMPT = "(default) ";
-      FVM_PRIVILEGED_ACCESS = "true";
-      CHROME_EXECUTABLE = "${pkgs.microsoft-edge}/bin/microsoft-edge"; # /etc/profiles/per-user/mohamed/bin/microsoft-edge
-    };
+    sessionVariables = { };
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
     username = "mohamed";
