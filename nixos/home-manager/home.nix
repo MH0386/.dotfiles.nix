@@ -196,16 +196,12 @@
     starship = {
       enable = true;
       settings = {
-        add_newline = false;
-        format = lib.concatStrings [
-          "[┌───────────────────<](bold green) @ $all $line_break"
-          "[└─](bold green)$character"
-        ];
-        character = {
-          success_symbol = "➜";
-          error_symbol = "➜";
-        };
+        format = "$all";
       };
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableZshIntegration = true;
+      enableNushellIntegration = true;
     };
     topgrade = {
       enable = true;
