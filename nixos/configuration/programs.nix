@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
   programs = {
+    niri.enable = true;
+    dms-shell.enable = true;
     zsh.enable = true;
     # evolution.enable = true;
     nix-ld.enable = true;
