@@ -6,7 +6,7 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs?ref=nixos-25.11";
     nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*.tar.gz";
     nix-software-center = {
-      url = "github:snowfallorg/nix-software-center";
+      url = "github:ljubitje/nix-software-center";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-conf-editor = {
