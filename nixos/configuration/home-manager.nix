@@ -9,9 +9,7 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
     users.mohamed = import ./../home-manager/home.nix;
-    extraSpecialArgs = {
-      inherit nur;
-    };
+    extraSpecialArgs = { inherit nur; };
     backupFileExtension = "backup-${timestamp}";
   };
 }
