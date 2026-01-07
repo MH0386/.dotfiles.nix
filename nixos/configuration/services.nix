@@ -2,6 +2,7 @@
 {
   services = {
     iio-niri.enable = true;
+    atuin.enable = true;
     vnstat.enable = true;
     pulseaudio.enable = false;
     flatpak = {
