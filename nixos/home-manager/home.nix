@@ -302,7 +302,6 @@
         bitwarden-desktop
         gimp-with-plugins
         beeper
-        ghostty
         yq-go
         rustup
         gtk3
