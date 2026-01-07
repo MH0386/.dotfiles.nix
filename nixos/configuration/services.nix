@@ -104,10 +104,10 @@
       xkb.layout = "us";
       # Load nvidia driver for Xorg and Wayland
       videoDrivers = [ "nvidia" ];
-      # Enable the GNOME Desktop Environment.
-      desktopManager.gnome.enable = true;
-      displayManager.gdm.enable = true;
     };
+    # Enable the GNOME Desktop Environment.
+    desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
     # Enable the OpenSSH daemon.
     openssh.enable = true;
     pipewire = {
