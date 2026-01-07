@@ -63,9 +63,11 @@
     home-manager.enable = true;
     git = {
       enable = true;
-      userName = "Mohamed Hisham Abdelzaher";
-      userEmail = "mohamed.hisham.abdelzaher@gmail.com";
-      extraConfig = {
+      settings = {
+        user = {
+          name = "Mohamed Hisham Abdelzaher";
+          email = "mohamed.hisham.abdelzaher@gmail.com";
+        };
         pull.rebase = false;
         init.defaultBranch = "main";
         credential = {
