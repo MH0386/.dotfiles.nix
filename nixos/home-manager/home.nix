@@ -166,6 +166,9 @@
   # };
 
   home = {
+    file = {
+      ".config/niri/config.kdl".source = ./dotfiles/tiling-window-manager/niri/config.kdl;
+    };
     shellAliases = {
       ll = "ls -l";
       la = "ls -la";
