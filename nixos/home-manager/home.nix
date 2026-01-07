@@ -79,10 +79,6 @@
     zsh = {
       enable = true;
       autosuggestion.enable = true;
-      initExtra = ''
-        eval "$(flox activate -d ~ -m run)"
-        eval "$(direnv hook zsh)"
-      '';
     };
     xonsh = {
       enable = true;
