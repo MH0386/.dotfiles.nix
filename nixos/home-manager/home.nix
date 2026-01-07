@@ -92,11 +92,7 @@
       enable = true;
       autosuggestion.enable = true;
     };
-    xonsh = {
-      enable = true;
-      bashCompletion.enable = true;
-    };
-    zoxide.enableXonshIntegration = true;
+    zoxide.enable = true;
     bash.enable = true;
     gh.enable = true;
     ruff = {
@@ -166,7 +162,6 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-      enableXonshIntegration = true;
     };
   };
 
