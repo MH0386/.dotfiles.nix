@@ -2,10 +2,7 @@
 {
   services = {
     vnstat.enable = true;
-    avahi = {
-      enable = true;
-      publish.enable = true;
-    };
+    pulseaudio.enable = false;
     flatpak = {
       enable = true;
       uninstallUnmanaged = true;

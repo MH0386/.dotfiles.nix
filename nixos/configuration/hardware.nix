@@ -1,7 +1,6 @@
 { pkgs, config, ... }:
 {
   hardware = {
-    pulseaudio.enable = false;
     enableAllFirmware = true;
     bluetooth = {
       enable = true;
