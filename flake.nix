@@ -2,8 +2,8 @@
   description = "My NixOS Flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs?ref=nixos-25.11";
     nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*.tar.gz";
     nix-software-center = {
       url = "github:snowfallorg/nix-software-center";
@@ -29,6 +29,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -39,6 +43,7 @@
       nix-flatpak,
       home-manager,
       nur,
+      lanzaboote,
       ...
     }@inputs:
     let
@@ -56,6 +61,7 @@
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         nur.modules.nixos.default
+        lanzaboote.nixosModules.lanzaboote
         ./nixos/configuration.nix
       ];
     in
