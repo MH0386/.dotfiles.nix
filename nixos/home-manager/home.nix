@@ -116,6 +116,17 @@
       enable = true;
       autosuggestion.enable = true;
     };
+    atuin = {
+      enable = true;
+      daemon.enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableNushellIntegration = true;
+      enableZshIntegration = true;
+      settings = {
+        style = "auto";
+      };
+    };
     zoxide.enable = true;
     bash.enable = true;
     gh.enable = true;

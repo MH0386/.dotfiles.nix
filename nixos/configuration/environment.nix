@@ -30,7 +30,6 @@
         livecaptions
         pods
         warehouse
-        atuin
         sbctl
         unzip
         zip
