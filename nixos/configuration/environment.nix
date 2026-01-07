@@ -14,7 +14,7 @@
         # flox.packages.${system}.default
         fh.packages.${system}.default
         # nixos-conf-editor.packages.${system}.nixos-conf-editor
-        # nix-software-center.packages.${system}.nix-software-center
+        nix-software-center.packages.${system}.nix-software-center
       ])
       ++ (with pkgs; [
         nvitop
