@@ -47,6 +47,18 @@
     };
   };
 
+  services = {
+    gpg-agent = {
+      enable = true;
+      defaultCacheTtl = 1800;
+      enableSshSupport = true;
+    };
+    #   kdeconnect = {
+    #     enable = true;
+    #     indicator = true;
+    #   };
+  };
+
   programs = {
     home-manager.enable = true;
     git = {
@@ -157,13 +169,6 @@
       enableXonshIntegration = true;
     };
   };
-
-  # services = {
-  #   kdeconnect = {
-  #     enable = true;
-  #     indicator = true;
-  #   };
-  # };
 
   home = {
     file = {
