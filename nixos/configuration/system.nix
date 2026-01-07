@@ -48,11 +48,11 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system = {
-    stateVersion = "24.05";
+    stateVersion = "25.11";
     autoUpgrade = {
       enable = true;
       allowReboot = true;
-      channel = "https://channels.nixos.org/nixos-24.05";
+      dates = "daily";
     };
   };
   # powerManagement.powertop.enable = true;
