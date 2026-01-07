@@ -244,6 +244,13 @@
       git = true;
       icons = "always";
     };
+    carapace = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableZshIntegration = true;
+      enableNushellIntegration = true;
+    };
   };
 
   home = {
