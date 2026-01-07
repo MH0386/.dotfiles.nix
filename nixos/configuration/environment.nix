@@ -17,6 +17,17 @@
         # nix-software-center.packages.${system}.nix-software-center
       ])
       ++ (with pkgs; [
+        gpu-viewer
+        dialect
+        gdm-settings
+        mediawriter
+        amberol
+        czkawka
+        szyszka
+        bottles
+        livecaptions
+        pods
+        warehouse
         atuin
         sbctl
         unzip
