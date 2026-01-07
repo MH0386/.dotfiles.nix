@@ -6,11 +6,6 @@
 }:
 {
   environment = {
-    pathsToLink = [
-      "/share/xdg-desktop-portal"
-      "/share/applications"
-      "/share/nautilus-python/extensions"
-    ];
     localBinInPath = true;
     homeBinInPath = true;
     systemPackages =
