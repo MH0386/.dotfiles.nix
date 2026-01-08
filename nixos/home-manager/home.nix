@@ -325,6 +325,7 @@
         clipboard-indicator
         dash-to-dock
         gtk4-desktop-icons-ng-ding
+        vicinae
       ])
       ++ (with pkgs; [
         prek
