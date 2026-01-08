@@ -245,6 +245,9 @@
       enableZshIntegration = true;
       enableNushellIntegration = true;
     };
+    gemini-cli = {
+      enable = true;
+    };
   };
 
   home = {
