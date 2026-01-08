@@ -248,6 +248,10 @@
     gemini-cli = {
       enable = true;
     };
+    opencode = {
+      enable = true;
+      enableMcpIntegration = true;
+    };
   };
 
   home = {
