@@ -337,7 +337,6 @@
         act
         jetbrains.pycharm
         spacedrive
-        zed-editor
         httpie
         httpie-desktop
         podman-desktop
