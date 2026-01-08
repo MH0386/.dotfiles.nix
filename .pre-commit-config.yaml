@@ -30,7 +30,7 @@ repos:
         args:
           - --autofix
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 42.74.1
+    rev: 42.74.6
     hooks:
       - id: renovate-config-validator
         args:
@@ -51,6 +51,6 @@ repos:
     hooks:
       - id: trufflehog
   - repo: https://github.com/NixOS/nixfmt
-    rev: v1.1.0
+    rev: v1.2.0
     hooks:
       - id: nixfmt
