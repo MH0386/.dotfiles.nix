@@ -302,6 +302,9 @@
         "mcp-server-brave-search"
       ];
     };
+    uv = {
+      enable = true;
+    };
   };
 
   home = {
@@ -329,7 +332,6 @@
       ++ (with pkgs; [
         prek
         pre-commit
-        uv
         ffmpeg
         clapper
         vlc
