@@ -330,6 +330,9 @@
         vicinae
       ])
       ++ (with pkgs; [
+        upscaler
+        upscayl
+        doppler
         prek
         pre-commit
         ffmpeg
