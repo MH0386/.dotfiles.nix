@@ -41,6 +41,10 @@
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
+    cursorTheme = {
+      name = "WhiteSur-cursors";
+      package = pkgs.whitesur-cursors;
+    };
   };
 
   # Wayland, X, etc. support for session vars
@@ -308,6 +312,13 @@
   };
 
   home = {
+    pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      package = pkgs.whitesur-cursors;
+      name = "WhiteSur-cursors";
+      size = 24;
+    };
     file = {
       ".config/niri/config.kdl".source = ./dotfiles/tiling-window-manager/niri/config.kdl;
     };
