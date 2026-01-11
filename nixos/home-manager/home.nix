@@ -27,6 +27,28 @@
   dconf.settings = {
     "org/gnome/desktop/interface".color-scheme = "prefer-dark";
     "org/gnome/desktop/default-applications".terminal = "ghostty.desktop";
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      name = "Launch Terminal";
+      command = "ghostty";
+      binding = "<Super>t";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      name = "Launch Vicinae";
+      command = "vicinae toggle";
+      binding = "<Alt>space";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+      name = "Launch Clipboard History";
+      command = "vicinae deeplink vicinae://extensions/vicinae/clipboard/history";
+      binding = "<Super>v";
+    };
   };
 
   gtk = {
