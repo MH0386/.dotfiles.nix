@@ -363,6 +363,8 @@
         vicinae
       ])
       ++ (with pkgs; [
+        newelle
+        trivy
         upscaler
         upscayl
         doppler
