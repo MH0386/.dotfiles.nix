@@ -331,6 +331,7 @@
     uv = {
       enable = true;
     };
+    element-desktop.enable = true;
   };
 
   home = {
