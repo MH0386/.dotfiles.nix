@@ -364,6 +364,7 @@
         vicinae
       ])
       ++ (with pkgs; [
+        dioxus-cli
         newelle
         trivy
         upscaler
