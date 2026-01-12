@@ -335,6 +335,9 @@
     git-cliff = {
       enable = true;
     };
+    yazi = {
+      enable = true;
+    };
   };
 
   home = {
