@@ -17,13 +17,9 @@
         nix-software-center.packages.${system}.nix-software-center
       ])
       ++ (with pkgs; [
-        dconf-editor
         nvitop
         gpu-viewer
-        dialect
         gdm-settings
-        mediawriter
-        amberol
         czkawka
         szyszka
         bottles
@@ -34,7 +30,6 @@
         unzip
         zip
         wget
-        nixfmt-rfc-style
         nixpkgs-fmt
         nixd
         nil
@@ -43,8 +38,6 @@
         gnome-extensions-cli
         gnome-tweaks
         ntfs3g
-        # qemu_kvm
-        # qemu_full
         devenv
         nautilus-python
         gcc
