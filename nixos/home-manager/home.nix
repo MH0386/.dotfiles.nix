@@ -95,6 +95,7 @@
       defaultCacheTtl = 1800;
       enableSshSupport = true;
     };
+    ollama.enable = true;
     #   kdeconnect = {
     #     enable = true;
     #     indicator = true;
