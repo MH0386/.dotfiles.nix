@@ -32,6 +32,7 @@
     config = {
       allowUnfree = true;
       android_sdk.accept_license = true;
+      cudaSupport = true;
     };
     overlays = ([ nur.overlays.default ] ++ [ (self: super: { stablePackages = pkgsStable; }) ]);
   };
