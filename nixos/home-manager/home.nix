@@ -343,6 +343,21 @@
         };
       };
     };
+    gnome-shell = {
+      enable = true;
+      extensions = [
+        { package = pkgs.gnomeExtensions.dash-to-dock; }
+        { package = pkgs.gnomeExtensions.vicinae; }
+        { package = pkgs.gnomeExtensions.appindicator; }
+        { package = pkgs.gnomeExtensions.caffeine; }
+        { package = pkgs.gnomeExtensions.clipboard-indicator; }
+        { package = pkgs.gnomeExtensions.gtk4-desktop-icons-ng-ding; }
+        {
+          id = "6807";
+          package = pkgs.gnome-shell-extensions;
+        }
+      ];
+    };
     git-cliff = {
       enable = true;
     };
