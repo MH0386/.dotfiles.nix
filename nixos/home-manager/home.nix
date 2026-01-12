@@ -384,58 +384,48 @@
       c = "clear";
       h = "history";
     };
-    packages =
-      (with pkgs.gnomeExtensions; [
-        timer
-        wiggle
-        appindicator
-        caffeine
-        clipboard-indicator
-        dash-to-dock
-        gtk4-desktop-icons-ng-ding
-        vicinae
-      ])
-      ++ (with pkgs; [
-        dioxus-cli
-        newelle
-        trivy
-        upscaler
-        upscayl
-        doppler
-        prek
-        pre-commit
-        ffmpeg
-        clapper
-        vlc
-        act
-        jetbrains.pycharm
-        spacedrive
-        httpie
-        httpie-desktop
-        podman-desktop
-        termius
-        remmina
-        kubectl
-        kubernetes
-        kompose
-        warp-terminal
-        gnome-boxes
-        shotwell
-        gnome-contacts
-        bitwarden-cli
-        bitwarden-desktop
-        gimp-with-plugins
-        beeper
-        yq-go
-        rustup
-        gtk3
-        glib
-        rustup
-        rustscan
-        gitbutler
-      ]);
-    sessionPath = [
-      "${config.home.homeDirectory}/.cargo/bin"
+    packages = with pkgs; [
+      nixfmt
+      antigravity
+      dioxus-cli
+      newelle
+      trivy
+      upscaler
+      upscayl
+      doppler
+      prek
+      pre-commit
+      ffmpeg
+      clapper
+      vlc
+      act
+      jetbrains.pycharm
+      spacedrive
+      httpie
+      httpie-desktop
+      podman-desktop
+      termius
+      remmina
+      kubectl
+      kubernetes
+      kompose
+      warp-terminal
+      gnome-boxes
+      shotwell
+      gnome-contacts
+      bitwarden-cli
+      bitwarden-desktop
+      gimp-with-plugins
+      beeper
+      yq-go
+      rustup
+      gtk3
+      glib
+      rustup
+      rustscan
+      gitbutler
+      dconf-editor dialect
+        mediawriter
     ];
     sessionVariables = { };
     # Home Manager needs a bit of information about you and the
