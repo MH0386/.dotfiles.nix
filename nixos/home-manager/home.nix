@@ -332,6 +332,9 @@
       enable = true;
     };
     element-desktop.enable = true;
+    git-cliff = {
+      enable = true;
+    };
   };
 
   home = {
