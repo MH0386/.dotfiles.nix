@@ -55,6 +55,8 @@
         cudaPackages.cuda_gdb
         cudaPackages.cuda_nvprof
         cudaPackages.cuda_nsight
+        
+      ]);
     # CUDA environment variables
     sessionVariables = {
       CUDA_PATH = "${pkgs.cudatoolkit}";
