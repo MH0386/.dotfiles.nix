@@ -424,8 +424,9 @@
       rustup
       rustscan
       gitbutler
-      dconf-editor dialect
-        mediawriter
+      dconf-editor
+      dialect
+      mediawriter
     ];
     sessionVariables = { };
     # Home Manager needs a bit of information about you and the
