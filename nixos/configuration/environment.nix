@@ -63,6 +63,12 @@
       LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
         pkgs.linuxPackages.nvidia_x11
         pkgs.ncurses5
+        pkgs.stdenv.cc.cc.lib
+        pkgs.zlib
+        pkgs.libGL
+        pkgs.glib
+        pkgs.gtk3
+        pkgs.libGLU
       ];
       EXTRA_LDFLAGS = "-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib";
       EXTRA_CCFLAGS = "-I/usr/include";
