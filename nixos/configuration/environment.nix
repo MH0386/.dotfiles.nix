@@ -55,14 +55,12 @@
         cudaPackages.cuda_gdb
         cudaPackages.cuda_nvprof
         cudaPackages.cuda_nsight
-      ]);
-  };
-
-  # CUDA environment variables
-  environment.sessionVariables = {
-    CUDA_PATH = "${pkgs.cudatoolkit}";
-    LD_LIBRARY_PATH = "${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.ncurses5}/lib";
-    EXTRA_LDFLAGS = "-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib";
-    EXTRA_CCFLAGS = "-I/usr/include";
+    # CUDA environment variables
+    sessionVariables = {
+      CUDA_PATH = "${pkgs.cudatoolkit}";
+      LD_LIBRARY_PATH = "${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.ncurses5}/lib";
+      EXTRA_LDFLAGS = "-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib";
+      EXTRA_CCFLAGS = "-I/usr/include";
+    };
   };
 }
