@@ -60,7 +60,10 @@
     # CUDA environment variables
     sessionVariables = {
       CUDA_PATH = "${pkgs.cudatoolkit}";
-      LD_LIBRARY_PATH = "${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.ncurses5}/lib";
+      LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+        pkgs.linuxPackages.nvidia_x11
+        pkgs.ncurses5
+      ];
       EXTRA_LDFLAGS = "-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib";
       EXTRA_CCFLAGS = "-I/usr/include";
     };
