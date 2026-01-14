@@ -45,11 +45,24 @@
         cmake
         glib
         gnome-extension-manager
-        # cudatoolkit
-        # cudaPackages.cudatoolkit
-        # cudaPackages.nccl
-        # cudaPackages.cudnn
-        # cudaPackages.cuda_nvcc
+        cudaPackages.nccl
+        cudaPackages.cudnn
+        cudaPackages.cudatoolkit
+        cudaPackages.cuda_nvcc
+        cudaPackages.cuda_cudart
+        cudaPackages.cuda_cccl
+        cudaPackages.cuda_cupti
+        cudaPackages.cuda_gdb
+        cudaPackages.cuda_nvprof
+        cudaPackages.cuda_nsight
       ]);
+  };
+
+  # CUDA environment variables
+  environment.sessionVariables = {
+    CUDA_PATH = "${pkgs.cudatoolkit}";
+    LD_LIBRARY_PATH = "${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.ncurses5}/lib";
+    EXTRA_LDFLAGS = "-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib";
+    EXTRA_CCFLAGS = "-I/usr/include";
   };
 }

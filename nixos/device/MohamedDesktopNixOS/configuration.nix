@@ -33,4 +33,5 @@
       sane-backends
       sane-frontends
     ]);
+  nixpkgs.config.cudaCapabilities = [ "8.0" ];
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -23,11 +23,5 @@
     intelBusId = "PCI:0:2:0";
     nvidiaBusId = "PCI:1:0:0";
   };
-  environment.systemPackages =
-    (with pkgs; [
-      # dart
-    ])
-    ++ (with pkgs.stablePackages; [
-      # cups
-    ]);
+  nixpkgs.config.cudaCapabilities = [ "7.5" ];
 }
