@@ -11,14 +11,6 @@
     # evolution.enable = true;
     nix-ld.enable = true;
     virt-manager.enable = true;
-    obs-studio = {
-      enable = true;
-      enableVirtualCamera = true;
-      plugins = with pkgs; [
-        obs-studio-plugins.obs-pipewire-audio-capture
-        obs-studio-plugins.obs-backgroundremoval
-      ];
-    };
     localsend.enable = true;
     appimage = {
       enable = true;
