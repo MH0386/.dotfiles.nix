@@ -23,8 +23,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-        with:
-          token: ${{ secrets.GH_TOKEN }}
       - name: Setup UV
         uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
       - name: Restore pre-commit cache
@@ -43,13 +41,10 @@ jobs:
         if: always() && steps.cache-restore.outputs.cache-hit != 'true'
         with:
           path: ~/.cache/pre-commit
-          key: ${{ steps.cache-restore.outputs.cache-primary-key }}      
-      - name: Commit pre-commit fixes
-        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
-        if: success() || failure()
-        with:
-          commit_message: "pre-commit: Apply Fixes"
-          commit_options: --no-verify
+          key: ${{ steps.cache-restore.outputs.cache-primary-key }}
+      - name: Run pre-commit-ci-lite
+        uses: pre-commit-ci/lite-action@5d6cc0eb514c891a40562a58a8e71576c5c7fb43 # v1.1.0
+        if: always()
   flake_checker:
     name: Nix Flake Checker
     runs-on: ubuntu-latest
