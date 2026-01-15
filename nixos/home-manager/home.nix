@@ -3,7 +3,11 @@
   imports = [ ];
 
   xdg = {
+    enable = true;
+    dataHome = "${config.home.homeDirectory}/.local/share";
+    mime.enable = true;
     mimeApps = {
+      enable = true;
       defaultApplications = {
         "x-scheme-handler/http" = "zen.desktop";
         "x-scheme-handler/https" = "zen.desktop";
@@ -21,6 +25,11 @@
         "x-scheme-handler/https" = [ "zen.desktop" ];
         "x-scheme-handler/chrome" = [ "zen.desktop" ];
       };
+    };
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+      config.common.default = "gtk";
     };
   };
 
@@ -71,23 +80,6 @@
 
   # Wayland, X, etc. support for session vars
   # systemd.user.sessionVariables = config.home-manager.users.mohamed.home.sessionVariables;
-
-  xdg = {
-    enable = true;
-    dataHome = "${config.home.homeDirectory}/.local/share";
-    mime.enable = true;
-    mimeApps = {
-      enable = true;
-      # defaultApplications = {
-      #   "x-scheme-handler/terminal" = "org.gnome.Ptyxis.desktop";
-      # };
-    };
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-      config.common.default = "gtk";
-    };
-  };
 
   services = {
     gpg-agent = {
