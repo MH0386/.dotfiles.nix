@@ -353,7 +353,7 @@
         { package = pkgs.gnomeExtensions.clipboard-indicator; }
         { package = pkgs.gnomeExtensions.gtk4-desktop-icons-ng-ding; }
         {
-          id = "6807";
+          id = "system-monitor@gnome-shell-extensions.gcampax.github.com";
           package = pkgs.gnome-shell-extensions;
         }
       ];
