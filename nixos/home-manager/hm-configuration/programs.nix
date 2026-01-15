@@ -397,9 +397,9 @@
     };
     obs-studio = {
       enable = true;
-      plugins = with pkgs; [
-        obs-studio-plugins.obs-pipewire-audio-capture
-        obs-studio-plugins.obs-backgroundremoval
+      plugins = with pkgs.obs-studio-plugins; [
+        obs-pipewire-audio-capture
+        obs-backgroundremoval
       ];
     };
   };
