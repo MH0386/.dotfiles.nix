@@ -93,6 +93,16 @@
     };
     zoxide.enable = true;
     bash.enable = true;
+    nushell = {
+      enable = true;
+      plugins = with pkgs.nushellPlugins; [
+        gstat
+      ];
+    };
+    pay-respects = {
+      enable = true;
+    };
+    lazydocker.enable = true;
     gh.enable = true;
     ruff = {
       enable = true;
