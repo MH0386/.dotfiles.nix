@@ -1,5 +1,7 @@
 # MH0386's NixOS Configuration
 
+[![CI](https://github.com/MH0386/.dotfiles.nix/actions/workflows/ci.yaml/badge.svg)](https://github.com/MH0386/.dotfiles.nix/actions/workflows/ci.yaml)
+
 ## Steps
 
 1. Add the following to your `/etc/nixos/configuration.nix` file:
