@@ -25,9 +25,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.0.0
-        with:
-          token: ${{ secrets.GH_TOKEN }}
-          persist-credentials: true
       - name: Setup UV
         uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
       - name: Restore pre-commit cache
