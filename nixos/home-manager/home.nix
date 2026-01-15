@@ -88,11 +88,11 @@
       extend-height = false;
       intellihide-mode = "FOCUS_APPLICATION_WINDOWS";
       scroll-action = "cycle-windows";
-      show-mounts-network= true;
+      show-mounts-network = true;
       transparency-mode = "DYNAMIC";
     };
     "org/gnome/desktop/interface" = {
-      clock-format ="12h";
+      clock-format = "12h";
       clock-show-date = true;
       clock-show-weekday = true;
       color-scheme = "prefer-dark";
@@ -469,7 +469,7 @@
       dialect
       mediawriter
     ];
-    sessionPath = [    ];
+    sessionPath = [ ];
     sessionVariables = { };
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
