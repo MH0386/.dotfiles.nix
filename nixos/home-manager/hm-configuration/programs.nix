@@ -208,6 +208,35 @@
       enable = true;
       enableMcpIntegration = true;
     };
+    mcp = {
+      enable = true;
+      servers = {
+        fetch = {
+          command = "npx";
+          args = [
+            "mcp-server-fetch"
+          ];
+        };
+        git = {
+          command = "uvx";
+          args = [
+            "mcp-server-git"
+          ];
+        };
+        time = {
+          command = "uvx";
+          args = [
+            "mcp-server-time"
+          ];
+        };
+        context7 = {
+          url = "https://mcp.context7.com/mcp";
+          headers = {
+            CONTEXT7_API_KEY = "{env:CONTEXT7_API_KEY}";
+          };
+        };
+      };
+    };
     zed-editor = {
       enable = true;
       extensions = [
