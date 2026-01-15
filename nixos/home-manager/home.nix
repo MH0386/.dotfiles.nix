@@ -361,6 +361,7 @@
     git-cliff = {
       enable = true;
     };
+    jq.enable = true;
     yazi = {
       enable = true;
     };
