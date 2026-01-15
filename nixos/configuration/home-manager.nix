@@ -8,8 +8,9 @@ in
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.mohamed = import ./../home-manager/home.nix;
+    users.mohamed = import ./../home-manager/hm-configuration.nix;
     extraSpecialArgs = { inherit nur; };
     backupFileExtension = "backup-${timestamp}";
+    verbose = true;
   };
 }
