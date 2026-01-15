@@ -22,6 +22,7 @@
       h = "history";
     };
     packages = with pkgs; [
+      affine
       winboat
       nixfmt
       antigravity
