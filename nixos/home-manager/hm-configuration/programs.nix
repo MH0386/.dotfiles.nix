@@ -148,6 +148,27 @@
     };
     vscode = {
       enable = true;
+      profiles = {
+        default = {
+          enableMcpIntegration = true;
+          # userSettings = {
+          #   editor = {
+          #     fontSize = 14;
+          #     fontFamily = "Fira Code";
+          #   };
+          # };
+          userMcp = {
+            servers = {
+              Github = {
+                url = "https://api.githubcopilot.com/mcp";
+              };
+              Agno = {
+                url = "https://docs.agno.com/mcp";
+              };
+            };
+          };
+        };
+      };
     };
     ssh = {
       enable = true;
