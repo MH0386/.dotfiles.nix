@@ -240,6 +240,8 @@
     zed-editor = {
       enable = true;
       userSettings = {
+        ui_font_size = 18.0;
+        buffer_font_size = 20.0;
         languages = {
           Nix = {
             formatter = {
