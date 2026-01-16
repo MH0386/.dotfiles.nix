@@ -29,7 +29,7 @@ jobs:
       - name: Setup UV
         uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
       - name: Restore pre-commit cache
-        uses: actions/cache/restore@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+        uses: actions/cache/restore@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
         id: cache-restore
         with:
           path: ~/.cache/pre-commit
@@ -40,7 +40,7 @@ jobs:
           uvx --with pre-commit-uv pre-commit run --show-diff-on-failure --color=always
           --all-files
       - name: Save pre-commit cache
-        uses: actions/cache/save@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+        uses: actions/cache/save@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
         if: always() && steps.cache-restore.outputs.cache-hit != 'true'
         with:
           path: ~/.cache/pre-commit
