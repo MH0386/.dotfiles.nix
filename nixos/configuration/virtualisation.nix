@@ -7,11 +7,9 @@
       qemu.package = pkgs.qemu_kvm;
     };
     containers.enable = true;
-    docker = {
+    podman = {
       enable = true;
-      rootless = {
-        enable = true;
-      };
+      dockerCompat = true;
     };
   };
 }
