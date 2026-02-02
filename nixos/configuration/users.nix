@@ -6,14 +6,15 @@
     isNormalUser = true;
     description = "Mohamed Hisham";
     extraGroups = [
-      "networkmanager"
-      "wheel"
-      "video"
-      "render"
       "adbusers"
-      "libvirtd"
-      "podman"
+      "docker"
       "flatpak"
+      "libvirtd"
+      "networkmanager"
+      "podman"
+      "render"
+      "video"
+      "wheel"
     ];
   };
 }
