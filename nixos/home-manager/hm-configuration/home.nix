@@ -22,6 +22,13 @@
       h = "history";
     };
     packages = with pkgs; [
+      # cagent
+      github-copilot-cli
+      lmstudio
+      git-filter-repo
+      git-xet
+      fluffychat
+      undollar
       affine
       winboat
       nixfmt
