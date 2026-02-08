@@ -1,5 +1,4 @@
-_:
-{
+_: {
   services = {
     iio-niri.enable = true;
     vnstat.enable = true;

@@ -1,5 +1,4 @@
-_:
-{
+_: {
   i18n = {
     extraLocaleSettings = {
       LANGUAGE = "en_US.UTF-8";

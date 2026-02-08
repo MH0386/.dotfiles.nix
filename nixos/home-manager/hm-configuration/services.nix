@@ -1,5 +1,4 @@
-_:
-{
+_: {
   services = {
     gpg-agent = {
       enable = true;

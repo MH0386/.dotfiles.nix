@@ -1,5 +1,4 @@
-_:
-{
+_: {
   networking = {
     # Enable networking
     networkmanager.enable = true;

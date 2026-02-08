@@ -1,5 +1,4 @@
-_:
-{
+_: {
   programs = {
     niri.enable = true;
     dms-shell.enable = true;
