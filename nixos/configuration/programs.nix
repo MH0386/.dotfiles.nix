@@ -1,7 +1,6 @@
 _: {
   programs = {
     niri.enable = true;
-    dms-shell.enable = true;
     xonsh = {
       enable = true;
       config = "execx($(atuin init xonsh))";
