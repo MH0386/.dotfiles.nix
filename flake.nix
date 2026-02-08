@@ -2,9 +2,9 @@
   description = "My NixOS Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs?ref=nixos-25.11";
-    nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*.tar.gz";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
+    nixpkgs-stable.url = "https://flakehub.com/f/NixOS/nixpkgs/*";
+    nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*";
     nix-software-center = {
       url = "github:ljubitje/nix-software-center";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,11 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fh = {
-      url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
+      url = "https://flakehub.com/f/DeterminateSystems/fh/*";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "https://flakehub.com/f/nix-community/home-manager/0.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
@@ -30,7 +30,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote";
+      url = "https://flakehub.com/f/nix-community/lanzaboote/*";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
