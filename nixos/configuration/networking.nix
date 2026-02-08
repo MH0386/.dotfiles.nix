@@ -7,6 +7,7 @@
     # networking.wireless.enable = true;
     # Open ports in the firewall.
     firewall = {
+      enable = true;
       allowedTCPPorts = [
         22
         80
