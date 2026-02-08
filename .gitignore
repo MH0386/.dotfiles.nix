@@ -1,2 +1,7 @@
 .vscode/
 hardware-configuration.nix
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+.direnv
+.pre-commit-config.yaml
