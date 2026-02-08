@@ -34,7 +34,7 @@
       android_sdk.accept_license = true;
       cudaSupport = true;
     };
-    overlays = ([ nur.overlays.default ] ++ [ (self: super: { stablePackages = pkgsStable; }) ]);
+    overlays = [ nur.overlays.default ] ++ [ (_self: _super: { stablePackages = pkgsStable; }) ];
   };
 
   # This value determines the NixOS release from which the default
