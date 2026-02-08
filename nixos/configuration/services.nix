@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+_:
 {
   services = {
     iio-niri.enable = true;

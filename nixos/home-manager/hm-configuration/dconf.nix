@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   dconf.settings = {
     "org/gnome/desktop/default-applications".terminal = "ghostty.desktop";
