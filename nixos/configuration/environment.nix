@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgsStable,
   inputs,
   system,
   ...
@@ -19,32 +20,28 @@
       ++ (with pkgs; [
         nvitop
         gpu-viewer
-        gdm-settings
-        czkawka
-        szyszka
-        bottles
-        livecaptions
-        pods
-        warehouse
         sbctl
         unzip
         zip
         wget
-        nixpkgs-fmt
-        nixd
-        nil
         lshw-gui
         nvtopPackages.nvidia
         gnome-extensions-cli
         gnome-tweaks
         ntfs3g
-        devenv
         nautilus-python
         gcc
         clang
         cmake
         glib
         gnome-extension-manager
+
+        # Additional CUDA development tools
+        # python3Packages.torch
+        # python3Packages.tensorflow
+        # python3Packages.cupy
+      ])
+      ++ (with pkgsStable; [
         cudaPackages.nccl
         cudaPackages.cudnn
         cudaPackages.cudatoolkit
@@ -55,12 +52,6 @@
         cudaPackages.cuda_gdb
         cudaPackages.cuda_nvprof
         cudaPackages.cuda_nsight
-
-        # Additional CUDA development tools
-        # python3Packages.torch
-        # python3Packages.tensorflow
-        # python3Packages.cupy
-
       ]);
     # CUDA environment variables
     sessionVariables = {
