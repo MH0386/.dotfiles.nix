@@ -22,6 +22,7 @@
       h = "history";
     };
     packages = with pkgs; [
+        bazaar
       # cagent
       github-copilot-cli
       lmstudio
