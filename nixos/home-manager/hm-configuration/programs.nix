@@ -363,6 +363,7 @@
         "pyrefly"
         "pytest-language-server"
         "mcp-server-brave-search"
+        "just"
       ];
     };
     uv = {
