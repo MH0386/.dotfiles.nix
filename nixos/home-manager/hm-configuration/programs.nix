@@ -369,16 +369,6 @@
     uv = {
       enable = true;
     };
-    element-desktop.enable = true;
-    cargo = {
-      enable = true;
-      settings = {
-        term = {
-          color = "auto";
-          hyperlinks = true;
-        };
-      };
-    };
     gnome-shell = {
       enable = true;
       extensions = [
