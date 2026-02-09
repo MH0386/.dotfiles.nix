@@ -418,5 +418,6 @@
     floorp = {
       enable = true;
     };
+    helix.enable = true;
   };
 }
