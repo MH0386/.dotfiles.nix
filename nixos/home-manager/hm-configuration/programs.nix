@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgsStable, ... }:
 {
   programs = {
     home-manager.enable = true;
@@ -394,7 +394,7 @@
     };
     obs-studio = {
       enable = true;
-      plugins = with pkgs.obs-studio-plugins; [
+      plugins = with pkgsStable.obs-studio-plugins; [
         obs-pipewire-audio-capture
         obs-backgroundremoval
       ];
