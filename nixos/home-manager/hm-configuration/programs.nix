@@ -49,6 +49,7 @@
     };
     git = {
       enable = true;
+      package = pkgsStable.git;
       settings = {
         user = {
           name = "Mohamed Hisham Abdelzaher";
