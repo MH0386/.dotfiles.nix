@@ -5,14 +5,14 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
     nixpkgs-stable.url = "https://flakehub.com/f/NixOS/nixpkgs/*";
     nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*";
-    nix-software-center = {
-      url = "github:ljubitje/nix-software-center";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixos-conf-editor = {
-      url = "github:snowfallorg/nixos-conf-editor";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nix-software-center = {
+    #   url = "github:ljubitje/nix-software-center";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # nixos-conf-editor = {
+    #   url = "github:snowfallorg/nixos-conf-editor";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     # fh = {
     #   url = "https://flakehub.com/f/DeterminateSystems/fh/*";
     #   inputs.nixpkgs.follows = "nixpkgs";
