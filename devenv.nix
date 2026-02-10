@@ -5,6 +5,29 @@
 }:
 
 {
+
+  files = {
+    ".yamllint.yaml".yaml = {
+      extends = "default";
+      rules = {
+        document-start = "disable";
+        truthy = "disable";
+        comments = "disable";
+        line-length.max = 120;
+      };
+    };
+    ".yamlfmt.yaml".yaml = {
+      formatter = {
+        type = "basic";
+        line_ending = "lf";
+        max_line_length = 140;
+        trim_trailing_whitespace = true;
+        eof_newline = true;
+        force_array_style = "block";
+      };
+    };
+  };
+
   languages = {
     nix = {
       enable = true;
