@@ -51,7 +51,7 @@ jobs:
   flake_checker:
     name: Nix Flake Checker
     runs-on: ubuntu-latest
-    environment: nix
+    environment: flake
     if: github.event_name != 'schedule'
     steps:
       - name: Checkout repository
@@ -61,7 +61,7 @@ jobs:
   flake_update:
     name: Update Flake Lock
     runs-on: ubuntu-latest
-    environment: nix
+    environment: flake
     if: github.event_name == 'schedule'
     steps:
       - name: Checkout repository
