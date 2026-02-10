@@ -17,11 +17,5 @@
       "nix"
     ]
   },
-  "osvVulnerabilityAlerts": true,
-  "pre-commit": {
-    "enabled": true,
-    "labels": [
-      "pre-commit"
-    ]
-  }
+  "osvVulnerabilityAlerts": true
 }
