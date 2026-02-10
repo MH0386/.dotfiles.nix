@@ -1,5 +1,5 @@
 {
-  description = "My NixOS Flake";
+  description = "MH0386's NixOS Configuration";
 
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
