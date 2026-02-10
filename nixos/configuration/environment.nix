@@ -13,7 +13,7 @@
       (with inputs; [
         zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
         # flox.packages.${system}.default
-        fh.packages.${system}.default
+        # fh.packages.${system}.default
         # nixos-conf-editor.packages.${system}.nixos-conf-editor
         nix-software-center.packages.${system}.nix-software-center
       ])
@@ -42,6 +42,7 @@
         # python3Packages.cupy
       ])
       ++ (with pkgsStable; [
+        fh
         cudaPackages.nccl
         cudaPackages.cudnn
         cudaPackages.cudatoolkit

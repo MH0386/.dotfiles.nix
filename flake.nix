@@ -13,10 +13,10 @@
       url = "github:snowfallorg/nixos-conf-editor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    fh = {
-      url = "https://flakehub.com/f/DeterminateSystems/fh/*";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # fh = {
+    #   url = "https://flakehub.com/f/DeterminateSystems/fh/*";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     home-manager = {
       url = "https://flakehub.com/f/nix-community/home-manager/0.1";
       inputs.nixpkgs.follows = "nixpkgs";
