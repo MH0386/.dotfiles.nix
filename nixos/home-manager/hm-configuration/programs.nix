@@ -135,11 +135,6 @@
     };
     topgrade = {
       enable = true;
-      settings = {
-        commands = {
-          "Run garbage collection on Nix store" = "nix-collect-garbage";
-        };
-      };
     };
     yt-dlp = {
       enable = true;
