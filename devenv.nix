@@ -47,6 +47,7 @@
       check-merge-conflicts.enable = true;
       check-toml.enable = true;
       check-vcs-permalinks.enable = true;
+      check-symlinks.enable = true;
       check-xml.enable = true;
       check-yaml.enable = true;
       comrak.enable = true;
