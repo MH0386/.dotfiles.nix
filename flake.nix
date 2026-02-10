@@ -39,7 +39,7 @@
     {
       nixpkgs,
       nixpkgs-stable,
-      fh,
+      # fh,
       nix-flatpak,
       home-manager,
       nur,
@@ -79,7 +79,7 @@
               specialArgs = {
                 inherit inputs;
                 inherit system;
-                inherit fh;
+                # inherit fh;
                 inherit pkgsStable;
                 inherit nur;
               };
