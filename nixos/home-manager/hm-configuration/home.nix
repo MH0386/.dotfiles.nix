@@ -23,8 +23,9 @@
     };
     packages =
       (with pkgs; [
+        opencode-desktop
         bazaar
-        # cagent
+        cagent
         github-copilot-cli
         lmstudio
         git-filter-repo
