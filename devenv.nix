@@ -61,6 +61,7 @@
       trim-trailing-whitespace.enable = true;
       trufflehog.enable = true;
       yamllint.enable = true;
+      nixf-diagnose.enable = true;
     };
   };
 
