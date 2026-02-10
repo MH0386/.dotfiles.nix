@@ -15,39 +15,36 @@ permissions:
   security-events: write
   actions: read
 jobs:
-  pre-commit:
-    name: pre-commit
+  test:
+    name: Test
     runs-on: ubuntu-latest
-    environment: pre-commit
+    environment: test
     if: github.event_name != 'schedule'
-    permissions:
-      contents: write
-      actions: write
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@e3f713f2d8f53843e71c69a996d56f51aa9adfb9 # v2.14.1
+        with:
+          egress-policy: audit
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Setup UV
-        uses: astral-sh/setup-uv@eac588ad8def6316056a12d4907a9d4d84ff7a3b # v7.3.0
-      - name: Restore pre-commit cache
-        uses: actions/cache/restore@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
-        id: cache-restore
         with:
-          path: ~/.cache/pre-commit
-          key: pre-commit-${{ hashFiles('**/.pre-commit-config.yaml') }}
-          restore-keys: pre-commit-
-      - name: Run pre-commit hooks
-        run: >-
-          uvx --with pre-commit-uv pre-commit run --show-diff-on-failure --color=always
-          --all-files
-      - name: Save pre-commit cache
-        uses: actions/cache/save@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
-        if: always() && steps.cache-restore.outputs.cache-hit != 'true'
+          token: ${{ secrets.GH_TOKEN }}
+      - name: Install Nix
+        uses: cachix/install-nix-action@4e002c8ec80594ecd40e759629461e26c8abed15 # v31.9.0
+      - name: Cache
+        uses: cachix/cachix-action@3ba601ff5bbb07c7220846facfa2cd81eeee15a1 # v16
         with:
-          path: ~/.cache/pre-commit
-          key: ${{ steps.cache-restore.outputs.cache-primary-key }}
-      - name: Run pre-commit-ci-lite
-        uses: pre-commit-ci/lite-action@5d6cc0eb514c891a40562a58a8e71576c5c7fb43 # v1.1.0
-        if: always()
+          name: devenv
+      - name: Install devenv.sh
+        run: nix profile install nixpkgs#devenv
+      - name: Test
+        run: devenv test
+      - name: Commit pre-commit fixes
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
+        if: success() || failure()
+        with:
+          commit_message: "devenv: Apply Fixes"
+          commit_options: --no-verify
   flake_checker:
     name: Nix Flake Checker
     runs-on: ubuntu-latest
