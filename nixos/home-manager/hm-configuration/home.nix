@@ -23,6 +23,8 @@
     };
     packages =
       (with pkgs; [
+        pyrefly
+        python3Packages.python-lsp-server
         opencode-desktop
         bazaar
         cagent
