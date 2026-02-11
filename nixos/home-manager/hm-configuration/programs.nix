@@ -264,6 +264,13 @@
               };
             };
           };
+          Python = {
+            language_servers = [
+              "ty"
+              "!basedpyright"
+              "..."
+            ];
+          };
         };
         calls = {
           mute_on_join = true;
