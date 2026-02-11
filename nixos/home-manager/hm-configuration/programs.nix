@@ -254,9 +254,20 @@
     zed-editor = {
       enable = true;
       userSettings = {
+        agent_servers = {
+          kimi = {
+            type = "registry";
+          };
           opencode = {
             type = "registry";
           };
+          github-copilot = {
+            type = "registry";
+          };
+          junie-acp = {
+            type = "registry";
+          };
+        };
         ui_font_size = 18.0;
         buffer_font_size = 20.0;
         languages = {
