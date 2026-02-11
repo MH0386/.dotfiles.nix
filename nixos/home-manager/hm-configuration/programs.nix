@@ -314,7 +314,7 @@
           };
         };
         restore_on_startup = "last_session";
-        theme = "Github Dark";
+        theme = "GitHub Dark";
         context_servers = {
           arch-ops-server = {
             enabled = false;
