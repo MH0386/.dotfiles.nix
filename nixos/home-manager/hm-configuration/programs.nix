@@ -223,6 +223,12 @@
     mcp = {
       enable = true;
       servers = {
+        devenv = {
+          command = "devenv";
+          args = [
+            "mcp"
+          ];
+        };
         fetch = {
           command = "uvx";
           args = [
