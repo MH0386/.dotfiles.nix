@@ -224,7 +224,7 @@
       enable = true;
       servers = {
         fetch = {
-          command = "npx";
+          command = "uvx";
           args = [
             "mcp-server-fetch"
           ];
