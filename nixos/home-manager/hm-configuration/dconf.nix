@@ -43,6 +43,7 @@ _: {
         "code.desktop"
         "antigravity.desktop"
         "dev.zed.Zed.desktop"
+        "OpenCode.desktop"
       ];
     };
     "org/gnome/shell/extensions/dash-to-dock" = {
