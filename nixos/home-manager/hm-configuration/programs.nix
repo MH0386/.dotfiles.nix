@@ -153,16 +153,6 @@
           #     fontFamily = "Fira Code";
           #   };
           # };
-          userMcp = {
-            servers = {
-              Github = {
-                url = "https://api.githubcopilot.com/mcp";
-              };
-              Agno = {
-                url = "https://docs.agno.com/mcp";
-              };
-            };
-          };
         };
       };
     };
@@ -223,6 +213,12 @@
     mcp = {
       enable = true;
       servers = {
+        github = {
+          url = "https://api.githubcopilot.com/mcp";
+        };
+        agno = {
+          url = "https://docs.agno.com/mcp";
+        };
         devenv = {
           command = "devenv";
           args = [
