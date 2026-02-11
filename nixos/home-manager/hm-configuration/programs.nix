@@ -254,6 +254,9 @@
     zed-editor = {
       enable = true;
       userSettings = {
+          opencode = {
+            type = "registry";
+          };
         ui_font_size = 18.0;
         buffer_font_size = 20.0;
         languages = {
@@ -370,7 +373,6 @@
         "jsonl"
         "desktop"
         "mcp-server-sonarqube"
-        "opencode"
         "arch-mcp"
         "nix"
         "ini"
