@@ -23,6 +23,7 @@
     };
     packages =
       (with pkgs; [
+        jan
         pyrefly
         python3Packages.python-lsp-server
         opencode-desktop
