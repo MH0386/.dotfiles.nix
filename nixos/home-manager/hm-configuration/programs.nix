@@ -123,6 +123,9 @@
         };
       };
     };
+    ty = {
+      enable = true;
+    };
     starship = {
       enable = true;
       settings = {
