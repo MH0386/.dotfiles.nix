@@ -216,6 +216,10 @@
     mcp = {
       enable = true;
       servers = {
+        nixos = {
+          command = "uvx";
+          args = [ "mcp-nixos" ];
+        };
         github = {
           url = "https://api.githubcopilot.com/mcp";
         };
