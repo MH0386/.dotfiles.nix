@@ -17,6 +17,9 @@
         # nix-software-center.packages.${system}.nix-software-center
       ])
       ++ (with pkgs; [
+        nodejs_22
+        corepack
+        gnumake
         ignition
         nvitop
         gpu-viewer
