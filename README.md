@@ -4,40 +4,40 @@
 
 ## Steps
 
-1. Add the following to your `/etc/nixos/configuration.nix` file:
+- Add the following to your `/etc/nixos/configuration.nix` file:
 
-   ```nix
-   programs.nh = {
-     enable = true;
-     flake = "/home/mohamed/.dotfiles";
-     clean = {
-       enable = true;
-       extraArgs = "--keep 5";
-     };
-   };
-   nix.settings.experimental-features = [
-     "flakes"
-     "nix-command"
-   ];
-   # Make sure to change the hostname
-   networking.hostName = "MohamedLaptopNixOS"; # or "MohamedDesktopNixOS";
-   ```
+  ```nix
+  programs.nh = {
+    enable = true;
+    flake = "/home/mohamed/.dotfiles";
+    clean = {
+        enable = true;
+        extraArgs = "--keep 5";
+    };
+  };
+  nix.settings.experimental-features = [
+    "flakes"
+    "nix-command"
+  ];
+  # Make sure to change the hostname
+  networking.hostName = "MohamedLaptopNixOS"; # or "MohamedDesktopNixOS";
+  ```
 
-2. Switch to the new configuration:
+- Switch to the new configuration:
 
-   ```bash
-   nixos-rebuild switch
-   ```
+  ```bash
+  nixos-rebuild switch
+  ```
 
-3. Download the dotfiles repository:
+- Download the dotfiles repository:
 
-   ```bash
-   nix-shell -p git
-   git clone https://github.com/MH0386/.dotfiles.nix.git ~/.dotfiles
-   ```
+  ```bash
+  nix-shell -p git
+  git clone https://github.com/MH0386/.dotfiles.nix.git ~/.dotfiles
+  ```
 
-4. Switch to apply the dotfiles:
+- Switch to apply the dotfiles:
 
-   ```bash
-   nixos-rebuild switch --flake ~/.dotfiles#nixos
-   ```
+  ```bash
+  nixos-rebuild switch --flake ~/.dotfiles#nixos
+  ```
