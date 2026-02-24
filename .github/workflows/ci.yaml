@@ -75,7 +75,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Install Nix
-        uses: DeterminateSystems/determinate-nix-action@681d8e8bfdb5d7af56f113ba2425b1fb00ec9edc # v3.16.1
+        uses: DeterminateSystems/determinate-nix-action@73327eb48f028efaaf5013656ba216ca3cdeca7b # v3.16.3
         with:
           logger: pretty
       - name: Cache
