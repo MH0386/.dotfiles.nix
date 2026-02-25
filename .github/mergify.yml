@@ -4,7 +4,6 @@ pull_request_rules:
     conditions:
       - author = renovate[bot]
       - and:
-          - check-success = Test
           - check-success = Nix Flake Checker
     actions:
       queue:
