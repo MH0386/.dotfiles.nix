@@ -110,5 +110,15 @@ _: {
         };
       };
     };
+    portainer = {
+      # Default false
+      enable = true;
+      # Default latest, you can check dockerhub for other tags.
+      version = "latest";
+      # Default false, set to 'true' if you want to be able to access via the port on something other than localhost.
+      openFirewall = true;
+      # Sets the port number in both the firewall and the docker container port mapping itself.
+      port = 9443;
+    };
   };
 }

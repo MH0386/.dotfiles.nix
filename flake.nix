@@ -33,6 +33,10 @@
       url = "https://flakehub.com/f/nix-community/lanzaboote/*";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    portainer-on-nixos = {
+      url = "gitlab:cbleslie/portainer-on-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -44,6 +48,7 @@
       home-manager,
       nur,
       lanzaboote,
+      portainer-on-nixos,
       ...
     }@inputs:
     let
@@ -62,6 +67,7 @@
         home-manager.nixosModules.home-manager
         nur.modules.nixos.default
         lanzaboote.nixosModules.lanzaboote
+        portainer-on-nixos.nixosModules.portainer
         ./nixos/configuration.nix
       ];
     in
