@@ -577,12 +577,6 @@
             "mcp"
           ];
         };
-        fetch = {
-          command = "uvx";
-          args = [
-            "mcp-server-fetch"
-          ];
-        };
         git = {
           command = "uvx";
           args = [
