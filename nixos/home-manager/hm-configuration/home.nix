@@ -26,8 +26,7 @@
       c = "clear";
       h = "history";
     };
-    packages =
-      [
+    packages = [
       (pkgs.jetbrains.plugins.addPlugins pkgs.jetbrains.pycharm [
         nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.pycharm."2025.3"."org.jetbrains.junie"
         nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.pycharm."2025.3"."com.intellij.ml.llm"
@@ -71,8 +70,7 @@
         nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."com.kozhun.commit-message-template"
       ])
     ]
-    ++ 
-    (with pkgs; [
+    ++ (with pkgs; [
       postman
       # vscodium
       nixpkgs-reviewFull
