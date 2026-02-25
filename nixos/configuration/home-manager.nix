@@ -2,6 +2,7 @@
   pkgs,
   nur,
   pkgsStable,
+  nix-flatpak,
   nix-jetbrains-plugins,
   ...
 }:
@@ -18,6 +19,7 @@ in
     extraSpecialArgs = {
       inherit nur;
       inherit pkgsStable;
+      inherit nix-flatpak;
       inherit nix-jetbrains-plugins;
     };
     backupFileExtension = "backup-${timestamp}";

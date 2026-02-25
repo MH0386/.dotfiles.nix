@@ -68,7 +68,6 @@
         "MohamedLaptopNixOS"
       ];
       commonModules = [
-        nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         nur.modules.nixos.default
         lanzaboote.nixosModules.lanzaboote
@@ -90,7 +89,7 @@
               specialArgs = {
                 inherit inputs;
                 inherit system;
-                # inherit fh;
+                inherit nix-flatpak;
                 inherit pkgsStable;
                 inherit nur;
                 inherit nix-jetbrains-plugins;
