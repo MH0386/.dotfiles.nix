@@ -1,6 +1,10 @@
-{ ... }:
+{ inputs, ... }:
 {
   imports = [
+    inputs.nix-flatpak.homeManagerModules.nix-flatpak
+    inputs.niri.homeModules.niri
+    inputs.dms.homeModules.dank-material-shell
+    inputs.dms.homeModules.niri
     ./hm-configuration/dconf.nix
     ./hm-configuration/gtk.nix
     ./hm-configuration/home.nix
