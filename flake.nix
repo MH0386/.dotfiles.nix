@@ -41,19 +41,33 @@
       url = "github:nix-community/nix-jetbrains-plugins";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dms-plugin-registry = {
+      url = "github:AvengeMedia/dms-plugin-registry";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       nixpkgs,
       nixpkgs-stable,
-      # fh,
       nix-flatpak,
       home-manager,
       nur,
       lanzaboote,
       portainer-on-nixos,
       nix-jetbrains-plugins,
+      niri,
+      dms,
+      dms-plugin-registry,
       ...
     }@inputs:
     let
@@ -93,6 +107,9 @@
                 inherit pkgsStable;
                 inherit nur;
                 inherit nix-jetbrains-plugins;
+                inherit niri;
+                inherit dms;
+                inherit dms-plugin-registry;
               };
             }
           )
