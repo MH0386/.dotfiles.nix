@@ -5,7 +5,6 @@
 }:
 
 {
-
   files = {
     ".yamllint.yaml".yaml = {
       extends = "default";
