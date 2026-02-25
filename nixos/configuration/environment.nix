@@ -17,6 +17,7 @@
         # nix-software-center.packages.${system}.nix-software-center
       ])
       ++ (with pkgs; [
+        nix-diff
         nodejs_22
         corepack
         gnumake
