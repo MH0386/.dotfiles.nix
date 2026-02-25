@@ -29,7 +29,21 @@ _: {
     # desktopManager.cosmic.enable = true;
     # Enable the GNOME Desktop Environment.
     desktopManager.gnome.enable = true;
-    displayManager.gdm.enable = true;
+    # displayManager.gdm.enable = true;
+
+    displayManager.dms-greeter = {
+      enable = true;
+      compositor.name = "niri"; # Or "hyprland" or "sway"
+
+      # Sync your user's DankMaterialShell theme with the greeter. You'll probably want this
+      configHome = "/home/mohamed";
+
+      # Save the logs to a file
+      logs = {
+        save = true;
+        path = "/tmp/dms-greeter.log";
+      };
+    };
     # Enable the OpenSSH daemon.
     openssh.enable = true;
     pipewire = {
