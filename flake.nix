@@ -37,6 +37,10 @@
       url = "gitlab:cbleslie/portainer-on-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-jetbrains-plugins = {
+      url = "github:nix-community/nix-jetbrains-plugins";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -49,6 +53,7 @@
       nur,
       lanzaboote,
       portainer-on-nixos,
+      nix-jetbrains-plugins,
       ...
     }@inputs:
     let
@@ -88,6 +93,7 @@
                 # inherit fh;
                 inherit pkgsStable;
                 inherit nur;
+                inherit nix-jetbrains-plugins;
               };
             }
           )

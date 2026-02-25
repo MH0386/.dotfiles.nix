@@ -2,6 +2,7 @@
   pkgs,
   nur,
   pkgsStable,
+  nix-jetbrains-plugins,
   ...
 }:
 let
@@ -17,6 +18,7 @@ in
     extraSpecialArgs = {
       inherit nur;
       inherit pkgsStable;
+      inherit nix-jetbrains-plugins;
     };
     backupFileExtension = "backup-${timestamp}";
     verbose = true;
