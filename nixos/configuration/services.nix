@@ -25,6 +25,8 @@ _: {
       # Load nvidia driver for Xorg and Wayland
       videoDrivers = [ "nvidia" ];
     };
+    # Enable the COSMIC Desktop Environment.
+    # desktopManager.cosmic.enable = true;
     # Enable the GNOME Desktop Environment.
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
