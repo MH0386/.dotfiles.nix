@@ -1,4 +1,5 @@
-_: {
+{ config, ... }:
+{
   networking = {
     # Enable networking
     networkmanager.enable = true;
@@ -13,6 +14,7 @@ _: {
         443
         8000
         8001
+        config.services.portainer.port
       ];
       # allowedUDPPorts = [ ... ];
     };
