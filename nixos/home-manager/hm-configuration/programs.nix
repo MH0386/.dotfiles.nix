@@ -539,6 +539,7 @@
     gemini-cli = {
       enable = true;
     };
+    bun.enable = true;
     opencode = {
       enable = true;
       enableMcpIntegration = true;
