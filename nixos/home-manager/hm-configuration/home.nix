@@ -56,7 +56,6 @@
         nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."net.seesharpsoft.intellij.plugins.csv"
         nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."com.intellij.ideolog"
         nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."org.sonarlint.idea"
-        nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."sourcery.pycharm-plugin"
         nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."String Manipulation"
         nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."tanvd.grazi"
         nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."izhangzhihao.rainbow.brackets"
