@@ -136,6 +136,6 @@ jobs:
       - name: Install nh
         run: nix profile install nixpkgs#nh
       - name: Build
-        run: nixos-rebuild switch --flake .#MohamedLaptopNixOS
+        run: nixos-rebuild build --flake .#MohamedLaptopNixOS
       - name: Ok
         run: nix-shell --run "echo OK"
