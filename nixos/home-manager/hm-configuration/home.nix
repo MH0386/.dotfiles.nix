@@ -1,7 +1,6 @@
 {
   pkgs,
   pkgsStable,
-  nix-jetbrains-plugins,
   ...
 }:
 {
@@ -24,80 +23,81 @@
       c = "clear";
       h = "history";
     };
-    packages =  (with pkgs; [
-      postman
-      # vscodium
-      nixpkgs-reviewFull
-      proton-pass
-      proton-authenticator
-      jan
-      pyrefly
-      python3Packages.python-lsp-server
-      opencode-desktop
-      bazaar
-      cagent
-      github-copilot-cli
-      lmstudio
-      git-filter-repo
-      git-xet
-      fluffychat
-      undollar
-      affine
-      winboat
-      gdm-settings
-      czkawka
-      szyszka
-      bottles
-      pods
-      warehouse
-      antigravity
-      dioxus-cli
-      # newelle
-      trivy
-      doppler
-      prek
-      pre-commit
-      ffmpeg
-      clapper
-      vlc
-      act
-      spacedrive
-      httpie
-      httpie-desktop
-      podman-desktop
-      termius
-      remmina
-      kubectl
-      kubernetes
-      kompose
-      warp-terminal
-      gnome-boxes
-      shotwell
-      gnome-contacts
-      bitwarden-cli
-      bitwarden-desktop
-      # gimp-with-plugins
-      beeper
-      yq-go
-      rustup
-      gtk3
-      glib
-      rustup
-      rustscan
-      gitbutler
-      dconf-editor
-      dialect
-      mediawriter
-      nixfmt
-      nixd
-      nil
-      devenv
-    ])
-    ++ (with pkgsStable; [
-      upscaler
-      upscayl
-      livecaptions
-    ]);
+    packages =
+      (with pkgs; [
+        postman
+        # vscodium
+        nixpkgs-reviewFull
+        proton-pass
+        proton-authenticator
+        jan
+        pyrefly
+        python3Packages.python-lsp-server
+        opencode-desktop
+        bazaar
+        cagent
+        github-copilot-cli
+        lmstudio
+        git-filter-repo
+        git-xet
+        fluffychat
+        undollar
+        affine
+        winboat
+        gdm-settings
+        czkawka
+        szyszka
+        bottles
+        pods
+        warehouse
+        antigravity
+        dioxus-cli
+        # newelle
+        trivy
+        doppler
+        prek
+        pre-commit
+        ffmpeg
+        clapper
+        vlc
+        act
+        spacedrive
+        httpie
+        httpie-desktop
+        podman-desktop
+        termius
+        remmina
+        kubectl
+        kubernetes
+        kompose
+        warp-terminal
+        gnome-boxes
+        shotwell
+        gnome-contacts
+        bitwarden-cli
+        bitwarden-desktop
+        # gimp-with-plugins
+        beeper
+        yq-go
+        rustup
+        gtk3
+        glib
+        rustup
+        rustscan
+        gitbutler
+        dconf-editor
+        dialect
+        mediawriter
+        nixfmt
+        nixd
+        nil
+        devenv
+      ])
+      ++ (with pkgsStable; [
+        upscaler
+        upscayl
+        livecaptions
+      ]);
     sessionPath = [ ];
     sessionVariables = { };
     # Home Manager needs a bit of information about you and the
