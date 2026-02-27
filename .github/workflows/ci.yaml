@@ -135,7 +135,7 @@ jobs:
       - name: Install nh
         run: nix profile install nixpkgs#nh
       - name: Build
-        run: nh os build -H MohamedLaptopNixOS -q -Q
+        run: nh os build -H MohamedLaptopNixOS > /dev/null
         env:
           NH_FLAKE: ${{ github.workspace }}
       - name: Ok
