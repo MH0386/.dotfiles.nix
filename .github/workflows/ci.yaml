@@ -134,7 +134,6 @@ jobs:
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build
         run: |
-          nix build -L .#checks.x86_64-linux
-          nix build -L .#packages.x86_64-linux.default || true
+          nix build -L .#nixosConfigurations.MohamedLaptopNixOS.config.system.build.toplevel
       - name: Ok
         run: nix-shell --run "echo OK"
