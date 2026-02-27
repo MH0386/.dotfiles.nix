@@ -131,8 +131,8 @@ jobs:
         uses: cachix/cachix-action@3ba601ff5bbb07c7220846facfa2cd81eeee15a1 # v16
         with:
           name: mh0386
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build
-        run: nix-build
+        run: nixos-rebuild switch --flake .
       - name: Ok
         run: nix-shell --run "echo OK"
