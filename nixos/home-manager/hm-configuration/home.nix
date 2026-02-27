@@ -84,7 +84,6 @@
         glib
         rustup
         rustscan
-        gitbutler
         dconf-editor
         dialect
         mediawriter
@@ -94,6 +93,7 @@
         devenv
       ])
       ++ (with pkgsStable; [
+        gitbutler
         upscaler
         upscayl
         livecaptions
