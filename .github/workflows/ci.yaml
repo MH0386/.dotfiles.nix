@@ -135,6 +135,6 @@ jobs:
       - name: Install nh
         run: nix profile install nixpkgs#nh
       - name: Build
-        run: nh os build --build-host MohamedLaptopNixOS
+        run: nh os build --target-host MohamedLaptopNixOS
       - name: Ok
         run: nix-shell --run "echo OK"
