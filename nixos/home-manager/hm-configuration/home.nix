@@ -16,9 +16,7 @@
       name = "WhiteSur-cursors";
       size = 24;
     };
-    file = {
-      ".config/niri/config.kdl".source = ./../dotfiles/tiling-window-manager/niri/config.kdl;
-    };
+    file = { };
     shellAliases = {
       ll = "ls -l";
       la = "ls -la";
