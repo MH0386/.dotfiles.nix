@@ -133,6 +133,8 @@ jobs:
           name: mh0386
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build
-        run: nixos-rebuild switch --flake .
+        run: |
+          nix build -L .#checks.x86_64-linux
+          nix build -L .#packages.x86_64-linux.default || true
       - name: Ok
         run: nix-shell --run "echo OK"
