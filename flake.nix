@@ -17,6 +17,11 @@
     #   url = "https://flakehub.com/f/DeterminateSystems/fh/*";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    denix = {
+      url = "github:yunfachi/denix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     home-manager = {
       url = "https://flakehub.com/f/nix-community/home-manager/0.1";
       inputs.nixpkgs.follows = "nixpkgs";
