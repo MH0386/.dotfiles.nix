@@ -132,8 +132,9 @@ jobs:
         with:
           name: mh0386
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Install nh
+        run: nix profile install nixpkgs#nh
       - name: Build
-        run: |
-          nix build -L .#nixosConfigurations.MohamedLaptopNixOS.config.system.build.toplevel
+        run: nh os build          
       - name: Ok
         run: nix-shell --run "echo OK"
