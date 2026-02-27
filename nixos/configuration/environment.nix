@@ -19,7 +19,6 @@
       ++ (with pkgs; [
         nix-diff
         nodejs_22
-        corepack
         gnumake
         ignition
         nvitop
@@ -46,6 +45,7 @@
         # python3Packages.cupy
       ])
       ++ (with pkgsStable; [
+        corepack
         fh
         cudaPackages.nccl
         cudaPackages.cudnn
