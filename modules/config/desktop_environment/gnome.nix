@@ -18,7 +18,7 @@ delib.module {
       };
     };
 
-  homeManager.ifEnabled =
+  home.ifEnabled =
     { cfg, ... }:
     {
       home.packages = with pkgs; [
