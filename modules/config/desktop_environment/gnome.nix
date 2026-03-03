@@ -6,15 +6,17 @@ delib.module {
     enable = boolOption host.gnomeFeatured;
   };
 
-  nixos.ifEnabled.services =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      desktopManager.gnome.enable = cfg.enable;
-      gnome = {
-        sushi.enable = true;
-        gnome-user-share.enable = true;
-        # gnome-software.enable = true;
-        gnome-online-accounts.enable = true;
+      services = {
+        desktopManager.gnome.enable = cfg.enable;
+        gnome = {
+          sushi.enable = cfg.enable;
+          gnome-user-share.enable = cfg.enable;
+          # gnome-software.enable = cfg.enable;
+          gnome-online-accounts.enable = cfg.enable;
+        };
       };
     };
 
