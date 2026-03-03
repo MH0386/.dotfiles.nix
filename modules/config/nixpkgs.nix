@@ -1,15 +1,19 @@
 { delib, ... }:
-let
-  shared.nixpkgs.config.allowUnfree = true;
-  variables."NIXPKGS_ALLOW_UNFREE" = 1;
-in
 delib.module {
   name = "nixpkgs";
 
-  nixos.always = shared // {
-    environment.variables = variables;
+  options.nixpkgs = with delib; {
+    enable = boolOption true;
   };
-  home.always = shared // {
-    home.sessionVariables = variables;
-  };
+
+  nixos.ifEnabled =
+    { cfg, ... }:
+    {
+      nixpkgs.config.allowUnfree = cfg.enable;
+    };
+  home.ifEnabled =
+    { cfg, ... }:
+    {
+      home.sessionVariables."NIXPKGS_ALLOW_UNFREE" = if cfg.enable then 1 else 0;
+    };
 }
