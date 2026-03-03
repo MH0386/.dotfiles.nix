@@ -3,12 +3,14 @@ delib.module {
   name = "git-cliff";
 
   options.git-cliff = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.git-cliff =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.git-cliff = {
+        inherit (cfg) enable;
+      };
     };
 }

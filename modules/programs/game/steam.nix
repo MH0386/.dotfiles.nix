@@ -3,14 +3,16 @@ delib.module {
   name = "steam";
 
   options.steam = with delib; {
-    enable = boolOption host.gameFeatured;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.programs.steam =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
+      programs.steam = {
+        inherit (cfg) enable;
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
+      };
     };
 }

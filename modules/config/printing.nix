@@ -4,12 +4,14 @@ delib.module {
   # Enable CUPS to print documents.
 
   options.printing = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.services.printing =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      services.printing = {
+        inherit (cfg) enable;
+      };
     };
 }

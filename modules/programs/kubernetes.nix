@@ -3,7 +3,7 @@ delib.module {
   name = "kubernetes";
 
   options.kubernetes = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = with pkgs; [

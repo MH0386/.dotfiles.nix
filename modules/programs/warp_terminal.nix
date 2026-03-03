@@ -3,7 +3,7 @@ delib.module {
   name = "warp-terminal";
 
   options.warp-terminal = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = [ pkgs.warp-terminal ];

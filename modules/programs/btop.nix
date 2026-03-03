@@ -3,12 +3,14 @@ delib.module {
   name = "btop";
 
   options.btop = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.btop =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.btop = {
+        inherit (cfg) enable;
+      };
     };
 }

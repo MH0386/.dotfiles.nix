@@ -3,12 +3,14 @@ delib.module {
   name = "virt-manager";
 
   options.virt-manager = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.programs.virt-manager =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.virt-manager = {
+        inherit (cfg) enable;
+      };
     };
 }

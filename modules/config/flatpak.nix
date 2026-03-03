@@ -1,23 +1,26 @@
-{ delib, ... }:
+{ delib, inputs, ... }:
 delib.module {
   name = "flatpak";
 
   options.flatpak = with delib; {
-    enable = boolOption host.flatpakFeatured;
+    enable = boolOption true;
     uninstallUnmanaged = boolOption true;
     update.onActivation = boolOption true;
-    packages = listOptionOf str [
+    packages = listOfOption str [
       "io.github.zaedus.spider"
       "io.gitlab.theevilskeleton.Upscaler"
     ];
   };
 
-  home.ifEnabled.services.flatpak =
+  home.always.imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      inherit (cfg) uninstallUnmanaged;
-      update.onActivation = cfg.update.onActivation;
-      inherit (cfg) packages;
+      services.flatpak = {
+        inherit (cfg) enable;
+        inherit (cfg) uninstallUnmanaged;
+        update.onActivation = cfg.update.onActivation;
+        inherit (cfg) packages;
+      };
     };
 }

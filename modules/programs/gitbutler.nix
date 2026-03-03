@@ -3,7 +3,7 @@ delib.module {
   name = "gitbutler";
 
   options.gitbutler = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = [ pkgs.gitbutler ];

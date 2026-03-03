@@ -3,6 +3,7 @@
   lib,
   host,
   pkgs,
+  inputs,
   ...
 }:
 delib.module {
@@ -12,8 +13,6 @@ delib.module {
     { cfg, ... }:
     {
       boot = with delib; {
-        enable = boolOption true;
-
         loader = enumOption [ "grub" "systemd-boot" "lanzaboote" ] (
           if cfg.mode == "uefi" then "lanzaboote" else "grub"
         );
@@ -28,9 +27,10 @@ delib.module {
       };
     };
 
-  nixos.ifEnabled =
+  nixos.always =
     { cfg, ... }:
     {
+      imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
       boot = {
         loader = {
           efi.canTouchEfiVariables = true;

@@ -3,12 +3,14 @@ delib.module {
   name = "zoxide";
 
   options.zoxide = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.zoxide =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.zoxide = {
+        inherit (cfg) enable;
+      };
     };
 }

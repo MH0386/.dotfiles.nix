@@ -3,19 +3,23 @@ delib.module {
   name = "zsh";
 
   options.zsh = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.programs.zsh =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.zsh = {
+        inherit (cfg) enable;
+      };
     };
 
-  home.ifEnabled.programs.zsh =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      autosuggestion.enable = true;
+      programs.zsh = {
+        inherit (cfg) enable;
+        autosuggestion.enable = true;
+      };
     };
 }

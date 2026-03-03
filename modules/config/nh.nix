@@ -3,17 +3,19 @@ delib.module {
   name = "nh";
 
   options.nh = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.programs.nh =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      flake = "/home/mohamed/.dotfiles";
-      clean = {
-        enable = true;
-        extraArgs = "--keep 5";
+      programs.nh = {
+        inherit (cfg) enable;
+        flake = "/home/mohamed/.dotfiles";
+        clean = {
+          enable = true;
+          extraArgs = "--keep 5";
+        };
       };
     };
 }

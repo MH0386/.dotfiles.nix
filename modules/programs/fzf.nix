@@ -3,12 +3,14 @@ delib.module {
   name = "fzf";
 
   options.fzf = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.fzf =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.fzf = {
+        inherit (cfg) enable;
+      };
     };
 }

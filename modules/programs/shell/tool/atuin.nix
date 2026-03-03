@@ -3,20 +3,22 @@ delib.module {
   name = "atuin";
 
   options.atuin = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.atuin =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      daemon.enable = true;
-      enableBashIntegration = true;
-      enableFishIntegration = true;
-      enableNushellIntegration = true;
-      enableZshIntegration = true;
-      settings = {
-        style = "auto";
+      programs.atuin = {
+        inherit (cfg) enable;
+        daemon.enable = true;
+        enableBashIntegration = true;
+        enableFishIntegration = true;
+        enableNushellIntegration = true;
+        enableZshIntegration = true;
+        settings = {
+          style = "auto";
+        };
       };
     };
 }

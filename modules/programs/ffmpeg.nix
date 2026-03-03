@@ -3,7 +3,7 @@ delib.module {
   name = "ffmpeg";
 
   options.ffmpeg = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = [ pkgs.ffmpeg ];

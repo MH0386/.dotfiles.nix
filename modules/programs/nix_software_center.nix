@@ -8,7 +8,7 @@ delib.module {
   name = "nix-software-center";
 
   options.nix-software-center = with delib; {
-    enable = singleEnableOption false;
+    enable = boolOption false;
   };
 
   home.ifEnabled.home.packages = [

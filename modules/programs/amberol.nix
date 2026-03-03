@@ -3,12 +3,14 @@ delib.module {
   name = "amberol";
 
   options.amberol = with delib; {
-    enable = boolOption host.guiFeatured;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.services.amberol =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      services.amberol = {
+        inherit (cfg) enable;
+      };
     };
 }

@@ -3,12 +3,14 @@ delib.module {
   name = "jq";
 
   options.jq = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.jq =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.jq = {
+        inherit (cfg) enable;
+      };
     };
 }

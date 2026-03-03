@@ -3,7 +3,7 @@ delib.module {
   name = "czkawka";
 
   options.czkawka = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = [ pkgs.czkawka ];

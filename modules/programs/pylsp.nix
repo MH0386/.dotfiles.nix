@@ -3,7 +3,7 @@ delib.module {
   name = "pylsp";
 
   options.pylsp = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = [ pkgs.python3Packages.python-lsp-server ];

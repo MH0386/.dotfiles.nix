@@ -3,7 +3,7 @@ delib.module {
   name = "dms-greeter";
 
   options.dms-greeter = with delib; {
-    enable = boolOption host.dmsGreeterFeatured;
+    enable = boolOption true;
     compositor.name = enumOption [ "niri" "hyprland" "sway" ] "niri";
     logs = {
       save = boolOption true;
@@ -11,19 +11,21 @@ delib.module {
     };
   };
 
-  nixos.ifEnabled.services.displayManager.dms-greeter =
+  nixos.ifEnabled =
     { myconfig, cfg, ... }:
     {
-      inherit (cfg) enable;
-      compositor.name = cfg.compositor.name;
+      services.displayManager.dms-greeter = {
+        inherit (cfg) enable;
+        compositor.name = cfg.compositor.name;
 
-      # Sync your user's DankMaterialShell theme with the greeter. You'll probably want this
-      configHome = "/home/${myconfig.constants.username}";
+        # Sync your user's DankMaterialShell theme with the greeter. You'll probably want this
+        configHome = "/home/${myconfig.constants.username}";
 
-      # Save the logs to a file
-      logs = {
-        inherit (cfg.logs) save;
-        inherit (cfg.logs) path;
+        # Save the logs to a file
+        logs = {
+          inherit (cfg.logs) save;
+          inherit (cfg.logs) path;
+        };
       };
     };
 }

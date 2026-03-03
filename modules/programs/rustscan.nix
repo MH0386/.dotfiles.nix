@@ -3,7 +3,7 @@ delib.module {
   name = "rustscan";
 
   options.rustscan = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = [ pkgs.rustscan ];

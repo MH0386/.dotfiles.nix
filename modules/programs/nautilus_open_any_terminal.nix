@@ -3,13 +3,15 @@ delib.module {
   name = "nautilus-open-any-terminal";
 
   options.nautilus-open-any-terminal = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.programs.nautilus-open-any-terminal =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      terminal = "ghostty";
+      programs.nautilus-open-any-terminal = {
+        inherit (cfg) enable;
+        terminal = "ghostty";
+      };
     };
 }

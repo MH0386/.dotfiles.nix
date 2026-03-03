@@ -3,14 +3,16 @@ delib.module {
   name = "docker";
 
   options.docker = with delib; {
-    enable = boolOption host.containerFeatured;
+    enable = boolOption true;
     rootless.enable = boolOption true;
   };
 
-  nixos.ifEnabled.virtualisation.docker =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      rootless.enable = cfg.rootless.enable;
+      virtualisation.docker = {
+        inherit (cfg) enable;
+        rootless.enable = cfg.rootless.enable;
+      };
     };
 }

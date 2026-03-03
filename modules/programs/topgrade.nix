@@ -3,12 +3,14 @@ delib.module {
   name = "topgrade";
 
   options.topgrade = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.topgrade =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.topgrade = {
+        inherit (cfg) enable;
+      };
     };
 }

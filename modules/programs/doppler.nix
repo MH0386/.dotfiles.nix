@@ -3,7 +3,7 @@ delib.module {
   name = "doppler";
 
   options.doppler = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = [ pkgs.doppler ];

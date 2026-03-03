@@ -3,12 +3,14 @@ delib.module {
   name = "game";
 
   options.game = with delib; {
-    gamemode.enable = boolOption host.gameFeatured;
+    gamemode.enable = boolOption true;
   };
 
-  nixos.ifEnabled.programs.gamemode =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg.gamemode) enable;
+      programs.gamemode = {
+        inherit (cfg.gamemode) enable;
+      };
     };
 }

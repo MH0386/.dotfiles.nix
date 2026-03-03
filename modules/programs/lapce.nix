@@ -3,12 +3,14 @@ delib.module {
   name = "lapce";
 
   options.lapce = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.lapce =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.lapce = {
+        inherit (cfg) enable;
+      };
     };
 }

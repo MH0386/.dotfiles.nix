@@ -3,22 +3,24 @@ delib.module {
   name = "firefox";
 
   options.firefox = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
     package = packageOption pkgsStable.firefox;
-    enablePWA = singleEnableOption true;
+    enablePWA = boolOption true;
     packagePWA = packageOption pkgsStable.firefoxpwa;
   };
 
-  home.ifEnabled.programs =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      firefox = {
-        inherit (cfg) enable;
-        inherit (cfg) package;
-      };
-      firefoxpwa = {
-        enable = cfg.enablePWA;
-        package = cfg.packagePWA;
+      programs = {
+        firefox = {
+          inherit (cfg) enable;
+          inherit (cfg) package;
+        };
+        firefoxpwa = {
+          enable = cfg.enablePWA;
+          package = cfg.packagePWA;
+        };
       };
     };
 }

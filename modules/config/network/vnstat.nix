@@ -4,12 +4,14 @@ delib.module {
   # Whether to enable update of network usage statistics via vnstatd.
 
   options.vnstat = with delib; {
-    enable = boolOption host.vnstatFeatured;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.services.vnstat =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      services.vnstat = {
+        inherit (cfg) enable;
+      };
     };
 }

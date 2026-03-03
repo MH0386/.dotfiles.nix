@@ -10,7 +10,7 @@ delib.module {
   name = "nvidia";
 
   options.nvidia = with delib; {
-    enable = singleEnableOption host.nvidiaFeatured;
+    enable = boolOption true;
     open = boolOption false;
     nvidiaSettings = boolOption true;
     powerManagement = {
@@ -30,10 +30,10 @@ delib.module {
         # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
         # Only available from driver 515.43.04+
         # Currently alpha-quality/buggy, so false is currently the recommended setting.
-        inherit (cfg.nvidia) open; # Proprietary for full CUDA
+        inherit (cfg) open; # Proprietary for full CUDA
         # Enable the Nvidia settings menu,
         # accessible via `nvidia-settings`.
-        inherit (cfg.nvidia) nvidiaSettings;
+        inherit (cfg) nvidiaSettings;
         # Optionally, you may need to select the appropriate driver version for your specific GPU.
         package = config.boot.kernelPackages.nvidiaPackages.stable;
         # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
@@ -41,23 +41,23 @@ delib.module {
           # Enable this if you have graphical corruption issues or application crashes after waking
           # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
           # of just the bare essentials.
-          inherit (cfg.nvidia.powerManagement) enable;
+          inherit (cfg.powerManagement) enable;
           # Fine-grained power management. Turns off GPU when not in use.
           # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-          inherit (cfg.nvidia.powerManagement) finegrained;
+          inherit (cfg.powerManagement) finegrained;
         };
         # Modesetting is required.
-        modesetting.enable = cfg.nvidia.modesetting.enable;
+        modesetting.enable = cfg.modesetting.enable;
       };
       # Load nvidia driver for Xorg and Wayland
-      services.xserver.videoDrivers = lib.mkIf cfg.nvidia.enable [ "nvidia" ];
+      services.xserver.videoDrivers = lib.mkIf cfg.enable [ "nvidia" ];
       environment.systemPackages =
         (with pkgs; [
           nvitop
           gpu-viewer
           nvtopPackages.nvidia
         ])
-        ++ lib.optionals cfg.nvidia.enableCuda (
+        ++ lib.optionals cfg.enableCuda (
           with pkgsStable.cudaPackages;
           [
             nccl
@@ -79,7 +79,7 @@ delib.module {
         );
 
       # CUDA environment variables
-      environment.sessionVariables = lib.mkIf cfg.nvidia.enableCuda {
+      environment.sessionVariables = lib.mkIf cfg.enableCuda {
         CUDA_PATH = "${pkgsStable.cudaPackages.cudatoolkit}";
         LD_LIBRARY_PATH = pkgsStable.lib.makeLibraryPath [
           pkgsStable.linuxPackages.nvidia_x11
@@ -94,6 +94,6 @@ delib.module {
         EXTRA_LDFLAGS = "-L/lib -L${pkgsStable.linuxPackages.nvidia_x11}/lib";
         EXTRA_CCFLAGS = "-I/usr/include";
       };
-      nixpkgs.config.cudaSupport = cfg.nvidia.enableCuda;
+      nixpkgs.config.cudaSupport = cfg.enableCuda;
     };
 }

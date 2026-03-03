@@ -7,7 +7,7 @@ delib.module {
   name = "bluetooth";
 
   options.bluetooth = with delib; {
-    enable = boolOption host.wirelessFeatured;
+    enable = boolOption true;
     enableMprisProxy = boolOption true;
   };
 

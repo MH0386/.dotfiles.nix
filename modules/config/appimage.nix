@@ -7,10 +7,12 @@ delib.module {
     binfmt = boolOption true;
   };
 
-  nixos.ifEnabled.programs.appimage =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      inherit (cfg) binfmt;
+      programs.appimage = {
+        inherit (cfg) enable;
+        inherit (cfg) binfmt;
+      };
     };
 }

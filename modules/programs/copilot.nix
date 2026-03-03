@@ -3,7 +3,7 @@ delib.module {
   name = "copilot";
 
   options.copilot = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = [ pkgs.github-copilot-cli ];

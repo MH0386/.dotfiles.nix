@@ -32,7 +32,13 @@ let
         ];
       };
     };
-    programs.nix-ld.enable = true; # TODO: check
+  };
+in
+delib.module {
+  name = "nix";
+
+  nixos.always = shared // {
+    programs.nix-ld.enable = true;
     environment.systemPackages = with pkgs; [
       nixpkgs-reviewFull
       nixfmt
@@ -41,10 +47,5 @@ let
       nix-diff
     ];
   };
-in
-delib.module {
-  name = "nix";
-
-  nixos.always = shared;
   home.always = shared;
 }

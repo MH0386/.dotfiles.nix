@@ -3,7 +3,7 @@ delib.module {
   name = "antigravity";
 
   options.antigravity = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = [ pkgs.antigravity ];

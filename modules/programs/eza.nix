@@ -3,19 +3,21 @@ delib.module {
   name = "eza";
 
   options.eza = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.eza =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      colors = "always";
-      enableBashIntegration = true;
-      enableFishIntegration = true;
-      enableZshIntegration = true;
-      enableNushellIntegration = true;
-      git = true;
-      icons = "always";
+      programs.eza = {
+        inherit (cfg) enable;
+        colors = "always";
+        enableBashIntegration = true;
+        enableFishIntegration = true;
+        enableZshIntegration = true;
+        enableNushellIntegration = true;
+        git = true;
+        icons = "always";
+      };
     };
 }

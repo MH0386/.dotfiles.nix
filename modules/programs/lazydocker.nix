@@ -3,12 +3,14 @@ delib.module {
   name = "lazydocker";
 
   options.lazydocker = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.lazydocker =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.lazydocker = {
+        inherit (cfg) enable;
+      };
     };
 }

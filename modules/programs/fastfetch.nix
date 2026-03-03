@@ -3,12 +3,14 @@ delib.module {
   name = "fastfetch";
 
   options.fastfetch = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.fastfetch =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.fastfetch = {
+        inherit (cfg) enable;
+      };
     };
 }

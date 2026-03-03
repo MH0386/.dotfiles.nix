@@ -4,8 +4,8 @@ delib.module {
   # Open ports in the firewall.
 
   options.firewall = with delib; {
-    enable = boolOption host.firewallFeatured;
-    allowedTCPPorts = listOptionOf port [
+    enable = boolOption true;
+    allowedTCPPorts = listOfOption port [
       22
       80
       443
@@ -14,10 +14,12 @@ delib.module {
     ];
   };
 
-  nixos.ifEnabled.networking.firewall =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      inherit (cfg) allowedTCPPorts;
+      networking.firewall = {
+        inherit (cfg) enable;
+        inherit (cfg) allowedTCPPorts;
+      };
     };
 }

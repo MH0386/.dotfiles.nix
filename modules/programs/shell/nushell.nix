@@ -4,13 +4,15 @@ delib.module {
 
   options.nushell = with delib; {
     enable = boolOption true;
-    plugins = listOptionOf plugin [ pkgs.nushellPlugins.gstat ];
+    plugins = listOption [ pkgs.nushellPlugins.gstat ];
   };
 
-  home.ifEnabled.programs.nushell =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      inherit (cfg) plugins;
+      programs.nushell = {
+        inherit (cfg) enable;
+        inherit (cfg) plugins;
+      };
     };
 }

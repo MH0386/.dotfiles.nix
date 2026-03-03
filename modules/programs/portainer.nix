@@ -1,20 +1,23 @@
-{ delib, ... }:
+{ delib, inputs, ... }:
 delib.module {
   name = "portainer";
 
   options.portainer = with delib; {
-    enable = boolOption host.portainerFeatured;
+    enable = boolOption true;
     version = strOption "latest";
     openFirewall = boolOption true;
     port = portOption 9443;
   };
 
-  nixos.ifEnabled.services.portainer =
+  nixos.always.imports = [ inputs.portainer-on-nixos.nixosModules.portainer ];
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      inherit (cfg) version;
-      inherit (cfg) openFirewall;
-      inherit (cfg) port;
+      services.portainer = {
+        inherit (cfg) enable;
+        inherit (cfg) version;
+        inherit (cfg) openFirewall;
+        inherit (cfg) port;
+      };
     };
 }

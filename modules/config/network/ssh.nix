@@ -3,19 +3,23 @@ delib.module {
   name = "ssh";
 
   options.ssh = with delib; {
-    enable = boolOption host.sshFeatured;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.services.openssh =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      # Enable the OpenSSH daemon.
-      inherit (cfg) enable;
+      services.openssh = {
+        # Enable the OpenSSH daemon.
+        inherit (cfg) enable;
+      };
     };
 
-  home.ifEnabled.programs.ssh =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.ssh = {
+        inherit (cfg) enable;
+      };
     };
 }

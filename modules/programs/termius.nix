@@ -3,7 +3,7 @@ delib.module {
   name = "termius";
 
   options.termius = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = [ pkgs.termius ];

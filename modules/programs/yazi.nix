@@ -3,12 +3,14 @@ delib.module {
   name = "yazi";
 
   options.yazi = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.yazi =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.yazi = {
+        inherit (cfg) enable;
+      };
     };
 }

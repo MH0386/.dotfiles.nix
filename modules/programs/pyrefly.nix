@@ -3,7 +3,7 @@ delib.module {
   name = "pyrefly";
 
   options.pyrefly = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = [ pkgs.pyrefly ];

@@ -3,8 +3,8 @@ delib.module {
   name = "bat";
 
   options.bat = with delib; {
-    enable = singleEnableOption true;
-    extraPackages = listOptionOf plugin [
+    enable = boolOption true;
+    extraPackages = listOption [
       pkgs.bat-extras.batdiff
       pkgs.bat-extras.batman
       pkgs.bat-extras.batgrep
@@ -14,10 +14,12 @@ delib.module {
     ];
   };
 
-  home.ifEnabled.programs.bat =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      inherit (cfg) extraPackages;
+      programs.bat = {
+        inherit (cfg) enable;
+        inherit (cfg) extraPackages;
+      };
     };
 }

@@ -29,7 +29,7 @@ delib.module {
     };
   };
 
-  home.always = {
+  home.always.home = {
     file = { };
     sessionPath = [ ];
     sessionVariables = { };

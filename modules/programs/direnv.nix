@@ -3,13 +3,15 @@ delib.module {
   name = "direnv";
 
   options.direnv = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.direnv =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      nix-direnv.enable = true;
+      programs.direnv = {
+        inherit (cfg) enable;
+        nix-direnv.enable = true;
+      };
     };
 }

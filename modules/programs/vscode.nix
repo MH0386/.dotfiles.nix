@@ -3,22 +3,24 @@ delib.module {
   name = "vscode";
 
   options.vscode = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.vscode =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      profiles = {
-        default = {
-          enableMcpIntegration = true;
-          # userSettings = {
-          #   editor = {
-          #     fontSize = 14;
-          #     fontFamily = "Fira Code";
-          #   };
-          # };
+      programs.vscode = {
+        inherit (cfg) enable;
+        profiles = {
+          default = {
+            enableMcpIntegration = true;
+            # userSettings = {
+            #   editor = {
+            #     fontSize = 14;
+            #     fontFamily = "Fira Code";
+            #   };
+            # };
+          };
         };
       };
     };

@@ -3,7 +3,7 @@ delib.module {
   name = "proton";
 
   options.proton = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = with pkgs; [

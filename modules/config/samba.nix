@@ -3,20 +3,22 @@ delib.module {
   name = "samba";
 
   options.samba = with delib; {
-    enable = boolOption host.sambaFeatured;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.services.samba =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      openFirewall = true;
-      settings = {
-        public = {
-          browseable = "yes";
-          comment = "Public samba share.";
-          writable = "yes";
-          "guest ok" = "yes";
+      services.samba = {
+        inherit (cfg) enable;
+        openFirewall = true;
+        settings = {
+          public = {
+            browseable = "yes";
+            comment = "Public samba share.";
+            writable = "yes";
+            "guest ok" = "yes";
+          };
         };
       };
     };

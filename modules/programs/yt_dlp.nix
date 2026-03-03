@@ -3,12 +3,14 @@ delib.module {
   name = "yt-dlp";
 
   options.yt-dlp = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.yt-dlp =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.yt-dlp = {
+        inherit (cfg) enable;
+      };
     };
 }

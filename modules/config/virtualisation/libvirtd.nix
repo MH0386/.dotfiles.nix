@@ -3,13 +3,15 @@ delib.module {
   name = "libvirtd";
 
   options.libvirtd = with delib; {
-    enable = boolOption host.containerFeatured;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.virtualisation.libvirtd =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      qemu.package = pkgs.qemu_kvm;
+      virtualisation.libvirtd = {
+        inherit (cfg) enable;
+        qemu.package = pkgs.qemu_kvm;
+      };
     };
 }

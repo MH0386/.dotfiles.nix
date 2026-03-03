@@ -3,12 +3,14 @@ delib.module {
   name = "nvidia-container-toolkit";
 
   options.nvidia-container-toolkit = with delib; {
-    enable = boolOption host.containerFeatured;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.hardware.nvidia-container-toolkit =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      hardware.nvidia-container-toolkit = {
+        inherit (cfg) enable;
+      };
     };
 }

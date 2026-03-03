@@ -9,7 +9,7 @@ delib.module {
   name = "cursor";
 
   options.cursor = with delib; {
-    enable = boolOption host.guiFeatured;
+    enable = boolOption true;
     name = strOption "WhiteSur-cursors";
     package = packageOption pkgs.whitesur-cursors;
     size = intOption 24;

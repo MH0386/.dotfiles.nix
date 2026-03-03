@@ -3,7 +3,7 @@ delib.module {
   name = "shotwell";
 
   options.shotwell = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = [ pkgs.shotwell ];

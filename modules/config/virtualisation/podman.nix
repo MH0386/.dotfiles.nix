@@ -3,13 +3,15 @@ delib.module {
   name = "podman";
 
   options.podman = with delib; {
-    enable = boolOption host.containerFeatured;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.virtualisation.podman =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      virtualisation.podman = {
+        inherit (cfg) enable;
+      };
     };
 
   home.ifEnabled.home.packages = [ pkgs.podman-desktop ];

@@ -3,12 +3,14 @@ delib.module {
   name = "command-not-found";
 
   options.command-not-found = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.command-not-found =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.command-not-found = {
+        inherit (cfg) enable;
+      };
     };
 }

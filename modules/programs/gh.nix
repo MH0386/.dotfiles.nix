@@ -3,12 +3,14 @@ delib.module {
   name = "gh";
 
   options.gh = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.gh =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.gh = {
+        inherit (cfg) enable;
+      };
     };
 }

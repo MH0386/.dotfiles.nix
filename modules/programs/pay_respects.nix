@@ -3,12 +3,14 @@ delib.module {
   name = "pay-respects";
 
   options.pay-respects = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.pay-respects =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.pay-respects = {
+        inherit (cfg) enable;
+      };
     };
 }

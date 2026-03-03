@@ -3,16 +3,18 @@ delib.module {
   name = "carapace";
 
   options.carapace = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.carapace =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      enableBashIntegration = true;
-      enableFishIntegration = true;
-      enableZshIntegration = true;
-      enableNushellIntegration = true;
+      programs.carapace = {
+        inherit (cfg) enable;
+        enableBashIntegration = true;
+        enableFishIntegration = true;
+        enableZshIntegration = true;
+        enableNushellIntegration = true;
+      };
     };
 }

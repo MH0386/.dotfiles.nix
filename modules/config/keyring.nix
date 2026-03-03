@@ -3,27 +3,31 @@ delib.module {
   name = "keyring";
 
   options.keyring = with delib; {
-    enableSeahorse = singleEnableOption true;
-    enableGnuPGAgent = singleEnableOption true;
-    enableGnomeKeyring = singleEnableOption true;
+    enableSeahorse = boolOption true;
+    enableGnuPGAgent = boolOption true;
+    enableGnomeKeyring = boolOption true;
   };
 
-  nixos.ifEnabled.programs =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      seahorse.enable = cfg.enableSeahorse;
-      gnupg.agent = {
-        enable = cfg.enableGnuPGAgent;
-        enableSSHSupport = true;
+      programs = {
+        seahorse.enable = cfg.enableSeahorse;
+        gnupg.agent = {
+          enable = cfg.enableGnuPGAgent;
+          enableSSHSupport = true;
+        };
       };
       services.gnome.gnome-keyring.enable = cfg.enableGnomeKeyring;
     };
 
-  home.ifEnabled.services.gpg-agent =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      enable = cfg.enableGnuPGAgent;
-      defaultCacheTtl = 1800;
-      enableSshSupport = true;
+      services.gpg-agent = {
+        enable = cfg.enableGnuPGAgent;
+        defaultCacheTtl = 1800;
+        enableSshSupport = true;
+      };
     };
 }

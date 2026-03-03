@@ -3,7 +3,7 @@ delib.module {
   name = "nodejs";
 
   options.nodejs = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled =

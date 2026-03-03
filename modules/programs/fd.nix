@@ -3,12 +3,14 @@ delib.module {
   name = "fd";
 
   options.fd = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.fd =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.fd = {
+        inherit (cfg) enable;
+      };
     };
 }

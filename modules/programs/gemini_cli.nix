@@ -3,12 +3,14 @@ delib.module {
   name = "gemini-cli";
 
   options.gemini-cli = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.gemini-cli =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.gemini-cli = {
+        inherit (cfg) enable;
+      };
     };
 }

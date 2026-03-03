@@ -1,9 +1,9 @@
-{ delib, ... }:
+{ delib, pkgs, ... }:
 delib.module {
   name = "niri";
 
   options.niri = with delib; {
-    enable = boolOption host.niriFeatured;
+    enable = boolOption true;
     package = packageOption pkgs.niri;
     iio-niri.enable = boolOption true;
   };

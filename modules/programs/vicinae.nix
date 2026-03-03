@@ -3,13 +3,15 @@ delib.module {
   name = "vicinae";
 
   options.vicinae = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.vicinae =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
-      systemd.enable = true;
+      programs.vicinae = {
+        inherit (cfg) enable;
+        systemd.enable = true;
+      };
     };
 }

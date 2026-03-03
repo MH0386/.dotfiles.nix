@@ -3,7 +3,7 @@ delib.module {
   name = "livecaptions";
 
   options.livecaptions = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = [ pkgsStable.livecaptions ];

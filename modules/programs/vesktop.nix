@@ -3,12 +3,14 @@ delib.module {
   name = "vesktop";
 
   options.vesktop = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.vesktop =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.vesktop = {
+        inherit (cfg) enable;
+      };
     };
 }

@@ -3,7 +3,7 @@ delib.module {
   name = "bitwarden";
 
   options.bitwarden = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
   home.ifEnabled.home.packages = with pkgs; [

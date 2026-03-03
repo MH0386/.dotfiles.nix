@@ -3,12 +3,14 @@ delib.module {
   name = "ruff";
 
   options.ruff = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.ruff =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.ruff = {
+        inherit (cfg) enable;
+      };
     };
 }

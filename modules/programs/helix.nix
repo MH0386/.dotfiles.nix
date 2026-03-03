@@ -3,12 +3,14 @@ delib.module {
   name = "helix";
 
   options.helix = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.helix =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.helix = {
+        inherit (cfg) enable;
+      };
     };
 }

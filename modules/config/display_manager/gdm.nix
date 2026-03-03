@@ -3,13 +3,15 @@ delib.module {
   name = "gdm";
 
   options.gdm = with delib; {
-    enable = boolOption host.gdmFeatured;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.services.displayManager.gdm =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      services.displayManager.gdm = {
+        inherit (cfg) enable;
+      };
     };
 
   home.ifEnabled.home.packages = [ pkgs.gdm-settings ];

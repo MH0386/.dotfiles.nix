@@ -3,12 +3,12 @@ delib.module {
   name = "localsend";
 
   options.localsend = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.programs.localsend =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.localsend = { inherit (cfg) enable; };
     };
 }

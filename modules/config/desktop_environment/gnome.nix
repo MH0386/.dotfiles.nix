@@ -3,7 +3,7 @@ delib.module {
   name = "gnome";
 
   options.gnome = with delib; {
-    enable = boolOption host.gnomeFeatured;
+    enable = boolOption true;
   };
 
   nixos.ifEnabled =

@@ -8,7 +8,7 @@ delib.module {
   name = "nixos-conf-editor";
 
   options.nixos-conf-editor = with delib; {
-    enable = singleEnableOption false;
+    enable = boolOption false;
   };
 
   home.ifEnabled.home.packages = [

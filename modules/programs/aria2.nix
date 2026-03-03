@@ -3,12 +3,14 @@ delib.module {
   name = "aria2";
 
   options.aria2 = with delib; {
-    enable = singleEnableOption true;
+    enable = boolOption true;
   };
 
-  home.ifEnabled.programs.aria2 =
+  home.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      programs.aria2 = {
+        inherit (cfg) enable;
+      };
     };
 }

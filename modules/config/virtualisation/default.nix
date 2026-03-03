@@ -3,12 +3,14 @@ delib.module {
   name = "container";
 
   options.container = with delib; {
-    enable = boolOption host.containerFeatured;
+    enable = boolOption true;
   };
 
-  nixos.ifEnabled.virtualisation.containers =
+  nixos.ifEnabled =
     { cfg, ... }:
     {
-      inherit (cfg) enable;
+      virtualisation.containers = {
+        inherit (cfg) enable;
+      };
     };
 }
