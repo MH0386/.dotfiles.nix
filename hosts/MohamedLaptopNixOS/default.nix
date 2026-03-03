@@ -4,7 +4,8 @@ delib.host {
   type = "laptop";
   # rice = "dark";
 
-  nixos.always = {
+  nixos = {
+    boot.loader.grub.devices = [ "nodev" ];
     boot.blacklistedKernelModules = [
       "nouveau"
       "nvidia_drm"
