@@ -62,64 +62,71 @@
 
   outputs =
     {
-      nixpkgs,
+      denix,
       nixpkgs-stable,
-      nix-flatpak,
-      home-manager,
-      nur,
-      lanzaboote,
-      portainer-on-nixos,
-      nix-jetbrains-plugins,
       niri,
       dms,
-      dms-plugin-registry,
       ...
     }@inputs:
     let
-      system = "x86_64-linux";
-      inherit (nixpkgs) lib;
-      pkgsStable = import nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      hostNames = [
-        "MohamedDesktopNixOS"
-        "MohamedLaptopNixOS"
-      ];
-      commonModules = [
-        home-manager.nixosModules.home-manager
-        nur.modules.nixos.default
-        lanzaboote.nixosModules.lanzaboote
-        portainer-on-nixos.nixosModules.portainer
-        ./nixos/configuration.nix
-      ];
+      pkgsStable = import nixpkgs-stable { system = "x86_64-linux"; };
+
+      mkConfigurations =
+        moduleSystem:
+        denix.lib.configurations rec {
+          inherit moduleSystem;
+          homeManagerUser = "mohamed";
+
+          paths = [
+            ./hosts
+            ./modules
+            # ./rices
+          ];
+
+          extensions = with denix.lib.extensions; [
+            #rices
+            args
+            (base.withConfig {
+              args.enable = true;
+
+              hosts.features = {
+                # cli: not must-have (ssh, git, gpg, fail2ban, dnscrypt) utilities like eza, bat, nh, etc.
+                # gui: gui applications and modules that are needed only for gui applications (gnome-keyring, wakatime)
+                features = [
+                  "cli"
+                  "gui"
+                  "gaming"
+                  "hacking"
+                  "powersave"
+                  "wireless"
+                  "nvidia"
+                ];
+                defaultByHostType = {
+                  laptop = [
+                    "cli"
+                    "gui"
+                    "gaming"
+                    "hacking"
+                    "nvidia"
+                  ];
+                  server = [ ];
+                };
+              };
+            })
+          ];
+
+          specialArgs = {
+            inherit
+              inputs
+              moduleSystem
+              homeManagerUser
+              pkgsStable
+              ;
+          };
+        };
     in
     {
-      nixosConfigurations = lib.pipe hostNames [
-        (map (
-          hostName:
-          lib.nameValuePair hostName (
-            lib.nixosSystem {
-              inherit system;
-              modules =
-                commonModules
-                ++ [ { networking.hostName = hostName; } ] # Sets the hostname
-                ++ [ (./. + "/nixos/device/${hostName}/configuration.nix") ]; # Imports the per-host configuration.nix
-              specialArgs = {
-                inherit inputs;
-                inherit system;
-                inherit nix-flatpak;
-                inherit pkgsStable;
-                inherit nur;
-                inherit nix-jetbrains-plugins;
-                inherit niri;
-                inherit dms;
-                inherit dms-plugin-registry;
-              };
-            }
-          )
-        ))
-        lib.listToAttrs
-      ];
+      nixosConfigurations = mkConfigurations "nixos";
+      homeConfigurations = mkConfigurations "home";
     };
 }
