@@ -9,7 +9,7 @@ delib.host {
   type = "desktop";
   # rice = "dark";
 
-  nixos.always = {
+  nixos = {
     boot.blacklistedKernelModules = [ "nouveau" ];
     # Enable CUPS to print documents.
     services.printing = {
