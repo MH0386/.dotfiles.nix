@@ -9,6 +9,7 @@ in
 delib.host {
   name = "MohamedLaptopNixOS";
 
+  system = systemArch;
   homeManagerSystem = systemArch;
   home.home.stateVersion = stateVersion;
 
