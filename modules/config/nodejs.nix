@@ -7,9 +7,9 @@ delib.module {
   };
 
   home.ifEnabled =
-    { cfg, ... }:
+    # { cfg, ... }:
     {
-      programs.bun.enable = cfg.enable;
+      # programs.bun.enable = cfg.enable;
       home.packages = with pkgsStable; [
         nodejs_22
         corepack
