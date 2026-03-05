@@ -64,12 +64,13 @@
     {
       denix,
       nixpkgs-stable,
-      niri,
-      dms,
       ...
     }@inputs:
     let
-      pkgsStable = import nixpkgs-stable { system = "x86_64-linux"; };
+      pkgsStable = import nixpkgs-stable {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
 
       mkConfigurations =
         moduleSystem:
