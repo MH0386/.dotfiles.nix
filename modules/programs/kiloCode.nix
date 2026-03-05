@@ -13,6 +13,6 @@ delib.module {
 
   home.ifEnabled.home.packages = [
     inputs.kilocode.packages.${pkgs.stdenv.hostPlatform.system}.kilo
-    inputs.kilocode.packages.${pkgs.stdenv.hostPlatform.system}.desktop
+    # inputs.kilocode.packages.${pkgs.stdenv.hostPlatform.system}.desktop
   ];
 }
