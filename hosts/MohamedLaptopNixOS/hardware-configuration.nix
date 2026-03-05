@@ -13,25 +13,28 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "nvme"
-    "usbhid"
-    "usb_storage"
-    "sd_mod"
-    "rtsx_pci_sdmmc"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd = {
+      luks.devices."luks-150fee35-912f-4aed-adee-bfea9571d38e".device =
+        "/dev/disk/by-uuid/150fee35-912f-4aed-adee-bfea9571d38e";
+      availableKernelModules = [
+        "xhci_pci"
+        "nvme"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+        "rtsx_pci_sdmmc"
+      ];
+      kernelModules = [ ];
+    };
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
+  };
 
   fileSystems."/" = {
     device = "/dev/mapper/luks-150fee35-912f-4aed-adee-bfea9571d38e";
     fsType = "ext4";
   };
-
-  boot.initrd.luks.devices."luks-150fee35-912f-4aed-adee-bfea9571d38e".device =
-    "/dev/disk/by-uuid/150fee35-912f-4aed-adee-bfea9571d38e";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/45E6-8028";
