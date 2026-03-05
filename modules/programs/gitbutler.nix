@@ -1,4 +1,4 @@
-{ delib, pkgs, ... }:
+{ delib, pkgsStable, ... }:
 delib.module {
   name = "gitbutler";
 
@@ -6,5 +6,5 @@ delib.module {
     enable = boolOption true;
   };
 
-  home.ifEnabled.home.packages = [ pkgs.gitbutler ];
+  home.ifEnabled.home.packages = [ pkgsStable.gitbutler ];
 }
