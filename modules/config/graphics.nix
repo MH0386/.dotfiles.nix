@@ -1,6 +1,5 @@
 {
   delib,
-  host,
   pkgs,
   ...
 }:
@@ -14,7 +13,7 @@ delib.module {
     { cfg, ... }:
     {
       hardware.graphics = {
-        enable = cfg.enable;
+        inherit (cfg) enable;
         enable32Bit = true;
         extraPackages = with pkgs; [
           intel-media-driver
