@@ -40,6 +40,7 @@ delib.module {
   nixos.always = shared // {
     programs.nix-ld.enable = true;
     environment.systemPackages = with pkgs; [
+      nix-tree
       nixpkgs-reviewFull
       nixfmt
       nixd
