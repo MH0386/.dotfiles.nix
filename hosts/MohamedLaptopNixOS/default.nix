@@ -5,7 +5,8 @@ delib.host {
   # rice = "dark";
 
   nixos = {
-    boot.loader.grub.devices = [ "nodev" ];
+    # networking.hostName = "MohamedLaptopNixOS";
+    # boot.loader.grub.devices = [ "nodev" ];
     boot.blacklistedKernelModules = [
       "nouveau"
       "nvidia_drm"
