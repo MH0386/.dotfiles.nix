@@ -2,18 +2,6 @@
 delib.module {
   name = "nixpkgs";
 
-  options.nixpkgs = with delib; {
-    enable = boolOption true;
-  };
-
-  nixos.ifEnabled =
-    { cfg, ... }:
-    {
-      nixpkgs.config.allowUnfree = cfg.enable;
-    };
-  home.ifEnabled =
-    { cfg, ... }:
-    {
-      home.sessionVariables."NIXPKGS_ALLOW_UNFREE" = if cfg.enable then 1 else 0;
-    };
+  nixos.always.nixpkgs.config.allowUnfree = true;
+  home.always.home.sessionVariables."NIXPKGS_ALLOW_UNFREE" = 1;
 }
