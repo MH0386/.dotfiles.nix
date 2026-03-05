@@ -3,6 +3,7 @@ delib.module {
   name = "keyring";
 
   options.keyring = with delib; {
+    enable = boolOption true;
     enableSeahorse = boolOption true;
     enableGnuPGAgent = boolOption true;
     enableGnomeKeyring = boolOption true;
