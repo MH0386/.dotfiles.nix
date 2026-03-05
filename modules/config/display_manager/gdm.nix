@@ -3,7 +3,7 @@ delib.module {
   name = "gdm";
 
   options.gdm = with delib; {
-    enable = boolOption true;
+    enable = boolOption false;
   };
 
   nixos.ifEnabled =
