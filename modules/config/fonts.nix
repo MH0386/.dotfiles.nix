@@ -1,6 +1,5 @@
 {
   delib,
-  host,
   pkgs,
   ...
 }:
@@ -14,11 +13,6 @@ delib.module {
 
     home.packages = with pkgs; [
       noto-fonts
-
-      # japanese
-      noto-fonts-cjk-serif
-      noto-fonts-cjk-sans
-
       # icons
       font-awesome
       material-design-icons
