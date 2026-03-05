@@ -22,7 +22,7 @@ delib.module {
       inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.pycharm."2025.3"."net.seesharpsoft.intellij.plugins.csv"
       inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.pycharm."2025.3"."com.intellij.ideolog"
       inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.pycharm."2025.3"."org.sonarlint.idea"
-      inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.pycharm."2025.3"."sourcery.pycharm-plugin"
+      # inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.pycharm."2025.3"."sourcery.pycharm-plugin"
       inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.pycharm."2025.3"."String Manipulation"
       inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.pycharm."2025.3"."tanvd.grazi"
       inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.pycharm."2025.3"."izhangzhihao.rainbow.brackets"
