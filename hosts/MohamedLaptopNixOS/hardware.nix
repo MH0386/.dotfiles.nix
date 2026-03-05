@@ -9,7 +9,7 @@ in
 delib.host {
   name = "MohamedLaptopNixOS";
 
-  # myconfig.boot.mode = "uefi";
+  myconfig.boot.mode = "uefi";
   system = systemArch;
   homeManagerSystem = systemArch;
   home.home.stateVersion = stateVersion;
