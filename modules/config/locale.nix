@@ -1,8 +1,8 @@
-{ denix, ... }:
-denix.module {
+{ delib, ... }:
+delib.module {
   name = "locale";
 
-  options.locale = with denix; {
+  options.locale = with delib; {
     i18n.defaultLocale = strOption "en_US.UTF-8";
     timeZone = strOption "Africa/Cairo";
   };
