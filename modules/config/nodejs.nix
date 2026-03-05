@@ -1,4 +1,4 @@
-{ delib, pkgs, ... }:
+{ delib, pkgsStable, ... }:
 delib.module {
   name = "nodejs";
 
@@ -10,7 +10,7 @@ delib.module {
     { cfg, ... }:
     {
       programs.bun.enable = cfg.enable;
-      home.packages = with pkgs; [
+      home.packages = with pkgsStable; [
         nodejs_22
         corepack
       ];
