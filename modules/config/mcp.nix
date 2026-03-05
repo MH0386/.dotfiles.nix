@@ -23,10 +23,7 @@ delib.module {
             url = "https://docs.agno.com/mcp";
           };
           devenv = {
-            command = "devenv";
-            args = [
-              "mcp"
-            ];
+            url = "mcp.devenv.sh";
           };
           git = {
             command = "uvx";
