@@ -37,7 +37,7 @@ delib.module {
           grub = lib.mkIf (cfg.loader == "grub") {
             enable = true;
             efiSupport = cfg.mode == "uefi";
-            # devices = [ "nodev" ];
+            devices = [ "nodev" ];
             configurationLimit = 10;
           };
 
