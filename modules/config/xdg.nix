@@ -1,6 +1,5 @@
 {
   delib,
-  host,
   homeconfig,
   pkgs,
   ...
@@ -9,9 +8,9 @@ delib.module {
   name = "xdg";
 
   options.xdg = with delib; {
-    enable = boolOption host.isDesktop; # FIXME
+    enable = boolOption true;
     mime = {
-      recommended = attrsOfOption (listOf str) {
+      recommended = attrsOfOption str {
         "x-scheme-handler/http" = "zen.desktop";
         "x-scheme-handler/https" = "zen.desktop";
         "x-scheme-handler/chrome" = "zen.desktop";
@@ -38,7 +37,7 @@ delib.module {
     { cfg, ... }:
     {
       xdg = {
-        enable = true;
+        inherit (cfg) enable;
 
         userDirs =
           let
