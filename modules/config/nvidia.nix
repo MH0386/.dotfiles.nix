@@ -51,48 +51,49 @@ delib.module {
       };
       # Load nvidia driver for Xorg and Wayland
       services.xserver.videoDrivers = lib.mkIf cfg.enable [ "nvidia" ];
-      environment.systemPackages =
-        (with pkgs; [
-          nvitop
-          gpu-viewer
-          nvtopPackages.nvidia
-        ])
-        ++ lib.optionals cfg.enableCuda (
-          with pkgsStable.cudaPackages;
-          [
-            nccl
-            cudnn
-            cudatoolkit
-            cuda_nvcc
-            cuda_cudart
-            cuda_cccl
-            cuda_cupti
-            cuda_gdb
-            cuda_nvprof
-            cuda_nsight
+      environment = {
+        systemPackages =
+          (with pkgs; [
+            nvitop
+            gpu-viewer
+            nvtopPackages.nvidia
+          ])
+          ++ lib.optionals cfg.enableCuda (
+            with pkgsStable.cudaPackages;
+            [
+              nccl
+              cudnn
+              cudatoolkit
+              cuda_nvcc
+              cuda_cudart
+              cuda_cccl
+              cuda_cupti
+              cuda_gdb
+              cuda_nvprof
+              cuda_nsight
 
-            # Additional CUDA development tools
-            # python3Packages.torch
-            # python3Packages.tensorflow
-            # python3Packages.cupy
-          ]
-        );
-
-      # CUDA environment variables
-      environment.sessionVariables = lib.mkIf cfg.enableCuda {
-        CUDA_PATH = "${pkgsStable.cudaPackages.cudatoolkit}";
-        LD_LIBRARY_PATH = pkgsStable.lib.makeLibraryPath [
-          pkgsStable.linuxPackages.nvidia_x11
-          pkgsStable.ncurses5
-          pkgsStable.stdenv.cc.cc.lib
-          pkgsStable.zlib
-          pkgsStable.libGL
-          pkgsStable.glib
-          pkgsStable.gtk3
-          pkgsStable.libGLU
-        ];
-        EXTRA_LDFLAGS = "-L/lib -L${pkgsStable.linuxPackages.nvidia_x11}/lib";
-        EXTRA_CCFLAGS = "-I/usr/include";
+              # Additional CUDA development tools
+              # python3Packages.torch
+              # python3Packages.tensorflow
+              # python3Packages.cupy
+            ]
+          );
+        # CUDA environment variables
+        sessionVariables = lib.mkIf cfg.enableCuda {
+          CUDA_PATH = "${pkgsStable.cudaPackages.cudatoolkit}";
+          LD_LIBRARY_PATH = pkgsStable.lib.makeLibraryPath [
+            pkgsStable.linuxPackages.nvidia_x11
+            pkgsStable.ncurses5
+            pkgsStable.stdenv.cc.cc.lib
+            pkgsStable.zlib
+            pkgsStable.libGL
+            pkgsStable.glib
+            pkgsStable.gtk3
+            pkgsStable.libGLU
+          ];
+          EXTRA_LDFLAGS = "-L/lib -L${pkgsStable.linuxPackages.nvidia_x11}/lib";
+          EXTRA_CCFLAGS = "-I/usr/include";
+        };
       };
       nixpkgs.config.cudaSupport = cfg.enableCuda;
     };
