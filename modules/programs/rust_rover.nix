@@ -8,7 +8,7 @@ delib.module {
   name = "rust-rover";
 
   options.rust-rover = with delib; {
-    enable = boolOption true;
+    enable = boolOption false;
   };
 
   home.ifEnabled.home.packages = [

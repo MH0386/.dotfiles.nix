@@ -8,7 +8,7 @@ delib.module {
   name = "pycharm";
 
   options.pycharm = with delib; {
-    enable = boolOption true;
+    enable = boolOption false;
   };
 
   home.ifEnabled.home.packages = [
