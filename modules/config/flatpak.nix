@@ -6,10 +6,7 @@ delib.module {
     enable = boolOption true;
     uninstallUnmanaged = boolOption true;
     update.onActivation = boolOption true;
-    packages = listOfOption str [
-      "io.github.zaedus.spider"
-      "io.gitlab.theevilskeleton.Upscaler"
-    ];
+    packages = listOfOption str [ ];
   };
 
   home.always.imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
@@ -19,8 +16,7 @@ delib.module {
       services.flatpak = {
         inherit (cfg) enable;
         inherit (cfg) uninstallUnmanaged;
-        update.onActivation = cfg.update.onActivation;
-        inherit (cfg) packages;
+        inherit (cfg) update;
       };
     };
 }
