@@ -1,0 +1,168 @@
+{
+  "lsp": {
+    "nil": {
+      "settings": {
+        "nix": {
+          "flake": {
+            "autoArchive": true
+          }
+        }
+      }
+    }
+  },
+  "edit_predictions": {
+    "provider": "zed"
+  },
+  "agent_servers": {
+    "kilo": {
+      "favorite_models": [
+        "kilo/kilo/auto-free"
+      ],
+      "type": "registry"
+    },
+    "opencode": {
+      "type": "registry"
+    },
+    "github-copilot": {
+      "type": "registry"
+    },
+    "junie-acp": {
+      "type": "registry"
+    },
+    "kimi": {
+      "type": "registry"
+    }
+  },
+  "ui_font_size": 18.0,
+  "buffer_font_size": 20.0,
+  "languages": {
+    "Python": {
+      "language_servers": [
+        "ty",
+        "!basedpyright",
+        "..."
+      ]
+    }
+  },
+  "calls": {
+    "mute_on_join": true
+  },
+  "git": {
+    "inline_blame": {
+      "show_commit_summary": false
+    }
+  },
+  "terminal": {
+    "copy_on_select": true
+  },
+  "git_panel": {
+    "tree_view": true,
+    "sort_by_path": true
+  },
+  "project_panel": {
+    "hide_hidden": false,
+    "hide_root": true,
+    "hide_gitignore": false
+  },
+  "preview_tabs": {
+    "enable_preview_from_file_finder": true
+  },
+  "tabs": {
+    "show_diagnostics": "errors",
+    "file_icons": true,
+    "git_status": true
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_branch_icon": true
+  },
+  "prettier": {
+    "allowed": true
+  },
+  "colorize_brackets": true,
+  "inlay_hints": {
+    "enabled": true
+  },
+  "always_treat_brackets_as_autoclosed": true,
+  "toolbar": {
+    "code_actions": true
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000
+    }
+  },
+  "restore_on_startup": "last_session",
+  "theme": "GitHub Dark",
+  "context_servers": {
+    "arch-ops-server": {
+      "enabled": false,
+      "settings": {}
+    }
+  },
+  "agent": {
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^cargo\\s"
+            }
+          ]
+        }
+      }
+    },
+    "play_sound_when_agent_done": true,
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5-mini"
+    },
+    "model_parameters": []
+  },
+  "auto_install_extensions": {
+    "arch-mcp": true,
+    "autocorrect": true,
+    "basher": true,
+    "caddyfile": true,
+    "codeowners": true,
+    "colored-zed-icons-theme": true,
+    "csv": true,
+    "desktop": true,
+    "docker-compose": true,
+    "dockerfile": true,
+    "editorconfig": true,
+    "fleet-themes": true,
+    "ghostty": true,
+    "git-firefly": true,
+    "github-actions": true,
+    "github-activity-summarizer": true,
+    "github-dark-default": true,
+    "github-theme": true,
+    "html": true,
+    "ini": true,
+    "jq": true,
+    "json5": true,
+    "jsonl": true,
+    "log": true,
+    "markdownlint": true,
+    "mcp-server-brave-search": true,
+    "mcp-server-byterover": true,
+    "mcp-server-context7": true,
+    "mcp-server-github": true,
+    "mcp-server-sequential-thinking": true,
+    "mcp-server-sonarqube": true,
+    "nix": true,
+    "nu": true,
+    "pylsp": true,
+    "pyrefly": true,
+    "pytest-language-server": true,
+    "python-requirements": true,
+    "python-snippets": true,
+    "rainbow-csv": true,
+    "tombi": true,
+    "toml": true,
+    "wakatime": true,
+    "just": true,
+    "opencode": true
+  }
+}
