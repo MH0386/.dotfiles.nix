@@ -65,11 +65,7 @@
   };
 
   outputs =
-    {
-      denix,
-      nixpkgs-stable,
-      ...
-    }@inputs:
+    { denix, nixpkgs-stable, ... }@inputs:
     let
       pkgsStable = import nixpkgs-stable {
         system = "x86_64-linux";
