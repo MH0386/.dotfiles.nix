@@ -1,4 +1,4 @@
-{ delib, inputs, ... }:
+{ delib, ... }:
 delib.module {
   name = "dank-material-shell";
 
@@ -6,11 +6,6 @@ delib.module {
     enable = boolOption true;
   };
 
-  home.always.imports = [
-    inputs.niri.homeModules.niri
-    inputs.dms.homeModules.dank-material-shell
-    inputs.dms.homeModules.niri
-  ];
   home.ifEnabled =
     { cfg, ... }:
     {
