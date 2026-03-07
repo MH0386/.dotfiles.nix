@@ -1,12 +1,13 @@
 {
   delib,
   pkgs,
+  lib,
   ...
 }:
 let
   shared = {
     nix = {
-      # package = lib.mkForce pkgs.nixVersions.latest;
+      package = lib.mkForce pkgs.nixVersions.latest;
       settings = {
         experimental-features = [
           "nix-command"
