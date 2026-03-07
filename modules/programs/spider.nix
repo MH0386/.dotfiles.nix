@@ -4,12 +4,7 @@ delib.module {
 
   options.spider = with delib; {
     enable = boolOption true;
-    packages = listOfOption str [ "io.github.zaedus.spider" ];
   };
 
-  home.ifEnabled =
-    { cfg, ... }:
-    {
-      services.flatpak.packages = cfg.packages;
-    };
+  home.ifEnabled.services.flatpak.packages = [ "io.github.zaedus.spider" ];
 }
