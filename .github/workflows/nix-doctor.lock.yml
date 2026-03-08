@@ -23,19 +23,21 @@
 #
 # Diagnose and fix nix code issues
 #
-# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"8276913f413047aa9b138cecc0abc78b6d17aee5c1359cbc231a4684b0ff2f16","compiler_version":"v0.55.0","strict":true}
+# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"e9aaa2c8f545d443cdae9d7137a9324fb5fa38be4b9e8f7e9a56103d4b58a763","compiler_version":"v0.55.0","strict":true}
 
 name: "nix-doctor"
 "on":
-  issue_comment:
-    types:
-    - created
   issues:
+    # lock-for-agent: true # Lock-for-agent processed as issue locking in activation job
     types:
     - opened
+    - edited
+    - labeled
   pull_request:
     types:
     - opened
+    - synchronize
+    - labeled
   push:
     branches:
     - main
@@ -60,10 +62,12 @@ jobs:
     runs-on: ubuntu-slim
     permissions:
       contents: read
+      issues: write
     outputs:
       body: ${{ steps.sanitized.outputs.body }}
       comment_id: ""
       comment_repo: ""
+      issue_locked: ${{ steps.lock-issue.outputs.locked }}
       model: ${{ steps.generate_aw_info.outputs.model }}
       secret_verification_result: ${{ steps.validate-secret.outputs.verification_result }}
       text: ${{ steps.sanitized.outputs.text }}
@@ -130,6 +134,16 @@ jobs:
             setupGlobals(core, github, context, exec, io);
             const { main } = require('/opt/gh-aw/actions/compute_text.cjs');
             await main();
+      - name: Lock issue for agent workflow
+        id: lock-issue
+        if: (github.event_name == 'issues') || (github.event_name == 'issue_comment')
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        with:
+          script: |
+            const { setupGlobals } = require('/opt/gh-aw/actions/setup_globals.cjs');
+            setupGlobals(core, github, context, exec, io);
+            const { main } = require('/opt/gh-aw/actions/lock-issue.cjs');
+            await main();
       - name: Create prompt with built-in context
         env:
           GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
@@ -142,7 +156,6 @@ jobs:
           GH_AW_GITHUB_REPOSITORY: ${{ github.repository }}
           GH_AW_GITHUB_RUN_ID: ${{ github.run_id }}
           GH_AW_GITHUB_WORKSPACE: ${{ github.workspace }}
-          GH_AW_IS_PR_COMMENT: ${{ github.event.issue.pull_request && 'true' || '' }}
         run: |
           bash /opt/gh-aw/actions/create_prompt_first.sh
           {
@@ -191,9 +204,6 @@ jobs:
           </github-context>
           
           GH_AW_PROMPT_EOF
-          if [ "$GITHUB_EVENT_NAME" = "issue_comment" ] && [ -n "$GH_AW_IS_PR_COMMENT" ] || [ "$GITHUB_EVENT_NAME" = "pull_request_review_comment" ] || [ "$GITHUB_EVENT_NAME" = "pull_request_review" ]; then
-            cat "/opt/gh-aw/prompts/pr_context_prompt.md"
-          fi
           cat << 'GH_AW_PROMPT_EOF'
           </system>
           GH_AW_PROMPT_EOF
@@ -226,7 +236,6 @@ jobs:
           GH_AW_GITHUB_REPOSITORY: ${{ github.repository }}
           GH_AW_GITHUB_RUN_ID: ${{ github.run_id }}
           GH_AW_GITHUB_WORKSPACE: ${{ github.workspace }}
-          GH_AW_IS_PR_COMMENT: ${{ github.event.issue.pull_request && 'true' || '' }}
           GH_AW_MEMORY_BRANCH_NAME: 'memory/nix-doctor'
           GH_AW_MEMORY_CONSTRAINTS: "\n\n**Constraints:**\n- **Max File Size**: 10240 bytes (0.01 MB) per file\n- **Max File Count**: 100 files per commit\n- **Max Patch Size**: 10240 bytes (10 KB) total per push (max: 100 KB)\n"
           GH_AW_MEMORY_DESCRIPTION: ''
@@ -256,7 +265,6 @@ jobs:
                 GH_AW_GITHUB_REPOSITORY: process.env.GH_AW_GITHUB_REPOSITORY,
                 GH_AW_GITHUB_RUN_ID: process.env.GH_AW_GITHUB_RUN_ID,
                 GH_AW_GITHUB_WORKSPACE: process.env.GH_AW_GITHUB_WORKSPACE,
-                GH_AW_IS_PR_COMMENT: process.env.GH_AW_IS_PR_COMMENT,
                 GH_AW_MEMORY_BRANCH_NAME: process.env.GH_AW_MEMORY_BRANCH_NAME,
                 GH_AW_MEMORY_CONSTRAINTS: process.env.GH_AW_MEMORY_CONSTRAINTS,
                 GH_AW_MEMORY_DESCRIPTION: process.env.GH_AW_MEMORY_DESCRIPTION,
@@ -1097,6 +1105,7 @@ jobs:
       - agent
       - push_repo_memory
       - safe_outputs
+      - unlock
       - update_cache_memory
     if: (always()) && (needs.agent.result != 'skipped')
     runs-on: ubuntu-slim
@@ -1304,6 +1313,7 @@ jobs:
     needs:
       - activation
       - agent
+      - unlock
     if: ((!cancelled()) && (needs.agent.result != 'skipped')) && (needs.agent.outputs.detection_success == 'true')
     runs-on: ubuntu-slim
     permissions:
@@ -1397,6 +1407,31 @@ jobs:
           name: safe-output-items
           path: /tmp/safe-output-items.jsonl
           if-no-files-found: warn
+
+  unlock:
+    needs:
+      - activation
+      - agent
+    if: always()
+    runs-on: ubuntu-slim
+    permissions:
+      issues: write
+    timeout-minutes: 5
+    steps:
+      - name: Setup Scripts
+        uses: github/gh-aw/actions/setup@e211c855a20aa6cf9297b411466e1c382a8686db # v0.55.0
+        with:
+          destination: /opt/gh-aw/actions
+      - name: Unlock issue after agent workflow
+        id: unlock-issue
+        if: ((github.event_name == 'issues') || (github.event_name == 'issue_comment')) && (needs.activation.outputs.issue_locked == 'true')
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        with:
+          script: |
+            const { setupGlobals } = require('/opt/gh-aw/actions/setup_globals.cjs');
+            setupGlobals(core, github, context, exec, io);
+            const { main } = require('/opt/gh-aw/actions/unlock-issue.cjs');
+            await main();
 
   update_cache_memory:
     needs: agent

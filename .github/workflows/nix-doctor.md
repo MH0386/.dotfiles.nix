@@ -2,11 +2,13 @@
 name: nix-doctor
 description: Diagnose and fix nix code issues
 on:
-  issues:
+  issues:    
+    types: [opened, edited, labeled]
+    lock-for-agent: true
   pull_request:
+      types: [opened, synchronize, labeled]
   schedule: daily
-  workflow_dispatch:
-  issue_comment:
+  workflow_dispatch:  
   push:
     branches: [main]
 tools:  
