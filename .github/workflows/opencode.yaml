@@ -29,5 +29,6 @@ jobs:
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           OPENCODE_EXPERIMENTAL: true
+          SUPERMEMORY_API_KEY: ${{ secrets.SUPERMEMORY_API_KEY }}
         with:
           model: opencode/big-pickle
