@@ -2,7 +2,9 @@
 
 ## Overview
 
-This is a NixOS dotfiles repository using Nix flakes with the denix module system, home-manager, and devenv. Configuration defines both NixOS system and home-manager user configurations.
+This is a NixOS dotfiles repository using Nix flakes
+with the denix module system, home-manager, and devenv.
+Configuration defines both NixOS system and home-manager user configurations.
 
 ## Build/Lint/Test Commands
 
@@ -49,13 +51,15 @@ nix flake update      # Update flake lock
 devenv update        # Update devenv lockfile
 ```
 
----
+-----
 
 ## Code Style Guidelines
 
 ### Project Structure
 
-- **Modules** in `modules/` directory: `modules/config/` for system, `modules/programs/` for apps
+- **Modules** in `modules/` directory:
+  - `modules/config/` for system
+  - `modules/programs/` for apps
 - **Hosts** in `hosts/` for machine-specific configs
 - Use the `delib` library for all module definitions
 
@@ -128,6 +132,7 @@ delib.module {
 ### Lists
 
 - Use block style for long lists:
+
   ```nix
   (with pkgs; [
     package1
@@ -135,6 +140,7 @@ delib.module {
     package3
   ])
   ```
+
 - Use `++` to concatenate lists
 
 ### Packages
@@ -143,13 +149,24 @@ delib.module {
 - Use `pkgs` for unstable, `pkgsStable` for stable
 - Use `lib.optionals cfg.condition [packages]` for conditional packages
 
----
+-----
 
 ## Additional Tools
 
 ### Pre-commit Hooks
 
-Enabled hooks: `nixfmt`, `deadnix`, `statix`, `taplo`, `yamlfmt`, `yamllint`, `actionlint`, `detect-private-keys`
+Enabled hooks:
+
+- `nixfmt`
+- `deadnix`
+- `statix`
+- `taplo`
+- `yamlfmt`
+- `yamllint`
+- `actionlint`
+- `detect-private-keys`
+
+<!-- end list -->
 
 ```bash
 nix develop -c pre-commit install
@@ -163,7 +180,7 @@ devenv shell   # Enter with all tools
 direnv allow  # Or use direnv (already configured)
 ```
 
----
+-----
 
 ## CI/CD
 
