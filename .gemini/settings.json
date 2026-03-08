@@ -1,0 +1,16 @@
+{
+  "experimental": {
+    "enableAgents": true,
+    "plan": true
+  },
+  "general": {
+    "checkpointing": {
+      "enabled": true
+    },
+    "sessionRetention": {
+      "enabled": true,
+      "maxAge": "30d",
+      "warningAcknowledged": true
+    }
+  }
+}
