@@ -35,6 +35,14 @@
       "type": "remote",
       "url": "https://mcp.context7.com/mcp"
     },
+    "github": {
+      "enabled": true,
+      "headers": {      
+        "Authorization": "Bearer ${env:GH_TOKEN}"
+      },
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp"
+    },
     "devenv": {
       "enabled": true,
       "type": "remote",
