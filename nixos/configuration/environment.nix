@@ -47,16 +47,18 @@
       ++ (with pkgsStable; [
         corepack
         fh
-        cudaPackages.nccl
-        cudaPackages.cudnn
-        cudaPackages.cudatoolkit
-        cudaPackages.cuda_nvcc
-        cudaPackages.cuda_cudart
-        cudaPackages.cuda_cccl
-        cudaPackages.cuda_cupti
-        cudaPackages.cuda_gdb
-        cudaPackages.cuda_nvprof
-        cudaPackages.cuda_nsight
+        (with cudaPackages; [
+          nccl
+          cudnn
+          cudatoolkit
+          cuda_nvcc
+          cuda_cudart
+          cuda_cccl
+          cuda_cupti
+          cuda_gdb
+          cuda_nvprof
+          cuda_nsight
+        ])
       ]);
     # CUDA environment variables
     sessionVariables = {
