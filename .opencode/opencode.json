@@ -16,7 +16,6 @@
     "websearch": "allow"
   },
   "plugin": [
-    "opencode-daytona",
     "opencode-wakatime",
     "oh-my-opencode",
     "opencode-md-table-formatter",
