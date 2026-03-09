@@ -23,7 +23,7 @@
 #
 # Diagnose and fix Nix code issues
 #
-# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"1449d428013da09633ef2dca88aea495e7801ee5783f6062399cc66d736b0a0a","compiler_version":"v0.55.0","strict":true}
+# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"fb26820c57d75a0176bc81889068a2d425eb8463baae5f06d5d0524cfd5ec230","compiler_version":"v0.55.0","strict":true}
 
 name: "nix-doctor"
 "on":
@@ -82,7 +82,7 @@ jobs:
         env:
           GH_AW_INFO_ENGINE_ID: "gemini"
           GH_AW_INFO_ENGINE_NAME: "Google Gemini CLI"
-          GH_AW_INFO_MODEL: ${{ vars.GH_AW_MODEL_AGENT_CUSTOM || '' }}
+          GH_AW_INFO_MODEL: "gemini-2.5-flash"
           GH_AW_INFO_VERSION: ""
           GH_AW_INFO_AGENT_VERSION: ""
           GH_AW_INFO_CLI_VERSION: "v0.55.0"
@@ -851,6 +851,7 @@ jobs:
           DEBUG: gemini-cli:*
           GEMINI_API_BASE_URL: http://host.docker.internal:10003
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-2.5-flash
           GH_AW_MCP_CONFIG: ${{ github.workspace }}/.gemini/settings.json
           GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
           GH_AW_SAFE_OUTPUTS: ${{ env.GH_AW_SAFE_OUTPUTS }}
@@ -1058,6 +1059,7 @@ jobs:
           DEBUG: gemini-cli:*
           GEMINI_API_BASE_URL: http://host.docker.internal:10003
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-2.5-flash
           GH_AW_PROMPT: /tmp/gh-aw/aw-prompts/prompt.txt
           GITHUB_STEP_SUMMARY: /tmp/gh-aw/agent-step-summary.md
           GITHUB_WORKSPACE: ${{ github.workspace }}
@@ -1324,6 +1326,7 @@ jobs:
     env:
       GH_AW_CALLER_WORKFLOW_ID: "${{ github.repository }}/nix-doctor"
       GH_AW_ENGINE_ID: "gemini"
+      GH_AW_ENGINE_MODEL: "gemini-2.5-flash"
       GH_AW_WORKFLOW_ID: "nix-doctor"
       GH_AW_WORKFLOW_NAME: "nix-doctor"
     outputs:

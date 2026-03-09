@@ -26,7 +26,9 @@ safe-outputs:
   create-issue:
   create-pull-request:
 timeout-minutes: 30
-engine: gemini
+engine: 
+  id: gemini
+  model: gemini-2.5-flash
 ---
 
 # Nix Module Platform-Specific Options
