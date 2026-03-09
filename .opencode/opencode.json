@@ -37,7 +37,7 @@
     },
     "github": {
       "enabled": true,
-      "headers": {      
+      "headers": {
         "Authorization": "Bearer ${env:GH_TOKEN}"
       },
       "type": "remote",
