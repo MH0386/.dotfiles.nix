@@ -1,30 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": true,
-  "share": "auto",
-  "permission": {
-    "edit": "allow",
-    "read": "allow",
-    "grep": "allow",
-    "glob": "allow",
-    "list": "allow",
-    "lsp": "allow",
-    "skill": "allow",
-    "todowrite": "allow",
-    "todoread": "allow",
-    "webfetch": "allow",
-    "websearch": "allow"
-  },
-  "plugin": [
-    "opencode-wakatime",
-    "oh-my-opencode",
-    "opencode-md-table-formatter",
-    "opencode-skillful",
-    "micode",
-    "opencode-workspace",
-    "opencode-worktree",
-    "opencode-supermemory"
-  ],
   "mcp": {
     "context7": {
       "enabled": true,
@@ -34,6 +10,19 @@
       "type": "remote",
       "url": "https://mcp.context7.com/mcp"
     },
+    "devenv": {
+      "enabled": true,
+      "type": "remote",
+      "url": "mcp.devenv.sh"
+    },
+    "git": {
+      "command": [
+        "uvx",
+        "mcp-server-git"
+      ],
+      "enabled": true,
+      "type": "local"
+    },
     "github": {
       "enabled": true,
       "headers": {
@@ -42,20 +31,38 @@
       "type": "remote",
       "url": "https://api.githubcopilot.com/mcp"
     },
-    "devenv": {
-      "enabled": true,
-      "type": "remote",
-      "url": "mcp.devenv.sh"
-    },
-    "git": {
-      "command": ["uvx", "mcp-server-git"],
-      "enabled": true,
-      "type": "local"
-    },
     "nixos": {
-      "command": ["uvx", "mcp-nixos"],
+      "command": [
+        "uvx",
+        "mcp-nixos"
+      ],
       "enabled": true,
       "type": "local"
     }
-  }
+  },
+  "permission": {
+    "edit": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "lsp": "allow",
+    "read": "allow",
+    "skill": "allow",
+    "todoread": "allow",
+    "todowrite": "allow",
+    "webfetch": "allow",
+    "websearch": "allow"
+  },
+  "plugin": [
+    "opencode-wakatime",
+    "oh-my-opencode",
+    "opencode-md-table-formatter",
+    "opencode-skillful",
+    "opencode-workspace",
+    "opencode-worktree",
+    "opencode-supermemory",
+    "opencode-snip",
+    "opencode-agent-memory"
+  ],
+  "share": "auto"
 }
