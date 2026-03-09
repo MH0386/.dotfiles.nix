@@ -1,4 +1,4 @@
-{ delib, pkgs, ... }:
+{ delib, pkgs, lib, ... }:
 delib.module {
   name = "opencode";
 
@@ -9,7 +9,10 @@ delib.module {
   home.ifEnabled =
     { cfg, ... }:
     {
-      home.packages = [ pkgs.opencode-desktop ];
+      home={
+        packages = [ pkgs.opencode-desktop ];
+        sessionVariables = { EDITOR="${lib.getExe pkgs.vscodium} --wait"; };
+      };
       programs.opencode = {
         inherit (cfg) enable;
         enableMcpIntegration = true;
