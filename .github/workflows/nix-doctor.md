@@ -1,6 +1,6 @@
 ---
 name: nix-doctor
-description: Diagnose and fix nix code issues
+description: Diagnose and fix Nix code issues
 on:
   issues:    
     types: [opened, edited, labeled]
