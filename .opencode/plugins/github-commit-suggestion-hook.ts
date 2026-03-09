@@ -17,15 +17,18 @@ export const MyPlugin: Plugin = async () => {
 
 function formatGithubSuggestions(text: string): string {
   // Match code blocks with diff language: ```diff ... ```
-  const diffBlockRegex = /```diff\n([\s\S]*?)```/g;
+  // Using [\r\n]+ to handle different line endings (LF, CRLF)
+  const diffBlockRegex = /```diff[\r\n]+([\s\S]*?)```/g;
 
   return text.replace(diffBlockRegex, (match, diffContent) => {
-    const lines = diffContent.split('\n');
+    // Normalize line endings to \n for consistent splitting
+    const normalizedContent = diffContent.replace(/\r\n/g, '\n');
+    const lines = normalizedContent.split('\n');
     const suggestionLines: string[] = [];
 
     for (const line of lines) {
-      // Skip diff metadata lines (---, +++, @@)
-      if (line.startsWith('---') || line.startsWith('+++') || line.startsWith('@@')) {
+      // Skip empty lines and diff metadata lines (---, +++, @@)
+      if (!line.trim() || line.startsWith('---') || line.startsWith('+++') || line.startsWith('@@')) {
         continue;
       }
       // Keep lines starting with + (added lines), removing the + prefix
