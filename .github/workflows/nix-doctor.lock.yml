@@ -21,9 +21,9 @@
 #
 # For more information: https://github.github.com/gh-aw/introduction/overview/
 #
-# Diagnose and fix nix code issues
+# Diagnose and fix Nix code issues
 #
-# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"e9aaa2c8f545d443cdae9d7137a9324fb5fa38be4b9e8f7e9a56103d4b58a763","compiler_version":"v0.55.0","strict":true}
+# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"1449d428013da09633ef2dca88aea495e7801ee5783f6062399cc66d736b0a0a","compiler_version":"v0.55.0","strict":true}
 
 name: "nix-doctor"
 "on":
@@ -1020,7 +1020,7 @@ jobs:
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           WORKFLOW_NAME: "nix-doctor"
-          WORKFLOW_DESCRIPTION: "Diagnose and fix nix code issues"
+          WORKFLOW_DESCRIPTION: "Diagnose and fix Nix code issues"
           HAS_PATCH: ${{ steps.collect_output.outputs.has_patch }}
         with:
           script: |
