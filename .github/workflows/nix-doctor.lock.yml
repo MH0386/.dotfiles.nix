@@ -23,7 +23,7 @@
 #
 # Diagnose and fix Nix code issues
 #
-# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"3799286e04a6691bde93e91733059eddb376ee00acdc3cde2ab96fcc5932d615","compiler_version":"v0.57.2","strict":true}
+# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"4553f1b7acf517690768e82a444b683a01fbc5c9cfb3ddd0b8e302cee0ee14e1","compiler_version":"v0.57.2","strict":true}
 
 name: "nix-doctor"
 "on":
@@ -156,7 +156,6 @@ jobs:
           GH_AW_GITHUB_REPOSITORY: ${{ github.repository }}
           GH_AW_GITHUB_RUN_ID: ${{ github.run_id }}
           GH_AW_GITHUB_WORKSPACE: ${{ github.workspace }}
-          GH_AW_WIKI_NOTE: ${{ '' }}
         run: |
           bash /opt/gh-aw/actions/create_prompt_first.sh
           {
@@ -167,7 +166,6 @@ jobs:
           cat "/opt/gh-aw/prompts/temp_folder_prompt.md"
           cat "/opt/gh-aw/prompts/markdown.md"
           cat "/opt/gh-aw/prompts/cache_memory_prompt.md"
-          cat "/opt/gh-aw/prompts/repo_memory_prompt.md"
           cat "/opt/gh-aw/prompts/safe_outputs_prompt.md"
           cat << 'GH_AW_PROMPT_EOF'
           <safe-output-tools>
@@ -237,13 +235,7 @@ jobs:
           GH_AW_GITHUB_REPOSITORY: ${{ github.repository }}
           GH_AW_GITHUB_RUN_ID: ${{ github.run_id }}
           GH_AW_GITHUB_WORKSPACE: ${{ github.workspace }}
-          GH_AW_MEMORY_BRANCH_NAME: 'memory/nix-doctor'
-          GH_AW_MEMORY_CONSTRAINTS: "\n\n**Constraints:**\n- **Max File Size**: 10240 bytes (0.01 MB) per file\n- **Max File Count**: 100 files per commit\n- **Max Patch Size**: 10240 bytes (10 KB) total per push (max: 100 KB)\n"
-          GH_AW_MEMORY_DESCRIPTION: ''
-          GH_AW_MEMORY_DIR: '/tmp/gh-aw/repo-memory/default/'
-          GH_AW_MEMORY_TARGET_REPO: ' of the current repository'
           GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED: ${{ needs.pre_activation.outputs.activated }}
-          GH_AW_WIKI_NOTE: ''
         with:
           script: |
             const { setupGlobals } = require('/opt/gh-aw/actions/setup_globals.cjs');
@@ -266,13 +258,7 @@ jobs:
                 GH_AW_GITHUB_REPOSITORY: process.env.GH_AW_GITHUB_REPOSITORY,
                 GH_AW_GITHUB_RUN_ID: process.env.GH_AW_GITHUB_RUN_ID,
                 GH_AW_GITHUB_WORKSPACE: process.env.GH_AW_GITHUB_WORKSPACE,
-                GH_AW_MEMORY_BRANCH_NAME: process.env.GH_AW_MEMORY_BRANCH_NAME,
-                GH_AW_MEMORY_CONSTRAINTS: process.env.GH_AW_MEMORY_CONSTRAINTS,
-                GH_AW_MEMORY_DESCRIPTION: process.env.GH_AW_MEMORY_DESCRIPTION,
-                GH_AW_MEMORY_DIR: process.env.GH_AW_MEMORY_DIR,
-                GH_AW_MEMORY_TARGET_REPO: process.env.GH_AW_MEMORY_TARGET_REPO,
-                GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED: process.env.GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED,
-                GH_AW_WIKI_NOTE: process.env.GH_AW_WIKI_NOTE
+                GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED: process.env.GH_AW_NEEDS_PRE_ACTIVATION_OUTPUTS_ACTIVATED
               }
             });
       - name: Validate prompt placeholders
@@ -337,16 +323,6 @@ jobs:
           path: /tmp/gh-aw/cache-memory
           restore-keys: |
             memory-${{ env.GH_AW_WORKFLOW_ID_SANITIZED }}-
-      # Repo memory git-based storage configuration from frontmatter processed below
-      - name: Clone repo-memory branch (default)
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GITHUB_SERVER_URL: ${{ github.server_url }}
-          BRANCH_NAME: memory/nix-doctor
-          TARGET_REPO: ${{ github.repository }}
-          MEMORY_DIR: /tmp/gh-aw/repo-memory/default
-          CREATE_ORPHAN: true
-        run: bash /opt/gh-aw/actions/clone_repo_memory_branch.sh
       - name: Configure Git credentials
         env:
           REPO_NAME: ${{ github.repository }}
@@ -400,7 +376,7 @@ jobs:
           mkdir -p /tmp/gh-aw/safeoutputs
           mkdir -p /tmp/gh-aw/mcp-logs/safeoutputs
           cat > /opt/gh-aw/safeoutputs/config.json << 'GH_AW_SAFE_OUTPUTS_CONFIG_EOF'
-          {"create_issue":{"max":1},"create_pull_request":{"max":1},"missing_data":{},"missing_tool":{},"noop":{"max":1},"push_repo_memory":{"memories":[{"dir":"/tmp/gh-aw/repo-memory/default","id":"default","max_file_count":100,"max_file_size":10240,"max_patch_size":10240}]}}
+          {"create_issue":{"max":1},"create_pull_request":{"max":1},"missing_data":{},"missing_tool":{},"noop":{"max":1}}
           GH_AW_SAFE_OUTPUTS_CONFIG_EOF
           cat > /opt/gh-aw/safeoutputs/tools.json << 'GH_AW_SAFE_OUTPUTS_TOOLS_EOF'
           [
@@ -594,21 +570,6 @@ jobs:
                 "type": "object"
               },
               "name": "missing_data"
-            },
-            {
-              "description": "Validate repo-memory files are within configured size limits before the workflow completes. Call this after writing files to memory to check that the total size is within limits. Returns an error if files are too large, with guidance on how to reduce memory size so the memory can be saved successfully.",
-              "inputSchema": {
-                "additionalProperties": false,
-                "properties": {
-                  "memory_id": {
-                    "description": "Memory identifier to validate. Defaults to 'default' if not specified.",
-                    "type": "string"
-                  }
-                },
-                "required": [],
-                "type": "object"
-              },
-              "name": "push_repo_memory"
             }
           ]
           GH_AW_SAFE_OUTPUTS_TOOLS_EOF
@@ -979,15 +940,6 @@ jobs:
             setupGlobals(core, github, context, exec, io);
             const { main } = require('/opt/gh-aw/actions/parse_mcp_gateway_log.cjs');
             await main();
-      # Upload repo memory as artifacts for push job
-      - name: Upload repo-memory artifact (default)
-        if: always()
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
-        with:
-          name: repo-memory-default
-          path: /tmp/gh-aw/repo-memory/default
-          retention-days: 1
-          if-no-files-found: ignore
       - name: Upload cache-memory data as artifact
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
         if: always()
@@ -1135,7 +1087,6 @@ jobs:
     needs:
       - activation
       - agent
-      - push_repo_memory
       - safe_outputs
       - unlock
       - update_cache_memory
@@ -1210,10 +1161,6 @@ jobs:
           GH_AW_CHECKOUT_PR_SUCCESS: ${{ needs.agent.outputs.checkout_pr_success }}
           GH_AW_CODE_PUSH_FAILURE_ERRORS: ${{ needs.safe_outputs.outputs.code_push_failure_errors }}
           GH_AW_CODE_PUSH_FAILURE_COUNT: ${{ needs.safe_outputs.outputs.code_push_failure_count }}
-          GH_AW_PUSH_REPO_MEMORY_RESULT: ${{ needs.push_repo_memory.result }}
-          GH_AW_REPO_MEMORY_VALIDATION_FAILED_default: ${{ needs.push_repo_memory.outputs.validation_failed_default }}
-          GH_AW_REPO_MEMORY_VALIDATION_ERROR_default: ${{ needs.push_repo_memory.outputs.validation_error_default }}
-          GH_AW_REPO_MEMORY_PATCH_SIZE_EXCEEDED_default: ${{ needs.push_repo_memory.outputs.patch_size_exceeded_default }}
           GH_AW_GROUP_REPORTS: "false"
           GH_AW_FAILURE_REPORT_AS_ISSUE: "true"
           GH_AW_TIMEOUT_MINUTES: "30"
@@ -1278,70 +1225,6 @@ jobs:
             const { setupGlobals } = require('/opt/gh-aw/actions/setup_globals.cjs');
             setupGlobals(core, github, context, exec, io);
             const { main } = require('/opt/gh-aw/actions/check_membership.cjs');
-            await main();
-
-  push_repo_memory:
-    needs: agent
-    if: always() && needs.agent.outputs.detection_success == 'true'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    concurrency:
-      group: "push-repo-memory-${{ github.repository }}"
-      cancel-in-progress: false
-    outputs:
-      patch_size_exceeded_default: ${{ steps.push_repo_memory_default.outputs.patch_size_exceeded }}
-      validation_error_default: ${{ steps.push_repo_memory_default.outputs.validation_error }}
-      validation_failed_default: ${{ steps.push_repo_memory_default.outputs.validation_failed }}
-    steps:
-      - name: Setup Scripts
-        uses: github/gh-aw/actions/setup@32b3a711a9ee97d38e3989c90af0385aff0066a7 # v0.57.2
-        with:
-          destination: /opt/gh-aw/actions
-      - name: Checkout repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          persist-credentials: false
-          sparse-checkout: .
-      - name: Configure Git credentials
-        env:
-          REPO_NAME: ${{ github.repository }}
-          SERVER_URL: ${{ github.server_url }}
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git config --global am.keepcr true
-          # Re-authenticate git with GitHub token
-          SERVER_URL_STRIPPED="${SERVER_URL#https://}"
-          git remote set-url origin "https://x-access-token:${{ github.token }}@${SERVER_URL_STRIPPED}/${REPO_NAME}.git"
-          echo "Git configured with standard GitHub Actions identity"
-      - name: Download repo-memory artifact (default)
-        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8
-        continue-on-error: true
-        with:
-          name: repo-memory-default
-          path: /tmp/gh-aw/repo-memory/default
-      - name: Push repo-memory changes (default)
-        id: push_repo_memory_default
-        if: always()
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GITHUB_RUN_ID: ${{ github.run_id }}
-          GITHUB_SERVER_URL: ${{ github.server_url }}
-          ARTIFACT_DIR: /tmp/gh-aw/repo-memory/default
-          MEMORY_ID: default
-          TARGET_REPO: ${{ github.repository }}
-          BRANCH_NAME: memory/nix-doctor
-          MAX_FILE_SIZE: 10240
-          MAX_FILE_COUNT: 100
-          MAX_PATCH_SIZE: 10240
-          ALLOWED_EXTENSIONS: '[]'
-        with:
-          script: |
-            const { setupGlobals } = require('/opt/gh-aw/actions/setup_globals.cjs');
-            setupGlobals(core, github, context, exec, io);
-            const { main } = require('/opt/gh-aw/actions/push_repo_memory.cjs');
             await main();
 
   safe_outputs:

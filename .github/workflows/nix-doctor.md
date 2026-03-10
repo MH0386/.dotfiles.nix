@@ -15,7 +15,6 @@ tools:
   edit:
   bash: true
   cache-memory: true
-  repo-memory: true
   web-fetch:
   add-comment: true
   add-label: true
