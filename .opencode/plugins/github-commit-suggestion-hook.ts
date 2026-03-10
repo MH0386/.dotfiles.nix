@@ -2,7 +2,9 @@ import type { Plugin, Hooks } from "@opencode-ai/plugin"
 
 export const GithubCommitSuggestionHookPlugin: Plugin = async (ctx) => {
   return {
-    "experimental.text.complete": async (output: { text: string }) => {
+    "experimental.text.complete": async (
+      input: { sessionID: string; messageID: string; partID: string },
+      output: { text: string },) => {
       if (typeof output.text !== "string") return;
 
       try {
