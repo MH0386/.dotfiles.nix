@@ -73,120 +73,18 @@ When writing Nix modules that need to hide platform-specific options (NixOS vs D
 - If you cannot find a meaningful improvement, do nothing. Do not create empty PRs.
 - PR title must start with the type of improvement: `test:`, `refactor:`, `docs:`, or `types:`.
 
-## The Problem
 
-`mkIf` is evaluated lazily but the option **path** is still visible during module evaluation. This causes errors like:
+# Nix Expert (Denix Library)
 
-```bash
-error: The option `users.defaultUserShell' does not exist.
-```
+You are expert in nix specially denix labrary and
+can provide feedback on code quality and best practices.
 
-Or infinite recursion when `config` is referenced in option defaults or `optionalAttrs` conditions.
+## Code Style Guidelines
 
-## The Pattern
+### Project Structure
 
-**Use `optionalAttrs` for platform checks, `mkIf` for config-dependent checks.**
-
-| Check Type                                 | Tool            | Evaluated  |
-| ------------------------------------------ | --------------- | ---------- |
-| Platform (`isDarwin`, `!isDarwin`)         | `optionalAttrs` | Parse time |
-| Config values (`cfg.enable`, `cfg.flavor`) | `mkIf`          | Lazy       |
-
-## Examples
-
-### ❌ Wrong: mkIf for platform check
-
-```nix
-config = mkIf (!isDarwin) {
-  users.defaultUserShell = pkgs.zsh;  # Darwin sees this path!
-};
-```
-
-### ✅ Correct: optionalAttrs for platform check
-
-```nix
-config = optionalAttrs (!isDarwin) {
-  users.defaultUserShell = pkgs.zsh;  # Hidden from Darwin
-};
-```
-
-### ❌ Wrong: Config value in optionalAttrs condition
-
-```nix
-# cfg.flavor evaluated at parse time → infinite recursion
-(optionalAttrs (isDarwin && cfg.flavor == "personal") {
-  services.onepassword-secrets.enable = true;
-})
-```
-
-### ✅ Correct: Nest mkIf inside optionalAttrs
-
-```nix
-# Platform check at parse time, config check lazy
-(optionalAttrs isDarwin (mkIf (cfg.flavor == "personal") {
-  services.onepassword-secrets.enable = true;
-}))
-```
-
-### ❌ Wrong: config reference in option default
-
-```nix
-options.modules.foo = {
-  user = mkOpt types.str config.user.name;  # Infinite recursion!
-};
-```
-
-### ✅ Correct: Static default, use config in config section
-
-```nix
-options.modules.foo = {
-  user = mkOpt types.str null;
-};
-
-config = mkIf cfg.enable (let
-  user = if cfg.user != null then cfg.user else config.user.name;
-in {
-  # Use 'user' variable here
-});
-```
-
-## Combined Pattern
-
-For modules with both platform-specific options AND config-dependent behavior:
-
-```nix
-config = mkIf cfg.enable (mkMerge [
-  # Common config (all platforms)
-  { /* ... */ }
-
-  # Darwin-only options
-  (optionalAttrs isDarwin {
-    programs.zsh.interactiveShellInit = "...";
-  })
-
-  # NixOS-only options
-  (optionalAttrs (!isDarwin) {
-    users.defaultUserShell = pkgs.zsh;
-  })
-
-  # Darwin + config-dependent (nested)
-  (optionalAttrs isDarwin (mkIf (cfg.flavor == "personal") {
-    services.onepassword-secrets.enable = true;
-  }))
-]);
-```
-
-## Debugging
-
-When you see infinite recursion errors mentioning `_module.freeformType` or `anon-43`:
-
-1. Search for `config.` references in option defaults
-2. Search for `cfg.` references in `optionalAttrs` conditions
-3. Search for `mkIf (!isDarwin)` or `mkIf isDarwin` guarding platform-specific options
-
-```bash
-# Find problematic patterns
-grep -rn "mkOpt.*config\." modules/
-grep -rn "optionalAttrs.*cfg\." modules/
-grep -rn "mkIf.*isDarwin" modules/
-```
+- **Modules** in `modules/` directory:
+  - `modules/config/` for system
+  - `modules/programs/` for apps
+- **Hosts** in `hosts/` for machine-specific configs
+- Use the `delib` library for all module definitions
