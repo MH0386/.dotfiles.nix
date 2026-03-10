@@ -122,3 +122,4 @@ Use `devenv shell` to access `treefmt`, `nh`, and other tools.
 
 - **Denix Documentation**: https://denix.ynf.sh
 - **Denix GitHub**: https://github.com/yunfachi/denix
+- **Home Manager Documentation**: https://nix-community.github.io/home-manager/
