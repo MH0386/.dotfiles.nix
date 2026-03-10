@@ -2,21 +2,21 @@
 name: nix-doctor
 description: Diagnose and fix Nix code issues
 on:
-  issues:    
+  issues:
     types: [opened, edited, labeled]
     lock-for-agent: true
   pull_request:
-      types: [opened, synchronize, labeled]
+    types: [opened, synchronize, labeled]
   schedule: daily
-  workflow_dispatch:  
+  workflow_dispatch:
   push:
     branches: [main]
-tools:  
+tools:
   edit:
   bash: true
   cache-memory: true
   repo-memory: true
-  web-fetch: 
+  web-fetch:
   add-comment: true
   add-label: true
   create-issue: true
@@ -26,9 +26,9 @@ safe-outputs:
   create-issue:
   create-pull-request:
 timeout-minutes: 30
-engine: 
+engine:
   id: gemini
-  model: gemini-2.5-flash
+  model: gemini-2.5-flash-lite
 ---
 
 # Nix Module Platform-Specific Options
@@ -87,10 +87,10 @@ Or infinite recursion when `config` is referenced in option defaults or `optiona
 
 **Use `optionalAttrs` for platform checks, `mkIf` for config-dependent checks.**
 
-| Check Type | Tool | Evaluated |
-|------------|------|-----------|
-| Platform (`isDarwin`, `!isDarwin`) | `optionalAttrs` | Parse time |
-| Config values (`cfg.enable`, `cfg.flavor`) | `mkIf` | Lazy |
+| Check Type                                 | Tool            | Evaluated  |
+| ------------------------------------------ | --------------- | ---------- |
+| Platform (`isDarwin`, `!isDarwin`)         | `optionalAttrs` | Parse time |
+| Config values (`cfg.enable`, `cfg.flavor`) | `mkIf`          | Lazy       |
 
 ## Examples
 
@@ -181,7 +181,7 @@ config = mkIf cfg.enable (mkMerge [
 When you see infinite recursion errors mentioning `_module.freeformType` or `anon-43`:
 
 1. Search for `config.` references in option defaults
-2. Search for `cfg.` references in `optionalAttrs` conditions  
+2. Search for `cfg.` references in `optionalAttrs` conditions
 3. Search for `mkIf (!isDarwin)` or `mkIf isDarwin` guarding platform-specific options
 
 ```bash
