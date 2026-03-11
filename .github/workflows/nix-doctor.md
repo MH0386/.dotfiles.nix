@@ -42,9 +42,21 @@ safe-outputs:
   create-code-scanning-alert:
   autofix-code-scanning-alert:
 timeout-minutes: 30
+network:
+  firewall:
+    log-level: info
+  allowed:
+    - defaults
+    - github
+    - "denix.ynf.sh"
+    - "nix-community.github.io"
+    - "nixos.org"
+    - "nixos.wiki"
 engine:
   id: gemini
   model: gemini-2.5-flash-lite
+imports:
+  - .gemini/styleguide.md
 ---
 
 # Nix Expert (Denix Library)
