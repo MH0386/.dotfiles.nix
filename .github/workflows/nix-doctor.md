@@ -24,6 +24,7 @@ tools:
 safe-outputs:
   create-issue:
   create-pull-request:
+  create-pull-request-review-comment:
 timeout-minutes: 30
 engine:
   id: gemini
