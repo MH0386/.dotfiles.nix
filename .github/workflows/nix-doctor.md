@@ -30,8 +30,17 @@ tools:
     mode: remote
 safe-outputs:
   create-issue:
+  update-issue:
+  link-sub-issue:
   create-pull-request:
+  update-pull-request:
   create-pull-request-review-comment:
+  reply-to-pull-request-review-comment:
+  push-to-pull-request-branch:
+  add-comment:
+  add-labels:
+  create-code-scanning-alert:
+  autofix-code-scanning-alert:
 timeout-minutes: 30
 engine:
   id: gemini
