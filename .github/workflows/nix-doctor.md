@@ -81,3 +81,11 @@ can provide feedback on code quality and best practices.
   - `modules/programs/` for apps
 - **Hosts** in `hosts/` for machine-specific configs
 - Use the `delib` library for all module definitions
+
+### Resources
+
+- **Denix Documentation**: https://denix.ynf.sh
+- **Denix GitHub**: https://github.com/yunfachi/denix
+- **Home Manager Documentation**: https://nix-community.github.io/home-manager/
+- **NixOS Official Wiki**: https://wiki.nixos.org/wiki/NixOS_Wiki
+- **NixOS Unofficial Wiki**: https://nixos.wiki/wiki/Main_Page
