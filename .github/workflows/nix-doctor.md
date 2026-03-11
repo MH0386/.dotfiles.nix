@@ -55,8 +55,6 @@ network:
 engine:
   id: gemini
   model: gemini-2.5-flash-lite
-imports:
-  - .gemini/styleguide.md
 ---
 
 # Nix Expert (Denix Library)
