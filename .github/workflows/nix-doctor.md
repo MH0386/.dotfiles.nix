@@ -11,6 +11,10 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
 tools:
   edit:
   bash: true
@@ -21,6 +25,9 @@ tools:
   create-issue: true
   create-pull-request: true
   commit-files: true
+  github:
+    toolsets: [repos, issues, pull_requests]
+    mode: remote
 safe-outputs:
   create-issue:
   create-pull-request:
