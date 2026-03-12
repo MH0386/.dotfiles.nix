@@ -1,10 +1,12 @@
+{ den, ... }:
 {
   den.aspects.MohamedLaptopNixOS = {
+    includes = [ den.provides.hostname ];
     nixos =
       { pkgs, ... }:
       {
         environment.systemPackages = [ pkgs.hello ];
-        imports = [ ./hardware-configuration.nix ];
+        imports = [ ../../nixos/hardware-configuration.nix ];
       };
     homeManager =
       { pkgs, ... }:

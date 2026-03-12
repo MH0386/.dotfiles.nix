@@ -2,13 +2,14 @@
 {
   den.aspects.mohamed = {
     includes = [
+      den.provides.define-user
       den.provides.primary-user
       (den.provides.user-shell "zsh")
     ];
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = [ pkgs.htop ];
+        home.packages = [ pkgs.htop pkgs.vim ];
       };
 
     nixos = {
