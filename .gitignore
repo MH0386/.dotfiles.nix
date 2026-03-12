@@ -1,5 +1,4 @@
 .vscode/
-hardware-configuration.nix
 .devenv*
 devenv.local.nix
 devenv.local.yaml
