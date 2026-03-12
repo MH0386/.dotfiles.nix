@@ -1,116 +1,22 @@
+# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# Use `nix run .#write-flake` to regenerate it.
 {
-  description = "MH0386's NixOS Configuration";
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
-    nixpkgs-stable.url = "https://flakehub.com/f/NixOS/nixpkgs/*";
-    nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*";
-    # nix-software-center = {
-    #   url = "github:ljubitje/nix-software-center";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # nixos-conf-editor = {
-    #   url = "github:snowfallorg/nixos-conf-editor";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    den.url = "github:vic/den";
+    flake-aspects.url = "github:vic/flake-aspects";
+    flake-file.url = "github:vic/flake-file";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
+    };
     home-manager = {
-      url = "https://flakehub.com/f/nix-community/home-manager/0.1";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    lanzaboote = {
-      url = "https://flakehub.com/f/nix-community/lanzaboote/*";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    portainer-on-nixos = {
-      url = "gitlab:cbleslie/portainer-on-nixos";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-jetbrains-plugins = {
-      url = "github:nix-community/nix-jetbrains-plugins";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dms-plugin-registry = {
-      url = "github:AvengeMedia/dms-plugin-registry";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    import-tree.url = "github:vic/import-tree";
+    nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
+    nixpkgs-lib.follows = "nixpkgs";
   };
-
-  outputs =
-    {
-      nixpkgs,
-      nixpkgs-stable,
-      nix-flatpak,
-      home-manager,
-      nur,
-      lanzaboote,
-      portainer-on-nixos,
-      nix-jetbrains-plugins,
-      niri,
-      dms,
-      dms-plugin-registry,
-      ...
-    }@inputs:
-    let
-      system = "x86_64-linux";
-      inherit (nixpkgs) lib;
-      pkgsStable = import nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      hostNames = [
-        "MohamedDesktopNixOS"
-        "MohamedLaptopNixOS"
-      ];
-      commonModules = [
-        home-manager.nixosModules.home-manager
-        nur.modules.nixos.default
-        lanzaboote.nixosModules.lanzaboote
-        portainer-on-nixos.nixosModules.portainer
-        ./nixos/configuration.nix
-      ];
-    in
-    {
-      nixosConfigurations = lib.pipe hostNames [
-        (map (
-          hostName:
-          lib.nameValuePair hostName (
-            lib.nixosSystem {
-              inherit system;
-              modules =
-                commonModules
-                ++ [ { networking.hostName = hostName; } ] # Sets the hostname
-                ++ [ (./. + "/nixos/device/${hostName}/configuration.nix") ]; # Imports the per-host configuration.nix
-              specialArgs = {
-                inherit inputs;
-                inherit system;
-                inherit nix-flatpak;
-                inherit pkgsStable;
-                inherit nur;
-                inherit nix-jetbrains-plugins;
-                inherit niri;
-                inherit dms;
-                inherit dms-plugin-registry;
-              };
-            }
-          )
-        ))
-        lib.listToAttrs
-      ];
-    };
 }
