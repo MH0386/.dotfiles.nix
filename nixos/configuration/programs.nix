@@ -23,7 +23,7 @@ _: {
     # coolercontrol.enable = true;
     nh = {
       enable = true;
-      flake = "/home/mohamed/.dotfiles";
+      flake = "${pkgs.home.homeDirectory}/.dotfiles";
       clean = {
         enable = true;
         extraArgs = "--keep 5";
