@@ -4,13 +4,16 @@
       # den.provides.define-user
       # den.provides.hostname
     ];
-    nixos = {
-      system.stateVersion = "25.11";
-      environment = {
-        localBinInPath = true;
-        homeBinInPath = true;
+    nixos =
+      { den, ... }:
+      {
+        imports = [ ../../hardware/${den.ctx.host.name}-configuration.nix ];
+        system.stateVersion = "25.11";
+        environment = {
+          localBinInPath = true;
+          homeBinInPath = true;
+        };
       };
-    };
     homeManager =
       { pkgs, pkgsStable, ... }:
       {
