@@ -48,7 +48,7 @@ network:
   allowed:
     - defaults
     - github
-    - "denix.ynf.sh"
+    - "den.oeiuwq.com"
     - "nix-community.github.io"
     - "nixos.org"
     - "nixos.wiki"
