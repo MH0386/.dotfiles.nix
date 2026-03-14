@@ -8,3 +8,4 @@ devenv.local.yaml
 .yamllint.yaml
 .yamlfmt.yaml
 gha-creds-*.json
+.github/aw/actions-lock.json
