@@ -56,7 +56,7 @@ network:
 engine:
   id: codex
   config: .codex/config.toml
-  model: "nvidia/nemotron-3-super-120b-a12b:free"
+  model: "openrouter/free"
   env:
     OPENAI_BASE_URL: "https://openrouter.ai/api/v1"
     OPENAI_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
