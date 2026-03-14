@@ -55,6 +55,7 @@ network:
     - "opencode.ai"
 engine:
   id: codex
+  config: .codex/config.toml
   model: "opencode/nemotron-3-super-free"
   env:
     OPENAI_BASE_URL: "https://opencode.ai/zen/v1/chat/completions"
