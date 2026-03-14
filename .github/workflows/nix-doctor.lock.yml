@@ -23,7 +23,7 @@
 #
 # Diagnose and fix Nix code issues
 #
-# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"6c25c3ade231417786461344b7968c35a5b8893f903d6e0314af431acfe8def8","compiler_version":"v0.58.1","strict":true}
+# gh-aw-metadata: {"schema_version":"v2","frontmatter_hash":"006169eb2b413d8a711ef305717e37bd2e34d986e837702679796655235ce688","compiler_version":"v0.58.1","strict":true}
 
 name: "nix-doctor"
 "on":
@@ -1909,7 +1909,7 @@ jobs:
           GH_AW_CODE_PUSH_FAILURE_COUNT: ${{ needs.safe_outputs.outputs.code_push_failure_count }}
           GH_AW_GROUP_REPORTS: "false"
           GH_AW_FAILURE_REPORT_AS_ISSUE: "true"
-          GH_AW_TIMEOUT_MINUTES: "30"
+          GH_AW_TIMEOUT_MINUTES: "60"
         with:
           github-token: ${{ secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
           script: |

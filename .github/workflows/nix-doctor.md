@@ -41,7 +41,7 @@ safe-outputs:
   add-labels:
   create-code-scanning-alert:
   autofix-code-scanning-alert:
-timeout-minutes: 30
+timeout-minutes: 60
 network:
   firewall:
     log-level: info
