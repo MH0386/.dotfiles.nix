@@ -52,7 +52,10 @@
       comrak.enable = true;
       deadnix.enable = true;
       detect-private-keys.enable = true;
-      markdownlint.enable = true;
+      markdownlint = {
+        enable = true;
+        excludes = [ ".github/workflows/*.md" ];
+      };
       mixed-line-endings.enable = true;
       yamlfmt.enable = true;
       ripsecrets.enable = true;
