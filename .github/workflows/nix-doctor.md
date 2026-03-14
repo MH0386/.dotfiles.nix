@@ -52,14 +52,14 @@ network:
     - "nix-community.github.io"
     - "nixos.org"
     - "nixos.wiki"
-    - "opencode.ai"
+    - "openrouter.ai"
 engine:
   id: codex
   config: .codex/config.toml
-  model: "opencode/nemotron-3-super-free"
+  model: "nvidia/nemotron-3-super-120b-a12b:free"
   env:
-    OPENAI_BASE_URL: "https://opencode.ai/zen/v1/chat/completions"
-    OPENAI_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+    OPENAI_BASE_URL: "https://openrouter.ai/api/v1"
+    OPENAI_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 ---
 
 # Nix Expert (Denix Library)
