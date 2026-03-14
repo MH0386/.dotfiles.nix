@@ -52,9 +52,13 @@ network:
     - "nix-community.github.io"
     - "nixos.org"
     - "nixos.wiki"
+    - "opencode.ai"
 engine:
-  id: gemini
-  model: gemini-2.5-flash-lite
+  id: codex
+  model: "opencode/nemotron-3-super-free"
+  env:
+    OPENAI_BASE_URL: "https://opencode.ai/zen/v1/chat/completions"
+    OPENAI_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
 ---
 
 # Nix Expert (Denix Library)
@@ -82,8 +86,8 @@ can provide feedback on code quality and best practices.
 
 ### Resources
 
-- **Denix Documentation**: https://denix.ynf.sh
-- **Denix GitHub**: https://github.com/yunfachi/denix
-- **Home Manager Documentation**: https://nix-community.github.io/home-manager/
-- **NixOS Official Wiki**: https://wiki.nixos.org/wiki/NixOS_Wiki
-- **NixOS Unofficial Wiki**: https://nixos.wiki/wiki/Main_Page
+- **Denix Documentation**: <https://denix.ynf.sh>
+- **Denix GitHub**: <https://github.com/yunfachi/denix>
+- **Home Manager Documentation**: <https://nix-community.github.io/home-manager/>
+- **NixOS Official Wiki**: <https://wiki.nixos.org/wiki/NixOS_Wiki>
+- **NixOS Unofficial Wiki**: <https://nixos.wiki/wiki/Main_Page>
