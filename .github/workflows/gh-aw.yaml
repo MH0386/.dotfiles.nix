@@ -1,6 +1,8 @@
 name: GitHub Agentic Workflows Compile
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
   push:
     paths:
       - .github/workflows/**.md
