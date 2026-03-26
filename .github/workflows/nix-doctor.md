@@ -52,14 +52,7 @@ network:
     - "nix-community.github.io"
     - "nixos.org"
     - "nixos.wiki"
-    - "openrouter.ai"
-engine:
-  id: codex
-  config: .codex/config.toml
-  model: "openrouter/free"
-  env:
-    OPENAI_BASE_URL: "https://openrouter.ai/api/v1"
-    OPENAI_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+engine: gemini
 ---
 
 # Nix Expert (Denix Library)
