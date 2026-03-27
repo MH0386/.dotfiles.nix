@@ -17,27 +17,27 @@
         # nix-software-center.packages.${system}.nix-software-center
       ])
       ++ (with pkgs; [
-        nix-diff
-        nodejs_22
-        gnumake
-        ignition
-        nvitop
-        gpu-viewer
-        sbctl
-        unzip
-        zip
-        wget
-        lshw-gui
-        nvtopPackages.nvidia
-        gnome-extensions-cli
-        gnome-tweaks
-        ntfs3g
-        nautilus-python
-        gcc
         clang
         cmake
+        gcc
         glib
         gnome-extension-manager
+        gnome-extensions-cli
+        gnome-tweaks
+        gnumake
+        gpu-viewer
+        ignition
+        lshw-gui
+        nautilus-python
+        nix-diff
+        nodejs_22
+        ntfs3g
+        nvitop
+        nvtopPackages.nvidia
+        sbctl
+        unzip
+        wget
+        zip
 
         # Additional CUDA development tools
         # python3Packages.torch
@@ -46,17 +46,17 @@
       ])
       ++ (with pkgsStable; [
         corepack
-        fh
-        cudaPackages.nccl
-        cudaPackages.cudnn
-        cudaPackages.cudatoolkit
-        cudaPackages.cuda_nvcc
-        cudaPackages.cuda_cudart
         cudaPackages.cuda_cccl
+        cudaPackages.cuda_cudart
         cudaPackages.cuda_cupti
         cudaPackages.cuda_gdb
-        cudaPackages.cuda_nvprof
         cudaPackages.cuda_nsight
+        cudaPackages.cuda_nvcc
+        cudaPackages.cuda_nvprof
+        cudaPackages.cudatoolkit
+        cudaPackages.cudnn
+        cudaPackages.nccl
+        fh
       ]);
     # CUDA environment variables
     sessionVariables = {
