@@ -25,72 +25,68 @@
     };
     packages =
       (with pkgs; [
-        postman
-        # vscodium
-        nixpkgs-reviewFull
-        proton-pass
-        proton-authenticator
-        jan
-        pyrefly
-        python3Packages.python-lsp-server
-        opencode-desktop
-        bazaar
-        cagent
-        github-copilot-cli
-        lmstudio
-        git-filter-repo
-        git-xet
-        fluffychat
-        undollar
-        affine
-        winboat
-        gdm-settings
-        czkawka
-        szyszka
-        bottles
-        pods
-        warehouse
-        antigravity
-        dioxus-cli
-        # newelle
-        trivy
-        doppler
-        prek
-        pre-commit
-        ffmpeg
-        clapper
-        vlc
         act
-        spacedrive
-        httpie
-        httpie-desktop
-        podman-desktop
-        termius
-        remmina
-        kubectl
-        kubernetes
-        kompose
-        warp-terminal
-        gnome-boxes
-        shotwell
-        gnome-contacts
+        affine
+        antigravity
+        bazaar
+        beeper
         bitwarden-cli
         bitwarden-desktop
-        # gimp-with-plugins
-        beeper
-        yq-go
-        rustup
-        gtk3
-        glib
-        rustup
-        rustscan
+        bottles
+        cagent
+        clapper
+        czkawka
         dconf-editor
-        dialect
-        mediawriter
-        nixfmt
-        nixd
-        nil
         devenv
+        dialect
+        dioxus-cli
+        doppler
+        ffmpeg
+        fluffychat
+        gdm-settings
+        git-filter-repo
+        git-xet
+        github-copilot-cli
+        glib
+        gnome-boxes
+        gnome-contacts
+        gtk3
+        httpie
+        httpie-desktop
+        jan
+        kompose
+        kubectl
+        kubernetes
+        lmstudio
+        mediawriter
+        nil
+        nixd
+        nixfmt
+        nixpkgs-reviewFull
+        opencode-desktop
+        podman-desktop
+        pods
+        postman
+        pre-commit
+        prek
+        proton-authenticator
+        proton-pass
+        pyrefly
+        python3Packages.python-lsp-server
+        remmina
+        rustscan
+        rustup
+        shotwell
+        spacedrive
+        szyszka
+        termius
+        trivy
+        undollar
+        vlc
+        warehouse
+        warp-terminal
+        winboat
+        yq-go
       ])
       ++ (with pkgsStable; [
         gitbutler
