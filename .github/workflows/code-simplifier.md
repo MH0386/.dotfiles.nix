@@ -8,11 +8,8 @@ on:
 network:
   allowed:
   - defaults
-  - dotnet
-  - node
-  - python
-  - rust
-  - java
+  - default-safe-outputs
+  - linux-distros
 
 permissions: read-all
 
