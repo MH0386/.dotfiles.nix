@@ -89,7 +89,6 @@
         yq-go
       ])
       ++ (with pkgsStable; [
-        gitbutler
         upscaler
         upscayl
         livecaptions
