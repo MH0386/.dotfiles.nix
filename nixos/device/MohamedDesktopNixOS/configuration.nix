@@ -1,8 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, pkgsStable, ... }:
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
   boot.blacklistedKernelModules = [ "nouveau" ];
   # Define your hostname.
   networking.hostName = "MohamedDesktopNixOS";
@@ -14,21 +12,21 @@
     browsing = true;
     defaultShared = true;
     openFirewall = true;
-    drivers = [ pkgs.stablePackages.hplipWithPlugin ];
+    drivers = [ pkgsStable.hplipWithPlugin ];
   };
   # Enable SANE scanning support.
   hardware.sane = {
     enable = true;
-    extraBackends = [ pkgs.stablePackages.hplipWithPlugin ];
+    extraBackends = [ pkgsStable.hplipWithPlugin ];
     openFirewall = true;
-    backends-package = pkgs.stablePackages.sane-backends;
+    backends-package = pkgsStable.sane-backends;
   };
   environment.systemPackages =
     (with pkgs; [
       ddcui
       ddcutil
     ])
-    ++ (with pkgs.stablePackages; [
+    ++ (with pkgsStable; [
       xsane
       sane-backends
       sane-frontends
