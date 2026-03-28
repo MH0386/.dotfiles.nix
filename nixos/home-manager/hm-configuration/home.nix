@@ -62,7 +62,6 @@
         nil
         nixd
         nixfmt
-        nixpkgs-reviewFull
         opencode-desktop
         podman-desktop
         pods
@@ -89,7 +88,6 @@
         yq-go
       ])
       ++ (with pkgsStable; [
-        gitbutler
         upscaler
         upscayl
         livecaptions
