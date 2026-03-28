@@ -117,7 +117,7 @@ jobs:
           commit_options: --no-verify
   cache:
     name: Push Cache
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     environment: cache
     if: github.event_name != 'schedule'
     steps:
