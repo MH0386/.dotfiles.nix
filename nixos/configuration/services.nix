@@ -1,29 +1,8 @@
 _: {
   services = {
-    iio-niri.enable = true;
-    vnstat.enable = true;
-    pulseaudio.enable = false;
     avahi = {
       enable = true;
       publish.enable = true;
-    };
-    flatpak.enable = true;
-    fwupd.enable = true;
-    # Enable the KDE Plasma Desktop Environment.
-    # displayManager = {
-    #   sddm = {
-    #     enable = true;
-    #    wayland.enable = true;
-    #  };
-    # };
-    # desktopManager.plasma6.enable = true;
-    xserver = {
-      # Enable the X11 windowing system.
-      enable = true;
-      # Configure keymap in X11
-      xkb.layout = "us";
-      # Load nvidia driver for Xorg and Wayland
-      videoDrivers = [ "nvidia" ];
     };
     # Enable the COSMIC Desktop Environment.
     # desktopManager.cosmic.enable = true;
@@ -44,6 +23,16 @@ _: {
         path = "/tmp/dms-greeter.log";
       };
     };
+    flatpak.enable = true;
+    fwupd.enable = true;
+    gnome = {
+      gnome-keyring.enable = true;
+      gnome-online-accounts.enable = true;
+      gnome-software.enable = true;
+      gnome-user-share.enable = true;
+      sushi.enable = true;
+    };
+    iio-niri.enable = true;
     # Enable the OpenSSH daemon.
     openssh.enable = true;
     pipewire = {
@@ -58,13 +47,17 @@ _: {
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
-    gnome = {
-      sushi.enable = true;
-      gnome-user-share.enable = true;
-      gnome-keyring.enable = true;
-      gnome-software.enable = true;
-      gnome-online-accounts.enable = true;
+    portainer = {
+      # Default false
+      enable = true;
+      # Default latest, you can check dockerhub for other tags.
+      version = "latest";
+      # Default false, set to 'true' if you want to be able to access via the port on something other than localhost.
+      openFirewall = true;
+      # Sets the port number in both the firewall and the docker container port mapping itself.
+      port = 9443;
     };
+    pulseaudio.enable = false;
     samba = {
       enable = true;
       openFirewall = true;
@@ -77,15 +70,22 @@ _: {
         };
       };
     };
-    portainer = {
-      # Default false
+    vnstat.enable = true;
+    xserver = {
+      # Enable the X11 windowing system.
       enable = true;
-      # Default latest, you can check dockerhub for other tags.
-      version = "latest";
-      # Default false, set to 'true' if you want to be able to access via the port on something other than localhost.
-      openFirewall = true;
-      # Sets the port number in both the firewall and the docker container port mapping itself.
-      port = 9443;
+      # Configure keymap in X11
+      xkb.layout = "us";
+      # Load nvidia driver for Xorg and Wayland
+      videoDrivers = [ "nvidia" ];
     };
+    # Enable the KDE Plasma Desktop Environment.
+    # displayManager = {
+    #   sddm = {
+    #     enable = true;
+    #    wayland.enable = true;
+    #  };
+    # };
+    # desktopManager.plasma6.enable = true;
   };
 }

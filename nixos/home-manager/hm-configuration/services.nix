@@ -1,15 +1,6 @@
 _: {
   services = {
-    gpg-agent = {
-      enable = true;
-      defaultCacheTtl = 1800;
-      enableSshSupport = true;
-    };
     amberol.enable = true;
-    #   kdeconnect = {
-    #     enable = true;
-    #     indicator = true;
-    #   };
     flatpak = {
       enable = true;
       uninstallUnmanaged = true;
@@ -61,5 +52,14 @@ _: {
         #     "io.github.vikdevelop.SaveDesktop"
       ];
     };
+    gpg-agent = {
+      enable = true;
+      defaultCacheTtl = 1800;
+      enableSshSupport = true;
+    };
+    #   kdeconnect = {
+    #     enable = true;
+    #     indicator = true;
+    #   };
   };
 }

@@ -1,26 +1,20 @@
 _: {
   programs = {
-    niri.enable = true;
-    xonsh = {
-      enable = true;
-      config = "execx($(atuin init xonsh))";
-    };
-    zsh.enable = true;
-    # evolution.enable = true;
-    nix-ld.enable = true;
-    virt-manager.enable = true;
-    localsend.enable = true;
     appimage = {
       enable = true;
       binfmt = true;
     };
+    # evolution.enable = true;
     gamemode.enable = true;
-    steam = {
+    gnupg.agent = {
       enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
+      enableSSHSupport = true;
     };
-    # coolercontrol.enable = true;
+    localsend.enable = true;
+    nautilus-open-any-terminal = {
+      enable = true;
+      terminal = "ghostty";
+    };
     nh = {
       enable = true;
       flake = "/home/mohamed/.dotfiles";
@@ -29,16 +23,22 @@ _: {
         extraArgs = "--keep 5";
       };
     };
-    nautilus-open-any-terminal = {
+    niri.enable = true;
+    nix-ld.enable = true;
+    seahorse.enable = true;
+    steam = {
       enable = true;
-      terminal = "ghostty";
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
     };
+    virt-manager.enable = true;
+    xonsh = {
+      enable = true;
+      config = "execx($(atuin init xonsh))";
+    };
+    zsh.enable = true;
+    # coolercontrol.enable = true;
     # Some programs need SUID wrappers, can be configured further or are started in user sessions.
     # programs.mtr.enable = true;
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
-    seahorse.enable = true;
   };
 }

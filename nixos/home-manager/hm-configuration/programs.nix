@@ -1,9 +1,74 @@
 { pkgs, pkgsStable, ... }:
 {
   programs = {
-    home-manager.enable = true;
-    niri = import ./niri/niri.nix { inherit pkgs; };
+    aria2 = {
+      enable = true;
+    };
+    atuin = {
+      enable = true;
+      daemon.enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableNushellIntegration = true;
+      enableZshIntegration = true;
+      settings = {
+        style = "auto";
+      };
+    };
+    bash.enable = true;
+    bat = {
+      enable = true;
+      extraPackages = with pkgs.bat-extras; [
+        batdiff
+        batgrep
+        batman
+        batpipe
+        batwatch
+        prettybat
+      ];
+    };
+    btop.enable = true;
+    bun.enable = true;
+    carapace = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableZshIntegration = true;
+      enableNushellIntegration = true;
+    };
+    command-not-found.enable = true;
     dank-material-shell = import ./niri/dank-material-shell.nix { inherit pkgs; };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+    eza = {
+      enable = true;
+      colors = "always";
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableZshIntegration = true;
+      enableNushellIntegration = true;
+      git = true;
+      icons = "always";
+    };
+    fastfetch.enable = true;
+    fd.enable = true;
+    firefox = {
+      enable = true;
+      package = pkgsStable.firefox;
+    };
+    firefoxpwa = {
+      enable = true;
+      package = pkgsStable.firefoxpwa;
+    };
+    fzf = {
+      enable = true;
+    };
+    gemini-cli = {
+      enable = true;
+    };
+    gh.enable = true;
     ghostty = import ./ghostty/ghostty.nix { };
     git = {
       enable = true;
@@ -20,49 +85,104 @@
         };
       };
     };
-    bat = {
+    git-cliff = {
       enable = true;
-      extraPackages = with pkgs.bat-extras; [
-        batdiff
-        batman
-        batgrep
-        batwatch
-        batpipe
-        prettybat
+    };
+    gnome-shell = {
+      enable = true;
+      extensions = [
+        { package = pkgs.gnomeExtensions.alphabetical-app-grid; }
+        { package = pkgs.gnomeExtensions.appindicator; }
+        { package = pkgs.gnomeExtensions.caffeine; }
+        { package = pkgs.gnomeExtensions.clipboard-indicator; }
+        { package = pkgs.gnomeExtensions.dash-to-dock; }
+        { package = pkgs.gnomeExtensions.gtk4-desktop-icons-ng-ding; }
+        {
+          id = "system-monitor@gnome-shell-extensions.gcampax.github.com";
+          package = pkgs.gnome-shell-extensions;
+        }
+        { package = pkgs.gnomeExtensions.vicinae; }
       ];
     };
-    btop.enable = true;
-    command-not-found.enable = true;
-    fastfetch.enable = true;
-    fd.enable = true;
-    zsh = {
+    helix.enable = true;
+    home-manager.enable = true;
+    jq.enable = true;
+    lapce.enable = true;
+    lazydocker.enable = true;
+    mcp = {
       enable = true;
-      autosuggestion.enable = true;
-    };
-    atuin = {
-      enable = true;
-      daemon.enable = true;
-      enableBashIntegration = true;
-      enableFishIntegration = true;
-      enableNushellIntegration = true;
-      enableZshIntegration = true;
-      settings = {
-        style = "auto";
+      servers = {
+        agno = {
+          url = "https://docs.agno.com/mcp";
+        };
+        context7 = {
+          url = "https://mcp.context7.com/mcp";
+          headers = {
+            CONTEXT7_API_KEY = "{env:CONTEXT7_API_KEY}";
+          };
+        };
+        devenv = {
+          command = "devenv";
+          args = [
+            "mcp"
+          ];
+        };
+        github = {
+          url = "https://api.githubcopilot.com/mcp";
+        };
+        git = {
+          command = "uvx";
+          args = [
+            "mcp-server-git"
+          ];
+        };
+        nixos = {
+          command = "uvx";
+          args = [ "mcp-nixos" ];
+        };
+        time = {
+          command = "uvx";
+          args = [
+            "mcp-server-time"
+          ];
+        };
       };
     };
-    zoxide.enable = true;
-    bash.enable = true;
+    niri = import ./niri/niri.nix { inherit pkgs; };
     nushell = {
       enable = true;
       plugins = with pkgs.nushellPlugins; [
         gstat
       ];
     };
+    obs-studio = {
+      enable = true;
+      plugins = with pkgsStable.obs-studio-plugins; [
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+      ];
+    };
+    opencode = {
+      enable = true;
+      enableMcpIntegration = true;
+      settings = {
+        plugin = [
+          "micode"
+          "oh-my-opencode"
+          "opencode-daytona"
+          "opencode-md-table-formatter"
+          "opencode-notificator"
+          "opencode-notifier"
+          "opencode-skillful"
+          "opencode-wakatime"
+          "opencode-workspace"
+          "opencode-worktree"
+        ];
+      };
+    };
     pay-respects = {
       enable = true;
     };
-    lazydocker.enable = true;
-    gh.enable = true;
     ruff = {
       enable = true;
       settings = {
@@ -81,7 +201,7 @@
         };
       };
     };
-    ty = {
+    ssh = {
       enable = true;
     };
     starship = {
@@ -97,11 +217,16 @@
     topgrade = {
       enable = true;
     };
-    yt-dlp = {
+    ty = {
       enable = true;
     };
-    aria2 = {
+    uv = {
       enable = true;
+    };
+    vesktop.enable = true;
+    vicinae = {
+      enable = true;
+      systemd.enable = true;
     };
     vscode = {
       enable = true;
@@ -118,119 +243,61 @@
         };
       };
     };
-    lapce.enable = true;
-    ssh = {
+    yazi = {
       enable = true;
     };
-    vesktop.enable = true;
-    fzf = {
+    yt-dlp = {
       enable = true;
-    };
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-    vicinae = {
-      enable = true;
-      systemd.enable = true;
-    };
-    eza = {
-      enable = true;
-      colors = "always";
-      enableBashIntegration = true;
-      enableFishIntegration = true;
-      enableZshIntegration = true;
-      enableNushellIntegration = true;
-      git = true;
-      icons = "always";
-    };
-    carapace = {
-      enable = true;
-      enableBashIntegration = true;
-      enableFishIntegration = true;
-      enableZshIntegration = true;
-      enableNushellIntegration = true;
-    };
-    gemini-cli = {
-      enable = true;
-    };
-    bun.enable = true;
-    opencode = {
-      enable = true;
-      enableMcpIntegration = true;
-      settings = {
-        plugin = [
-          "opencode-daytona"
-          "opencode-wakatime"
-          "opencode-notificator"
-          "opencode-notifier"
-          "oh-my-opencode"
-          "opencode-md-table-formatter"
-          "opencode-skillful"
-          "micode"
-          "opencode-workspace"
-          "opencode-worktree"
-        ];
-      };
-    };
-    mcp = {
-      enable = true;
-      servers = {
-        nixos = {
-          command = "uvx";
-          args = [ "mcp-nixos" ];
-        };
-        github = {
-          url = "https://api.githubcopilot.com/mcp";
-        };
-        agno = {
-          url = "https://docs.agno.com/mcp";
-        };
-        devenv = {
-          command = "devenv";
-          args = [
-            "mcp"
-          ];
-        };
-        git = {
-          command = "uvx";
-          args = [
-            "mcp-server-git"
-          ];
-        };
-        time = {
-          command = "uvx";
-          args = [
-            "mcp-server-time"
-          ];
-        };
-        context7 = {
-          url = "https://mcp.context7.com/mcp";
-          headers = {
-            CONTEXT7_API_KEY = "{env:CONTEXT7_API_KEY}";
-          };
-        };
-      };
     };
     zed-editor = {
       enable = true;
       userSettings = {
+        agent = {
+          play_sound_when_agent_done = true;
+          default_model = {
+            provider = "copilot_chat";
+            model = "gpt-5-mini";
+          };
+          model_parameters = [ ];
+        };
         agent_servers = {
-          kimi = {
-            type = "registry";
-          };
-          opencode = {
-            type = "registry";
-          };
           github-copilot = {
             type = "registry";
           };
           junie-acp = {
             type = "registry";
           };
+          kimi = {
+            type = "registry";
+          };
+          opencode = {
+            type = "registry";
+          };
         };
-        ui_font_size = 18.0;
+        always_treat_brackets_as_autoclosed = true;
         buffer_font_size = 20.0;
+        calls = {
+          mute_on_join = true;
+        };
+        colorize_brackets = true;
+        context_servers = {
+          arch-ops-server = {
+            enabled = false;
+            settings = { };
+          };
+        };
+        git = {
+          inline_blame = {
+            show_commit_summary = false;
+          };
+        };
+        git_panel = {
+          tree_view = true;
+          sort_by_path = true;
+        };
+        inlay_hints = {
+          enabled = true;
+        };
         languages = {
           Nix = {
             formatter = {
@@ -247,69 +314,39 @@
             ];
           };
         };
-        calls = {
-          mute_on_join = true;
+        prettier = {
+          allowed = true;
         };
-        git = {
-          inline_blame = {
-            show_commit_summary = false;
-          };
-        };
-        terminal = {
-          copy_on_select = true;
-        };
-        git_panel = {
-          tree_view = true;
-          sort_by_path = true;
+        preview_tabs = {
+          enable_preview_from_file_finder = true;
         };
         project_panel = {
           hide_hidden = false;
           hide_root = true;
           hide_gitignore = false;
         };
-        preview_tabs = {
-          enable_preview_from_file_finder = true;
-        };
+        restore_on_startup = "last_session";
         tabs = {
           show_diagnostics = "errors";
           file_icons = true;
           git_status = true;
         };
+        terminal = {
+          copy_on_select = true;
+        };
+        theme = "GitHub Dark";
         title_bar = {
           show_menus = false;
           show_branch_icon = true;
         };
-        prettier = {
-          allowed = true;
-        };
-        colorize_brackets = true;
-        inlay_hints = {
-          enabled = true;
-        };
-        always_treat_brackets_as_autoclosed = true;
         toolbar = {
           code_actions = true;
         };
+        ui_font_size = 18.0;
         autosave = {
           after_delay = {
             milliseconds = 1000;
           };
-        };
-        restore_on_startup = "last_session";
-        theme = "GitHub Dark";
-        context_servers = {
-          arch-ops-server = {
-            enabled = false;
-            settings = { };
-          };
-        };
-        agent = {
-          play_sound_when_agent_done = true;
-          default_model = {
-            provider = "copilot_chat";
-            model = "gpt-5-mini";
-          };
-          model_parameters = [ ];
         };
       };
       extensions = [
@@ -358,47 +395,10 @@
         "wakatime"
       ];
     };
-    uv = {
+    zoxide.enable = true;
+    zsh = {
       enable = true;
+      autosuggestion.enable = true;
     };
-    gnome-shell = {
-      enable = true;
-      extensions = [
-        { package = pkgs.gnomeExtensions.dash-to-dock; }
-        { package = pkgs.gnomeExtensions.vicinae; }
-        { package = pkgs.gnomeExtensions.appindicator; }
-        { package = pkgs.gnomeExtensions.caffeine; }
-        { package = pkgs.gnomeExtensions.clipboard-indicator; }
-        { package = pkgs.gnomeExtensions.gtk4-desktop-icons-ng-ding; }
-        { package = pkgs.gnomeExtensions.alphabetical-app-grid; }
-        {
-          id = "system-monitor@gnome-shell-extensions.gcampax.github.com";
-          package = pkgs.gnome-shell-extensions;
-        }
-      ];
-    };
-    git-cliff = {
-      enable = true;
-    };
-    jq.enable = true;
-    yazi = {
-      enable = true;
-    };
-    obs-studio = {
-      enable = true;
-      plugins = with pkgsStable.obs-studio-plugins; [
-        obs-pipewire-audio-capture
-        obs-backgroundremoval
-      ];
-    };
-    firefox = {
-      enable = true;
-      package = pkgsStable.firefox;
-    };
-    firefoxpwa = {
-      enable = true;
-      package = pkgsStable.firefoxpwa;
-    };
-    helix.enable = true;
   };
 }
