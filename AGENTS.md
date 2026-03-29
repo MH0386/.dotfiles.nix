@@ -96,7 +96,9 @@ Each module should be a single `.nix` file with a focused concern. Use the `den`
 }
 ```
 
-Don't remove a module. Keep nix options modular as much as possible.
+Do not remove a module.
+Keep nix options modular as much as possible.
+Do not touch hardware-configuration.nix files
 
 ### Formatting Rules
 
