@@ -9,7 +9,10 @@
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = [ pkgs.htop pkgs.vim ];
+        home.packages = [
+          pkgs.htop
+          pkgs.vim
+        ];
       };
 
     nixos = {
