@@ -6,6 +6,9 @@
 
 {
   files = {
+    ".markdownlint.yaml".yaml = {
+      MD013 = false;
+    };
     ".yamllint.yaml".yaml = {
       extends = "default";
       rules = {
