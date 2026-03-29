@@ -14,36 +14,44 @@
             h = "history";
           };
         };
-        programs.atuin = {
-          enable = true;
-          daemon.enable = true;
-          enableBashIntegration = true;
-          enableFishIntegration = true;
-          enableNushellIntegration = true;
-          enableZshIntegration = true;
-          settings = {
-            style = "auto";
+        programs = {
+          atuin = {
+            daemon = {
+              enable = true;
+            };
+            enable = true;
+            enableBashIntegration = true;
+            enableFishIntegration = true;
+            enableNushellIntegration = true;
+            enableZshIntegration = true;
+            settings = {
+              style = "auto";
+            };
+          };
+          carapace = {
+            enable = true;
+            enableBashIntegration = true;
+            enableFishIntegration = true;
+            enableNushellIntegration = true;
+            enableZshIntegration = true;
+          };
+          command-not-found = {
+            enable = true;
+          };
+          starship = {
+            enable = true;
+            enableBashIntegration = true;
+            enableFishIntegration = true;
+            enableNushellIntegration = true;
+            enableZshIntegration = true;
+            settings = {
+              format = "$all";
+            };
+          };
+          zoxide = {
+            enable = true;
           };
         };
-        programs.carapace = {
-          enable = true;
-          enableBashIntegration = true;
-          enableFishIntegration = true;
-          enableZshIntegration = true;
-          enableNushellIntegration = true;
-        };
-        programs.starship = {
-          enable = true;
-          settings = {
-            format = "$all";
-          };
-          enableBashIntegration = true;
-          enableFishIntegration = true;
-          enableZshIntegration = true;
-          enableNushellIntegration = true;
-        };
-        programs.zoxide.enable = true;
-        programs.command-not-found.enable = true;
       };
 
     provides = {
