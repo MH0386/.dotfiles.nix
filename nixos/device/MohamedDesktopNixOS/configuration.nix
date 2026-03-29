@@ -16,7 +16,7 @@
   };
   # Enable SANE scanning support.
   hardware.sane = {
-    enable = true;
+    enable = false;
     extraBackends = [ pkgsStable.hplipWithPlugin ];
     openFirewall = true;
     backends-package = pkgsStable.sane-backends;

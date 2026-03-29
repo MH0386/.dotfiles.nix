@@ -59,6 +59,7 @@
         kubernetes
         lmstudio
         mediawriter
+        mission-center
         nil
         nixd
         nixfmt

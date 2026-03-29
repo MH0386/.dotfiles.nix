@@ -1,10 +1,46 @@
-{ pkgs, pkgsStable, ... }:
+{
+  pkgs,
+  pkgsStable,
+  config,
+  lib,
+  ...
+}:
 {
   programs = {
     home-manager.enable = true;
     niri = import ./niri/niri.nix { inherit pkgs; };
     dank-material-shell = import ./niri/dank-material-shell.nix { inherit pkgs; };
     ghostty = import ./ghostty/ghostty.nix { };
+    codex = {
+      enable = true;
+      settings = {
+        model = "openrouter/free";
+        model_provider = "openrouter";
+        model_providers = {
+          openrouter = {
+            name = "OpenRouter";
+            baseURL = "https://openrouter.ai/api/v1";
+            envKey = "OPENROUTER_API_KEY";
+          };
+        };
+      };
+    };
+    claude-code = {
+      enable = true;
+      settings = {
+        env = {
+          ANTHROPIC_API_KEY = "";
+          ANTHROPIC_BASE_URL = "https://api.kilo.ai/api/gateway";
+        };
+      };
+    };
+    nix-index = {
+      # enable = true;
+      # enableBashIntegration = true;
+      # enableFishIntegration = true;
+      # enableNushellIntegration = true;
+      # enableZshIntegration = true;
+    };
     git = {
       enable = true;
       package = pkgsStable.git;
@@ -35,6 +71,20 @@
     command-not-found.enable = true;
     fastfetch.enable = true;
     fd.enable = true;
+    fish = {
+      enable = true;
+      # interactiveShellInit = "${lib.getExe config.programs.fish.package}";
+      # plugins = [
+      #   {
+      #     name = "fzf";
+      #     src = pkgs.fishPlugins.fzf;
+      #   }
+      #   {
+      #     name = "done";
+      #     src = pkgs.fishPlugins.done;
+      #   }
+      # ];
+    };
     zsh = {
       enable = true;
       autosuggestion.enable = true;
@@ -115,6 +165,7 @@
           #     fontFamily = "Fira Code";
           #   };
           # };
+          # extensions = with pkgs.vscode-extensions; [ms-python.python ms-python.debugpy njpwerner.autodocstring sourcery.sourcery fill-labs.dependi wakatime.vscode-wakatime usernamehw.errorlens tamasfe.even-better-toml skellock.just redhat.vscode-yaml charliermarsh.ruff];
         };
       };
     };
@@ -216,13 +267,25 @@
       enable = true;
       userSettings = {
         agent_servers = {
-          kimi = {
+          kilo = {
             type = "registry";
           };
           opencode = {
             type = "registry";
           };
-          github-copilot = {
+          junie = {
+            type = "registry";
+          };
+          gemini = {
+            type = "registry";
+          };
+          codex-acp = {
+            type = "registry";
+          };
+          claude-acp = {
+            type = "registry";
+          };
+          pi-acp = {
             type = "registry";
           };
           junie-acp = {
@@ -356,6 +419,7 @@
         "tombi"
         "toml"
         "wakatime"
+        "env"
       ];
     };
     uv = {
@@ -399,6 +463,5 @@
       enable = true;
       package = pkgsStable.firefoxpwa;
     };
-    helix.enable = true;
   };
 }

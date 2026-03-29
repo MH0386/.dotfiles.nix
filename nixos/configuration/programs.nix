@@ -6,6 +6,8 @@ _: {
       config = "execx($(atuin init xonsh))";
     };
     zsh.enable = true;
+    fish.enable = true;
+    # nix-index.enable = true;
     # evolution.enable = true;
     nix-ld.enable = true;
     virt-manager.enable = true;
