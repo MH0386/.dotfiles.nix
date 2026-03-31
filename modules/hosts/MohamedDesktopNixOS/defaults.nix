@@ -2,6 +2,6 @@
 {
   den.aspects.MohamedDesktopNixOS = {
     includes = [ den.provides.hostname ];
-    nixos.imports = [ ./hardware-configuration.nix ];
+    nixos.imports = [ ./_hardware-configuration.nix ];
   };
 }
