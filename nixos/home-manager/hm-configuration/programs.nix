@@ -13,6 +13,7 @@
     ghostty = import ./ghostty/ghostty.nix { };
     codex = {
       enable = true;
+      enableMcpIntegration = true;
       settings = {
         model = "openrouter/free";
         model_provider = "openrouter";
