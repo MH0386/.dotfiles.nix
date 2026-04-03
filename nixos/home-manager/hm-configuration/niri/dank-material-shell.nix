@@ -171,48 +171,23 @@ _: {
     controlCenterShowScreenSharingIcon = true;
     controlCenterShowVpnIcon = true;
     controlCenterTileColorMode = "primary";
-    controlCenterWidgets = [
-      {
-        enabled = true;
-        id = "volumeSlider";
-        width = 50;
-      }
-      {
-        enabled = true;
-        id = "brightnessSlider";
-        width = 50;
-      }
-      {
-        enabled = true;
-        id = "wifi";
-        width = 50;
-      }
-      {
-        enabled = true;
-        id = "bluetooth";
-        width = 50;
-      }
-      {
-        enabled = true;
-        id = "audioOutput";
-        width = 50;
-      }
-      {
-        enabled = true;
-        id = "audioInput";
-        width = 50;
-      }
-      {
-        enabled = true;
-        id = "nightMode";
-        width = 50;
-      }
-      {
-        enabled = true;
-        id = "darkMode";
-        width = 50;
-      }
-    ];
+    controlCenterWidgets =
+      map
+        (id: {
+          enabled = true;
+          inherit id;
+          width = 50;
+        })
+        [
+          "volumeSlider"
+          "brightnessSlider"
+          "wifi"
+          "bluetooth"
+          "audioOutput"
+          "audioInput"
+          "nightMode"
+          "darkMode"
+        ];
     cornerRadius = 12;
     barConfigs = [
       {
