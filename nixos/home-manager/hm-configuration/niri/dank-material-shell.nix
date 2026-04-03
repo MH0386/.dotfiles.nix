@@ -4,18 +4,14 @@ _: {
   niri = {
     enableSpawn = true; # Auto-start DMS with niri, if enabled
 
-    includes = {
-      enable = true; # Enable config includes hack. Enabled by default.
-
-      filesToInclude = [
-        # Files under `$XDG_CONFIG_HOME/niri/dms` to be included into the new config
-        "alttab" # Please note that niri will throw an error if any of these files are missing.
-        "binds"
-        "colors"
-        "layout"
-        "outputs"
-      ];
-    };
+    includes.filesToInclude = [
+      # Files under `$XDG_CONFIG_HOME/niri/dms` to be included into the new config
+      "alttab" # Please note that niri will throw an error if any of these files are missing.
+      "binds"
+      "colors"
+      "layout"
+      "outputs"
+    ];
   };
 
   # Core features
