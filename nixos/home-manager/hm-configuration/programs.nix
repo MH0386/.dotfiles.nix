@@ -88,6 +88,70 @@
     zsh = {
       enable = true;
       autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+      zsh-abbr.enable = true;
+      zplug = {
+        enable = true;
+        plugins = [
+          { name = "zsh-users/zsh-autosuggestions"; }
+          { name = "andreacasarin/zsh-ask-opencode"; }
+          {
+            name = "plugins/git";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/docker";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/docker-compose";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/python";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/pip";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/node";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/npm";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/yarn";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/rust";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/sudo";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/extract";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/command-not-found";
+            tags = [ "from:oh-my-zsh" ];
+          }
+        ];
+      };
+      initContent = lib.mkOrder 1500 ''
+        ${lib.getExe config.programs.fastfetch.package}
+
+        if [ -f ${config.home.homeDirectory}/.secrets.env ]; then
+          source ${config.home.homeDirectory}/.secrets.env
+        fi
+      '';
     };
     atuin = {
       enable = true;
