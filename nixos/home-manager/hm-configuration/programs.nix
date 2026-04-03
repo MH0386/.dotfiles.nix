@@ -306,18 +306,6 @@
             "mcp"
           ];
         };
-        git = {
-          command = "uvx";
-          args = [
-            "mcp-server-git"
-          ];
-        };
-        time = {
-          command = "uvx";
-          args = [
-            "mcp-server-time"
-          ];
-        };
         context7 = {
           url = "https://mcp.context7.com/mcp";
           headers = {
