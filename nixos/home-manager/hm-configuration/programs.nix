@@ -289,6 +289,9 @@
         };
         github = {
           url = "https://api.githubcopilot.com/mcp";
+          headers = {
+            Authorization = "{env:GITHUB_PERSONAL_ACCESS_TOKEN}";
+          };
         };
         agno = {
           url = "https://docs.agno.com/mcp";
