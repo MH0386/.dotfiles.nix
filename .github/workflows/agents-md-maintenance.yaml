@@ -13,9 +13,9 @@ jobs:
       issues: write
     steps:
       - name: Setup Env
-        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@v0.0.52
+        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@cacaa8c32c2b969ea8f8d03c9f7557548b4eb0d6 # v0.0.52
       - name: Run opencode
-        uses: AlphaSphereDotAI/helpr_action/ci/tools/opencode@v0.0.52
+        uses: AlphaSphereDotAI/helpr_action/ci/tools/opencode@cacaa8c32c2b969ea8f8d03c9f7557548b4eb0d6 # v0.0.52
         with:
           api_key: ${{ secrets.OPENCODE_API_KEY }}
           prompt: /agents-md-maintenance
