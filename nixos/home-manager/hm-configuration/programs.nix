@@ -90,55 +90,23 @@
         plugins = [
           { name = "zsh-users/zsh-autosuggestions"; }
           { name = "andreacasarin/zsh-ask-opencode"; }
-          {
-            name = "plugins/git";
-            tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "plugins/docker";
-            tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "plugins/docker-compose";
-            tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "plugins/python";
-            tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "plugins/pip";
-            tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "plugins/node";
-            tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "plugins/npm";
-            tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "plugins/yarn";
-            tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "plugins/rust";
-            tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "plugins/sudo";
-            tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "plugins/extract";
-            tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "plugins/command-not-found";
-            tags = [ "from:oh-my-zsh" ];
-          }
-        ];
+        ] ++ (map (name: {
+          name = "plugins/${name}";
+          tags = [ "from:oh-my-zsh" ];
+        }) [
+          "git"
+          "docker"
+          "docker-compose"
+          "python"
+          "pip"
+          "node"
+          "npm"
+          "yarn"
+          "rust"
+          "sudo"
+          "extract"
+          "command-not-found"
+        ]);
       };
       initContent = lib.mkOrder 1500 ''
         ${lib.getExe config.programs.fastfetch.package}
