@@ -64,6 +64,7 @@ _: {
       gnome-keyring.enable = true;
       gnome-software.enable = true;
       gnome-online-accounts.enable = true;
+      gnome-settings-daemon.enable = true;
     };
     samba = {
       enable = true;
