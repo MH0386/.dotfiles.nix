@@ -98,7 +98,9 @@
         livecaptions
       ]);
     sessionPath = [ ];
-    sessionVariables = { };
+    sessionVariables = {
+      ANTHROPIC_AUTH_TOKEN = "$KILO_API_KEY";
+    };
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
     username = "mohamed";
