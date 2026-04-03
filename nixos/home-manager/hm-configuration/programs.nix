@@ -75,17 +75,21 @@
     fd.enable = true;
     fish = {
       enable = true;
-      # interactiveShellInit = "${lib.getExe config.programs.fish.package}";
-      # plugins = [
-      #   {
-      #     name = "fzf";
-      #     src = pkgs.fishPlugins.fzf;
-      #   }
-      #   {
-      #     name = "done";
-      #     src = pkgs.fishPlugins.done;
-      #   }
-      # ];
+      interactiveShellInit = "${lib.getExe config.programs.fastfetch.package}";
+      plugins = [
+        {
+          name = "fzf";
+          inherit (pkgs.fishPlugins.fzf) src;
+        }
+        {
+          name = "done";
+          inherit (pkgs.fishPlugins.done) src;
+        }
+        {
+          name = "grc";
+          inherit (pkgs.fishPlugins.grc) src;
+        }
+      ];
     };
     zsh = {
       enable = true;
