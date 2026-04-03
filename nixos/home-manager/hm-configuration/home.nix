@@ -89,10 +89,10 @@
         vlc
         warehouse
         warp-terminal
-        winboat
         yq-go
       ])
       ++ (with pkgsStable; [
+        winboat
         upscaler
         upscayl
         livecaptions
