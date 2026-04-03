@@ -1,0 +1,21 @@
+name: AGENTS.md Maintenance
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+jobs:
+  opencode:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Setup Env
+        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@v0.0.52
+      - name: Run opencode
+        uses: AlphaSphereDotAI/helpr_action/ci/tools/opencode@v0.0.52
+        with:
+          api_key: ${{ secrets.OPENCODE_API_KEY }}
+          prompt: /agents-md-maintenance
