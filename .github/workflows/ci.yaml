@@ -25,7 +25,7 @@ jobs:
     if: github.event_name != 'schedule'
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+        uses: step-security/harden-runner@fe104658747b27e96e4f7e80cd0a94068e53901d # v2.16.1
         with:
           egress-policy: audit
       - name: Checkout repository
@@ -55,7 +55,7 @@ jobs:
     if: github.event_name != 'schedule'
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+        uses: step-security/harden-runner@fe104658747b27e96e4f7e80cd0a94068e53901d # v2.16.1
         with:
           egress-policy: audit
       - name: Checkout repository
@@ -69,13 +69,13 @@ jobs:
     if: github.event_name == 'schedule'
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+        uses: step-security/harden-runner@fe104658747b27e96e4f7e80cd0a94068e53901d # v2.16.1
         with:
           egress-policy: audit
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Install Nix
-        uses: DeterminateSystems/determinate-nix-action@a18f73c54ca8525de051e73c31512a67f44df919 # v3.17.1
+        uses: DeterminateSystems/determinate-nix-action@1361e7900eb437fb341f0f226e8fbd9a0d8284fa # v3.17.2
         with:
           logger: pretty
       - name: Cache
@@ -95,7 +95,7 @@ jobs:
     if: github.event_name == 'schedule'
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+        uses: step-security/harden-runner@fe104658747b27e96e4f7e80cd0a94068e53901d # v2.16.1
         with:
           egress-policy: audit
       - name: Checkout repository
