@@ -315,21 +315,23 @@ _: {
   };
 
   # Auto-enabled when plugins have settings configured
-  # managePluginSettings = true;
+  managePluginSettings = true;
 
   plugins = {
     # Simply enable plugins by their ID (from the registry)
     # dankBatteryAlerts.enable = true;
-    # dockerManager.enable = true;
+    dockerManager.enable = true;
+    usbManager.enable = true;
+    githubNotifier.enable = true;
 
     # Add plugin-specific settings
-    # mediaPlayer = {
-    #   enable = true;
+    mediaPlayer = {
+      enable = true;
 
-    #   # You can only define settings here if using the home-manager module
-    #   # settings = {
-    #   #   preferredSource = "spotify";
-    #   # };
-    # };
+      # You can only define settings here if using the home-manager module
+      # settings = {
+      #   preferredSource = "spotify";
+      # };
+    };
   };
 }

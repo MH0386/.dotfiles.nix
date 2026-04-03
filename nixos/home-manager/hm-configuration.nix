@@ -5,6 +5,7 @@
     inputs.niri.homeModules.niri
     inputs.dms.homeModules.dank-material-shell
     inputs.dms.homeModules.niri
+    inputs.dms-plugin-registry.modules.default
     ./hm-configuration/dconf.nix
     ./hm-configuration/gtk.nix
     ./hm-configuration/home.nix
