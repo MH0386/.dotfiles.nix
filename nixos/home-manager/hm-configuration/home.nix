@@ -25,8 +25,6 @@
     };
     packages =
       (with pkgs; [
-        act
-        affine
         antigravity
         bazaar
         beeper
