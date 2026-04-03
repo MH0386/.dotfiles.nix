@@ -7,7 +7,7 @@ _: {
     };
     zsh.enable = true;
     fish.enable = true;
-    # nix-index.enable = true;
+    nix-index.enable = true;
     # evolution.enable = true;
     nix-ld.enable = true;
     virt-manager.enable = true;
