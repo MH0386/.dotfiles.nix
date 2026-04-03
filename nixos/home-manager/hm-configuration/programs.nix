@@ -27,7 +27,7 @@
       };
     };
     claude-code = {
-      enable = true;
+      enable = false;
       enableMcpIntegration = true;
       settings = {
         env = {
