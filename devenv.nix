@@ -25,6 +25,12 @@
         force_array_style = "block";
       };
     };
+    "statix.toml".toml = {
+      ignore = [
+        ".direnv"
+        "**/hardware-configuration.nix"
+      ];
+    };
   };
 
   languages = {
