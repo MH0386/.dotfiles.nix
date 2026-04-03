@@ -171,20 +171,23 @@ _: {
     controlCenterShowScreenSharingIcon = true;
     controlCenterShowVpnIcon = true;
     controlCenterTileColorMode = "primary";
-    controlCenterWidgets = map (id: {
-      enabled = true;
-      inherit id;
-      width = 50;
-    }) [
-      "volumeSlider"
-      "brightnessSlider"
-      "wifi"
-      "bluetooth"
-      "audioOutput"
-      "audioInput"
-      "nightMode"
-      "darkMode"
-    ];
+    controlCenterWidgets =
+      map
+        (id: {
+          enabled = true;
+          inherit id;
+          width = 50;
+        })
+        [
+          "volumeSlider"
+          "brightnessSlider"
+          "wifi"
+          "bluetooth"
+          "audioOutput"
+          "audioInput"
+          "nightMode"
+          "darkMode"
+        ];
     cornerRadius = 12;
     barConfigs = [
       {

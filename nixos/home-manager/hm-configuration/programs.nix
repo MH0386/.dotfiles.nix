@@ -90,23 +90,27 @@
         plugins = [
           { name = "zsh-users/zsh-autosuggestions"; }
           { name = "andreacasarin/zsh-ask-opencode"; }
-        ] ++ (map (name: {
-          name = "plugins/${name}";
-          tags = [ "from:oh-my-zsh" ];
-        }) [
-          "git"
-          "docker"
-          "docker-compose"
-          "python"
-          "pip"
-          "node"
-          "npm"
-          "yarn"
-          "rust"
-          "sudo"
-          "extract"
-          "command-not-found"
-        ]);
+        ]
+        ++ (map
+          (name: {
+            name = "plugins/${name}";
+            tags = [ "from:oh-my-zsh" ];
+          })
+          [
+            "git"
+            "docker"
+            "docker-compose"
+            "python"
+            "pip"
+            "node"
+            "npm"
+            "yarn"
+            "rust"
+            "sudo"
+            "extract"
+            "command-not-found"
+          ]
+        );
       };
       initContent = lib.mkOrder 1500 ''
         ${lib.getExe config.programs.fastfetch.package}
