@@ -8,11 +8,6 @@ on:
 network:
   allowed:
   - defaults
-  - dotnet
-  - node
-  - python
-  - rust
-  - java
 
 permissions: read-all
 
