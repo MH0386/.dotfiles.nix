@@ -14,17 +14,6 @@
     codex = {
       enable = true;
       enableMcpIntegration = true;
-      settings = {
-        model = "openrouter/free";
-        model_provider = "openrouter";
-        model_providers = {
-          openrouter = {
-            name = "OpenRouter";
-            baseURL = "https://openrouter.ai/api/v1";
-            envKey = "OPENROUTER_API_KEY";
-          };
-        };
-      };
     };
     claude-code = {
       enable = false;
