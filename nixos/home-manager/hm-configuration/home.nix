@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgsStable,
+  nix-jetbrains-plugins,
   ...
 }:
 {
@@ -24,12 +25,52 @@
       h = "history";
     };
     packages =
-      (with pkgs; [
+      (with nix-jetbrains-plugins.lib; [
+        # Adds the latest IDEA version with the latest compatible version of "com.intellij.plugins.watcher".
+        (buildIdeWithPlugins pkgs "pycharm" [
+          "org.jetbrains.junie"
+          "com.intellij.ml.llm"
+          "mobi.hsz.idea.gitignore"
+          "nix-idea"
+          "com.github.xepozz.gitattributes"
+          "com.aquasecurity.plugins.intellij-Trivy"
+          "net.seesharpsoft.intellij.plugins.csv"
+          "com.intellij.ideolog"
+          "org.sonarlint.idea"
+          # "sourcery.pycharm-plugin"
+          "String Manipulation"
+          "tanvd.grazi"
+          "izhangzhihao.rainbow.brackets"
+          "indent-rainbow.indent-rainbow"
+          "com.ultrahob.zerolength.plugin"
+          "com.wakatime.intellij.plugin"
+          "ru.adelf.idea.dotenv"
+          "com.kozhun.commit-message-template"
+        ])
+        (buildIdeWithPlugins pkgs "rust-rover" [
+          "org.jetbrains.junie"
+          "com.intellij.ml.llm"
+          "mobi.hsz.idea.gitignore"
+          "nix-idea"
+          "com.github.xepozz.gitattributes"
+          "com.aquasecurity.plugins.intellij-Trivy"
+          "net.seesharpsoft.intellij.plugins.csv"
+          "com.intellij.ideolog"
+          "org.sonarlint.idea"
+          "String Manipulation"
+          "tanvd.grazi"
+          "izhangzhihao.rainbow.brackets"
+          "indent-rainbow.indent-rainbow"
+          "com.ultrahob.zerolength.plugin"
+          "com.wakatime.intellij.plugin"
+          "ru.adelf.idea.dotenv"
+          "com.kozhun.commit-message-template"
+        ])
+      ])
+      ++ (with pkgs; [
         rustlings
         inkscape
         gearlever
-        jetbrains.pycharm
-        jetbrains.rust-rover
         forge-sparks
         antigravity
         bazaar
