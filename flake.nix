@@ -2,9 +2,9 @@
   description = "MH0386's NixOS Configuration";
 
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
-    nixpkgs-stable.url = "https://flakehub.com/f/NixOS/nixpkgs/*";
-    nix-flatpak.url = "https://flakehub.com/f/gmodena/nix-flatpak/*";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     # nix-software-center = {
     #   url = "github:ljubitje/nix-software-center";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -14,7 +14,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     home-manager = {
-      url = "https://flakehub.com/f/nix-community/home-manager/0.1";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
@@ -26,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote = {
-      url = "https://flakehub.com/f/nix-community/lanzaboote/*";
+      url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     portainer-on-nixos = {
