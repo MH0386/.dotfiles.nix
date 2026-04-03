@@ -25,6 +25,12 @@
     };
     packages =
       (with pkgs; [
+        rustlings
+        inkscape
+        gearlever
+        jetbrains.pycharm
+        jetbrains.rust-rover
+        forge-sparks
         antigravity
         bazaar
         beeper
