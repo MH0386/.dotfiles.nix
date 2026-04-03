@@ -29,10 +29,10 @@ _: {
     # desktopManager.cosmic.enable = true;
     # Enable the GNOME Desktop Environment.
     desktopManager.gnome.enable = true;
-    # displayManager.gdm.enable = true;
+    displayManager.gdm.enable = true;
 
     displayManager.dms-greeter = {
-      enable = true;
+      enable = false;
       compositor.name = "niri"; # Or "hyprland" or "sway"
 
       # Sync your user's DankMaterialShell theme with the greeter. You'll probably want this
@@ -64,6 +64,7 @@ _: {
       gnome-keyring.enable = true;
       gnome-software.enable = true;
       gnome-online-accounts.enable = true;
+      gnome-settings-daemon.enable = true;
     };
     samba = {
       enable = true;

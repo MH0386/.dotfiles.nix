@@ -25,8 +25,12 @@
     };
     packages =
       (with pkgs; [
-        act
-        affine
+        rustlings
+        inkscape
+        gearlever
+        jetbrains.pycharm
+        jetbrains.rust-rover
+        forge-sparks
         antigravity
         bazaar
         beeper
@@ -59,6 +63,7 @@
         kubernetes
         lmstudio
         mediawriter
+        mission-center
         nil
         nixd
         nixfmt
@@ -84,16 +89,18 @@
         vlc
         warehouse
         warp-terminal
-        winboat
         yq-go
       ])
       ++ (with pkgsStable; [
+        winboat
         upscaler
         upscayl
         livecaptions
       ]);
     sessionPath = [ ];
-    sessionVariables = { };
+    sessionVariables = {
+      ANTHROPIC_AUTH_TOKEN = "$KILO_API_KEY";
+    };
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
     username = "mohamed";

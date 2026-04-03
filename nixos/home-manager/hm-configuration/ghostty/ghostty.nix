@@ -40,6 +40,6 @@ _: {
     shell-integration = "detect";
     shell-integration-features = "cursor,sudo,title,no-cursor";
     gtk-single-instance = true;
-    config-file = "./config-dankcolors";
+    # config-file = "./config-dankcolors";
   };
 }

@@ -2,7 +2,6 @@ _: {
   enable = true;
 
   niri = {
-    enableKeybinds = true; # Sets static preset keybinds
     enableSpawn = true; # Auto-start DMS with niri, if enabled
 
     includes = {
@@ -310,31 +309,29 @@ _: {
   };
 
   clipboardSettings = {
-    maxHistory = 25;
-    maxEntrySize = 5242880;
-    autoClearDays = 1;
-    clearAtStartup = true;
     disabled = false;
     disableHistory = false;
     disablePersist = false;
   };
 
   # Auto-enabled when plugins have settings configured
-  # managePluginSettings = true;
+  managePluginSettings = true;
 
   plugins = {
     # Simply enable plugins by their ID (from the registry)
     # dankBatteryAlerts.enable = true;
-    # dockerManager.enable = true;
+    dockerManager.enable = true;
+    usbManager.enable = true;
+    githubNotifier.enable = true;
 
     # Add plugin-specific settings
-    # mediaPlayer = {
-    #   enable = true;
+    mediaPlayer = {
+      enable = true;
 
-    #   # You can only define settings here if using the home-manager module
-    #   # settings = {
-    #   #   preferredSource = "spotify";
-    #   # };
-    # };
+      # You can only define settings here if using the home-manager module
+      # settings = {
+      #   preferredSource = "spotify";
+      # };
+    };
   };
 }

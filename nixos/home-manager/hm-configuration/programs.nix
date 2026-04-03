@@ -1,10 +1,37 @@
-{ pkgs, pkgsStable, ... }:
+{
+  pkgs,
+  pkgsStable,
+  config,
+  lib,
+  ...
+}:
 {
   programs = {
     home-manager.enable = true;
     niri = import ./niri/niri.nix { inherit pkgs; };
     dank-material-shell = import ./niri/dank-material-shell.nix { inherit pkgs; };
     ghostty = import ./ghostty/ghostty.nix { };
+    codex = {
+      enable = true;
+      enableMcpIntegration = true;
+    };
+    claude-code = {
+      enable = false;
+      enableMcpIntegration = true;
+      settings = {
+        env = {
+          ANTHROPIC_API_KEY = "";
+          ANTHROPIC_BASE_URL = "https://api.kilo.ai/api/gateway";
+        };
+      };
+    };
+    nix-index = {
+      # enable = true;
+      # enableBashIntegration = true;
+      # enableFishIntegration = true;
+      # enableNushellIntegration = true;
+      # enableZshIntegration = true;
+    };
     git = {
       enable = true;
       package = pkgsStable.git;
@@ -35,9 +62,91 @@
     command-not-found.enable = true;
     fastfetch.enable = true;
     fd.enable = true;
+    fish = {
+      enable = true;
+      interactiveShellInit = "${lib.getExe config.programs.fastfetch.package}";
+      plugins = [
+        {
+          name = "fzf";
+          inherit (pkgs.fishPlugins.fzf) src;
+        }
+        {
+          name = "done";
+          inherit (pkgs.fishPlugins.done) src;
+        }
+        {
+          name = "grc";
+          inherit (pkgs.fishPlugins.grc) src;
+        }
+      ];
+    };
     zsh = {
       enable = true;
       autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+      zsh-abbr.enable = true;
+      zplug = {
+        enable = true;
+        plugins = [
+          { name = "zsh-users/zsh-autosuggestions"; }
+          { name = "andreacasarin/zsh-ask-opencode"; }
+          {
+            name = "plugins/git";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/docker";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/docker-compose";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/python";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/pip";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/node";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/npm";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/yarn";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/rust";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/sudo";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/extract";
+            tags = [ "from:oh-my-zsh" ];
+          }
+          {
+            name = "plugins/command-not-found";
+            tags = [ "from:oh-my-zsh" ];
+          }
+        ];
+      };
+      initContent = lib.mkOrder 1500 ''
+        ${lib.getExe config.programs.fastfetch.package}
+
+        if [ -f ${config.home.homeDirectory}/.secrets.env ]; then
+          source ${config.home.homeDirectory}/.secrets.env
+        fi
+      '';
     };
     atuin = {
       enable = true;
@@ -105,7 +214,6 @@
     };
     vscode = {
       enable = true;
-      package = pkgs.vscodium;
       profiles = {
         default = {
           enableMcpIntegration = true;
@@ -115,6 +223,7 @@
           #     fontFamily = "Fira Code";
           #   };
           # };
+          # extensions = with pkgs.vscode-extensions; [ms-python.python ms-python.debugpy njpwerner.autodocstring sourcery.sourcery fill-labs.dependi wakatime.vscode-wakatime usernamehw.errorlens tamasfe.even-better-toml skellock.just redhat.vscode-yaml charliermarsh.ruff];
         };
       };
     };
@@ -160,16 +269,14 @@
       enableMcpIntegration = true;
       settings = {
         plugin = [
-          "opencode-daytona"
           "opencode-wakatime"
-          "opencode-notificator"
-          "opencode-notifier"
-          "oh-my-opencode"
-          "opencode-md-table-formatter"
-          "opencode-skillful"
-          "micode"
-          "opencode-workspace"
-          "opencode-worktree"
+          "@mohak34/opencode-notifier"
+          "oh-my-openagent"
+          "@franlol/opencode-md-table-formatter"
+          "@plannotator/opencode"
+          "@tarquinen/opencode-dcp"
+          "opencode-websearch-cited"
+          "opencode-pty"
         ];
       };
     };
@@ -182,6 +289,9 @@
         };
         github = {
           url = "https://api.githubcopilot.com/mcp";
+          headers = {
+            Authorization = "{env:GITHUB_PERSONAL_ACCESS_TOKEN}";
+          };
         };
         agno = {
           url = "https://docs.agno.com/mcp";
@@ -190,18 +300,6 @@
           command = "devenv";
           args = [
             "mcp"
-          ];
-        };
-        git = {
-          command = "uvx";
-          args = [
-            "mcp-server-git"
-          ];
-        };
-        time = {
-          command = "uvx";
-          args = [
-            "mcp-server-time"
           ];
         };
         context7 = {
@@ -216,13 +314,25 @@
       enable = true;
       userSettings = {
         agent_servers = {
-          kimi = {
+          kilo = {
             type = "registry";
           };
           opencode = {
             type = "registry";
           };
-          github-copilot = {
+          junie = {
+            type = "registry";
+          };
+          gemini = {
+            type = "registry";
+          };
+          codex-acp = {
+            type = "registry";
+          };
+          claude-acp = {
+            type = "registry";
+          };
+          pi-acp = {
             type = "registry";
           };
           junie-acp = {
@@ -356,6 +466,7 @@
         "tombi"
         "toml"
         "wakatime"
+        "env"
       ];
     };
     uv = {
@@ -399,6 +510,5 @@
       enable = true;
       package = pkgsStable.firefoxpwa;
     };
-    helix.enable = true;
   };
 }
