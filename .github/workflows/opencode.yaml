@@ -1,11 +1,7 @@
 name: opencode
 on:
   issue_comment:
-    types:
-      - created
   pull_request_review_comment:
-    types:
-      - created
 jobs:
   opencode:
     if: |
@@ -20,13 +16,9 @@ jobs:
       pull-requests: read
       issues: read
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-        with:
-          persist-credentials: false
+      - name: Setup Env
+        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@v0.0.52
       - name: Run opencode
-        uses: anomalyco/opencode/github@latest
-        env:
-          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+        uses: AlphaSphereDotAI/helpr_action/ci/tools/opencode@v0.0.52
         with:
-          model: opencode/big-pickle
+          api_key: ${{ secrets.OPENCODE_API_KEY }}
