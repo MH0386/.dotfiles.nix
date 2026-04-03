@@ -7,3 +7,4 @@ devenv.local.yaml
 .yamllint.yaml
 .yamlfmt.yaml
 statix.toml
+opencode.jsonc
