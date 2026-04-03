@@ -28,6 +28,7 @@
     };
     claude-code = {
       enable = true;
+      enableMcpIntegration = true;
       settings = {
         env = {
           ANTHROPIC_API_KEY = "";
