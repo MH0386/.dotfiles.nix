@@ -1,4 +1,4 @@
-name: OpenCode
+name: Reviewer
 on:
   issue_comment:
   pull_request_review_comment:
@@ -17,8 +17,8 @@ jobs:
       issues: read
     steps:
       - name: Setup Env
-        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@cacaa8c32c2b969ea8f8d03c9f7557548b4eb0d6 # v0.0.52
+        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@d6ab5bf6bffa267654e49e0fcfdcadea642f7a33 # v0.0.53
       - name: Run opencode
-        uses: AlphaSphereDotAI/helpr_action/ci/tools/opencode@cacaa8c32c2b969ea8f8d03c9f7557548b4eb0d6 # v0.0.52
+        uses: AlphaSphereDotAI/helpr_action/ci/tools/opencode@d6ab5bf6bffa267654e49e0fcfdcadea642f7a33 # v0.0.53
         with:
           api_key: ${{ secrets.OPENCODE_API_KEY }}
