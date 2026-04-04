@@ -1,9 +1,5 @@
 # PROJECT KNOWLEDGE BASE
 
-**Generated:** 2026-04-03
-**Commit:** 8776c93
-**Branch:** main
-
 ## OVERVIEW
 
 NixOS dotfiles managed via Nix flakes + Home Manager.
