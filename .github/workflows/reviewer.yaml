@@ -1,4 +1,4 @@
-name: OpenCode
+name: Reviewer
 on:
   issue_comment:
   pull_request_review_comment:
