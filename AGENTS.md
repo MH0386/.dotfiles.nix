@@ -1,7 +1,7 @@
 # PROJECT KNOWLEDGE BASE
 
-**Generated:** 2026-04-03
-**Commit:** 8776c93
+**Generated:** 2026-04-04
+**Commit:** 26b57d4
 **Branch:** main
 
 ## OVERVIEW
@@ -32,7 +32,7 @@ No traditional shell dotfiles—shell/editor configs are declarative Nix modules
 
 - **Auto-generated files**: Never edit `hardware-configuration.nix`
 - **Modular**: Split by concern (boot, programs, services, etc.)
-- **CI**: Pre-commit runs deadnix, nixfmt, actionlint, yamllint, etc.
+- **CI**: Pre-commit runs deadnix, nixfmt, nixf-diagnose, actionlint, action-validator, yamllint, yamlfmt, statix, taplo, markdownlint, comrak, trufflehog, ripsecrets, and file integrity checks
 - **Flakes**: All configs via `flake.nix` inputs, no channels
 
 ## ANTI-PATTERNS (THIS PROJECT)
@@ -56,6 +56,7 @@ No traditional shell dotfiles—shell/editor configs are declarative Nix modules
 
 ## NOTES
 
-- Devenv integrated for reproducible dev shells
+- Devenv integrated for reproducible dev shells with treefmt for formatting
 - Mergify auto-queues PRs on CI pass
 - No traditional tests—CI validates via nix flake check
+- Ghostty terminal configured via Home Manager (nixos/home-manager/hm-configuration/ghostty/)
