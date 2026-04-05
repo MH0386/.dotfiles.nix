@@ -30,7 +30,7 @@ tools:
 
 timeout-minutes: 30
 source: githubnext/agentics/workflows/code-simplifier.md@1f672aef974f4246124860fc532f82fe8a93a57e
-engine: 
+engine:
   id: codex
   env:
     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
