@@ -3,7 +3,9 @@
   "dependencyDashboardOSVVulnerabilitySummary": "all",
   "extends": ["config:best-practices"],
   "lockFileMaintenance": { "enabled": true, "labels": ["Lockfile"] ,
-    "fileMatch": ["(^|/)devenv\\.lock$"]},
+    "managerFilePatterns": [
+      "/(^|/)devenv\.lock$/"
+    ]},
   "nix": { "enabled": true, "labels": ["flake", "nix"] },
   "osvVulnerabilityAlerts": true
 }
