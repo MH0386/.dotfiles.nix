@@ -1,21 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "dependencyDashboardOSVVulnerabilitySummary": "all",
-  "extends": [
-    "config:best-practices"
-  ],
-  "lockFileMaintenance": {
-    "enabled": true,
-    "labels": [
-      "Lockfile"
-    ]
-  },
-  "nix": {
-    "enabled": true,
-    "labels": [
-      "flake",
-      "nix"
-    ]
-  },
+  "extends": ["config:best-practices"],
+  "lockFileMaintenance": { "enabled": true, "labels": ["Lockfile"] ,
+    "fileMatch": ["(^|/)devenv\\.lock$"]},
+  "nix": { "enabled": true, "labels": ["flake", "nix"] },
   "osvVulnerabilityAlerts": true
 }
