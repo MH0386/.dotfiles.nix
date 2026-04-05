@@ -69,6 +69,7 @@
         ])
       ])
       ++ (with pkgs; [
+        just
         rustlings
         inkscape
         gearlever
