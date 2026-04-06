@@ -2,6 +2,7 @@
   pkgs,
   pkgsStable,
   nix-jetbrains-plugins,
+  inputs,
   ...
 }:
 {
@@ -68,6 +69,7 @@
         ])
       ])
       ++ (with pkgs; [
+        just
         rustlings
         inkscape
         gearlever
@@ -142,6 +144,7 @@
     sessionVariables = {
       ANTHROPIC_AUTH_TOKEN = "$KILO_API_KEY";
     };
+    file.".oh-my-bash".source = inputs.oh-my-bash;
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
     username = "mohamed";

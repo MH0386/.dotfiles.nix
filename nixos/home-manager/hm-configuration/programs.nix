@@ -3,6 +3,7 @@
   pkgsStable,
   config,
   lib,
+  inputs,
   ...
 }:
 {
@@ -132,7 +133,31 @@
       };
     };
     zoxide.enable = true;
-    bash.enable = true;
+    bash = {
+      enable = true;
+      sessionVariables = {
+        OSH = "${inputs.oh-my-bash}";
+      };
+      bashrcExtra = ''
+        ${lib.getExe config.programs.fastfetch.package}
+
+        if [ -f ${config.home.homeDirectory}/.secrets.env ]; then
+          source ${config.home.homeDirectory}/.secrets.env
+        fi
+
+        plugins=(
+          git
+          cargo
+          fzf
+          progress
+          sudo
+          starship
+          zoxide
+        )
+
+        source ${inputs.oh-my-bash}/oh-my-bash.sh
+      '';
+    };
     nushell = {
       enable = true;
       plugins = with pkgs.nushellPlugins; [

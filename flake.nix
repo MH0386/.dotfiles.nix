@@ -49,6 +49,10 @@
       url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    oh-my-bash = {
+      url = "github:ohmybash/oh-my-bash";
+      flake = false;
+    };
   };
 
   outputs =
@@ -64,6 +68,7 @@
       niri,
       dms,
       dms-plugin-registry,
+      oh-my-bash,
       ...
     }@inputs:
     let
@@ -106,6 +111,7 @@
                 inherit niri;
                 inherit dms;
                 inherit dms-plugin-registry;
+                inherit oh-my-bash;
               };
             }
           )
