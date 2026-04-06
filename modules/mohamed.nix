@@ -35,4 +35,5 @@
       nixpkgs.config.cudaCapabilities = [ "7.5" ];
     };
   };
+  den.homes.x86_64-linux.mohamed = { };
 }
