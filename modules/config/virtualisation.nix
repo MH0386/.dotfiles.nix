@@ -9,8 +9,8 @@
             enable = true;
             qemu.package = pkgs.qemu_kvm;
           };
-          hardware.nvidia-container-toolkit.enable = true;
         };
+        hardware.nvidia-container-toolkit.enable = true;
       };
 
     provides = {
