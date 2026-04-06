@@ -1,10 +1,5 @@
-{
-  inputs,
-  lib,
-  ...
-}:
+{ inputs, lib, ... }:
 {
   imports = [ inputs.den.flakeModule ];
-
-  den.ctx.user.classes = lib.mkDefault [ "homeManager" ];
+  den.schema.user.classes = lib.mkDefault [ "homeManager" ];
 }
