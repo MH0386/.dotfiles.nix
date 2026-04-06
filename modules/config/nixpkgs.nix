@@ -1,18 +1,6 @@
 {
-  den.schema.conf = {
-    nixos.nixpkgs = {
-      config.allowUnfree = true;
-      overlays = [
-        (final: prev: {
-          inherit (prev.lixPackageSets.stable)
-            nixpkgs-review
-            nix-eval-jobs
-            nix-fast-build
-            colmena
-            ;
-        })
-      ];
-    };
+  den.default = {
+    nixos.nixpkgs.config.allowUnfree = true;
     homeManager.nixpkgs.config.allowUnfree = true;
   };
 }
