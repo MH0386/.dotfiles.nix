@@ -1,5 +1,5 @@
 {
-  den.schema.conf = {
+  den.default = {
     nixos.services.pipewire = {
       enable = true;
       alsa.enable = true;

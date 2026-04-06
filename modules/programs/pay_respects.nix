@@ -1,6 +1,5 @@
 {
-  den.schema.conf = {
-
+  den.default = {
     homeManager = {
       programs.pay-respects = {
         enable = true;

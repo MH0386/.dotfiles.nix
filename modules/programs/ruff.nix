@@ -1,5 +1,5 @@
 {
-  den.schema.conf = {
+  den.default = {
     homeManager = {
       programs.ruff = {
         enable = true;

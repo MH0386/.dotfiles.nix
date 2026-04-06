@@ -1,6 +1,6 @@
 {
   # Enable OpenGL , Nouveau
-  den.schema.conf = {
+  den.default = {
     nixos =
       { pkgs, ... }:
       {

@@ -1,6 +1,5 @@
 {
-  den.schema.conf = {
-
+  den.default = {
     nixos.programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;

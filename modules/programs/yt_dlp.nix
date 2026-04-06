@@ -1,5 +1,5 @@
 {
-  den.schema.conf = {
+  den.default = {
     homeManager.programs.yt-dlp = {
       enable = true;
     };

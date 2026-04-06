@@ -1,5 +1,5 @@
 {
-  den.schema.conf = {
+  den.default = {
     nixos = {
       i18n = {
         extraLocaleSettings = {

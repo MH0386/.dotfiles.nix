@@ -1,8 +1,6 @@
 {
-  den.schema.conf = {
-    nixos =
-      { pkgs, ... }:
-      {
+  den.default = {
+    nixos = {
         nix = {
           package = pkgs.lixPackageSets.stable.lix;
           settings = {

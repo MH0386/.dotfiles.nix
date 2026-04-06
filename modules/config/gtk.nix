@@ -1,5 +1,5 @@
 {
-  den.schema.conf = {
+  den.default = {
     homeManager.gtk = {
       enable = true;
       gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;

@@ -1,6 +1,5 @@
 {
-  den.schema.conf = {
-
+  den.default = {
     homeManager = {
       programs.lazydocker = {
         enable = true;

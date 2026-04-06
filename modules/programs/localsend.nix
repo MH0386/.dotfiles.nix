@@ -1,6 +1,5 @@
 {
-  den.schema.conf = {
-
+  den.default = {
     nixos = {
       programs.localsend = {
         enable = true;
