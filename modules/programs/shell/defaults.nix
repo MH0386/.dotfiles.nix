@@ -52,35 +52,5 @@
           };
         };
       };
-
-    provides = {
-      bash = {
-        homeManager.programs.bash.enable = true;
-      };
-      zsh = {
-        nixos.programs.zsh.enable = true;
-        homeManager.programs.zsh = {
-          enable = true;
-          autosuggestion.enable = true;
-        };
-      };
-      fish = {
-        homeManager.programs.fish.enable = true;
-      };
-      nushell =
-        { pkgs, ... }:
-        {
-          homeManager.programs.nushell = {
-            enable = true;
-            plugins = [ pkgs.nushellPlugins.gstat ];
-          };
-        };
-      xonsh = {
-        nixos.programs.xonsh = {
-          enable = true;
-          config = "execx($(atuin init xonsh))";
-        };
-      };
-    };
   };
 }
