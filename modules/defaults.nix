@@ -1,6 +1,8 @@
+{ den, ... }:
 {
   den.default = {
     includes = [
+      den.provides.gdm
       # den.provides.define-user
       # den.provides.hostname
     ];
