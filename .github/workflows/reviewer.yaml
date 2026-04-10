@@ -17,8 +17,8 @@ jobs:
       issues: read
     steps:
       - name: Setup Env
-        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@c53f42014c9d1a65e82e2972213968c61ddc6670 # v0.0.60
+        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@87cdd6f59c9a55c8d249357ed46a88c77df3400c # v0.0.61
       - name: Run opencode
-        uses: AlphaSphereDotAI/helpr_action/ci/tools/opencode@c53f42014c9d1a65e82e2972213968c61ddc6670 # v0.0.60
+        uses: AlphaSphereDotAI/helpr_action/ci/tools/opencode@87cdd6f59c9a55c8d249357ed46a88c77df3400c # v0.0.61
         with:
           api_key: ${{ secrets.OPENCODE_API_KEY }}
