@@ -13,10 +13,10 @@ jobs:
       issues: write
     steps:
       - name: Setup Env
-        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@bf55eddbb28e27e4089adfc597ea226b5513d776 # v0.0.59
+        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@dac0eef0b5e370a415537e3579f45245a997d580 # v0.0.60
       - run: npx @smithery/cli@latest skill add github/gh-cli --agent opencode
       - name: Run opencode
-        uses: AlphaSphereDotAI/helpr_action/ci/tools/opencode@bf55eddbb28e27e4089adfc597ea226b5513d776 # v0.0.59
+        uses: AlphaSphereDotAI/helpr_action/ci/tools/opencode@dac0eef0b5e370a415537e3579f45245a997d580 # v0.0.60
         with:
           api_key: ${{ secrets.OPENCODE_API_KEY }}
           prompt: |-
