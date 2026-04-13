@@ -1,16 +1,12 @@
 {
   den.default = {
     nixos =
-      { lib, pkgs, ... }:
+      { pkgs, ... }:
       {
         boot = {
           loader = {
             efi.canTouchEfiVariables = true;
-            systemd-boot.enable = lib.mkForce false;
-          };
-          lanzaboote = {
-            enable = true;
-            pkiBundle = "/var/lib/sbctl";
+            systemd-boot.enable = true;
           };
           kernelPackages = pkgs.linuxPackages_latest;
           initrd.systemd.enable = true;
@@ -23,6 +19,19 @@
             "udev.log_priority=3"
             "boot.shell_on_fail"
           ];
+        };
+      };
+  };
+  den.aspects.MohamedLaptopNixOS = {
+    nixos =
+      { pkgs, lib, ... }:
+      {
+        boot = {
+          lanzaboote = {
+            enable = true;
+            pkiBundle = "/var/lib/sbctl";
+          };
+          loader.systemd-boot.enable = lib.mkForce false;
         };
         environment.systemPackages = [ pkgs.sbctl ];
       };
