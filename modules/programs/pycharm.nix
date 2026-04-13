@@ -1,7 +1,8 @@
+{ inputs, ... }:
 {
   den.default = {
     homeManager =
-      { pkgs, inputs, ... }:
+      { pkgs, ... }:
       {
         home.packages = [
           (pkgs.jetbrains.plugins.addPlugins pkgs.jetbrains.pycharm [
