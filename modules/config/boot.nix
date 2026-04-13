@@ -22,18 +22,29 @@
         };
       };
   };
-  den.aspects.MohamedLaptopNixOS = {
-    nixos =
-      { pkgs, lib, ... }:
-      {
-        boot = {
-          lanzaboote = {
-            enable = true;
-            pkiBundle = "/var/lib/sbctl";
+  den.aspects = {
+    MohamedDesktopNixOS = {
+      nixos.boot.blacklistedKernelModules = [ "nouveau" ];
+    };
+    MohamedLaptopNixOS = {
+      nixos =
+        { pkgs, lib, ... }:
+        {
+          boot = {
+            lanzaboote = {
+              enable = true;
+              pkiBundle = "/var/lib/sbctl";
+            };
+            loader.systemd-boot.enable = lib.mkForce false;
+            blacklistedKernelModules = [
+              "nouveau"
+              "nvidia_drm"
+              "nvidia_modeset"
+              "nvidia"
+            ];
           };
-          loader.systemd-boot.enable = lib.mkForce false;
+          environment.systemPackages = [ pkgs.sbctl ];
         };
-        environment.systemPackages = [ pkgs.sbctl ];
-      };
+    };
   };
 }
