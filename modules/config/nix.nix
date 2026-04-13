@@ -29,5 +29,14 @@
       };
       programs.nix-ld.enable = true;
     };
+    homeManager = {
+      programs.nix-index = {
+        enable = true;
+        enableBashIntegration = true;
+        enableFishIntegration = true;
+        enableNushellIntegration = true;
+        enableZshIntegration = true;
+      };
+    };
   };
 }
