@@ -113,5 +113,25 @@ jobs:
       - name: Commit updated devenv Lockfile
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
         with:
-          commit_message: 'devenv: Update devenv Lock file'
+          commit_message: "devenv: Update devenv Lock file"
+          commit_options: --no-verify
+  generate_flake:
+    name: Generate flake.nix
+    runs-on: ubuntu-latest
+    environment: flake
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@58077d3c7e43986b6b15fba718e8ea69e387dfcc # v2.15.1
+        with:
+          egress-policy: audit
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Install Nix
+        uses: cachix/install-nix-action@1ca7d21a94afc7c957383a2d217460d980de4934 # v31.10.1
+      - name: Generate flake.nix
+        run: nix run .#write-flake
+      - name: Commit updated flake.nix
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
+        with:
+          commit_message: "ci: Update flake.nix"
           commit_options: --no-verify
