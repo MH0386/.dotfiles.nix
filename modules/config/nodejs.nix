@@ -4,7 +4,7 @@
       { pkgsStable, ... }:
       {
         home.packages = with pkgsStable; [ corepack ];
-        bun.enable = true;
+        programs.bun.enable = true;
       };
   };
 }
