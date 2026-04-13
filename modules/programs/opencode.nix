@@ -1,14 +1,9 @@
 {
   den.default = {
     homeManager =
-      { pkgs, lib, ... }:
+      { pkgs, ... }:
       {
-        home = {
-          packages = [ pkgs.opencode-desktop ];
-          sessionVariables = {
-            EDITOR = "${lib.getExe pkgs.vscodium} --wait";
-          };
-        };
+        home.packages = [ pkgs.opencode-desktop ];
         programs.opencode = {
           enable = true;
           enableMcpIntegration = true;
