@@ -3,7 +3,10 @@
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = [ pkgs.rustup ];
+        home.packages = with pkgs; [
+          rustup
+          rustlings
+        ];
       };
   };
 }
