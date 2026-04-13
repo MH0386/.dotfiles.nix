@@ -3,8 +3,7 @@
     homeManager =
       { pkgsStable, ... }:
       {
-        home.packages = with pkgs; [          corepack
-        ];
+        home.packages = with pkgsStable; [ corepack ];
       };
   };
 }
