@@ -34,9 +34,6 @@
             enableNushellIntegration = true;
             enableZshIntegration = true;
           };
-          command-not-found = {
-            enable = true;
-          };
           starship = {
             enable = true;
             enableBashIntegration = true;
