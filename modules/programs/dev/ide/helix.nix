@@ -1,6 +1,5 @@
 {
-  den.schema.conf = {
-
+  den.default = {
     homeManager = {
       programs.helix = {
         enable = true;
