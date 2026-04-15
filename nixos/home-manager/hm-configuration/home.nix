@@ -69,6 +69,7 @@
         ])
       ])
       ++ (with pkgs; [
+        google-chrome
         just
         rustlings
         inkscape
