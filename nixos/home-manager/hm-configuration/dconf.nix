@@ -36,7 +36,7 @@ _: {
         "system-monitor@gnome-shell-extensions.gcampax.github.com"
       ];
       favorite-apps = [
-        "zen.desktop"
+        "google-chrome.desktop"
         "org.gnome.Nautilus.desktop"
         "com.mitchellh.ghostty.desktop"
         "pycharm.desktop"
