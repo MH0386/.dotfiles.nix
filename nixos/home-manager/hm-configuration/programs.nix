@@ -61,7 +61,6 @@
       ];
     };
     btop.enable = true;
-    command-not-found.enable = true;
     fastfetch.enable = true;
     fd.enable = true;
     fish = {
