@@ -1,5 +1,6 @@
 _: {
   programs = {
+    sniffnet.enable = true;
     niri.enable = true;
     xonsh = {
       enable = true;
