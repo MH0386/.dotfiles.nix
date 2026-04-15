@@ -18,7 +18,7 @@
     };
     neovim.enable = true;
     claude-code = {
-      enable = false;
+      enable = true;
       enableMcpIntegration = true;
       settings = {
         env = {
