@@ -28,11 +28,11 @@
       };
     };
     nix-index = {
-      # enable = true;
-      # enableBashIntegration = true;
-      # enableFishIntegration = true;
-      # enableNushellIntegration = true;
-      # enableZshIntegration = true;
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableNushellIntegration = true;
+      enableZshIntegration = true;
     };
     git = {
       enable = true;
