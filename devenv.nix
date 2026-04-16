@@ -26,6 +26,9 @@
         "**/hardware-configuration.nix"
       ];
     };
+    ".markdownlintignore".text = ''
+      .github/workflows/
+    '';
   };
 
   languages = {
