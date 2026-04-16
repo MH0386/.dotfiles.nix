@@ -3,6 +3,8 @@
   pkgsStable,
   nix-jetbrains-plugins,
   inputs,
+  lib,
+  config,
   ...
 }:
 {
@@ -69,6 +71,7 @@
         ])
       ])
       ++ (with pkgs; [
+        google-chrome
         just
         rustlings
         inkscape
@@ -143,6 +146,11 @@
     sessionPath = [ ];
     sessionVariables = {
       ANTHROPIC_AUTH_TOKEN = "$KILO_API_KEY";
+      EDITOR = "${lib.getExe config.programs.zed-editor.package} --wait";
+      VISUAL = "${lib.getExe config.programs.zed-editor.package} --wait";
+      COPILOT_PROVIDER_BASE_URL = "https://api.kilo.ai/api/gateway";
+      COPILOT_PROVIDER_API_KEY = "$KILO_API_KEY";
+      COPILOT_MODEL = "kilo-auto/free";
     };
     file.".oh-my-bash".source = inputs.oh-my-bash;
     # Home Manager needs a bit of information about you and the

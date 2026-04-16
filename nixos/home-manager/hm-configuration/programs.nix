@@ -16,8 +16,9 @@
       enable = true;
       enableMcpIntegration = true;
     };
+    neovim.enable = true;
     claude-code = {
-      enable = false;
+      enable = true;
       enableMcpIntegration = true;
       settings = {
         env = {
@@ -27,11 +28,11 @@
       };
     };
     nix-index = {
-      # enable = true;
-      # enableBashIntegration = true;
-      # enableFishIntegration = true;
-      # enableNushellIntegration = true;
-      # enableZshIntegration = true;
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableNushellIntegration = true;
+      enableZshIntegration = true;
     };
     git = {
       enable = true;
@@ -60,27 +61,8 @@
       ];
     };
     btop.enable = true;
-    command-not-found.enable = true;
     fastfetch.enable = true;
     fd.enable = true;
-    fish = {
-      enable = true;
-      interactiveShellInit = "${lib.getExe config.programs.fastfetch.package}";
-      plugins = [
-        {
-          name = "fzf";
-          inherit (pkgs.fishPlugins.fzf) src;
-        }
-        {
-          name = "done";
-          inherit (pkgs.fishPlugins.done) src;
-        }
-        {
-          name = "grc";
-          inherit (pkgs.fishPlugins.grc) src;
-        }
-      ];
-    };
     zsh = {
       enable = true;
       autosuggestion.enable = true;
@@ -106,7 +88,6 @@
             "node"
             "npm"
             "yarn"
-            "rust"
             "sudo"
             "extract"
             "command-not-found"

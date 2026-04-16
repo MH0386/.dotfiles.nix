@@ -30,7 +30,6 @@
         lshw-gui
         nautilus-python
         nix-diff
-        nodejs_22
         ntfs3g
         nvitop
         nvtopPackages.nvidia
