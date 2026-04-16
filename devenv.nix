@@ -94,7 +94,6 @@
       check-symlinks.enable = true;
       check-xml.enable = true;
       check-yaml.enable = true;
-      comrak.enable = true;
       deadnix.enable = true;
       detect-private-keys.enable = true;
       markdownlint.enable = true;
@@ -103,7 +102,6 @@
       ripsecrets.enable = true;
       statix.enable = true;
       taplo.enable = true;
-      trim-trailing-whitespace.enable = true;
       trufflehog.enable = true;
       yamllint.enable = true;
       nixf-diagnose.enable = true;
