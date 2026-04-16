@@ -77,7 +77,6 @@
         inkscape
         gearlever
         forge-sparks
-        antigravity
         bazaar
         beeper
         bitwarden-cli

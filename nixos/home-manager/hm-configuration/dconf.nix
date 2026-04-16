@@ -41,7 +41,6 @@ _: {
         "com.mitchellh.ghostty.desktop"
         "pycharm.desktop"
         "code.desktop"
-        "antigravity.desktop"
         "dev.zed.Zed.desktop"
         "OpenCode.desktop"
       ];
