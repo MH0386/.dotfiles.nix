@@ -9,6 +9,7 @@
         comments = "disable";
         line-length.max = 120;
       };
+      ignore = [".github/workflows/"];
     };
     ".yamlfmt.yaml".yaml = {
       formatter = {
