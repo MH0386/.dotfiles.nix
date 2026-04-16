@@ -16,8 +16,9 @@
       enable = true;
       enableMcpIntegration = true;
     };
+    neovim.enable = true;
     claude-code = {
-      enable = false;
+      enable = true;
       enableMcpIntegration = true;
       settings = {
         env = {
@@ -27,11 +28,11 @@
       };
     };
     nix-index = {
-      # enable = true;
-      # enableBashIntegration = true;
-      # enableFishIntegration = true;
-      # enableNushellIntegration = true;
-      # enableZshIntegration = true;
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableNushellIntegration = true;
+      enableZshIntegration = true;
     };
     git = {
       enable = true;
@@ -60,7 +61,6 @@
       ];
     };
     btop.enable = true;
-    command-not-found.enable = true;
     fastfetch.enable = true;
     fd.enable = true;
     zsh = {
