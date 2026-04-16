@@ -3,6 +3,8 @@
   pkgsStable,
   nix-jetbrains-plugins,
   inputs,
+  lib,
+  config,
   ...
 }:
 {
@@ -144,6 +146,8 @@
     sessionPath = [ ];
     sessionVariables = {
       ANTHROPIC_AUTH_TOKEN = "$KILO_API_KEY";
+      EDITOR = "${lib.getExe config.programs.zed-editor.package} --wait";
+      VISUAL = "${lib.getExe config.programs.zed-editor.package} --wait";
       COPILOT_PROVIDER_BASE_URL = "https://api.kilo.ai/api/gateway";
       COPILOT_PROVIDER_API_KEY = "$KILO_API_KEY";
       COPILOT_MODEL = "kilo-auto/free";

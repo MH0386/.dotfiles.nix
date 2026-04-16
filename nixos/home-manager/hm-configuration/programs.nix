@@ -88,7 +88,6 @@
             "node"
             "npm"
             "yarn"
-            "rust"
             "sudo"
             "extract"
             "command-not-found"
