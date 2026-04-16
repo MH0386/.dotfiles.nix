@@ -266,8 +266,7 @@
       enable = true;
       servers = {
         nixos = {
-          command = "uvx";
-          args = [ "mcp-nixos" ];
+          command = "${lib.getExe pkgs.mcp-nixos}";
         };
         github = {
           url = "https://api.githubcopilot.com/mcp";
@@ -279,10 +278,8 @@
           url = "https://docs.agno.com/mcp";
         };
         devenv = {
-          command = "devenv";
-          args = [
-            "mcp"
-          ];
+          command = "${lib.getExe pkgs.devenv}";
+          args = [ "mcp" ];
         };
         context7 = {
           url = "https://mcp.context7.com/mcp";
