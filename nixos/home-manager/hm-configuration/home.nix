@@ -3,6 +3,8 @@
   pkgsStable,
   nix-jetbrains-plugins,
   inputs,
+  lib,
+  config,
   ...
 }:
 {
@@ -144,6 +146,8 @@
     sessionPath = [ ];
     sessionVariables = {
       ANTHROPIC_AUTH_TOKEN = "$KILO_API_KEY";
+      EDITOR = "${lib.getExe config.programs.zed-editor.package} --wait";
+      VISUAL = "${lib.getExe config.programs.zed-editor.package} --wait";
     };
     file.".oh-my-bash".source = inputs.oh-my-bash;
     # Home Manager needs a bit of information about you and the
