@@ -71,6 +71,7 @@
         ])
       ])
       ++ (with pkgs; [
+        mcp-nixos
         google-chrome
         just
         rustlings
