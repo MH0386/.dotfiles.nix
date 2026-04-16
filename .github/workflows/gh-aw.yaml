@@ -5,7 +5,8 @@ on:
     - cron: 0 0 * * *
   push:
     paths:
-      - .github/workflows/**.md
+      - .github/workflows/**/*.md
+      - .github/workflows/*.md
 permissions:
   contents: write
 jobs:
