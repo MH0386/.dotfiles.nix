@@ -94,7 +94,6 @@
       check-symlinks.enable = true;
       check-xml.enable = true;
       check-yaml.enable = true;
-      comrak.enable = true;
       deadnix.enable = true;
       detect-private-keys.enable = true;
       markdownlint.enable = true;
