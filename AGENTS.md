@@ -28,7 +28,7 @@ No traditional shell dotfiles—shell/editor configs are declarative Nix modules
 
 - **Auto-generated files**: Never edit `hardware-configuration.nix`
 - **Modular**: Split by concern (boot, programs, services, etc.)
-- **CI**: Pre-commit runs deadnix, nixfmt, actionlint, yamllint, etc.
+- **CI**: Pre-commit runs deadnix, nixfmt, nixf-diagnose, statix, actionlint, yamllint, yamlfmt, markdownlint, taplo, trufflehog, etc.
 - **Flakes**: All configs via `flake.nix` inputs, no channels
 
 ## ANTI-PATTERNS (THIS PROJECT)
@@ -54,4 +54,4 @@ No traditional shell dotfiles—shell/editor configs are declarative Nix modules
 
 - Devenv integrated for reproducible dev shells
 - Mergify auto-queues PRs on CI pass
-- No traditional tests—CI validates via nix flake check
+- No traditional tests—CI validates via devenv test
