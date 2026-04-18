@@ -96,10 +96,6 @@
       };
       initContent = lib.mkOrder 1500 ''
         ${lib.getExe config.programs.fastfetch.package}
-
-        if [ -f ${config.home.homeDirectory}/.secrets.env ]; then
-          source ${config.home.homeDirectory}/.secrets.env
-        fi
       '';
     };
     atuin = {
