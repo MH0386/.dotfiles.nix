@@ -477,13 +477,5 @@
         obs-backgroundremoval
       ];
     };
-    firefox = {
-      enable = true;
-      package = pkgsStable.firefox;
-    };
-    firefoxpwa = {
-      enable = true;
-      package = pkgsStable.firefoxpwa;
-    };
   };
 }
