@@ -31,14 +31,22 @@
       };
       programs.nix-ld.enable = true;
     };
-    homeManager = {
-      programs.nix-index = {
-        enable = true;
-        enableBashIntegration = true;
-        enableFishIntegration = true;
-        enableNushellIntegration = true;
-        enableZshIntegration = true;
+    homeManager =
+      { pkgs, ... }:
+      {
+        home.packages = with pkgs; [
+          mcp-nixos
+          nil
+          nix-diff
+          nixfmt
+        ];
+        programs.nix-index = {
+          enable = true;
+          enableBashIntegration = true;
+          enableFishIntegration = true;
+          enableNushellIntegration = true;
+          enableZshIntegration = true;
+        };
       };
-    };
   };
 }
