@@ -7,3 +7,6 @@ devenv.local.yaml
 .yamllint.yaml
 .yamlfmt.yaml
 .markdownlint.yaml
+.markdownlintignore
+opencode.jsonc
+statix.toml
