@@ -1,5 +1,6 @@
 _: {
   services = {
+    hypridle.enable = true;
     iio-niri.enable = true;
     vnstat.enable = true;
     pulseaudio.enable = false;
