@@ -1,5 +1,7 @@
 _: {
   programs = {
+    hyprland.enable = true;
+    iio-hyprland.enable = true;
     sniffnet.enable = true;
     niri.enable = true;
     xonsh = {
