@@ -42,9 +42,7 @@
         # python3Packages.torch
         # python3Packages.tensorflow
         # python3Packages.cupy
-      ])
-      ++ (with pkgsStable; [
-        corepack
+
         cudaPackages.cuda_cccl
         cudaPackages.cuda_cudart
         cudaPackages.cuda_cupti
@@ -55,11 +53,14 @@
         cudaPackages.cudatoolkit
         cudaPackages.cudnn
         cudaPackages.nccl
+      ])
+      ++ (with pkgsStable; [
+        corepack
         fh
       ]);
     # CUDA environment variables
     sessionVariables = {
-      CUDA_PATH = "${pkgs.cudatoolkit}";
+      CUDA_PATH = "${pkgs.cudaPackages.cudatoolkit}";
       LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
         pkgs.linuxPackages.nvidia_x11
         pkgs.ncurses5
