@@ -2,12 +2,7 @@
   den = {
     default = {
       nixos =
-        {
-          pkgs,
-          pkgsStable,
-          config,
-          ...
-        }:
+        { pkgs, config, ... }:
         {
           hardware.nvidia = {
             # Use the NVidia open source kernel module (not to be confused with the independent third-party "nouveau" open source driver).
@@ -43,7 +38,7 @@
                 gpu-viewer
                 nvtopPackages.nvidia
               ])
-              ++ (with pkgsStable.cudaPackages; [
+              ++ (with pkgs.cudaPackages; [
                 nccl
                 cudnn
                 cudatoolkit
@@ -62,18 +57,18 @@
               ]);
             # CUDA environment variables
             sessionVariables = {
-              CUDA_PATH = "${pkgsStable.cudaPackages.cudatoolkit}";
-              LD_LIBRARY_PATH = pkgsStable.lib.makeLibraryPath [
-                pkgsStable.linuxPackages.nvidia_x11
-                pkgsStable.ncurses5
-                pkgsStable.stdenv.cc.cc.lib
-                pkgsStable.zlib
-                pkgsStable.libGL
-                pkgsStable.glib
-                pkgsStable.gtk3
-                pkgsStable.libGLU
+              CUDA_PATH = "${pkgs.cudaPackages.cudatoolkit}";
+              LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+                pkgs.linuxPackages.nvidia_x11
+                pkgs.ncurses5
+                pkgs.stdenv.cc.cc.lib
+                pkgs.zlib
+                pkgs.libGL
+                pkgs.glib
+                pkgs.gtk3
+                pkgs.libGLU
               ];
-              EXTRA_LDFLAGS = "-L/lib -L${pkgsStable.linuxPackages.nvidia_x11}/lib";
+              EXTRA_LDFLAGS = "-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib";
               EXTRA_CCFLAGS = "-I/usr/include";
             };
           };
