@@ -457,10 +457,7 @@
         { package = pkgs.gnomeExtensions.clipboard-indicator; }
         { package = pkgs.gnomeExtensions.gtk4-desktop-icons-ng-ding; }
         { package = pkgs.gnomeExtensions.alphabetical-app-grid; }
-        {
-          id = "system-monitor@gnome-shell-extensions.gcampax.github.com";
-          package = pkgs.gnome-shell-extensions;
-        }
+        { package = pkgs.gnomeExtensions.vitals; }
       ];
     };
     git-cliff = {
