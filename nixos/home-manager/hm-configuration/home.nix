@@ -73,11 +73,16 @@
         ])
       ])
       ++ (with pkgs; [
+        dust
+        just
+        just-lsp
+        just-formatter
+        htop
+        antigravity
         mcp-nixos
         google-chrome
         just
         rustlings
-        inkscape
         gearlever
         forge-sparks
         bazaar
@@ -131,16 +136,15 @@
         shotwell
         spacedrive
         szyszka
-        termius
         trivy
         undollar
         vlc
         warehouse
         warp-terminal
         yq-go
+        winboat
       ])
       ++ (with pkgsStable; [
-        winboat
         upscaler
         upscayl
         livecaptions
