@@ -474,5 +474,8 @@
         obs-backgroundremoval
       ];
     };
+    helix = {
+      enable = true;
+    };
   };
 }
