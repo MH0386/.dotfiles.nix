@@ -5,14 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    # nix-software-center = {
-    #   url = "github:ljubitje/nix-software-center";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # nixos-conf-editor = {
-    #   url = "github:snowfallorg/nixos-conf-editor";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
