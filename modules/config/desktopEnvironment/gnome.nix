@@ -96,6 +96,20 @@
             show-mounts-network = true;
             transparency-mode = "DYNAMIC";
           };
+          "org/gnome/shell/extensions/vitals" = {
+            hot-sensors = [
+              "_processor_usage_"
+              "_memory_usage_"
+              "_memory_swap_usage_"
+              "__network-rx_max__"
+              "__network-tx_max__"
+              "__temperature_avg__"
+            ];
+            show-gpu = true;
+            show-battery = true;
+            hide-zeros = true;
+            icon-style = 1;
+          };
           "org/gnome/desktop/interface" = {
             clock-format = "12h";
             clock-show-date = true;
