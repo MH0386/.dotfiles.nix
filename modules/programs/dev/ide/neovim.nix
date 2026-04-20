@@ -1,9 +1,16 @@
 {
   den.default = {
-    homeManager = {
-      programs.neovim = {
-        enable = true;
+    homeManager =
+      { pkgs, ... }:
+      {
+        programs.neovim = {
+          enable = true;
+          plugins = with pkgs.vimPlugins; [
+            vim-nix
+            LazyVim
+            LanguageTool-nvim
+          ];
+        };
       };
-    };
   };
 }
