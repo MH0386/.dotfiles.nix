@@ -12,10 +12,12 @@
         localBinInPath = true;
         homeBinInPath = true;
       };
+      services.xserver.enable = true;
     };
     homeManager =
       { pkgs, pkgsStable, ... }:
       {
+        programs.home-manager.enable = true;
         home = {
           stateVersion = "26.05";
           packages =
