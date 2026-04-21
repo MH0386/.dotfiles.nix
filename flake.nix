@@ -16,7 +16,7 @@
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -29,15 +29,17 @@
     };
     niri = {
       url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-stable.follows = "nixpkgs-stable";
+      };
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nix-jetbrains-plugins = {
       url = "github:nix-community/nix-jetbrains-plugins";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-lib.follows = "nixpkgs";
+    nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     nur = {
       url = "github:nix-community/NUR";
