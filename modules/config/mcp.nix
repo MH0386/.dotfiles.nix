@@ -1,42 +1,35 @@
 {
   den.default = {
-    homeManager = {
-      programs.mcp = {
-        enable = true;
-        servers = {
-          nixos = {
-            command = "uvx";
-            args = [ "mcp-nixos" ];
-          };
-          github = {
-            url = "https://api.githubcopilot.com/mcp";
-          };
-          agno = {
-            url = "https://docs.agno.com/mcp";
-          };
-          devenv = {
-            url = "mcp.devenv.sh";
-          };
-          git = {
-            command = "uvx";
-            args = [
-              "mcp-server-git"
-            ];
-          };
-          time = {
-            command = "uvx";
-            args = [
-              "mcp-server-time"
-            ];
-          };
-          context7 = {
-            url = "https://mcp.context7.com/mcp";
-            headers = {
-              CONTEXT7_API_KEY = "{env:CONTEXT7_API_KEY}";
+    homeManager =
+      { lib, pkgs, ... }:
+      {
+        programs.mcp = {
+          enable = true;
+          servers = {
+            nixos = {
+              command = "${lib.getExe pkgs.mcp-nixos}";
+            };
+            github = {
+              url = "https://api.githubcopilot.com/mcp";
+              headers = {
+                Authorization = "{env:GITHUB_PERSONAL_ACCESS_TOKEN}";
+              };
+            };
+            agno = {
+              url = "https://docs.agno.com/mcp";
+            };
+            devenv = {
+              command = "${lib.getExe pkgs.devenv}";
+              args = [ "mcp" ];
+            };
+            context7 = {
+              url = "https://mcp.context7.com/mcp";
+              headers = {
+                CONTEXT7_API_KEY = "{env:CONTEXT7_API_KEY}";
+              };
             };
           };
         };
       };
-    };
   };
 }
