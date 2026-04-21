@@ -41,7 +41,6 @@
             loadMemoryFromIncludeDirectories = true;
           };
           tools = {
-            sandbox = "podman"; # "runsc";
             shell = {
               enableInteractiveShell = true;
               showColor = true;
