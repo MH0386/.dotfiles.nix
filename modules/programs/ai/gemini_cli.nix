@@ -33,9 +33,15 @@
             loadingPhrases = "all";
           };
           context = {
+            fileName = [
+              "AGENTS.md"
+              "CONTEXT.md"
+              "GEMINI.md"
+            ];
             loadMemoryFromIncludeDirectories = true;
           };
           tools = {
+            sandbox = "podman"; # "runsc";
             shell = {
               enableInteractiveShell = true;
               showColor = true;
