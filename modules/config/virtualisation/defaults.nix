@@ -11,6 +11,7 @@
           };
         };
         hardware.nvidia-container-toolkit.enable = true;
+        users.users.mohamed.extraGroups = [ "libvirtd" ];
       };
   };
 }

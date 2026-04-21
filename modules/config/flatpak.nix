@@ -9,6 +9,9 @@
         update.onActivation = true;
       };
     };
-    nixos.services.flatpak.enable = true;
+    nixos = {
+      services.flatpak.enable = true;
+      users.users.mohamed.extraGroups = [ "flatpak" ];
+    };
   };
 }

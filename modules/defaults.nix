@@ -13,6 +13,12 @@
         homeBinInPath = true;
       };
       services.xserver.enable = true;
+      users.users.mohamed.extraGroups = [
+        "render"
+        "video"
+        "wheel"
+        "adbusers"
+      ];
     };
     homeManager =
       { pkgs, pkgsStable, ... }:

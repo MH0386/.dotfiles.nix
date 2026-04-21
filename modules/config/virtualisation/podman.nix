@@ -1,6 +1,9 @@
 {
   den.default = {
-    nixos.virtualisation.podman.enable = true;
+    nixos = {
+      virtualisation.podman.enable = true;
+      users.users.mohamed.extraGroups = [ "podman" ];
+    };
     homeManager =
       { pkgs, ... }:
       {
