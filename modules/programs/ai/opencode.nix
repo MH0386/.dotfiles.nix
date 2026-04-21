@@ -10,14 +10,14 @@
           settings = {
             plugin = [
               "opencode-wakatime"
-              "opencode-notificator"
-              "opencode-notifier"
-              "oh-my-opencode"
-              "opencode-md-table-formatter"
-              "opencode-skillful"
-              "micode"
-              "opencode-workspace"
-              "opencode-worktree"
+              "@mohak34/opencode-notifier"
+              "oh-my-openagent"
+              "@franlol/opencode-md-table-formatter"
+              "@plannotator/opencode"
+              "@tarquinen/opencode-dcp"
+              "opencode-websearch-cited"
+              "opencode-pty"
+              "@warp-dot-dev/opencode-warp"
             ];
           };
         };
