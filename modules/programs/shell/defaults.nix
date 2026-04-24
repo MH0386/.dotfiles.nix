@@ -4,7 +4,10 @@
       { pkgs, ... }:
       {
         home = {
-          packages = with pkgs; [ undollar ];
+          packages = with pkgs; [
+            undollar
+            atuin-desktop
+          ];
           shellAliases = {
             ll = "ls -l";
             la = "ls -la";
@@ -17,6 +20,7 @@
           atuin = {
             daemon = {
               enable = true;
+              logLevel = "info";
             };
             enable = true;
             enableBashIntegration = true;
@@ -25,6 +29,17 @@
             enableZshIntegration = true;
             settings = {
               style = "auto";
+              auto_sync = true;
+              sync_frequency = "5m";
+              sync.records = true;
+              dotfiles.enabled = true;
+              ai = {
+                enabled = true;
+                opening = {
+                  send_cwd = true;
+                  send_last_command = true;
+                };
+              };
             };
           };
           carapace = {
