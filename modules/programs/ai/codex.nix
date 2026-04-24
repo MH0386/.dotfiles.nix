@@ -1,8 +1,15 @@
 {
   den.default = {
-    homeManager.programs.codex = {
-      enable = true;
-      enableMcpIntegration = true;
-    };
+    homeManager =
+      { pkgs, ... }:
+      {
+        programs.codex = {
+          enable = true;
+          # enableMcpIntegration = true;
+        };
+        home.packages = [
+          pkgs.codex-acp
+        ];
+      };
   };
 }
