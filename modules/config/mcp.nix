@@ -18,10 +18,6 @@
             agno = {
               url = "https://docs.agno.com/mcp";
             };
-            devenv = {
-              command = "${lib.getExe pkgs.devenv}";
-              args = [ "mcp" ];
-            };
             context7 = {
               url = "https://mcp.context7.com/mcp";
               headers = {
