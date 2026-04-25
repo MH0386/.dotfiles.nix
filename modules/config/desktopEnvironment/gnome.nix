@@ -79,6 +79,7 @@
               "org.gnome.Nautilus.desktop"
               "com.mitchellh.ghostty.desktop"
               "pycharm.desktop"
+              "rust-rover.desktop"
               "code.desktop"
               "dev.zed.Zed.desktop"
               "OpenCode.desktop"
