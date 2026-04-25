@@ -2,30 +2,41 @@
 {
   den.default = {
     homeManager =
-      { pkgs, ... }:
+      { pkgs, lib, ... }:
+      let
+        ideVersion = lib.versions.majorMinor pkgs.jetbrains.rust-rover.version;
+        ideDir = "RustRover${ideVersion}";
+        vmoptionsFile = ".config/JetBrains/${ideDir}/rustrover64.vmoptions";
+      in
       {
-        home.packages = [
-          (pkgs.jetbrains.plugins.addPlugins pkgs.jetbrains.rust-rover [
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."org.jetbrains.junie"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."com.intellij.ml.llm"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."mobi.hsz.idea.gitignore"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."nix-idea"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."com.github.xepozz.gitattributes"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."com.aquasecurity.plugins.intellij-Trivy"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."net.seesharpsoft.intellij.plugins.csv"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."com.intellij.ideolog"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."org.sonarlint.idea"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."String Manipulation"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."tanvd.grazi"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."izhangzhihao.rainbow.brackets"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."indent-rainbow.indent-rainbow"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."com.ultrahob.zerolength.plugin"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."com.wakatime.intellij.plugin"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."ru.adelf.idea.dotenv"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."com.github.copilot"
-            inputs.nix-jetbrains-plugins.plugins.${pkgs.stdenv.hostPlatform.system}.rust-rover."2025.3"."com.kozhun.commit-message-template"
-          ])
-        ];
+        home = {
+          packages = [
+            (inputs.nix-jetbrains-plugins.lib.buildIdeWithPlugins pkgs "rust-rover" [
+              "org.jetbrains.junie"
+              "com.intellij.ml.llm"
+              "mobi.hsz.idea.gitignore"
+              "nix-idea"
+              "com.github.xepozz.gitattributes"
+              "com.aquasecurity.plugins.intellij-Trivy"
+              "net.seesharpsoft.intellij.plugins.csv"
+              "com.intellij.ideolog"
+              "org.sonarlint.idea"
+              "String Manipulation"
+              "tanvd.grazi"
+              "izhangzhihao.rainbow.brackets"
+              "indent-rainbow.indent-rainbow"
+              "com.ultrahob.zerolength.plugin"
+              "com.wakatime.intellij.plugin"
+              "ru.adelf.idea.dotenv"
+              "com.kozhun.commit-message-template"
+            ])
+          ];
+          file.${vmoptionsFile}.text = ''
+            -Dawt.toolkit.name=WLToolkit
+            -Dsun.java2d.uiScale.enabled=true
+            -Dide.ui.scale=1.0
+          '';
+        };
       };
   };
 }
