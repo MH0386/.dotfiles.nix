@@ -37,8 +37,11 @@
         programs.nix-ld = {
           enable = true;
           libraries = with pkgs; [
+            libcap
+            openssl
             wayland
             libxkbcommon
+            zlib
           ];
         };
       };
@@ -46,7 +49,7 @@
       { pkgs, ... }:
       {
         home.packages = with pkgs; [
-          mcp-nixos
+          # mcp-nixos
           nil
           nix-diff
           nixfmt
