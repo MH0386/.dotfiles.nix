@@ -51,8 +51,14 @@
         home.packages = with pkgs; [
           # mcp-nixos
           nil
+          nixd
           nix-diff
           nixfmt
+          nixpkgs-review
+          nixpkgs-vet
+          nixpkgs-lint
+          nixpkgs-track
+          nixpkgs-hammering
         ];
         programs.nix-index = {
           enable = true;
