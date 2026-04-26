@@ -58,6 +58,7 @@
           nixpkgs-vet
           nixpkgs-lint
           nixpkgs-track
+          nix-update
           nixpkgs-hammering
         ];
         programs.nix-index = {
