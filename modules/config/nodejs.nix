@@ -4,7 +4,10 @@
       { pkgsStable, ... }:
       {
         home.packages = with pkgsStable; [ corepack ];
-        programs.bun.enable = true;
+        programs = {
+          bun.enable = true;
+          npm.enable = true;
+        };
       };
   };
 }
