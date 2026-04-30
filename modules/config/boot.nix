@@ -9,14 +9,7 @@
             systemd-boot.enable = true;
           };
           kernelPackages = pkgs.linuxPackages_latest;
-          initrd.systemd.enable = true;
-          consoleLogLevel = 0;
-          initrd.verbose = true;
-          kernelParams = [
-            "rd.udev.log_level=3"
-            "udev.log_priority=3"
-            "boot.shell_on_fail"
-          ];
+          kernelParams = [ "boot.shell_on_fail" ];
         };
       };
   };
