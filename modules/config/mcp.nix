@@ -1,13 +1,13 @@
 {
   den.default = {
     homeManager =
-      { lib, pkgs, ... }:
+      { lib, pkgsStable, ... }:
       {
         programs.mcp = {
           enable = true;
           servers = {
             nixos = {
-              command = "${lib.getExe pkgs.mcp-nixos}";
+              command = "${lib.getExe pkgsStable.mcp-nixos}";
             };
             github = {
               url = "https://api.githubcopilot.com/mcp";
