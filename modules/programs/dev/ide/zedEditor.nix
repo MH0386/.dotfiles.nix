@@ -43,9 +43,7 @@
               github-copilot-cli.type = "registry";
               junie.type = "registry";
               kilo = {
-                favorite_models = [
-                  "kilo/kilo/auto-free"
-                ];
+                favorite_models = [ "kilo/kilo/auto-free" ];
                 type = "registry";
               };
               kimi.type = "registry";
@@ -59,10 +57,6 @@
             calls.mute_on_join = true;
             colorize_brackets = true;
             context_servers = {
-              arch-ops-server = {
-                enabled = false;
-                settings = { };
-              };
               mcp-nixos = {
                 args = [ ];
                 command = "mcp-nixos";
@@ -130,7 +124,7 @@
             terminal.copy_on_select = true;
             theme = "Warp One Dark";
             title_bar = {
-              show_branch_icon = true;
+              show_branch_status_icon = true;
               show_menus = false;
             };
             toolbar.code_actions = true;
