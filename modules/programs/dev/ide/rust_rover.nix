@@ -29,6 +29,7 @@
               "com.wakatime.intellij.plugin"
               "ru.adelf.idea.dotenv"
               "com.kozhun.commit-message-template"
+              "com.intellij.ml.llm.experimental"
             ])
           ];
           file.${vmoptionsFile}.text = ''
