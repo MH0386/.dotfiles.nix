@@ -26,7 +26,7 @@ safe-outputs:
 
 tools:
   edit:
-  bash:
+  bash: true
   web-fetch: 
   web-search:
   github:
