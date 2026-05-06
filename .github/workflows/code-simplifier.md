@@ -25,6 +25,10 @@ safe-outputs:
     protected-files: fallback-to-issue
 
 tools:
+  edit:
+  bash:
+  web-fetch: 
+  web-search:
   github:
     toolsets: [default]
 
