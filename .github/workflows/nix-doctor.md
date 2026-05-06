@@ -18,13 +18,8 @@ permissions:
 tools:
   edit:
   bash: true
-  cache-memory: true
+  cache-memory:
   web-fetch:
-  add-comment: true
-  add-label: true
-  create-issue: true
-  create-pull-request: true
-  commit-files: true
   github:
     toolsets: [repos, issues, pull_requests]
     mode: remote
@@ -43,8 +38,6 @@ safe-outputs:
   autofix-code-scanning-alert:
 timeout-minutes: 60
 network:
-  firewall:
-    log-level: info
   allowed:
     - defaults
     - github
@@ -52,6 +45,8 @@ network:
     - "nix-community.github.io"
     - "nixos.org"
     - "nixos.wiki"
+sandbox:
+  agent: awf
 engine: codex
 ---
 
