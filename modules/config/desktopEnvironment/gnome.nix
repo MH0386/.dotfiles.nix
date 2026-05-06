@@ -32,11 +32,15 @@
             { package = pkgs.gnomeExtensions.gtk4-desktop-icons-ng-ding; }
             { package = pkgs.gnomeExtensions.alphabetical-app-grid; }
             { package = pkgs.gnomeExtensions.vitals; }
+            { package = pkgs.gnomeExtensions.user-themes; }
           ];
         };
-        gtk.theme = {
-          name = "Adwaita-dark";
-          package = pkgs.gnome-themes-extra;
+        gtk = {
+          enable = true;
+          theme = {
+            name = "WhiteSur-Dark"; # or WhiteSur-Light, WhiteSur, etc.
+            package = pkgs.whitesur-gtk-theme;
+          };
         };
         dconf.settings = {
           "org/gnome/desktop/default-applications".terminal = "ghostty.desktop";
@@ -73,6 +77,7 @@
               "clipboard-indicator@tudmotu.com"
               "gtk4-ding@smedius.gitlab.com"
               "system-monitor@gnome-shell-extensions.gcampax.github.com"
+              "user-theme@gnome-shell-extensions.gcampax.github.com"
             ];
             favorite-apps = [
               "google-chrome.desktop"
@@ -116,6 +121,7 @@
             clock-show-date = true;
             clock-show-weekday = true;
             color-scheme = "prefer-dark";
+            gtk-theme = "WhiteSur-Dark";
             cursor-blink = true;
             enable-animations = true;
             enable-hot-corners = true;
