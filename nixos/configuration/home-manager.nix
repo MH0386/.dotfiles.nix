@@ -21,14 +21,16 @@ in
     useUserPackages = true;
     users.mohamed = import ./../home-manager/hm-configuration.nix;
     extraSpecialArgs = {
-      inherit inputs;
-      inherit nur;
-      inherit pkgsStable;
-      inherit nix-flatpak;
-      inherit nix-jetbrains-plugins;
-      inherit niri;
-      inherit dms;
-      inherit dms-plugin-registry;
+      inherit
+        inputs
+        nur
+        pkgsStable
+        nix-flatpak
+        nix-jetbrains-plugins
+        niri
+        dms
+        dms-plugin-registry
+        ;
     };
     backupFileExtension = "backup-${timestamp}";
     verbose = true;
