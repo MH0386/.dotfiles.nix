@@ -15,6 +15,11 @@ permissions:
   contents: read
   issues: read
   pull-requests: read
+mcp-servers:
+  mcp-nixos:
+    command: "uvx"
+    args: ["mcp-nixos"]
+    allowed: ["*"]
 tools:
   edit:
   bash: true
