@@ -1,12 +1,11 @@
 {
   den.default = {
     homeManager =
-      { pkgsStable, pkgs, ... }:
+      { pkgs, ... }:
       {
         programs.git = {
           enable = true;
           lfs.enable = true;
-          package = pkgsStable.git;
           settings = {
             user = {
               name = "Mohamed Hisham Abdelzaher";
