@@ -1,9 +1,10 @@
+{ inputs, ... }:
 {
   den.default = {
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = [ pkgs.github-copilot-cli ];
+        home.packages = [ inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.copilot-cli ];
       };
   };
 }

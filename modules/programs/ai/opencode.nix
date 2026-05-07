@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   den.default = {
     homeManager =
@@ -6,6 +7,7 @@
         home.packages = [ pkgs.opencode-desktop ];
         programs.opencode = {
           enable = true;
+          package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
           enableMcpIntegration = true;
           settings = {
             plugin = [
