@@ -2,8 +2,6 @@
 {
   imports = [ ./hardware-configuration.nix ];
   boot.blacklistedKernelModules = [ "nouveau" ];
-  # Define your hostname.
-  networking.hostName = "MohamedDesktopNixOS";
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;
