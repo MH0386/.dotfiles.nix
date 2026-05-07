@@ -42,6 +42,7 @@ safe-outputs:
   create-code-scanning-alert:
   autofix-code-scanning-alert:
 timeout-minutes: 60
+container: nixos/nix
 network:
   allowed:
     - defaults
