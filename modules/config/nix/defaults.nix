@@ -19,6 +19,7 @@
             "https://nixpkgs-python.cachix.org"
             "https://vicinae.cachix.org"
             "https://cache.numtide.com"
+            "https://cachix.cachix.org"
           ];
           trusted-public-keys = [
             "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
@@ -30,6 +31,7 @@
             "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
             "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
             "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+            "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
           ];
           trusted-users = [
             "root"
