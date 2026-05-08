@@ -19,6 +19,12 @@
         "wheel"
         "adbusers"
       ];
+      home-manager = {
+        # useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "backup";
+        verbose = true;
+      };
     };
     homeManager =
       { pkgs, pkgsStable, ... }:

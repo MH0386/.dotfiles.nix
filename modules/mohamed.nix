@@ -7,5 +7,4 @@
       (den.provides.user-shell "zsh")
     ];
   };
-  den.homes.x86_64-linux.mohamed = { };
 }
