@@ -97,16 +97,18 @@
                 ++ [ { networking.hostName = hostName; } ] # Sets the hostname
                 ++ [ (./. + "/nixos/device/${hostName}/configuration.nix") ]; # Imports the per-host configuration.nix
               specialArgs = {
-                inherit inputs;
-                inherit system;
-                inherit nix-flatpak;
-                inherit pkgsStable;
-                inherit nur;
-                inherit nix-jetbrains-plugins;
-                inherit niri;
-                inherit dms;
-                inherit dms-plugin-registry;
-                inherit oh-my-bash;
+                inherit
+                  inputs
+                  system
+                  nix-flatpak
+                  pkgsStable
+                  nur
+                  nix-jetbrains-plugins
+                  niri
+                  dms
+                  dms-plugin-registry
+                  oh-my-bash
+                  ;
               };
             }
           )
