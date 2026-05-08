@@ -2,6 +2,7 @@
 name: nix-doctor
 description: Diagnose and fix Nix code issues
 on:
+  skip-if-match: 'is:pr is:open in:title "[nix-doctor]"'
   issues:
     types: [opened, edited, labeled]
     lock-for-agent: true
@@ -33,6 +34,9 @@ safe-outputs:
   update-issue:
   link-sub-issue:
   create-pull-request:
+    title-prefix: "[nix-doctor] "
+    labels: [refactoring, code-quality, automation, nix]
+    protected-files: fallback-to-issue
   update-pull-request:
   create-pull-request-review-comment:
   reply-to-pull-request-review-comment:
