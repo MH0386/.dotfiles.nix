@@ -81,7 +81,6 @@
         antigravity
         mcp-nixos
         google-chrome
-        just
         rustlings
         gearlever
         forge-sparks
