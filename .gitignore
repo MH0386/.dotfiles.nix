@@ -10,3 +10,4 @@ devenv.local.yaml
 .markdownlintignore
 opencode.jsonc
 statix.toml
+.github/actionlint.yaml
