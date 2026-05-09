@@ -1,6 +1,15 @@
 { pkgs, lib, ... }:
 {
   files = {
+    ".github/actionlint.yaml".yaml = {
+      paths = {
+        ".github/workflows/**/*.lock.yml".ignore = [ ".*" ];
+        ".github/workflows/agentics-maintenance.yml".ignore = [ ".*" ];
+      };
+    };
+    ".markdownlint.yaml".yaml = {
+      MD013 = false;
+    };
     ".yamllint.yaml".yaml = {
       extends = "default";
       rules = {
