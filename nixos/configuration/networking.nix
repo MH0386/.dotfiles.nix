@@ -14,6 +14,7 @@
         443
         8000
         8001
+        9300
         config.services.portainer.port
       ];
       # allowedUDPPorts = [ ... ];
