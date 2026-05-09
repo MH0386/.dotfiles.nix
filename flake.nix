@@ -86,34 +86,29 @@
       ];
     in
     {
-      nixosConfigurations = lib.pipe hostNames [
-        (map (
-          hostName:
-          lib.nameValuePair hostName (
-            lib.nixosSystem {
-              inherit system;
-              modules =
-                commonModules
-                ++ [ { networking.hostName = hostName; } ] # Sets the hostname
-                ++ [ (./. + "/nixos/device/${hostName}/configuration.nix") ]; # Imports the per-host configuration.nix
-              specialArgs = {
-                inherit
-                  inputs
-                  system
-                  nix-flatpak
-                  pkgsStable
-                  nur
-                  nix-jetbrains-plugins
-                  niri
-                  dms
-                  dms-plugin-registry
-                  oh-my-bash
-                  ;
-              };
-            }
-          )
-        ))
-        lib.listToAttrs
-      ];
+      nixosConfigurations = lib.genAttrs hostNames (
+        hostName:
+        lib.nixosSystem {
+          inherit system;
+          modules =
+            commonModules
+            ++ [ { networking.hostName = hostName; } ] # Sets the hostname
+            ++ [ (./. + "/nixos/device/${hostName}/configuration.nix") ]; # Imports the per-host configuration.nix
+          specialArgs = {
+            inherit
+              inputs
+              system
+              nix-flatpak
+              pkgsStable
+              nur
+              nix-jetbrains-plugins
+              niri
+              dms
+              dms-plugin-registry
+              oh-my-bash
+              ;
+          };
+        }
+      );
     };
 }
