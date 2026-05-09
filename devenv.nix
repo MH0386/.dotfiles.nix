@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
-
+{ pkgs, lib, ... }:
 {
   files = {
     ".markdownlint.yaml".yaml = {
@@ -17,6 +12,7 @@
         comments = "disable";
         line-length.max = 120;
       };
+      ignore = [ ".github/workflows/" ];
     };
     ".yamlfmt.yaml".yaml = {
       formatter = {
@@ -28,12 +24,61 @@
         force_array_style = "block";
       };
     };
+    "statix.toml".toml = {
+      ignore = [
+        ".direnv"
+        "**/hardware-configuration.nix"
+      ];
+    };
+    ".markdownlintignore".text = ''
+      .github/workflows/
+    '';
   };
 
   languages = {
     nix = {
       enable = true;
       lsp.enable = true;
+    };
+  };
+
+  opencode = {
+    enable = true;
+    settings = {
+      mcp = {
+        github = {
+          type = "remote";
+          url = "https://api.githubcopilot.com/mcp";
+          headers = {
+            Authorization = "{env:GITHUB_PERSONAL_ACCESS_TOKEN}";
+          };
+        };
+        nixos = {
+          type = "local";
+          command = [ "${lib.getExe pkgs.mcp-nixos}" ];
+        };
+        devenv = {
+          type = "local";
+          command = [
+            "devenv"
+            "mcp"
+          ];
+        };
+        context7 = {
+          type = "remote";
+          url = "https://mcp.context7.com/mcp";
+        };
+      };
+      plugin = [
+        "opencode-wakatime"
+        "@mohak34/opencode-notifier"
+        "oh-my-openagent"
+        "@franlol/opencode-md-table-formatter"
+        "@plannotator/opencode"
+        "@tarquinen/opencode-dcp"
+        "opencode-websearch-cited"
+        "opencode-pty"
+      ];
     };
   };
 
@@ -60,7 +105,6 @@
       ripsecrets.enable = true;
       statix.enable = true;
       taplo.enable = true;
-      trim-trailing-whitespace.enable = true;
       trufflehog.enable = true;
       yamllint.enable = true;
       nixf-diagnose.enable = true;

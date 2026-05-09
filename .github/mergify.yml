@@ -1,9 +1,1 @@
 extends: MH0386
-pull_request_rules:
-  - name: Automatically queue valid Renovate PRs
-    conditions:
-      - author = renovate[bot]
-      - and:
-          - check-success = Nix Flake Checker
-    actions:
-      queue:
