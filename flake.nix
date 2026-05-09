@@ -92,9 +92,7 @@
           lib.nameValuePair hostName (
             lib.nixosSystem {
               inherit system;
-              modules =
-                commonModules
-                ++ [ (./. + "/nixos/device/${hostName}/configuration.nix") ]; # Imports the per-host configuration.nix
+              modules = commonModules ++ [ (./. + "/nixos/device/${hostName}/configuration.nix") ]; # Imports the per-host configuration.nix
               specialArgs = {
                 inherit
                   inputs
