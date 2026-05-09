@@ -46,6 +46,9 @@ safe-outputs:
   create-code-scanning-alert:
   autofix-code-scanning-alert:
 timeout-minutes: 60
+steps:
+  - name: Setup Devenv
+    uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@latest
 network:
   allowed:
     - defaults
