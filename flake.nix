@@ -94,7 +94,6 @@
               inherit system;
               modules =
                 commonModules
-                ++ [ { networking.hostName = hostName; } ] # Sets the hostname
                 ++ [ (./. + "/nixos/device/${hostName}/configuration.nix") ]; # Imports the per-host configuration.nix
               specialArgs = {
                 inherit
