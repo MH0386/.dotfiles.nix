@@ -1,5 +1,5 @@
 ---
-name: nix-doctor
+name: Nix Doctor
 description: Diagnose and fix Nix code issues
 on:
   skip-if-match: 'is:pr is:open in:title "[nix-doctor]"'
@@ -10,8 +10,6 @@ on:
     types: [opened, synchronize, labeled]
   schedule: daily
   workflow_dispatch:
-  push:
-    branches: [main]
 permissions:
   contents: read
   issues: read
@@ -83,10 +81,11 @@ can provide feedback on code quality and best practices.
   - `modules/config/` for system
   - `modules/programs/` for apps
 - **Hosts** in `hosts/` for machine-specific configs
-- Use the `delib` library for all module definitions
+- Use the `den` framework for all module definitions
 
 ### Resources
 
 - **Home Manager Documentation**: <https://nix-community.github.io/home-manager/>
 - **NixOS Official Wiki**: <https://wiki.nixos.org/wiki/NixOS_Wiki>
 - **NixOS Unofficial Wiki**: <https://nixos.wiki/wiki/Main_Page>
+- **den Framework Documentation**: <https://den.oeiuwq.com/>
