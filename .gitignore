@@ -6,6 +6,8 @@ devenv.local.yaml
 .pre-commit-config.yaml
 .yamllint.yaml
 .yamlfmt.yaml
-statix.toml
+.markdownlint.yaml
 .markdownlintignore
 opencode.jsonc
+statix.toml
+.github/actionlint.yaml

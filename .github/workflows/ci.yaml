@@ -35,7 +35,7 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@8aa03977d8d733052d78f4e008a241fd1dbf36b3 # v31.10.6
       - name: Cache
-        uses: cachix/cachix-action@1eb2ef646ac0255473d23a5907ad7b04ce94065c # v17
+        uses: cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71 # v17
         with:
           name: devenv
       - name: Install devenv.sh
@@ -75,7 +75,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Install Nix
-        uses: DeterminateSystems/determinate-nix-action@7c4cc317e802185875512bfcb68259257279d767 # v3.19.1
+        uses: DeterminateSystems/determinate-nix-action@bafaa638b9d5ec0e7e3ac1a7fc80453ef1fd265f # v3.20.0
         with:
           logger: pretty
       - name: Cache
@@ -103,7 +103,7 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@8aa03977d8d733052d78f4e008a241fd1dbf36b3 # v31.10.6
       - name: Cache
-        uses: cachix/cachix-action@1eb2ef646ac0255473d23a5907ad7b04ce94065c # v17
+        uses: cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71 # v17
         with:
           name: devenv
       - name: Install devenv.sh
@@ -113,5 +113,25 @@ jobs:
       - name: Commit updated devenv Lockfile
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
         with:
-          commit_message: 'devenv: Update devenv Lock file'
+          commit_message: "devenv: Update devenv Lock file"
+          commit_options: --no-verify
+  generate_flake:
+    name: Generate flake.nix
+    runs-on: ubuntu-latest
+    environment: flake
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@a5ad31d6a139d249332a2605b85202e8c0b78450 # v2.19.1
+        with:
+          egress-policy: audit
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Install Nix
+        uses: cachix/install-nix-action@8aa03977d8d733052d78f4e008a241fd1dbf36b3 # v31.10.6
+      - name: Generate flake.nix
+        run: nix run .#write-flake
+      - name: Commit updated flake.nix
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
+        with:
+          commit_message: "ci: Update flake.nix"
           commit_options: --no-verify
