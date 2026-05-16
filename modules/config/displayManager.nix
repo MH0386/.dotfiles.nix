@@ -24,5 +24,8 @@
         };
       };
     };
+    pantheonLightDM = {
+      nixos.services.xserver.displayManager.lightdm.greeters.pantheon.enable = true;
+    };
   };
 }
