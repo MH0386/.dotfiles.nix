@@ -7,6 +7,7 @@
           kubernetes
           kubectl
           kompose
+          seabird
         ];
       };
   };
