@@ -36,6 +36,9 @@
                   "server"
                 ];
               }
+              {
+                command = [ "noctalia-shell" ];
+              }
             ];
           };
         };
