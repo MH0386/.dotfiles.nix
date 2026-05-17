@@ -20,6 +20,7 @@
             "https://vicinae.cachix.org"
             "https://cache.numtide.com"
             "https://cachix.cachix.org"
+            "https://noctalia.cachix.org"
           ];
           trusted-public-keys = [
             "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
@@ -32,6 +33,7 @@
             "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
             "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
             "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+            "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
           ];
           trusted-users = [
             "root"
