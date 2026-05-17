@@ -101,6 +101,9 @@
             scroll-action = "cycle-windows";
             show-mounts-network = true;
             transparency-mode = "DYNAMIC";
+            dock-fixed = false;
+            show-show-apps-button = true;
+            show-apps-at-top = false;
           };
           "org/gnome/shell/extensions/vitals" = {
             hot-sensors = [
