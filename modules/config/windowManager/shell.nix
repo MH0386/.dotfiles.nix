@@ -452,10 +452,72 @@
               };
             };
             desktopWidgets = {
-              enabled = false;
-              gridSnap = false;
-              gridSnapScale = false;
-              monitorWidgets = [ ];
+              enabled = true;
+              gridSnap = true;
+              gridSnapScale = true;
+              monitorWidgets = [
+                {
+                  name = "DP-3";
+                  widgets = [
+                    {
+                      clockColor = "primary";
+                      clockStyle = "analog";
+                      customFont = "";
+                      format = "HH:mm\\nd MMMM yyyy";
+                      id = "Clock";
+                      roundedCorners = true;
+                      scale = 2.2884074808869883;
+                      showBackground = false;
+                      useCustomFont = false;
+                      x = 40;
+                      y = 80;
+                    }
+                    {
+                      id = "Weather";
+                      roundedCorners = true;
+                      scale = 1.2996389891696751;
+                      showBackground = true;
+                      x = 40;
+                      y = 440;
+                    }
+                    {
+                      diskPath = "/";
+                      id = "SystemStat";
+                      layout = "bottom";
+                      roundedCorners = true;
+                      scale = 2.5;
+                      showBackground = true;
+                      statType = "CPU";
+                      x = 1560;
+                      y = 80;
+                    }
+                    {
+                      colorName = "primary";
+                      height = 72;
+                      hideWhenIdle = false;
+                      id = "AudioVisualizer";
+                      roundedCorners = true;
+                      scale = 2.5;
+                      showBackground = true;
+                      visualizerType = "linear";
+                      width = 320;
+                      x = 1560;
+                      y = 480;
+                    }
+                    {
+                      defaultSettings = {
+                        hideBackground = false;
+                        minimumThreshold = 10;
+                      };
+                      id = "plugin:catwalk";
+                      scale = 4.76;
+                      showBackground = true;
+                      x = 1800;
+                      y = 760;
+                    }
+                  ];
+                }
+              ];
               overviewEnabled = true;
             };
             dock = {
@@ -464,14 +526,14 @@
               colorizeIcons = true;
               deadOpacity = 0.6;
               displayMode = "auto_hide";
-              dockType = "floating";
+              dockType = "attached";
               enabled = true;
               floatingRatio = 1;
-              groupApps = false;
+              groupApps = true;
               groupClickAction = "cycle";
               groupContextMenuMode = "extended";
               groupIndicatorStyle = "dots";
-              inactiveIndicators = false;
+              inactiveIndicators = true;
               indicatorColor = "primary";
               indicatorOpacity = 0.6;
               indicatorThickness = 3;
@@ -479,14 +541,12 @@
               launcherIconColor = "none";
               launcherPosition = "end";
               launcherUseDistroLogo = false;
-              monitors = [
-              ];
+              monitors = [ ];
               onlySameOutput = true;
-              pinnedApps = [
-              ];
+              pinnedApps = [ ];
               pinnedStatic = false;
               position = "bottom";
-              showDockIndicator = false;
+              showDockIndicator = true;
               showLauncherIcon = false;
               sitOnFrame = false;
               size = 1;
@@ -784,7 +844,7 @@
               middleClickCommand = "";
               middleClickFollowMouse = false;
               monitors = [ ];
-              mouseWheelAction = "none";
+              mouseWheelAction = "content";
               mouseWheelWrap = true;
               outerCorners = true;
               reverseScroll = false;
@@ -802,31 +862,124 @@
               widgets = {
                 left = [
                   {
-                    id = "ControlCenter";
-                    useDistroLogo = true;
+                    colorizeDistroLogo = false;
+                    colorizeSystemIcon = "none";
+                    colorizeSystemText = "none";
+                    customIconPath = "";
+                    enableColorization = true;
+                    icon = "noctalia";
                   }
-                  { id = "Network"; }
-                  { id = "Bluetooth"; }
+                  {
+                    characterCount = 2;
+                    colorizeIcons = false;
+                    emptyColor = "secondary";
+                    enableScrollWheel = true;
+                    focusedColor = "primary";
+                    followFocusedScreen = false;
+                    fontWeight = "bold";
+                    groupedBorderOpacity = 1;
+                    hideUnoccupied = false;
+                    iconScale = 0.8;
+                    labelMode = "index";
+                    occupiedColor = "secondary";
+                    pillSize = 0.6;
+                    showApplications = false;
+                    showApplicationsHover = false;
+                    showBadge = true;
+                    showLabelsOnlyWhenOccupied = true;
+                    unfocusedIconsOpacity = 1;
+                    id = "Workspace";
+                  }
                 ];
                 center = [
                   {
-                    hideUnoccupied = false;
-                    id = "Workspace";
-                    labelMode = "none";
+                    clockColor = "none";
+                    customFont = "";
+                    formatHorizontal = "h:mm AP dddd MMM dd";
+                    formatVertical = "HH mm";
+                    tooltipFormat = "HH:mm ddd, MMM dd";
+                    useCustomFont = false;
+                    id = "Clock";
+                  }
+                  {
+                    defaultSettings = {
+                      hideBackground = false;
+                      minimumThreshold = 10;
+                    };
+                    id = "plugin:catwalk";
                   }
                 ];
                 right = [
                   {
-                    alwaysShowPercentage = false;
-                    id = "Battery";
-                    warningThreshold = 30;
+                    id = "Tray";
+                    blacklist = [ ];
+                    chevronColor = "none";
+                    colorizeIcons = false;
+                    drawerEnabled = true;
+                    hidePassive = false;
+                    pinned = [ ];
                   }
                   {
-                    formatHorizontal = "HH:mm";
-                    formatVertical = "HH mm";
-                    id = "Clock";
-                    useMonospacedFont = true;
-                    usePrimaryColor = true;
+                    compactMode = true;
+                    diskPath = "/";
+                    iconColor = "none";
+                    showCpuCores = false;
+                    showCpuFreq = false;
+                    showCpuTemp = true;
+                    showCpuUsage = true;
+                    showDiskAvailable = false;
+                    showDiskUsage = false;
+                    showDiskUsageAsPercent = false;
+                    showGpuTemp = false;
+                    showLoadAverage = false;
+                    showMemoryAsPercent = true;
+                    showMemoryUsage = true;
+                    showNetworkStats = true;
+                    showSwapUsage = true;
+                    textColor = "none";
+                    useMonospaceFont = true;
+                    usePadding = false;
+                    id = "SystemMonitor";
+                  }
+                  {
+                    displayMode = "onhover";
+                    iconColor = "none";
+                    id = "Microphone";
+                    middleClickCommand = "pwvucontrol || pavucontrol";
+                    textColor = "none";
+                  }
+                  {
+                    iconColor = "none";
+                    id = "KeepAwake";
+                    textColor = "none";
+                  }
+                  {
+                    deviceNativePath = "__default__";
+                    displayMode = "graphic-clean";
+                    hideIfIdle = false;
+                    hideIfNotDetected = true;
+                    id = "Battery";
+                    showNoctaliaPerformance = true;
+                    showPowerProfiles = true;
+                  }
+                  {
+                    displayMode = "onhover";
+                    iconColor = "none";
+                    id = "Network";
+                    textColor = "none";
+                  }
+                  {
+                    displayMode = "onhover";
+                    iconColor = "none";
+                    id = "Bluetooth";
+                    textColor = "none";
+                  }
+                  {
+                    displayMode = "onhover";
+                    iconColor = "none";
+                    id = "Volume";
+                    middleClickCommand = "pwvucontrol || pavucontrol";
+                    textColor = "none";
                   }
                 ];
               };
@@ -912,7 +1065,6 @@
             version = 2;
           };
           # this may also be a string or a path to a JSON file.
-
           pluginSettings = {
             catwalk = {
               minimumThreshold = 25;
