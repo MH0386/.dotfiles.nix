@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   den.default = {
     nixos =
@@ -24,6 +25,7 @@
       nixos =
         { pkgs, lib, ... }:
         {
+          imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
           boot = {
             lanzaboote = {
               enable = true;
