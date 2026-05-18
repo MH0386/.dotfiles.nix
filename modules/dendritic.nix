@@ -83,5 +83,9 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    nix-editor = {
+      url = "github:snowfallorg/nix-editor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
