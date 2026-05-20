@@ -534,6 +534,26 @@
         "type": "github"
       }
     },
+    "nix-editor": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772115726,
+        "narHash": "sha256-9CP5NPGPNEJZCAIUytdXrvDXUBaOKaw6uAKJwvonJBI=",
+        "owner": "snowfallorg",
+        "repo": "nix-editor",
+        "rev": "a72c7d695d5568fe19ff34d161a22c716ffbdc07",
+        "type": "github"
+      },
+      "original": {
+        "owner": "snowfallorg",
+        "repo": "nix-editor",
+        "type": "github"
+      }
+    },
     "nix-flatpak": {
       "locked": {
         "lastModified": 1767983141,
@@ -783,6 +803,7 @@
         "lanzaboote": "lanzaboote",
         "llm-agents": "llm-agents",
         "niri": "niri",
+        "nix-editor": "nix-editor",
         "nix-flatpak": "nix-flatpak",
         "nix-index": "nix-index",
         "nix-jetbrains-plugins": "nix-jetbrains-plugins",

@@ -41,6 +41,10 @@
         nixpkgs-stable.follows = "nixpkgs-stable";
       };
     };
+    nix-editor = {
+      url = "github:snowfallorg/nix-editor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nix-index = {
       url = "github:nix-community/nix-index";
