@@ -94,7 +94,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@v0.74.8
+        uses: github/gh-aw-actions/setup@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
       - name: Close expired discussions
@@ -129,7 +129,7 @@ jobs:
       actions: write
     steps:
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@v0.74.8
+        uses: github/gh-aw-actions/setup@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
       - name: Cleanup outdated cache-memory entries
@@ -158,7 +158,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@v0.74.8
+        uses: github/gh-aw-actions/setup@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
       - name: Check admin/maintainer permissions
@@ -171,7 +171,7 @@ jobs:
             const { main } = require('${{ runner.temp }}/gh-aw/actions/check_team_member.cjs');
             await main();
       - name: Install gh-aw
-        uses: github/gh-aw-actions/setup-cli@v0.74.8
+        uses: github/gh-aw-actions/setup-cli@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           version: v0.74.8
       - name: Run operation
@@ -199,7 +199,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@v0.74.8
+        uses: github/gh-aw-actions/setup@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
       - name: Check admin/maintainer permissions
@@ -242,7 +242,7 @@ jobs:
             actions
           persist-credentials: false
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@v0.74.8
+        uses: github/gh-aw-actions/setup@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
       - name: Check admin/maintainer permissions
@@ -282,7 +282,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@v0.74.8
+        uses: github/gh-aw-actions/setup@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
       - name: Check admin/maintainer permissions
@@ -295,7 +295,7 @@ jobs:
             const { main } = require('${{ runner.temp }}/gh-aw/actions/check_team_member.cjs');
             await main();
       - name: Install gh-aw
-        uses: github/gh-aw-actions/setup-cli@v0.74.8
+        uses: github/gh-aw-actions/setup-cli@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           version: v0.74.8
       - name: Create missing labels
@@ -324,7 +324,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@v0.74.8
+        uses: github/gh-aw-actions/setup@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
       - name: Check admin/maintainer permissions
@@ -337,7 +337,7 @@ jobs:
             const { main } = require('${{ runner.temp }}/gh-aw/actions/check_team_member.cjs');
             await main();
       - name: Install gh-aw
-        uses: github/gh-aw-actions/setup-cli@v0.74.8
+        uses: github/gh-aw-actions/setup-cli@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           version: v0.74.8
       - name: Restore activity report logs cache
@@ -423,7 +423,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@v0.74.8
+        uses: github/gh-aw-actions/setup@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
       - name: Check admin/maintainer permissions
@@ -436,7 +436,7 @@ jobs:
             const { main } = require('${{ runner.temp }}/gh-aw/actions/check_team_member.cjs');
             await main();
       - name: Install gh-aw
-        uses: github/gh-aw-actions/setup-cli@v0.74.8
+        uses: github/gh-aw-actions/setup-cli@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           version: v0.74.8
       - name: Restore forecast report logs cache
@@ -484,7 +484,7 @@ jobs:
       issues: write
     steps:
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@v0.74.8
+        uses: github/gh-aw-actions/setup@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
       - name: Check admin/maintainer permissions
@@ -518,7 +518,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Setup Scripts
-        uses: github/gh-aw-actions/setup@v0.74.8
+        uses: github/gh-aw-actions/setup@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
       - name: Check admin/maintainer permissions
@@ -531,7 +531,7 @@ jobs:
             const { main } = require('${{ runner.temp }}/gh-aw/actions/check_team_member.cjs');
             await main();
       - name: Install gh-aw
-        uses: github/gh-aw-actions/setup-cli@v0.74.8
+        uses: github/gh-aw-actions/setup-cli@bf62a61fbcc511abd62545691d59de30292a1279 # v0.75.1
         with:
           version: v0.74.8
       - name: Validate workflows and file issue on findings
