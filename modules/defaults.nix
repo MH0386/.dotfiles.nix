@@ -2,7 +2,7 @@
 {
   den.default = {
     includes = [
-      den.provides.gdm
+      den.provides.dmsGreeter
       # den.provides.define-user
       # den.provides.hostname
     ];
