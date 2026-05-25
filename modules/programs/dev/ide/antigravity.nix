@@ -1,9 +1,7 @@
 {
   den.default = {
-    homeManager =
-      { pkgs, ... }:
-      {
-        home.packages = [ pkgs.antigravity ];
-      };
+    homeManager.programs.antigravity = {
+      enable = true;
+    };
   };
 }

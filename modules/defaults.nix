@@ -3,6 +3,7 @@
   den.default = {
     includes = [
       den.provides.gdm
+      den.provides.noctalia
       # den.provides.define-user
       # den.provides.hostname
     ];
