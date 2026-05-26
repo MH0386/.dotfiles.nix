@@ -30,8 +30,8 @@ timeout-minutes: 60
 engine:
   id: copilot
   env:
-    COPILOT_PROVIDER_BASE_URL: https://api.kilo.ai/api/gateway
-    COPILOT_MODEL: kilo-auto/free
+    COPILOT_PROVIDER_BASE_URL: "https://api.kilo.ai/api/gateway"
+    COPILOT_MODEL: "kilo-auto/free"
     COPILOT_PROVIDER_API_KEY: ${{ secrets.KILO_API_KEY }}
 ---
 
