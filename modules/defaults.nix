@@ -46,6 +46,7 @@
             ])
             ++ (with pkgsStable; [
               fh
+              renameutils
             ]);
           file = { };
           sessionPath = [ ];
