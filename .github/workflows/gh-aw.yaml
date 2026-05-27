@@ -1,4 +1,4 @@
-name: GitHub Agentic Workflows Compile
+name: GitHub Agentic Workflows Upgrade
 on:
   workflow_dispatch:
   schedule:
@@ -12,8 +12,8 @@ on:
 permissions:
   contents: write
 jobs:
-  compile:
-    name: Compile
+  upgrade:
+    name: Upgrade
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -22,12 +22,12 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
       - name: Install GH AW CLI
         uses: github/gh-aw-actions/setup-cli@46d564922b082d0db93244972e8005ea6904ee5f # v0.76.1
-      - name: Compile
-        run: gh aw compile
+      - name: Upgrade
+        run: gh aw upgrade
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
         with:
-          commit_message: Compile GH AW
+          commit_message: "gh-aw: Upgrade"
           commit_options: --no-verify
           push_options: --force
           file_pattern: .github/
