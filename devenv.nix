@@ -51,7 +51,6 @@
   git-hooks = {
     package = pkgs.pre-commit;
     hooks = {
-      action-validator.enable = true;
       actionlint.enable = true;
       nixfmt.enable = true;
       check-added-large-files.enable = true;
