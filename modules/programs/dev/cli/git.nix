@@ -12,6 +12,7 @@
               email = "mohamed.hisham.abdelzaher@gmail.com";
             };
             pull.rebase = false;
+            push.autoSetupRemote = true;
             init.defaultBranch = "main";
           };
         };
