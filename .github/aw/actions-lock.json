@@ -1,0 +1,16 @@
+{
+  "entries": {
+  },
+  "containers": {
+    "ghcr.io/github/gh-aw-firewall/agent:0.25.55": {
+      "image": "ghcr.io/github/gh-aw-firewall/agent:0.25.55",
+      "digest": "sha256:138c363411decc9a61a5af9b95e8d64c76648b00add0ba06fc7ba786f0e72731",
+      "pinned_image": "ghcr.io/github/gh-aw-firewall/agent:0.25.55@sha256:138c363411decc9a61a5af9b95e8d64c76648b00add0ba06fc7ba786f0e72731"
+    },
+    "ghcr.io/github/gh-aw-firewall/api-proxy:0.25.55": {
+      "image": "ghcr.io/github/gh-aw-firewall/api-proxy:0.25.55",
+      "digest": "sha256:4142b873b678cd3279b98dcbe464857d56ea2f2348719b00379cdf35dd843ff3",
+      "pinned_image": "ghcr.io/github/gh-aw-firewall/api-proxy:0.25.55@sha256:4142b873b678cd3279b98dcbe464857d56ea2f2348719b00379cdf35dd843ff3"
+    }
+  }
+}

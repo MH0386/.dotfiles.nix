@@ -46,7 +46,7 @@ safe-outputs:
 timeout-minutes: 60
 steps:
   - name: Setup Devenv
-    uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@main
+    uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@v0.0.84
 network:
   allowed:
     - defaults
