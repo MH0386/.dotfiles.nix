@@ -8,6 +8,7 @@ on:
 network:
   allowed:
   - defaults
+  - api.kilo.ai
 
 permissions: read-all
 
@@ -34,7 +35,12 @@ tools:
 
 timeout-minutes: 30
 source: githubnext/agentics/workflows/code-simplifier.md@1f672aef974f4246124860fc532f82fe8a93a57e
-engine: codex
+engine:
+  id: copilot
+  env:
+    COPILOT_PROVIDER_BASE_URL: "https://api.kilo.ai/api/gateway"
+    COPILOT_MODEL: "kilo-auto/free"
+    COPILOT_PROVIDER_API_KEY: ${{ secrets.KILO_API_KEY }}
 ---
 
 <!-- This prompt will be imported in the agentic workflow .github/workflows/code-simplifier.md at runtime. -->
