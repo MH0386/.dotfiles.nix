@@ -48,46 +48,6 @@
     };
   };
 
-  opencode = {
-    enable = true;
-    settings = {
-      mcp = {
-        github = {
-          type = "remote";
-          url = "https://api.githubcopilot.com/mcp";
-          headers = {
-            Authorization = "{env:GITHUB_PERSONAL_ACCESS_TOKEN}";
-          };
-        };
-        nixos = {
-          type = "local";
-          command = [ "${lib.getExe pkgs.mcp-nixos}" ];
-        };
-        devenv = {
-          type = "local";
-          command = [
-            "devenv"
-            "mcp"
-          ];
-        };
-        context7 = {
-          type = "remote";
-          url = "https://mcp.context7.com/mcp";
-        };
-      };
-      plugin = [
-        "opencode-wakatime"
-        "@mohak34/opencode-notifier"
-        "oh-my-openagent"
-        "@franlol/opencode-md-table-formatter"
-        "@plannotator/opencode"
-        "@tarquinen/opencode-dcp"
-        "opencode-websearch-cited"
-        "opencode-pty"
-      ];
-    };
-  };
-
   git-hooks = {
     package = pkgs.pre-commit;
     hooks = {
