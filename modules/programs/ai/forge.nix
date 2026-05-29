@@ -2,10 +2,10 @@
 {
   den.default = {
     homeManager =
-      { pkgs, ... }:
+      { pkgs, lib, ... }:
       {
         home.packages = [ inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.forge ];
-        programs.zsh.initContent = ''
+        programs.zsh.initContent = lib.mkOrder 1500 ''
           # Load forge shell plugin (commands, completions, keybindings) if not already loaded
           if [[ -z "$_FORGE_PLUGIN_LOADED" ]]; then
               eval "$(forge zsh plugin)"
