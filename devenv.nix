@@ -10,6 +10,9 @@
     ".markdownlint.yaml".yaml = {
       MD013 = false;
     };
+    ".markdownlintignore".text = ''
+      .github/
+    '';
     ".yamllint.yaml".yaml = {
       extends = "default";
       rules = {
@@ -36,9 +39,6 @@
         "**/hardware-configuration.nix"
       ];
     };
-    ".markdownlintignore".text = ''
-      .github/workflows/
-    '';
   };
 
   languages = {
