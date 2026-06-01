@@ -1,9 +1,7 @@
 {
   den.default = {
-    homeManager =
-      { pkgs, ... }:
-      {
-        home.packages = [ pkgs.htop ];
-      };
+    homeManager = {
+      programs.htop.enable = true;
+    };
   };
 }
