@@ -119,7 +119,7 @@ jobs:
     steps:
       - name: Setup Scripts
         id: setup
-        uses: github/gh-aw-actions/setup@v0.79.4
+        uses: github/gh-aw-actions/setup@d059700c6a8ec3b5fd798b9ea60f5d048447b918 # v0.79.4
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
           job-name: ${{ github.job }}
@@ -430,7 +430,7 @@ jobs:
     steps:
       - name: Setup Scripts
         id: setup
-        uses: github/gh-aw-actions/setup@v0.79.4
+        uses: github/gh-aw-actions/setup@d059700c6a8ec3b5fd798b9ea60f5d048447b918 # v0.79.4
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
           job-name: ${{ github.job }}
@@ -467,7 +467,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
       - name: Setup Devenv
-        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@v0.0.84
+        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@9c1ce69965cda95a280f4da04d418ea8eaf7bf50 # v0.0.84
 
       # Cache memory file share configuration from frontmatter processed below
       - name: Create cache-memory directory
@@ -1461,7 +1461,7 @@ jobs:
     steps:
       - name: Setup Scripts
         id: setup
-        uses: github/gh-aw-actions/setup@v0.79.4
+        uses: github/gh-aw-actions/setup@d059700c6a8ec3b5fd798b9ea60f5d048447b918 # v0.79.4
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
           job-name: ${{ github.job }}
@@ -1651,7 +1651,7 @@ jobs:
     steps:
       - name: Setup Scripts
         id: setup
-        uses: github/gh-aw-actions/setup@v0.79.4
+        uses: github/gh-aw-actions/setup@d059700c6a8ec3b5fd798b9ea60f5d048447b918 # v0.79.4
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
           job-name: ${{ github.job }}
@@ -1885,7 +1885,7 @@ jobs:
     steps:
       - name: Setup Scripts
         id: setup
-        uses: github/gh-aw-actions/setup@v0.79.4
+        uses: github/gh-aw-actions/setup@d059700c6a8ec3b5fd798b9ea60f5d048447b918 # v0.79.4
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
           job-name: ${{ github.job }}
@@ -1971,7 +1971,7 @@ jobs:
     steps:
       - name: Setup Scripts
         id: setup
-        uses: github/gh-aw-actions/setup@v0.79.4
+        uses: github/gh-aw-actions/setup@d059700c6a8ec3b5fd798b9ea60f5d048447b918 # v0.79.4
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
           job-name: ${{ github.job }}
@@ -2102,7 +2102,7 @@ jobs:
     steps:
       - name: Setup Scripts
         id: setup
-        uses: github/gh-aw-actions/setup@v0.79.4
+        uses: github/gh-aw-actions/setup@d059700c6a8ec3b5fd798b9ea60f5d048447b918 # v0.79.4
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
           job-name: ${{ github.job }}
@@ -2138,7 +2138,7 @@ jobs:
     steps:
       - name: Setup Scripts
         id: setup
-        uses: github/gh-aw-actions/setup@v0.79.4
+        uses: github/gh-aw-actions/setup@d059700c6a8ec3b5fd798b9ea60f5d048447b918 # v0.79.4
         with:
           destination: ${{ runner.temp }}/gh-aw/actions
           job-name: ${{ github.job }}
