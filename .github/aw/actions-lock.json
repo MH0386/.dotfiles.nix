@@ -1,6 +1,5 @@
 {
-  "entries": {
-  },
+  "entries": {},
   "containers": {
     "ghcr.io/github/gh-aw-firewall/agent:0.25.55": {
       "image": "ghcr.io/github/gh-aw-firewall/agent:0.25.55",
