@@ -506,7 +506,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
       - name: Setup Devenv
-        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@607ca6fba54907e51ad7f2dba066ab6de87d9162 # v0.0.84
+        uses: AlphaSphereDotAI/helpr_action/ci/setup/devenv@9c1ce69965cda95a280f4da04d418ea8eaf7bf50 # v0.0.84
       # Cache memory file share configuration from frontmatter processed below
       - name: Create cache-memory directory
         run: bash "${RUNNER_TEMP}/gh-aw/actions/create_cache_memory_dir.sh"
