@@ -6,24 +6,21 @@ let
       inherit (pkgs.stdenv.hostPlatform) system;
       config.allowUnfree = true;
     };
+
+  # Provide the stable package set and allow unfree software for both NixOS and Home Manager
+  mkDefaultConfig =
+    pkgs:
+    {
+      _module.args.pkgsStable = mkPkgsStable pkgs;
+      nixpkgs.config.allowUnfree = true;
+    };
 in
 {
   imports = [ inputs.den.flakeModule ];
   den.schema.user.classes = lib.mkDefault [ "homeManager" ];
 
-  # Add pkgsStable and allowUnfree for home-manager and NixOS
   den.default = {
-    nixos =
-      { pkgs, ... }:
-      {
-        _module.args.pkgsStable = mkPkgsStable pkgs;
-        nixpkgs.config.allowUnfree = true;
-      };
-    homeManager =
-      { pkgs, ... }:
-      {
-        _module.args.pkgsStable = mkPkgsStable pkgs;
-        nixpkgs.config.allowUnfree = true;
-      };
+    nixos = { pkgs, ... }: mkDefaultConfig pkgs;
+    homeManager = { pkgs, ... }: mkDefaultConfig pkgs;
   };
 }
