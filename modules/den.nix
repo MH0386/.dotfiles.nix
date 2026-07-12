@@ -8,12 +8,10 @@ let
     };
 
   # Provide the stable package set and allow unfree software for both NixOS and Home Manager
-  mkDefaultConfig =
-    pkgs:
-    {
-      _module.args.pkgsStable = mkPkgsStable pkgs;
-      nixpkgs.config.allowUnfree = true;
-    };
+  mkDefaultConfig = pkgs: {
+    _module.args.pkgsStable = mkPkgsStable pkgs;
+    nixpkgs.config.allowUnfree = true;
+  };
 in
 {
   imports = [ inputs.den.flakeModule ];
