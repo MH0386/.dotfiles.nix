@@ -49,11 +49,6 @@
                 cuda_gdb
                 cuda_nvprof
                 cuda_nsight
-
-                # Additional CUDA development tools
-                # python3Packages.torch
-                # python3Packages.tensorflow
-                # python3Packages.cupy
               ]);
             # CUDA environment variables
             sessionVariables = {

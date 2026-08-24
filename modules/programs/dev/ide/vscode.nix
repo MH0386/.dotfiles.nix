@@ -6,12 +6,6 @@
         profiles = {
           default = {
             enableMcpIntegration = true;
-            # userSettings = {
-            #   editor = {
-            #     fontSize = 14;
-            #     fontFamily = "Fira Code";
-            #   };
-            # };
           };
         };
       };
