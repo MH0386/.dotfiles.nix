@@ -50,47 +50,51 @@
 
   git-hooks = {
     package = pkgs.pre-commit;
-    hooks = {
-      actionlint.enable = true;
-      nixfmt.enable = true;
-      check-added-large-files.enable = true;
-      check-case-conflicts.enable = true;
-      check-json.enable = true;
-      check-merge-conflicts.enable = true;
-      check-toml.enable = true;
-      check-vcs-permalinks.enable = true;
-      check-symlinks.enable = true;
-      check-xml.enable = true;
-      check-yaml.enable = true;
-      deadnix.enable = true;
-      detect-private-keys.enable = true;
-      markdownlint.enable = true;
-      mixed-line-endings.enable = true;
-      yamlfmt.enable = true;
-      ripsecrets.enable = true;
-      statix.enable = true;
-      taplo.enable = true;
-      trufflehog.enable = true;
-      yamllint.enable = true;
-      nixf-diagnose.enable = true;
-    };
+    hooks =
+      let
+        enabledHooks = [
+          "actionlint"
+          "nixfmt"
+          "check-added-large-files"
+          "check-case-conflicts"
+          "check-json"
+          "check-merge-conflicts"
+          "check-toml"
+          "check-vcs-permalinks"
+          "check-symlinks"
+          "check-xml"
+          "check-yaml"
+          "deadnix"
+          "detect-private-keys"
+          "markdownlint"
+          "mixed-line-endings"
+          "yamlfmt"
+          "ripsecrets"
+          "statix"
+          "taplo"
+          "trufflehog"
+          "yamllint"
+          "nixf-diagnose"
+        ];
+      in
+      lib.genAttrs enabledHooks (_: { enable = true; });
   };
 
   treefmt = {
     enable = true;
     config = {
-      programs = {
-        actionlint.enable = true;
-        jsonfmt.enable = true;
-        nixf-diagnose.enable = true;
-        nixfmt.enable = true;
-        deadnix.enable = true;
-        oxipng.enable = true;
-        statix.enable = true;
-        taplo.enable = true;
-        xmllint.enable = true;
-        yamlfmt.enable = true;
-      };
+      programs = lib.genAttrs [
+        "actionlint"
+        "jsonfmt"
+        "nixf-diagnose"
+        "nixfmt"
+        "deadnix"
+        "oxipng"
+        "statix"
+        "taplo"
+        "xmllint"
+        "yamlfmt"
+      ] (_: { enable = true; });
       settings = {
         formatter = {
           taplo-format = {
