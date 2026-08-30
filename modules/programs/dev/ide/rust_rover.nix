@@ -7,6 +7,11 @@
         ideVersion = lib.versions.majorMinor pkgs.jetbrains.rust-rover.version;
         ideDir = "RustRover${ideVersion}";
         vmoptionsFile = ".config/JetBrains/${ideDir}/rustrover64.vmoptions";
+        vmoptions = ''
+          -Dawt.toolkit.name=WLToolkit
+          -Dsun.java2d.uiScale.enabled=true
+          -Dide.ui.scale=1.0
+        '';
       in
       {
         home = {
@@ -32,11 +37,7 @@
               "com.intellij.ml.llm.experimental"
             ])
           ];
-          file.${vmoptionsFile}.text = ''
-            -Dawt.toolkit.name=WLToolkit
-            -Dsun.java2d.uiScale.enabled=true
-            -Dide.ui.scale=1.0
-          '';
+          file.${vmoptionsFile}.text = vmoptions;
         };
       };
   };

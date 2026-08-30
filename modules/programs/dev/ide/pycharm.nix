@@ -7,6 +7,11 @@
         ideVersion = lib.versions.majorMinor pkgs.jetbrains.pycharm.version;
         ideDir = "PyCharm${ideVersion}";
         vmoptionsFile = ".config/JetBrains/${ideDir}/pycharm64.vmoptions";
+        vmoptions = ''
+          -Dawt.toolkit.name=WLToolkit
+          -Dsun.java2d.uiScale.enabled=true
+          -Dide.ui.scale=1.0
+        '';
       in
       {
         home = {
@@ -33,11 +38,7 @@
               "com.intellij.ml.llm.experimental"
             ])
           ];
-          file.${vmoptionsFile}.text = ''
-            -Dawt.toolkit.name=WLToolkit
-            -Dsun.java2d.uiScale.enabled=true
-            -Dide.ui.scale=1.0
-          '';
+          file.${vmoptionsFile}.text = vmoptions;
         };
       };
   };
