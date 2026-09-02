@@ -1,26 +1,30 @@
 {
   den.default = {
     nixos = {
-      i18n = {
-        extraLocaleSettings = {
-          LANGUAGE = "en_US.UTF-8";
-          LC_ALL = "en_US.UTF-8";
-          LC_CTYPE = "en_US.UTF-8";
-          LC_COLLATE = "en_US.UTF-8";
-          LC_MESSAGES = "en_US.UTF-8";
-          LC_ADDRESS = "en_US.UTF-8";
-          LC_IDENTIFICATION = "en_US.UTF-8";
-          LC_MEASUREMENT = "en_US.UTF-8";
-          LC_MONETARY = "en_US.UTF-8";
-          LC_NAME = "en_US.UTF-8";
-          LC_NUMERIC = "en_US.UTF-8";
-          LC_PAPER = "en_US.UTF-8";
-          LC_TELEPHONE = "en_US.UTF-8";
-          LC_TIME = "en_US.UTF-8";
+      i18n =
+        let
+          locale = "en_US.UTF-8";
+        in
+        {
+          extraLocaleSettings = {
+            LANGUAGE = locale;
+            LC_ALL = locale;
+            LC_CTYPE = locale;
+            LC_COLLATE = locale;
+            LC_MESSAGES = locale;
+            LC_ADDRESS = locale;
+            LC_IDENTIFICATION = locale;
+            LC_MEASUREMENT = locale;
+            LC_MONETARY = locale;
+            LC_NAME = locale;
+            LC_NUMERIC = locale;
+            LC_PAPER = locale;
+            LC_TELEPHONE = locale;
+            LC_TIME = locale;
+          };
+          # Select internationalisation properties.
+          defaultLocale = locale;
         };
-        # Select internationalisation properties.
-        defaultLocale = "en_US.UTF-8";
-      };
       # Set your time zone.
       time.timeZone = "Africa/Cairo";
       environment.variables.TZ = "Africa/Cairo";
