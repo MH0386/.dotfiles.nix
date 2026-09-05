@@ -4,6 +4,11 @@
       "repo": "AlphaSphereDotAI/helpr_action/ci/setup/devenv",
       "version": "v0.0.84",
       "sha": "9c1ce69965cda95a280f4da04d418ea8eaf7bf50"
+    },
+    "github/gh-aw-actions/setup@v0.88.2": {
+      "repo": "github/gh-aw-actions/setup",
+      "version": "v0.88.2",
+      "sha": "9271a1804551c0dc4fb0085a97979950aa2f8489"
     }
   },
   "containers": {
