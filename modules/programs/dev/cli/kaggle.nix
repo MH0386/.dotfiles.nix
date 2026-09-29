@@ -3,9 +3,7 @@
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = with pkgs; [
-          kaggle
-        ];
+        home.packages = [ pkgs.kaggle ];
       };
   };
 }

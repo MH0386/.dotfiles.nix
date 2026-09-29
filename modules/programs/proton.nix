@@ -3,9 +3,9 @@
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = with pkgs; [
-          proton-pass
-          proton-authenticator
+        home.packages = [
+          pkgs.proton-pass
+          pkgs.proton-authenticator
         ];
       };
   };

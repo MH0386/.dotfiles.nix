@@ -24,10 +24,10 @@
           openFirewall = true;
           backends-package = pkgsStable.sane-backends;
         };
-        environment.systemPackages = with pkgsStable; [
-          xsane
-          sane-backends
-          sane-frontends
+        environment.systemPackages = [
+          pkgsStable.xsane
+          pkgsStable.sane-backends
+          pkgsStable.sane-frontends
         ];
       };
   };

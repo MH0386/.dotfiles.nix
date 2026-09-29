@@ -3,9 +3,9 @@
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = with pkgs; [
-          bitwarden-cli
-          bitwarden-desktop
+        home.packages = [
+          pkgs.bitwarden-cli
+          pkgs.bitwarden-desktop
         ];
       };
   };

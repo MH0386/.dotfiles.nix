@@ -16,7 +16,6 @@
         home.packages = with pkgs; [
           dconf-editor
           gnome-contacts
-          dconf-editor
           gnome-extensions-cli
           gnome-tweaks
           gnome-extension-manager

@@ -6,6 +6,5 @@
         iio-hyprland.enable = true;
       };
     };
-    homeManager = { };
   };
 }

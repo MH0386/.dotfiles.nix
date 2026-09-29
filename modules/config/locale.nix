@@ -2,6 +2,8 @@
   den.default = {
     nixos = {
       i18n = {
+        # Pin every locale category explicitly so mixed-locale output cannot
+        # appear; LANGUAGE stays alongside the LC_* variables for gettext catalogs.
         extraLocaleSettings = {
           LANGUAGE = "en_US.UTF-8";
           LC_ALL = "en_US.UTF-8";

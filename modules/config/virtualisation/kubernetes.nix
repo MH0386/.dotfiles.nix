@@ -3,11 +3,11 @@
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = with pkgs; [
-          kubernetes
-          kubectl
-          kompose
-          seabird
+        home.packages = [
+          pkgs.kubernetes
+          pkgs.kubectl
+          pkgs.kompose
+          pkgs.seabird
         ];
       };
   };

@@ -3,9 +3,9 @@
     nixos =
       { pkgs, ... }:
       {
-        environment.systemPackages = with pkgs; [
-          ddcui
-          ddcutil
+        environment.systemPackages = [
+          pkgs.ddcui
+          pkgs.ddcutil
         ];
       };
   };

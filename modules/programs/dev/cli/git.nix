@@ -16,9 +16,9 @@
             init.defaultBranch = "main";
           };
         };
-        home.packages = with pkgs; [
-          git-filter-repo
-          git-xet
+        home.packages = [
+          pkgs.git-filter-repo
+          pkgs.git-xet
         ];
       };
   };

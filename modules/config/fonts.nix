@@ -4,19 +4,19 @@
       { pkgs, ... }:
       {
         fonts.fontconfig.enable = true;
-        home.packages = with pkgs; [
-          noto-fonts
+        home.packages = [
+          pkgs.noto-fonts
           # icons
-          font-awesome
-          material-design-icons
+          pkgs.font-awesome
+          pkgs.material-design-icons
         ];
       };
 
     nixos =
       { pkgs, ... }:
       {
-        fonts.packages = with pkgs; [ monaspace ];
-        console.packages = with pkgs; [ monaspace ];
+        fonts.packages = [ pkgs.monaspace ];
+        console.packages = [ pkgs.monaspace ];
       };
   };
 }

@@ -17,8 +17,10 @@
 
         niri = {
           includes.filesToInclude = [
-            # Files under `$XDG_CONFIG_HOME/niri/dms` to be included into the new config
-            "alttab" # Please note that niri will throw an error if any of these files are missing.
+            # Files under `$XDG_CONFIG_HOME/niri/dms` to be included into the new config.
+            # Niri errors out if any listed file is missing, so keep this list in sync
+            # with the files DankMaterialShell writes into that directory.
+            "alttab"
             "binds"
             "colors"
             "layout"
@@ -183,13 +185,17 @@
           controlCenterShowScreenSharingIcon = true;
           controlCenterShowVpnIcon = true;
           controlCenterTileColorMode = "primary";
+          # Every widget currently shares the same defaults, so generate the list
+          # from the ids instead of repeating the same three attributes.
           controlCenterWidgets =
             map
-              (id: {
-                enabled = true;
-                inherit id;
-                width = 50;
-              })
+              (
+                id: {
+                  enabled = true;
+                  inherit id;
+                  width = 50;
+                }
+              )
               [
                 "volumeSlider"
                 "brightnessSlider"

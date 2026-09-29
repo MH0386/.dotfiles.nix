@@ -1,7 +1,5 @@
 {
   den.default = {
-    nixos = {
-      programs.gamemode.enable = true;
-    };
+    nixos.programs.gamemode.enable = true;
   };
 }

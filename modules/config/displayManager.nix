@@ -13,8 +13,8 @@
         enable = true;
         compositor.name = "niri";
 
-        # Sync your user's DankMaterialShell theme with the greeter.
-        # You'll probably want this
+        # Sync the primary user's DankMaterialShell theme with the greeter, so
+        # keep this pointing at the same home directory as `users.users.mohamed`.
         configHome = "/home/mohamed";
 
         # Save the logs to a file

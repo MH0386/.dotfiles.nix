@@ -3,7 +3,7 @@
     homeManager =
       { pkgsStable, ... }:
       {
-        home.packages = with pkgsStable; [ corepack ];
+        home.packages = [ pkgsStable.corepack ];
         programs = {
           bun.enable = true;
           npm.enable = true;
