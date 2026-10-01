@@ -3,10 +3,10 @@
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = with pkgs; [
-          just
-          just-lsp
-          just-formatter
+        home.packages = [
+          pkgs.just
+          pkgs.just-lsp
+          pkgs.just-formatter
         ];
       };
   };

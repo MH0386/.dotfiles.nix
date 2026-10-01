@@ -13,13 +13,12 @@
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = with pkgs; [
-          dconf-editor
-          gnome-contacts
-          dconf-editor
-          gnome-extensions-cli
-          gnome-tweaks
-          gnome-extension-manager
+        home.packages = [
+          pkgs.dconf-editor
+          pkgs.gnome-contacts
+          pkgs.gnome-extensions-cli
+          pkgs.gnome-tweaks
+          pkgs.gnome-extension-manager
         ];
         programs.gnome-shell = {
           enable = true;

@@ -4,9 +4,9 @@
       { pkgs, ... }:
       {
         home = {
-          packages = with pkgs; [
-            undollar
-            atuin-desktop
+          packages = [
+            pkgs.undollar
+            pkgs.atuin-desktop
           ];
           shellAliases = {
             ll = "ls -l";

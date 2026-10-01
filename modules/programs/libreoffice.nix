@@ -3,10 +3,10 @@
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = with pkgs; [
-          libreoffice
-          hunspell
-          hunspellDicts.en_US-large
+        home.packages = [
+          pkgs.libreoffice
+          pkgs.hunspell
+          pkgs.hunspellDicts.en_US-large
         ];
       };
   };

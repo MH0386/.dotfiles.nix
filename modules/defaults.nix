@@ -32,25 +32,21 @@
         programs.home-manager.enable = true;
         home = {
           stateVersion = "26.05";
-          packages =
-            (with pkgs; [
-              gnumake
-              ntfs3g
-              gcc
-              cmake
-              unzip
-              zip
-              wget
-              lshw-gui
-              ignition
-            ])
-            ++ (with pkgsStable; [
-              fh
-              renameutils
-            ]);
-          file = { };
-          sessionPath = [ ];
-          sessionVariables = { };
+          packages = [
+            pkgs.gnumake
+            pkgs.ntfs3g
+            pkgs.gcc
+            pkgs.cmake
+            pkgs.unzip
+            pkgs.zip
+            pkgs.wget
+            pkgs.lshw-gui
+            pkgs.ignition
+          ]
+          ++ [
+            pkgsStable.fh
+            pkgsStable.renameutils
+          ];
         };
       };
   };

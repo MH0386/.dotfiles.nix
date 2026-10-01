@@ -5,10 +5,10 @@
       {
         programs.neovim = {
           enable = true;
-          plugins = with pkgs.vimPlugins; [
-            vim-nix
-            LazyVim
-            LanguageTool-nvim
+          plugins = [
+            pkgs.vimPlugins.vim-nix
+            pkgs.vimPlugins.LazyVim
+            pkgs.vimPlugins.LanguageTool-nvim
           ];
         };
       };

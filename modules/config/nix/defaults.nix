@@ -40,12 +40,12 @@
         };
         programs.nix-ld = {
           enable = true;
-          libraries = with pkgs; [
-            libcap
-            openssl
-            wayland
-            libxkbcommon
-            zlib
+          libraries = [
+            pkgs.libcap
+            pkgs.openssl
+            pkgs.wayland
+            pkgs.libxkbcommon
+            pkgs.zlib
           ];
         };
       };
@@ -53,19 +53,19 @@
       { pkgs, pkgsStable, ... }:
       {
         home.packages =
-          (with pkgs; [
-            nil
-            nixd
-            nix-diff
-            nixfmt
-            nixpkgs-review
-            nixpkgs-vet
-            nixpkgs-lint
-            nixpkgs-track
-            nix-update
-            nixpkgs-hammering
-          ])
-          ++ (with pkgsStable; [ mcp-nixos ]);
+          [
+            pkgs.nil
+            pkgs.nixd
+            pkgs.nix-diff
+            pkgs.nixfmt
+            pkgs.nixpkgs-review
+            pkgs.nixpkgs-vet
+            pkgs.nixpkgs-lint
+            pkgs.nixpkgs-track
+            pkgs.nix-update
+            pkgs.nixpkgs-hammering
+          ]
+          ++ [ pkgsStable.mcp-nixos ];
         programs.nix-index = {
           enable = true;
           package = inputs.nix-index.packages.${pkgs.stdenv.hostPlatform.system}.default;

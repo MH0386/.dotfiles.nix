@@ -32,29 +32,28 @@
           # Load nvidia driver for Xorg and Wayland
           services.xserver.videoDrivers = [ "nvidia" ];
           environment = {
-            systemPackages =
-              (with pkgs; [
-                nvitop
-                gpu-viewer
-                nvtopPackages.nvidia
-              ])
-              ++ (with pkgs.cudaPackages; [
-                nccl
-                cudnn
-                cudatoolkit
-                cuda_nvcc
-                cuda_cudart
-                cuda_cccl
-                cuda_cupti
-                cuda_gdb
-                cuda_nvprof
-                cuda_nsight
+            systemPackages = [
+              pkgs.nvitop
+              pkgs.gpu-viewer
+              pkgs.nvtopPackages.nvidia
+            ]
+            ++ [
+              pkgs.cudaPackages.nccl
+              pkgs.cudaPackages.cudnn
+              pkgs.cudaPackages.cudatoolkit
+              pkgs.cudaPackages.cuda_nvcc
+              pkgs.cudaPackages.cuda_cudart
+              pkgs.cudaPackages.cuda_cccl
+              pkgs.cudaPackages.cuda_cupti
+              pkgs.cudaPackages.cuda_gdb
+              pkgs.cudaPackages.cuda_nvprof
+              pkgs.cudaPackages.cuda_nsight
 
-                # Additional CUDA development tools
-                # python3Packages.torch
-                # python3Packages.tensorflow
-                # python3Packages.cupy
-              ]);
+              # Additional CUDA development tools
+              # pkgs.python3Packages.torch
+              # pkgs.python3Packages.tensorflow
+              # pkgs.python3Packages.cupy
+            ];
             # CUDA environment variables
             sessionVariables = {
               CUDA_PATH = "${pkgs.cudaPackages.cudatoolkit}";

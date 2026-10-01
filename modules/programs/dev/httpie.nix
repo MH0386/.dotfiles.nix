@@ -3,9 +3,9 @@
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = with pkgs; [
-          httpie
-          httpie-desktop
+        home.packages = [
+          pkgs.httpie
+          pkgs.httpie-desktop
         ];
       };
   };

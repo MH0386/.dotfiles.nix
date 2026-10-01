@@ -41,12 +41,16 @@
               opacity = 0.98;
             };
           };
-          extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
-            bluetooth
-            nix
-            power-profile
-            # Extension names can be found in the link below, it's just the folder names
-          ];
+          # Extension names can be found in the link below, it's just the folder names
+          extensions =
+            let
+              extensionPkgs = inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system};
+            in
+            [
+              extensionPkgs.bluetooth
+              extensionPkgs.nix
+              extensionPkgs.power-profile
+            ];
         };
       };
   };

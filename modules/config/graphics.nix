@@ -7,14 +7,14 @@
         hardware.graphics = {
           enable = true;
           enable32Bit = true;
-          extraPackages = with pkgs; [
-            intel-media-driver
-            intel-ocl
-            intel-vaapi-driver
+          extraPackages = [
+            pkgs.intel-media-driver
+            pkgs.intel-ocl
+            pkgs.intel-vaapi-driver
           ];
-          extraPackages32 = with pkgs.pkgsi686Linux; [
-            intel-media-driver
-            intel-vaapi-driver
+          extraPackages32 = [
+            pkgs.pkgsi686Linux.intel-media-driver
+            pkgs.pkgsi686Linux.intel-vaapi-driver
           ];
         };
       };
