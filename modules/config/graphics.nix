@@ -1,5 +1,4 @@
 {
-  # Enable OpenGL , Nouveau
   den.default = {
     nixos =
       { pkgs, ... }:

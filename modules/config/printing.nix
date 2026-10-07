@@ -1,6 +1,5 @@
 {
   den.default = {
-    # Enable CUPS to print documents.
     nixos.services.printing.enable = true;
   };
 
@@ -8,7 +7,6 @@
     nixos =
       { pkgsStable, ... }:
       {
-        # Enable CUPS to print documents.
         services.printing = {
           listenAddresses = [ "*:631" ];
           allowFrom = [ "all" ];

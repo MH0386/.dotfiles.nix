@@ -3,7 +3,7 @@
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = with pkgs; [ file-roller ];
+        home.packages = [ pkgs.file-roller ];
       };
   };
 }

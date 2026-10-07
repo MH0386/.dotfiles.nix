@@ -12,11 +12,13 @@
     };
     homeManager =
       { pkgs, ... }:
+      let
+        themeName = "WhiteSur-Dark";
+      in
       {
         home.packages = with pkgs; [
           dconf-editor
           gnome-contacts
-          dconf-editor
           gnome-extensions-cli
           gnome-tweaks
           gnome-extension-manager
@@ -38,7 +40,7 @@
         gtk = {
           enable = true;
           theme = {
-            name = "WhiteSur-Dark"; # or WhiteSur-Light, WhiteSur, etc.
+            name = themeName; # or WhiteSur-Light, WhiteSur, etc.
             package = pkgs.whitesur-gtk-theme;
           };
         };
@@ -124,7 +126,7 @@
             clock-show-date = true;
             clock-show-weekday = true;
             color-scheme = "prefer-dark";
-            gtk-theme = "WhiteSur-Dark";
+            gtk-theme = themeName;
             cursor-blink = true;
             enable-animations = true;
             enable-hot-corners = true;

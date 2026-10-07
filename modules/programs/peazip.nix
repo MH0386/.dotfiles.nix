@@ -3,7 +3,7 @@
     homeManager =
       { pkgs, ... }:
       {
-        home.packages = with pkgs; [ peazip ];
+        home.packages = [ pkgs.peazip ];
       };
   };
 }

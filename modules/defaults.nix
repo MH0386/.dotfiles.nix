@@ -48,9 +48,6 @@
               fh
               renameutils
             ]);
-          file = { };
-          sessionPath = [ ];
-          sessionVariables = { };
         };
       };
   };

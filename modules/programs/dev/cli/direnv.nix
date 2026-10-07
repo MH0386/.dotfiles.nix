@@ -1,6 +1,5 @@
 {
   den.default = {
-
     homeManager = {
       programs.direnv = {
         enable = true;
